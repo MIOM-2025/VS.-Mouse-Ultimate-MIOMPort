@@ -22,6 +22,7 @@ jobs:
         uses: nttld/setup-ndk@main
         with:
           ndk-version: r25c
+
       - name: Restore Previous Cache
         uses: actions/cache@v4
         with:
@@ -43,6 +44,7 @@ jobs:
             .haxelib\
           restore-keys: |
             cache-build-android
+
       - name: Installing/Updating libraries
         run: |
           haxe -cp commandline -D analyzer-optimize --run Main setup -s
@@ -54,6 +56,7 @@ jobs:
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME_17_X64
           haxelib run lime config ANDROID_SETUP true
+
       - name: Fix Haxelib
         run: |
           haxelib set lime git
@@ -62,7 +65,9 @@ jobs:
           haxelib set flixel-addons git
           haxelib set flixel-animate git
           haxelib set hxdiscord_rpc git
-      # ========== 新增修复步骤 ==========
+          haxelib set mobile-controls git   # <-- 新增这一行，修复缺失依赖
+
+      # ========== 修复 hscript 兼容性问题 ==========
       - name: Fix hscript compatibility (IMPORT_BLACKLIST -> DISALLOW_CUSTOM_CLASSES)
         run: |
           TARGET_FILE=".haxelib/hscript-improved/git/hscript/Interp.hx"
@@ -72,15 +77,18 @@ jobs:
           else
             echo "⚠️ Warning: $TARGET_FILE not found, skipping fix"
           fi
-      # ==================================
+      # ==========================================
+
       - name: Building the game
         run: |
           haxelib run lime build android -final -D ONLY_ARM64
+
       - name: Uploading artifact (entire build)
         uses: actions/upload-artifact@v4
         with:
           name: Codename Engine Android
           path: export/release/android/bin/app/build/outputs/apk/*
+
       - name: Clear Previous Cache
         uses: actions/github-script@v6
         with:
@@ -100,6 +108,7 @@ jobs:
                 console.log("Cache cleared.")
               }
             }
+
       - name: Upload New Cache
         uses: actions/cache@v4
         with:
