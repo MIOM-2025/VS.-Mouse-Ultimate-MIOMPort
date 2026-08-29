@@ -1,0 +1,58 @@
+<!DOCTYPE codename-engine-dialogue>
+<dialogue box="vmubox">
+	<!-- All characters -->
+	<char name="mickey" char="mickey" position="left" defaultAnim="wtf"/>
+	<char name="goofy" char="goofy" position="left" defaultAnim="scared"/>
+	<char name="donald" char="donald" position="left" defaultAnim="anguish"/>
+	<char name="bruno" char="bruno"  position="right" defaultAnim="smug" />
+
+	<!-- Lines -->
+	<line char="bruno" changeMusic="gallery">
+		Ay, the pizza's here!
+	</line>
+	<line char="mickey">
+		HUH????
+	</line>
+	<line char="bruno" changeDefAnim="wtf">
+		...
+	</line>
+	<line char="mickey" changeDefAnim="sweat">
+		Uh, w-welcome fellas! We didn't ask for any "pizza", but... please, come in anyways!
+	</line>
+	<line char="goofy" changeDefAnim="happy">
+		Gawrsh, we hardly get any visitors here! Y'think they're tourists?
+	</line>
+	<line char="donald" changeDefAnim="confident">
+		Ugh, lets hope not...
+	</line>
+	<line char="mickey" changeDefAnim="oof">
+		Come on guys, lets not turn away our guests!
+	</line>
+	<line char="mickey" changeDefAnim="sweat">
+		S-sorry about that, we're not so used to new friends... l-lets start over, why don't we?
+	</line>
+	<line char="mickey" changeDefAnim="default">
+		I'm Mickey Mouse, and welcome to my clubhouse!
+	</line>
+	<line char="bruno" changeDefAnim="smug">
+		Nice to meetcha Mickey! I'm Bruno Fernández, but you can call me BF.
+	</line>
+	<line char="mickey" changeDefAnim="happy">
+		Always a treat to meet a new pal!
+	</line>
+	<line char="mickey" changeDefAnim="smug">
+		Say, you seem like you know how to work with a microphone... interested in a musical number?
+	</line>
+	<line char="mickey" changeDefAnim="default">
+		It's helped me get acquainted in the past, ha-ha!
+	</line>
+	<line char="bruno" changeDefAnim="hmm">
+		Hmm... well...
+	</line>
+	<line char="bruno" changeDefAnim="smug">
+		...sure thing, Mickey! Don't expect me to go easy on you though!
+	</line>
+	<line char="mickey" changeDefAnim="happy">
+		Well, alright! Lets get this show on the road!
+	</line>
+</dialogue>

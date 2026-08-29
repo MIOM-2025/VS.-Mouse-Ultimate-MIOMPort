@@ -1,18 +1,19 @@
 <!DOCTYPE codename-engine-character>
-<character y="350" sprite="bf" flipX="true" isPlayer="true" icon="bf" color="#31B0D1">
-	<anim name="idle" anim="BF idle dance" x="-5" y="0" fps="24" loop="false"/>
-	<anim name="singUP" anim="BF NOTE UP0" x="-39" y="27" fps="24" loop="false"/>
-	<anim name="singLEFT" anim="BF NOTE LEFT0" x="6" y="-7" fps="24" loop="false"/>
-	<anim name="singRIGHT" anim="BF NOTE RIGHT0" x="-48" y="-6" fps="24" loop="false"/>
-	<anim name="singDOWN" anim="BF NOTE DOWN0" x="-17" y="-50" fps="24" loop="false"/>
-	<anim name="singUPmiss" anim="BF NOTE UP MISS" x="-35" y="27" fps="24" loop="false"/>
-	<anim name="singLEFTmiss" anim="BF NOTE LEFT MISS" x="6" y="19" fps="24" loop="false"/>
-	<anim name="singRIGHTmiss" anim="BF NOTE RIGHT MISS" x="-44" y="22" fps="24" loop="false"/>
-	<anim name="singDOWNmiss" anim="BF NOTE DOWN MISS" x="-16" y="-19" fps="24" loop="false"/>
-	<anim name="hey" anim="BF HEY" x="-3" y="6" fps="24" loop="false"/>
-	<anim name="scared" anim="BF idle shaking" x="-6" y="1" fps="24" loop="true"/>
-	<anim name="hit" anim="BF hit" x="13" y="19" fps="24" loop="false"/>
-	<anim name="pre-attack" anim="bf pre attack" x="-47" y="-36" fps="24" loop="false"/>
-	<anim name="attack" anim="boyfriend attack" x="289" y="270" fps="24" loop="false"/>
-	<anim name="dodge" anim="boyfriend dodge" x="-8" y="-13" fps="24" loop="false"/>
+<character x="-70" y="200" sprite="Bruno/bruno" flipX="true" camx="-50" camy="-100" isPlayer="true" icon="bf" color="#4CC3FF" applyStageMatrix="true">
+	<anim name="idle" anim="BFANIMS/BF Idle" x="250" y="-280"/>
+	<anim name="singUP" anim="BaseUp" x="-71" y="64" fps="40"/>
+	<anim name="singLEFT" anim="BaseLeft" x="2" y="1" fps="40"/>
+	<anim name="singRIGHT" anim="BaseRight" x="-83" y="4" fps="40"/>
+	<anim name="singDOWN" anim="BaseDown" x="-37" y="-110" fps="40"/>
+	<anim name="idle-alt" anim="MOUSEIdle" y="5"/>
+	<anim name="singUP-alt" anim="MOUSEUp" x="-40" y="39" fps="40"/>
+	<anim name="singLEFT-alt" anim="MOUSELeft" x="34" y="16" fps="40"/>
+	<anim name="singRIGHT-alt" anim="MOUSERight" x="-3" y="12" fps="40"/>
+	<anim name="singDOWN-alt" anim="MOUSEDown" x="9" y="-7" fps="40"/>
+	<anim name="singUPmiss" anim="MissUp" x="-80" y="75" fps="30"/>
+	<anim name="singLEFTmiss" anim="MissLeft" x="42" y="-26" fps="30"/>
+	<anim name="singRIGHTmiss" anim="MissRight" x="40" y="25" fps="30"/>
+	<anim name="singDOWNmiss" anim="MissDown" x="-25" y="-75" fps="30"/>
+	<anim name="hey" anim="IdlePose" x="-5" y="3"/>
+	<anim name="idle-dance" anim="dance" x="5" y="20" fps="12" loop="true"/>
 </character>

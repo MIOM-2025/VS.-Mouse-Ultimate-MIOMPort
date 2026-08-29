@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="explosion.png" width="269" height="267">
+	<SubTexture name="explosion0001" x="93" y="255" width="11" height="12" frameX="-29" frameY="-49" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0002" x="226" y="55" width="37" height="33" frameX="-12" frameY="-36" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0003" x="226" y="0" width="43" height="55" frameX="-10" frameY="-18" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0004" x="127" y="0" width="54" height="94" frameX="-7" frameY="-4" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0005" x="120" y="187" width="60" height="77" frameX="-7" frameY="-1" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0006" x="0" y="174" width="57" height="77" frameX="-8" frameY="-2" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0007" x="62" y="89" width="63" height="84" frameX="-8" frameY="-0" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0008" x="0" y="0" width="65" height="88" frameX="-6" frameY="-0" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0009" x="0" y="88" width="62" height="86" frameX="-6" frameY="-0" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0010" x="65" y="0" width="62" height="89" frameX="-6" frameY="-0" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0011" x="62" y="173" width="58" height="82" frameX="-7" frameY="-0" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0012" x="180" y="179" width="51" height="80" frameX="-7" frameY="-5" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0013" x="179" y="94" width="49" height="85" frameX="-7" frameY="-3" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0014" x="181" y="0" width="45" height="90" frameX="-8" frameY="-2" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0015" x="125" y="94" width="54" height="93" frameX="-7" frameY="-2" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0016" x="0" y="251" width="46" height="16" frameX="-11" frameY="-0" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0017" x="46" y="255" width="47" height="11" frameX="-13" frameY="-1" frameWidth="72" frameHeight="101"/>
+	<SubTexture name="explosion0018" x="62" y="88" width="1" height="1" frameX="-0" frameY="-0" frameWidth="72" frameHeight="101"/>
+</TextureAtlas>

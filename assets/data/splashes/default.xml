@@ -1,19 +1,19 @@
 <!DOCTYPE codename-engine-splashes>
-<splashes sprite="game/splashes/default" alpha="0.6">
+<splashes sprite="game/splashes/default" alpha="1" scale="0.5"> 
 	<strum id="0"> <!-- LEFT -->
-		<anim name="splashleft1" anim="note impact 1 purple" fps="24" x="0" y="0" />
-		<anim name="splashleft2" anim="note impact 2 purple" fps="24" x="0" y="0" />
+		<anim name="splashleft1" anim="Left_splash_1" fps="30" x="-50" y="-50" />
+		<anim name="splashleft2" anim="Left_splash_2" fps="30" x="50" y="50" />
 	</strum>
 	<strum id="1"> <!-- DOWN -->
-		<anim name="splashdown1" anim="note impact 1 blue" fps="24" x="0" y="0" />
-		<anim name="splashdown2" anim="note impact 2 blue" fps="24" x="0" y="0" />
+		<anim name="splashdown1" anim="Down_splash_1" fps="30" x="-5" y="0" />
+		<anim name="splashdown2" anim="Down_splash_2" fps="30" x="70" y="50" />
 	</strum>
 	<strum id="2"> <!-- UP -->
-		<anim name="splashup1" anim="note impact 1 green" fps="24" x="0" y="0" />
-		<anim name="splashup2" anim="note impact 2 green" fps="24" x="0" y="0" />
+		<anim name="splashup1" anim="Up_splash_1" fps="30" x="45" y="25" />
+		<anim name="splashup2" anim="Up_splash_2" fps="30" x="-15" y="-5" />
 	</strum>
 	<strum id="3"> <!-- RIGHT -->
-		<anim name="splashright1" anim="note impact 1 red" fps="24" x="0" y="0" />
-		<anim name="splashright2" anim="note impact 2 red" fps="24" x="0" y="0" />
+		<anim name="splashright1" anim="Right_splash_1" fps="30" x="50" y="50" />
+		<anim name="splashright2" anim="Right_splash_2" fps="30" x="-60" y="-50" />
 	</strum>
 </splashes>

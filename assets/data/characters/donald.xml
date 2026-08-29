@@ -1,0 +1,18 @@
+<!DOCTYPE codename-engine-character>
+<character x="-95" y="-165" sprite="Donald/donald-preferal" scale="0.82" camx="-100" camy="-250" icon="donald" color="#4678CC" applyStageMatrix="true" isGF="false">
+	<anim name="idle" anim="Duplicate Items Folder/DONALD_IDLE"/>
+	<anim name="idle-alt" anim="Symbol 1" x="585" y="278" loop="true" indices="90..110"/>
+	<anim name="singLEFT" anim="LEFT" x="-110" y="-710"/>
+	<anim name="singDOWN" anim="DOWN_POSE_NEW" x="-70" y="-250"/>
+	<anim name="singUP" anim="UP_ALT" x="-65" y="360"/>
+	<anim name="singUP-alt" anim="UP_ALT_JUMP" x="-20" y="380"/>
+	<anim name="singRIGHT" anim="RIGHT" y="95"/>
+	<anim name="singRIGHT-alt" anim="RIGHT_1" x="35" y="90"/>
+	<anim name="phooey" anim="Symbol 1" x="585" y="278" indices="0..90"/>
+	<anim name="getmad" anim="animationz/donald becoming mad" x="2" y="2"/>
+	<anim name="idle-mad1" anim="animationz/donald annoyed" x="2" y="2"/>
+	<anim name="idle-mad2" anim="animationz/donald annoyed 2" x="2" y="2"/>
+	<anim name="idle-mad3" anim="animationz/donald annoyed 3" x="2" y="2"/>
+	<anim name="eyeroll1" anim="animationz/donald eye roll" x="-5" y="13" indices="0..40"/>
+	<anim name="eyeroll2" anim="animationz/donald eye roll" x="-5" y="13" indices="41..61"/>
+</character>

@@ -1,0 +1,7 @@
+<!DOCTYPE codename-engine-character>
+<character x="67.5" y="375" sprite="Gloria/gf_legacy" scale="1.1" camy="100" icon="gf" color="#A5004D" applyStageMatrix="true" alpha="0.5">
+	<anim name="cheer" anim="GF Cheer"/>
+	<anim name="danceLeft" anim="GF Dancing Beat" indices="0..14"/>
+	<anim name="danceRight" anim="GF Dancing Beat" indices="15..30"/>
+	<anim name="sad" anim="gf sad" x="-51" y="315" loop="true" indices="0..12"/>
+</character>

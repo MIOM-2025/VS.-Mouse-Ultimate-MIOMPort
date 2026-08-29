@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Tex-Packer-EX v0.7.1 https://kitzsh.github.io/tex-packer-ex
+-->
+<TextureAtlas imagePath="goofy.png" width="1877" height="2326">
+  <SubTexture name="gIdle0001.png" x="637" y="1166"  width="651" height="1136" frameX="-12" frameY="-23" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0002.png" x="637" y="1166"  width="651" height="1136" frameX="-12" frameY="-23" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0003.png" x="1229" y="3"  width="645" height="1143" frameX="-0" frameY="-16" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0004.png" x="1229" y="3"  width="645" height="1143" frameX="-0" frameY="-16" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0005.png" x="3" y="1167"  width="628" height="1156" frameX="-2" frameY="-3" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0006.png" x="3" y="1167"  width="628" height="1156" frameX="-2" frameY="-3" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0007.png" x="3" y="3"  width="609" height="1158" frameX="-15" frameY="-1" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0008.png" x="3" y="3"  width="609" height="1158" frameX="-15" frameY="-1" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0009.png" x="618" y="3"  width="605" height="1157" frameX="-18" frameY="-2" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0010.png" x="618" y="3"  width="605" height="1157" frameX="-18" frameY="-2" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0011.png" x="618" y="3"  width="605" height="1157" frameX="-18" frameY="-2" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0012.png" x="618" y="3"  width="605" height="1157" frameX="-18" frameY="-2" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0013.png" x="618" y="3"  width="605" height="1157" frameX="-18" frameY="-2" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0014.png" x="618" y="3"  width="605" height="1157" frameX="-18" frameY="-2" frameWidth="663" frameHeight="1159"/>
+  <SubTexture name="gIdle0015.png" x="618" y="3"  width="605" height="1157" frameX="-18" frameY="-2" frameWidth="663" frameHeight="1159"/>
+</TextureAtlas>

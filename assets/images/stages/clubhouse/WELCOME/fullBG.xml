@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Tex-Packer-EX v0.6.8 https://strawberrysage.github.io/tex-packer-ex
+-->
+<TextureAtlas imagePath="1.png" width="8192" height="4096">
+  <SubTexture name="BG STUFF.png" x="2412" y="2489"  width="1179" height="462" frameX="-641" frameY="-982" frameWidth="2480" frameHeight="2480"/>
+  <SubTexture name="CLUBHOUSE.png" x="3" y="3"  width="2480" height="2480" frameX="-0" frameY="-0" frameWidth="2480" frameHeight="2480"/>
+  <SubTexture name="FG 1.png" x="2489" y="3"  width="2480" height="2311" frameX="-0" frameY="-169" frameWidth="2480" frameHeight="2480"/>
+  <SubTexture name="FG 2.png" x="3" y="2489"  width="2403" height="1138" frameX="-77" frameY="-619" frameWidth="2480" frameHeight="2480"/>
+  <SubTexture name="FISH.png" x="2412" y="3525"  width="71" height="40" frameX="-826" frameY="-1096" frameWidth="2480" frameHeight="2480"/>
+  <SubTexture name="OUTSIDE.png" x="2412" y="2957"  width="711" height="562" frameX="-897" frameY="-846" frameWidth="2480" frameHeight="2480"/>
+  <SubTexture name="WINDOW GLASS (LUMINOSITY).png" x="3129" y="2957"  width="509" height="317" frameX="-977" frameY="-926" frameWidth="2480" frameHeight="2480"/>
+</TextureAtlas>
