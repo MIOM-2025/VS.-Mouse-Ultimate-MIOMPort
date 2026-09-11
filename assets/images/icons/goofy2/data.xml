@@ -1,5 +1,0 @@
-<!DOCTYPE codename-engine-icon>
-<icon scale="0.8" facing="right" offsetX="-15" offsetY="-15">
-    <anim name="neutral" anim="goofyneut" looped="true" offsetY="0" fps="24"/>
-    <anim name="losing" anim="goofloss" looped="true" offsetY="0" fps="24"/>
-</icon>

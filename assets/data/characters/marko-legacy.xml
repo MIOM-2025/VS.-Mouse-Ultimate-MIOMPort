@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="-160" y="-200" sprite="Marko/markolegacy" scale="1" camy="50" icon="marko" color="#661421" holdTime="6">
-	<anim name="idle" anim="idle" indices="0,0,0,3,3,3,6,6,6,9,9,9,12,12,12,12,12,12,12"/>
-	<anim name="singDOWN" anim="down" indices="0,0,2,2,4,4,4,7,7,7,7,7,7"/>
-	<anim name="singRIGHT" anim="right" indices="0,0,2,2,4,4,4,7,7,7,7,7"/>
-	<anim name="singLEFT" anim="left" indices="0,0,2,2,4,4,4,7,7,7,7,7"/>
-	<anim name="singUP" anim="up" indices="0,0,2,2,4,4,4,7,7,7,7,7"/>
-</character>

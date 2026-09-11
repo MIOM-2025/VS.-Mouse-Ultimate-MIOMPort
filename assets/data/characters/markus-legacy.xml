@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="-100" y="-20" sprite="Mickey/Legacy" scale="0.8" camx="-250" camy="-50" icon="mickey" color="#FF0000" applyStageMatrix="true">
-	<anim name="idle" anim="idle"/>
-	<anim name="singDOWN" anim="down" x="-25" y="10"/>
-	<anim name="singRIGHT" anim="right" x="40" y="-5"/>
-	<anim name="singLEFT" anim="left" x="10" y="-5"/>
-	<anim name="singUP" anim="up" x="305" y="265"/>
-</character>

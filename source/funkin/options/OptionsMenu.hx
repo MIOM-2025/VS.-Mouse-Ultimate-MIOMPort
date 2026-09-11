@@ -109,8 +109,10 @@ class OptionsMenu extends TreeMenu {
 			}
 		}
 
-		addMobilePad("UP_DOWN", "A_B");
-		addMobilePadCamera();
+		addDPad("UP_DOWN");
+		addButton("A_B");
+		addDPadCamera();
+		addButtonCamera();
 	}
 
 	function checkDebugOption() {
@@ -151,6 +153,7 @@ class OptionsMenu extends TreeMenu {
 	override function exit() {
 		Options.save();
 		Options.applySettings();
+		FlxG.save.flush();
 		super.exit();
 	}
 

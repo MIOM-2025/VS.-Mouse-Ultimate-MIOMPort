@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="-175" y="-450" sprite="Goofy/goofy-feral" scale="0.72" camx="-300" icon="goofy2" color="#57D050" applyStageMatrix="true" isGF="false">
-	<anim name="idle" anim="1 EXPORT THESE ONES/idle_1"/>
-	<anim name="singLEFT" anim="1 EXPORT THESE ONES/left_1" x="360" y="5"/>
-	<anim name="singDOWN" anim="1 EXPORT THESE ONES/down_1" x="-125" y="-390"/>
-	<anim name="singUP" anim="1 EXPORT THESE ONES/up_1" x="138" y="231"/>
-	<anim name="singRIGHT" anim="1 EXPORT THESE ONES/right_1" x="-55"/>
-</character>

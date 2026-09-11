@@ -1,13 +1,42 @@
 name: Release
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      title:
+        description: '标题'
+        required: true
+        default: 'Mobile Release'
+        type: string
+      version:
+        description: 'APP版本 (留空使用默认)'
+        required: false
+        default: ''
+        type: string
+      compile_experimental:
+        description: '使用 COMPILE_EXPERIMENTAL'
+        required: false
+        default: false
+        type: boolean
+      prerelease:
+        description: '预发布'
+        required: false
+        default: false
+        type: boolean
 
 permissions: write-all
 
 jobs:
   build-android:
     uses: ./.github/workflows/android.yml
+    with:
+      version: ${{ inputs.version }}
+      compile_experimental: ${{ inputs.compile_experimental }}
+
   build-ios:
     uses: ./.github/workflows/ios.yml
+    with:
+      version: ${{ inputs.version }}
+      compile_experimental: ${{ inputs.compile_experimental }}
  
   Releaser:
     needs: [build-android, build-ios]
@@ -16,27 +45,21 @@ jobs:
       - name: Download Android Build
         uses: actions/download-artifact@main
         with:
-          name: Codename Engine Android
+          name: Codename Engine Android ${{ inputs.version }}
           path: ${{ github.workspace }}
-
-      - name: Move Android File
-        run: mv "${{ github.workspace }}/CodenameEngine-release.apk" "${{ github.workspace }}/Codename Engine-Android.apk"
 
       - name: Download iOS Build
         uses: actions/download-artifact@main
         with:
-          name: Codename Engine iOS
+          name: Codename Engine iOS ${{ inputs.version }}
           path: ${{ github.workspace }}
-
-      - name: Move iOS File
-        run: mv "${{ github.workspace }}/CodenameEngine.ipa" "${{ github.workspace }}/Codename Engine-iOS.ipa"
 
       - name: Publish The Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "v1.0.1"
-          tag_name: "v1.0.1"
-          prerelease: false
+          name: "${{ inputs.title }}"
+          tag_name: "mobile-v${{ inputs.version }}"
+          prerelease: ${{ inputs.prerelease }}
           files: |
             ${{ github.workspace }}/*.apk
             ${{ github.workspace }}/*.ipa

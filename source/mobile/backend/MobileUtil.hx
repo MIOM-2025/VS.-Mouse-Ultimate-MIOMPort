@@ -209,9 +209,6 @@ class MobileUtil
 	}
 	#end
 
-	/**
-	 * @param folders Optional list of specific folders (e.g. ["assets/data/"]). If null, copies all assets.
-	 */
 	public static function copyAssets(folders:Array<String> = null, onProgress:String->Int->Int->Void = null, onComplete:Void->Void = null):Void {
 		#if mobile
 		var rootTarget = getAssetDirectory();
@@ -225,11 +222,17 @@ class MobileUtil
 					cleanPath = cleanPath.substring(colonIndex + 1);
 				}
 
-				if (!StringTools.startsWith(cleanPath, "assets/")) return false;
-				if (folders == null) return true;
+				var defaultRoots:Array<String> = ["assets/", "mods/"];
 
-				for (f in folders) {
-					if (StringTools.startsWith(cleanPath, f)) return true;
+				if (folders != null) {
+					for (f in folders) {
+						if (StringTools.startsWith(cleanPath, f)) return true;
+					}
+					return false;
+				}
+
+				for (root in defaultRoots) {
+					if (StringTools.startsWith(cleanPath, root)) return true;
 				}
 				return false;
 			});
@@ -253,10 +256,32 @@ class MobileUtil
 
 				var directory = Path.directory(fullPath);
 				if (!FileSystem.exists(directory)) FileSystem.createDirectory(directory);
+				var shouldCopy = !FileSystem.exists(fullPath);
 
-				if (!FileSystem.exists(fullPath)) {
+				if (!shouldCopy) {
+					try {
+						var assetBytes = Assets.getBytes(assetKey);
+						var localBytes = File.getBytes(fullPath);
+						
+						if (localBytes != null && assetBytes != null) {
+							if (localBytes.length != assetBytes.length) {
+								shouldCopy = true;
+							} else {
+								for (j in 0...localBytes.length) {
+									if (localBytes.get(j) != assetBytes[j]) {
+										shouldCopy = true;
+										break;
+									}
+								}
+							}
+						}
+					} catch (e:Dynamic) {
+						shouldCopy = true;
+					}
+				}
+
+				if (shouldCopy) {
 					var bytes:Bytes = null;
-
 					try {
 						bytes = Assets.getBytes(assetKey);
 					} catch (e:Dynamic) {

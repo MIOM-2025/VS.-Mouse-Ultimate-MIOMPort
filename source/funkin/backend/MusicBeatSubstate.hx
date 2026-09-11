@@ -19,40 +19,115 @@ import funkin.options.PlayerSettings;
 class MusicBeatSubstate extends FlxSubState implements IBeatCancellableReceiver
 {
 	public static var instance:MusicBeatSubstate;
-	public var mobileManager:MobileControlManager;
+	public var mobileManager:MobileControls;
 	public function getMobilePadButton(name:String) {
-		return mobileManager?.mobilePad?.getButton(name);
+		return mobileManager.getButtonFromName(name);
 	}
-	public function mobilePadJustPressed(buttons:Dynamic):Bool {
-		return mobileManager?.mobilePad?.justPressed(buttons);
+	public function mobileCJustPressed(buttons:Dynamic):Bool {
+		if (Std.isOfType(buttons, Array)) {
+			for (button in (buttons:Array<String>)) {
+				if (mobileManager.checkState(button, "justPressed"))
+					return true;
+			}
+		}
+		else if (Std.isOfType(buttons, String)) {
+			return mobileManager.checkState((buttons:String), "justPressed");
+		}
+		return false;
 	}
-	public function mobilePadPressed(buttons:Dynamic):Bool {
-		return mobileManager?.mobilePad?.pressed(buttons);
+	public function mobileCPressed(buttons:Dynamic):Bool {
+		if (Std.isOfType(buttons, Array)) {
+			for (button in (buttons:Array<String>)) {
+				if (mobileManager.checkState(button, "pressed"))
+					return true;
+			}
+		}
+		else if (Std.isOfType(buttons, String)) {
+			return mobileManager.checkState((buttons:String), "pressed");
+		}
+		return false;
 	}
-	public function mobilePadJustReleased(buttons:Dynamic):Bool {
-		return mobileManager?.mobilePad?.justReleased(buttons);
+	public function mobileCJustReleased(buttons:Dynamic):Bool {
+		if (Std.isOfType(buttons, Array)) {
+			for (button in (buttons:Array<String>)) {
+				if (mobileManager.checkState(button, "justReleased"))
+					return true;
+			}
+		}
+		else if (Std.isOfType(buttons, String)) {
+			return mobileManager.checkState((buttons:String), "justReleased");
+		}
+		return false;
 	}
-	public function mobilePadReleased(buttons:Dynamic):Bool {
-		return mobileManager?.mobilePad?.released(buttons);
+	public function mobileCReleased(buttons:Dynamic):Bool {
+		if (Std.isOfType(buttons, Array)) {
+			for (button in (buttons:Array<String>)) {
+				if (mobileManager.checkState(button, "released"))
+					return true;
+			}
+		}
+		else if (Std.isOfType(buttons, String)) {
+			return mobileManager.checkState((buttons:String), "released");
+		}
+		return false;
 	}
-
+	/*
 	public function addMobilePad(DPad:String, Action:String) {
-		mobileManager.addMobilePad(DPad, Action);
+		mobileManager.addDPad(DPad);
+		mobileManager.addButton(Action);
 	}
 	public function removeMobilePad() {
-		mobileManager.removeMobilePad();
+		mobileManager.removeDPad();
+		mobileManager.removeButton();
 	}
-	public function addHitbox(?mode:String, ?hints:Bool):Void {
-		mobileManager.addHitbox(mode, hints);
+		public function addMobilePadCamera(defaultDrawTarget:Bool = false):Void {
+		mobileManager.addCamera();
+		mobileManager.addDPadCamera();
+		mobileManager.addButtonCamera();
+	}
+	*/
+	/* DPad */
+	public function addDPad(DPad:String) {
+		mobileManager.addDPad(DPad);
+	}
+	public function removeDPad() {
+		mobileManager.removeDPad();
+	}
+	public function addDPadCamera() {
+		mobileManager.addDPadCamera();
+	}
+
+	/* Button */
+	public function addButton(Action:String) {
+		mobileManager.addButton(Action);
+	}
+	public function removeButton() {
+		mobileManager.removeButton();
+	}
+	public function addButtonCamera() {
+		mobileManager.addButtonCamera();
+	}
+
+	/* Hitbox */
+	public function addHitbox(?mode:String = "Normal"):Void {
+		mobileManager.addHitbox(mode);
 	}
 	public function removeHitbox() {
 		mobileManager.removeHitbox();
 	}
 	public function addHitboxCamera(defaultDrawTarget:Bool = false):Void {
-		mobileManager.addHitboxCamera(defaultDrawTarget);
+		mobileManager.addHitboxCamera();
 	}
-	public function addMobilePadCamera(defaultDrawTarget:Bool = false):Void {
-		mobileManager.addMobilePadCamera(defaultDrawTarget);
+
+	/* JoyStick */
+	public function addJoyStick(joy:String) {
+		mobileManager.addJoyStick(joy);
+	}
+	public function removeJoyStick() {
+		mobileManager.removeJoyStick();
+	}
+	public function addJoyStickCamera() {
+		mobileManager.addJoyStickCamera();
 	}
 
 	private var lastBeat:Float = 0;
@@ -144,7 +219,8 @@ class MusicBeatSubstate extends FlxSubState implements IBeatCancellableReceiver
 
 
 	public function new(scriptsAllowed:Bool = true, ?scriptName:String) {
-		mobileManager = new MobileControlManager(this);
+		mobileManager = new MobileControls();
+		mobileManager.antialiasing = true;
 		super();
 		instance = this;
 		controls.isInSubstate = true;
@@ -209,8 +285,10 @@ class MusicBeatSubstate extends FlxSubState implements IBeatCancellableReceiver
 	{
 		instance = this;
 		controls.isInSubstate = true;
+		MusicBeatState.instance.controls.isInSubstate = true;
 		loadScript();
 		super.create();
+		add(mobileManager);
 		call("create");
 	}
 
@@ -295,6 +373,7 @@ class MusicBeatSubstate extends FlxSubState implements IBeatCancellableReceiver
 		instance = null;
 		call("destroy");
 		stateScripts = FlxDestroyUtil.destroy(stateScripts);
+		MusicBeatState.instance.controls.isInSubstate = false;
 	}
 
 	public override function switchTo(nextState:FlxState) {

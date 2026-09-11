@@ -33,6 +33,12 @@ class EditorTreeMenu extends funkin.options.TreeMenu {
 		FlxG.switchState(new funkin.menus.MainMenuState());
 	}
 
+	override function destroy() {
+		MusicBeatState.instance.removeDPad();
+		MusicBeatState.instance.removeButton();
+		super.destroy();
+	}
+
 	override function update(elapsed:Float) {
 		super.update(elapsed);
 

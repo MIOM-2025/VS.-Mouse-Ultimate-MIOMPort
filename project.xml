@@ -8,10 +8,10 @@
 	<architecture exclude="arm64-v8a" if="ONLY_ARMV7" />
 
 	<app
-		title="Vs. Mouse ULTIMATE" main="funkin.backend.system.Main"
-		file="CodenameEngine" packageName="com.vmu.miomport"
-		package="com.vmu.miomport"
-		version="1.0.0" company="MIOM" />
+		title="Codename Engine" main="funkin.backend.system.Main"
+		file="CodenameEngine" packageName="com.yoshman29.codenameengine"
+		package="com.yoshman29.codenameengine"
+		version="1.0.1" company="Yoshman29" />
 
 	<!--
 		CHANGE THE SAVE PATH & NAME FOR YOUR MOD HERE!
@@ -115,7 +115,7 @@
 
 	<!-- Comment this out to disable video cutscene support, in case of compilation errors. !-->
 	<section if="cpp">
-		<define name="VIDEO_CUTSCENES" if="desktop || android" />
+		<define name="VIDEO_CUTSCENES" if="desktop || mobile" />
 	</section>
 
 	<!-- Comment this out to disable commit number on FPS -->
@@ -139,6 +139,8 @@
 	<haxelib name="flixel" />
 	<haxelib name="flixel-addons" />
 
+	<haxelib name="hxWebSockets" />
+
 	<haxelib name="hxvlc" if="VIDEO_CUTSCENES" />
 	<haxelib name="away3d" if="THREE_D_SUPPORT" />
 	<haxelib name="format" />
@@ -147,7 +149,6 @@
 
 	<haxelib name="hscript-improved" />
 	<haxelib name="mobile-controls" />
-	<haxedef name="mobile_controls_allow_mouse_clicks" if="desktop"/>
 	<haxelib name="hxdiscord_rpc" if="DISCORD_RPC"/>
 	<haxelib name="markdown" />
 	<haxelib name="hxcpp-debug-server" if="TEST_BUILD debug" />
@@ -241,7 +242,7 @@
 	<haxeflag name="--macro" value="funkin.backend.system.macros.Macros.initMacros()" />
 
 	<!-- It's cool to see -->
-	<icon path="art/teaser.png" if="mobile" />
+	<icon path="art/cne.png" if="mobile" />
 
 	<!-- Do whatever you want I'm tired uninstall and install everytime -->
 	<certificate path="key.keystore" password="psychengine" alias="psychport" alias-password="psychengine" if="android" unless="debug" />

@@ -1,9 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="485" y="-168" sprite="Mickey/mickey-phase2" scale="0.892" camx="-800" camy="50" icon="mickey2" color="#FF0000" applyStageMatrix="true" isGF="false">
-	<anim name="idle" anim="animations/IDLE_POSE"/>
-	<!--<anim name="idle-loop" anim="animations/IDLE_POSE" loop="true" indices="12..15"/> -->
-	<anim name="singLEFT" anim="animations/LEFT_POSE" x="825" y="-270"/>
-	<anim name="singDOWN" anim="animations/DOWN_POSE" x="700" y="-275"/>
-	<anim name="singUP" anim="animations/UP_POSE" x="580" y="-65"/>
-	<anim name="singRIGHT" anim="animations/RIGHT_POSE" x="580" y="-175"/>
-</character>
