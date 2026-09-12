@@ -1,0 +1,4 @@
+<!DOCTYPE codename-engine-character>
+<character x="-490" y="2" sprite="Mickey/nerves" scale="0.9" camx="-230" camy="-40" icon="mickey2" color="#FF0000" isGF="false">
+	<anim name="nerves" anim="nerves"/>
+</character>

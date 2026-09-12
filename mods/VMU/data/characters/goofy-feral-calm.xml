@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="-200" y="-200" sprite="Goofy/goofy-feral-alt" scale="0.72" camx="-400" icon="goofy2" color="#57D050" applyStageMatrix="true" isGF="false">
+	<anim name="idle" anim="idle_1_alt" loop="true"/>
+	<anim name="singLEFT" anim="left_1_alt" x="-80" y="15"/>
+	<anim name="singDOWN" anim="down_1_alt" x="-1300" y="295"/>
+	<anim name="singUP" anim="up_1_alt" x="20" y="40"/>
+	<anim name="singRIGHT" anim="right_1_alt" x="60" y="85"/>
+</character>

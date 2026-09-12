@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character x="-350" y="570" sprite="Bruno/bf" scale="1.1" flipX="true" camx="300" camy="-300" isPlayer="true" icon="bf_legacy" color="#31B0D1" applyStageMatrix="true">
+	<anim name="idle" anim="BF idle dance"/>
+	<anim name="singUP" anim="BF NOTE UP" x="-305" y="265"/>
+	<anim name="singLEFT" anim="BF NOTE LEFT"/>
+	<anim name="singRIGHT" anim="BF NOTE RIGHT"/>
+	<anim name="singDOWN" anim="BF NOTE DOWN" x="-305" y="163"/>
+	<anim name="singUPmiss" anim="BF NOTE UP MISS" x="-305" y="265"/>
+	<anim name="singLEFTmiss" anim="BF NOTE LEFT MISS"/>
+	<anim name="singRIGHTmiss" anim="BF NOTE RIGHT MISS"/>
+	<anim name="singDOWNmiss" anim="BF NOTE DOWN MISS" x="-305" y="163"/>
+	<anim name="hey" anim="BF HEY!!"/>
+</character>

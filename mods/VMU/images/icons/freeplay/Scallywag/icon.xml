@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="mendax.png" width="366" height="325">
+	<SubTexture name="idle0000" x="2" y="2" width="120" height="105" frameX="-15" frameY="-23" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="idle0001" x="2" y="109" width="120" height="104" frameX="-15" frameY="-23" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="idle0002" x="124" y="2" width="120" height="103" frameX="-15" frameY="-23" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="idle0003" x="124" y="107" width="120" height="103" frameX="-15" frameY="-24" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="select0000" x="2" y="215" width="118" height="106" frameX="-16" frameY="-23" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="select0001" x="124" y="212" width="120" height="111" frameX="-15" frameY="-23" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="select0002" x="246" y="2" width="118" height="101" frameX="-16" frameY="-22" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="select0003" x="246" y="105" width="118" height="100" frameX="-16" frameY="-23" frameWidth="150" frameHeight="150"/>
+	<SubTexture name="select0004" x="246" y="207" width="116" height="101" frameX="-17" frameY="-21" frameWidth="150" frameHeight="150"/>
+</TextureAtlas>

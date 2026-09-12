@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Tex-Packer-EX v0.6.8 https://strawberrysage.github.io/tex-packer-ex
+-->
+<TextureAtlas imagePath="boisLetsGetEm.png" width="3693" height="4009">
+  <SubTexture name="Mick1.png" x="2847" y="860"  width="672" height="587" frameX="-204" frameY="-646" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick10.png" x="3" y="1750"  width="667" height="903" frameX="-19" frameY="-307" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick11.png" x="676" y="1750"  width="667" height="903" frameX="-19" frameY="-307" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick12.png" x="676" y="1750"  width="667" height="903" frameX="-19" frameY="-307" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick13.png" x="2432" y="3"  width="606" height="851" frameX="-67" frameY="-368" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick14.png" x="2432" y="3"  width="606" height="851" frameX="-67" frameY="-368" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick15.png" x="581" y="2659"  width="625" height="742" frameX="-90" frameY="-482" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick16.png" x="1212" y="2659"  width="653" height="742" frameX="-40" frameY="-486" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick17.png" x="1212" y="2659"  width="653" height="742" frameX="-40" frameY="-486" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick18.png" x="1212" y="2659"  width="653" height="742" frameX="-40" frameY="-486" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick19.png" x="1871" y="2626"  width="648" height="735" frameX="-37" frameY="-494" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick2.png" x="2847" y="860"  width="672" height="587" frameX="-204" frameY="-646" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick20.png" x="1871" y="2626"  width="648" height="735" frameX="-37" frameY="-494" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick21.png" x="1871" y="2626"  width="648" height="735" frameX="-37" frameY="-494" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick22.png" x="1871" y="2626"  width="648" height="735" frameX="-37" frameY="-494" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick23.png" x="3" y="2659"  width="572" height="744" frameX="-88" frameY="-484" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick24.png" x="3" y="2659"  width="572" height="744" frameX="-88" frameY="-484" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick25.png" x="3044" y="3"  width="646" height="704" frameX="-47" frameY="-525" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick26.png" x="2525" y="2652"  width="633" height="626" frameX="-37" frameY="-592" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick27.png" x="2525" y="2652"  width="633" height="626" frameX="-37" frameY="-592" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick28.png" x="3" y="3409"  width="629" height="597" frameX="-42" frameY="-614" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick29.png" x="3" y="3409"  width="629" height="597" frameX="-42" frameY="-614" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick3.png" x="2847" y="860"  width="672" height="587" frameX="-204" frameY="-646" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick30.png" x="3" y="3409"  width="629" height="597" frameX="-42" frameY="-614" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick31.png" x="1871" y="3367"  width="623" height="612" frameX="-40" frameY="-603" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick32.png" x="1871" y="3367"  width="623" height="612" frameX="-40" frameY="-603" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick33.png" x="2847" y="2046"  width="641" height="600" frameX="-43" frameY="-619" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick34.png" x="2044" y="1717"  width="797" height="571" frameX="-79" frameY="-648" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick35.png" x="1192" y="1144"  width="1071" height="567" frameX="-189" frameY="-646" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick36.png" x="3" y="3"  width="1235" height="569" frameX="-188" frameY="-645" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick37.png" x="3" y="3"  width="1235" height="569" frameX="-188" frameY="-645" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick38.png" x="3" y="578"  width="1207" height="560" frameX="-173" frameY="-650" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick39.png" x="3" y="578"  width="1207" height="560" frameX="-173" frameY="-650" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick4.png" x="2847" y="1453"  width="672" height="587" frameX="-204" frameY="-646" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick40.png" x="3" y="1144"  width="1183" height="600" frameX="-183" frameY="-612" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick41.png" x="3" y="1144"  width="1183" height="600" frameX="-183" frameY="-612" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick42.png" x="1244" y="3"  width="1182" height="601" frameX="-185" frameY="-613" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick43.png" x="1244" y="3"  width="1182" height="601" frameX="-185" frameY="-613" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick44.png" x="1244" y="3"  width="1182" height="601" frameX="-185" frameY="-613" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick45.png" x="1244" y="3"  width="1182" height="601" frameX="-185" frameY="-613" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick46.png" x="1244" y="3"  width="1182" height="601" frameX="-185" frameY="-613" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick5.png" x="2269" y="860"  width="476" height="792" frameX="-137" frameY="-427" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick6.png" x="1349" y="1717"  width="689" height="903" frameX="-8" frameY="-304" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick7.png" x="1349" y="1717"  width="689" height="903" frameX="-8" frameY="-304" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick8.png" x="1349" y="1717"  width="689" height="903" frameX="-8" frameY="-304" frameWidth="1500" frameHeight="1280"/>
+  <SubTexture name="Mick9.png" x="1349" y="1717"  width="689" height="903" frameX="-8" frameY="-304" frameWidth="1500" frameHeight="1280"/>
+</TextureAtlas>

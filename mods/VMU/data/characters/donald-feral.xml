@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character x="-590" y="-240" sprite="Donald/donald-feral" scale="0.65" camx="-75" camy="-25" icon="donald2" color="#4679CC" applyStageMatrix="true" isGF="false">
+	<anim name="idle" anim="EXPORT THESE ONES/idle_2" x="-473.85" y="3.08"/>
+	<anim name="singLEFT" anim="EXPORT THESE ONES/Left_2" x="13.84" y="-216.92"/>
+	<anim name="singDOWN" anim="EXPORT THESE ONES/down_2" x="-70" y="-175"/>
+	<anim name="singUP" anim="EXPORT THESE ONES/up_2" x="36.15" y="-22.69"/>
+	<anim name="singRIGHT" anim="EXPORT THESE ONES/right_2" x="105" y="-360"/>
+	<anim name="idle-alt" anim="1 EXPORT THESE ONES/idle_1" x="-289.23" y="-412.31" loop="true"/>
+	<anim name="singLEFT-alt" anim="1 EXPORT THESE ONES/left_1" x="-232.31" y="-396.92"/>
+	<anim name="singDOWN-alt" anim="1 EXPORT THESE ONES/down_1" x="-272.31" y="-428.85"/>
+	<anim name="singUP-alt" anim="1 EXPORT THESE ONES/up_1" x="-305" y="-255.77"/>
+	<anim name="singRIGHT-alt" anim="1 EXPORT THESE ONES/right_1" x="-289.23" y="-350.77"/>
+</character>

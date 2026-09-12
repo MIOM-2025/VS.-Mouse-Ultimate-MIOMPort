@@ -1,0 +1,19 @@
+<!DOCTYPE codename-engine-character>
+<character x="-70" y="200" sprite="Bruno/bruno" flipX="true" camx="-50" camy="-100" isPlayer="true" icon="bf" color="#4CC3FF" applyStageMatrix="true">
+	<anim name="idle" anim="BFANIMS/BF Idle" x="250" y="-280"/>
+	<anim name="singUP" anim="BaseUp" x="-71" y="64" fps="40"/>
+	<anim name="singLEFT" anim="BaseLeft" x="2" y="1" fps="40"/>
+	<anim name="singRIGHT" anim="BaseRight" x="-83" y="4" fps="40"/>
+	<anim name="singDOWN" anim="BaseDown" x="-37" y="-110" fps="40"/>
+	<anim name="idle-alt" anim="MOUSEIdle" y="5"/>
+	<anim name="singUP-alt" anim="MOUSEUp" x="-40" y="39" fps="40"/>
+	<anim name="singLEFT-alt" anim="MOUSELeft" x="34" y="16" fps="40"/>
+	<anim name="singRIGHT-alt" anim="MOUSERight" x="-3" y="12" fps="40"/>
+	<anim name="singDOWN-alt" anim="MOUSEDown" x="9" y="-7" fps="40"/>
+	<anim name="singUPmiss" anim="MissUp" x="-80" y="75" fps="30"/>
+	<anim name="singLEFTmiss" anim="MissLeft" x="42" y="-26" fps="30"/>
+	<anim name="singRIGHTmiss" anim="MissRight" x="40" y="25" fps="30"/>
+	<anim name="singDOWNmiss" anim="MissDown" x="-25" y="-75" fps="30"/>
+	<anim name="hey" anim="IdlePose" x="-5" y="3"/>
+	<anim name="idle-dance" anim="dance" x="5" y="20" fps="12" loop="true"/>
+</character>

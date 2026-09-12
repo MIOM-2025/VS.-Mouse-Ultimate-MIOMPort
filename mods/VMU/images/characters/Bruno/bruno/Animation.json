@@ -1,0 +1,9027 @@
+{
+"AN":{
+"N":"BrunoANIM2B",
+"SN":"__BTA_TEMP_SPRITEMAP_PACKED_SYMBOL",
+"TL":{
+"L":[
+{
+"LN":"Layer_1",
+"FR":[
+{
+"N":"BFANIMS/BF Idle",
+"I":0,
+"DU":19,
+"E":[
+{"SI":{
+"SN":"BFANIMS/BF Idle",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-447.45,-4.9]
+}}]},{
+"N":"BaseLeft",
+"I":19,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"BaseLeft",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-205.7,-276.5]
+}}]},{
+"N":"BaseDown",
+"I":25,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"BaseDown",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-221.1,-230.7]
+}}]},{
+"N":"BaseUp",
+"I":31,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"BaseUp",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-197.85,-304.85]
+}}]},{
+"N":"BaseRight",
+"I":37,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"BaseRight",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-215.95,-278.4]
+}}]},{
+"N":"IdlePose",
+"I":43,
+"DU":19,
+"E":[
+{"SI":{
+"SN":"IdlePose",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-231.95,-290.15]
+}}]},{
+"N":"MOUSEIdle",
+"I":62,
+"DU":19,
+"E":[
+{"SI":{
+"SN":"MOUSEIdle",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-199.5,-290.05]
+}}]},{
+"N":"MOUSELeft",
+"I":81,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"MOUSELeft",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-221.55,-295.3]
+}}]},{
+"N":"MOUSEDown",
+"I":87,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"MOUSEDown",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-223.25,-280.65]
+}}]},{
+"N":"MOUSEUp",
+"I":93,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"MOUSEUp",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-179.5,-316.55]
+}}]},{
+"N":"dance",
+"I":99,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"dance",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-240.45,-303.8]
+}}]},{
+"N":"MOUSERight",
+"I":102,
+"DU":6,
+"E":[
+{"SI":{
+"SN":"MOUSERight",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-199.6,-293.75]
+}}]},{
+"N":"MissLeft",
+"I":108,
+"DU":19,
+"E":[
+{"SI":{
+"SN":"MissLeft",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-208.75,-282.8]
+}}]},{
+"N":"MissDown",
+"I":127,
+"DU":19,
+"E":[
+{"SI":{
+"SN":"MissDown",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-199.85,-242.45]
+}}]},{
+"N":"MissUp",
+"I":146,
+"DU":19,
+"E":[
+{"SI":{
+"SN":"MissUp",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-167.55,-319.35]
+}}]},{
+"N":"MissRight",
+"I":165,
+"DU":19,
+"E":[
+{"SI":{
+"SN":"MissRight",
+"FF":0,
+"ST":"G",
+"TRP":{"x":0,"y":0},
+"LP":"LP",
+"MX":[1,0,0,1,-266.95,-297.05]
+}}]}
+]}
+]}},
+"SD":{
+"S":[
+{
+"SN":"BFANIMS/BF Idle",
+"TL":{
+"L":[
+{
+"LN":"Arm2",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleArm 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":551.8,"y":-69.5},
+"LP":"LP",
+"MX":[0.999,-0.057,0.025,0.999,473.25,-89.55]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleArm 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":551.8,"y":-73.5},
+"LP":"LP",
+"MX":[1,0,-0.006,1,473.95,-98]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleArm 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":551.8,"y":-72.5},
+"LP":"LP",
+"MX":[1,0,-0.006,1,473.95,-97]
+}}]},{
+"I":6,
+"DU":14,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleArm 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":551.8,"y":-71.5},
+"LP":"LP",
+"MX":[1,0,0,1,473.8,-96]
+}}]}
+]},{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":462.1,"y":-35.3},
+"LP":"LP",
+"MX":[0.995,0.103,-0.103,0.995,232.55,-113.7]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm 2",
+"FF":2,
+"ST":"G",
+"TRP":{"x":462.65,"y":-26.8},
+"LP":"LP",
+"MX":[0.998,0.065,-0.065,0.998,230.25,-96.4]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm 2",
+"FF":4,
+"ST":"G",
+"TRP":{"x":466.1,"y":-32.8},
+"LP":"LP",
+"MX":[1,0.006,-0.006,1,230.05,-88.6]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm 2",
+"FF":6,
+"ST":"G",
+"TRP":{"x":466.1,"y":-36.8},
+"LP":"LP",
+"MX":[1,-0.008,0.008,1,229.35,-89.45]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm 2",
+"FF":8,
+"ST":"G",
+"TRP":{"x":466.1,"y":-36.8},
+"LP":"LP",
+"MX":[1,0,0,1,229.75,-91.3]
+}}]}
+]},{
+"LN":"Head",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF FinalHead",
+"FF":0,
+"ST":"G",
+"TRP":{"x":515.05,"y":-57.65},
+"LP":"LP",
+"MX":[0.999,-0.044,0.044,0.999,291.5,-266.15]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF FinalHead",
+"FF":2,
+"ST":"G",
+"TRP":{"x":519.05,"y":-58.4},
+"LP":"LP",
+"MX":[0.996,-0.086,0.086,0.996,286.8,-257.25]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF FinalHead",
+"FF":4,
+"ST":"G",
+"TRP":{"x":519.05,"y":-65.4},
+"LP":"LP",
+"MX":[0.999,-0.039,0.039,0.999,296.45,-274.9]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF FinalHead",
+"FF":6,
+"ST":"G",
+"TRP":{"x":519.05,"y":-67.9},
+"LP":"LP",
+"MX":[1,-0.005,0.005,1,303.85,-285.05]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF FinalHead",
+"FF":8,
+"ST":"G",
+"TRP":{"x":519.05,"y":-67.9},
+"LP":"LP",
+"MX":[1,0,0,1,304.85,-286]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final Body",
+"FF":0,
+"ST":"G",
+"TRP":{"x":498.4,"y":299.45},
+"LP":"LP",
+"MX":[1.051,0,0,0.969,355.6,-66]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final Body",
+"FF":2,
+"ST":"G",
+"TRP":{"x":498.5,"y":299.5},
+"LP":"LP",
+"MX":[1.009,0,0,0.993,361.45,-75]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final Body",
+"FF":4,
+"ST":"G",
+"TRP":{"x":498.6,"y":110.95},
+"LP":"LP",
+"MX":[1,0,0,1,362.6,-77.55]
+}}]}
+]},{
+"LN":"Arm1",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm",
+"FF":0,
+"ST":"G",
+"TRP":{"x":460.1,"y":-30.3},
+"LP":"LP",
+"MX":[0.995,0.103,-0.103,0.995,230.55,-108.7]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm",
+"FF":2,
+"ST":"G",
+"TRP":{"x":462.65,"y":-27.8},
+"LP":"LP",
+"MX":[0.998,0.065,-0.065,0.998,230.25,-97.4]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm",
+"FF":4,
+"ST":"G",
+"TRP":{"x":465.1,"y":-32.8},
+"LP":"LP",
+"MX":[1,0.006,-0.006,1,229.05,-88.6]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm",
+"FF":6,
+"ST":"G",
+"TRP":{"x":466.1,"y":-36.8},
+"LP":"LP",
+"MX":[1,-0.008,0.008,1,229.35,-89.45]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"BFIDLE/BF Final MicArm",
+"FF":8,
+"ST":"G",
+"TRP":{"x":466.1,"y":-36.8},
+"LP":"LP",
+"MX":[1,0,0,1,229.75,-91.3]
+}}]}
+]}
+]}},{
+"SN":"BaseLeft",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder41",
+"ST":"MC",
+"TRP":{"x":50.6,"y":330.4},
+"MX":[0.994,-0.086,0.126,0.995,-34.65,245]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder41",
+"ST":"MC",
+"TRP":{"x":92.5,"y":315},
+"MX":[1,0,0,1,0,234]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder42",
+"ST":"MC",
+"TRP":{"x":106.15,"y":263.2},
+"MX":[0.994,-0.094,0.114,0.996,27.95,227.7]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder42",
+"ST":"MC",
+"TRP":{"x":133.8,"y":254.85},
+"MX":[0.975,-0.22,0.22,0.975,48.95,246]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder81",
+"ST":"MC",
+"TRP":{"x":143.3,"y":20.85},
+"MX":[0.991,0.151,-0.145,0.987,18,-25.3]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder100",
+"ST":"MC",
+"TRP":{"x":177.7,"y":178.75},
+"MX":[0.972,0.093,-0.094,0.979,26.55,-11.35]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder40",
+"ST":"MC",
+"TRP":{"x":224.65,"y":224.4},
+"MX":[0.984,0.202,-0.182,0.979,216.95,212.45]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder40",
+"ST":"MC",
+"TRP":{"x":260,"y":236},
+"MX":[1,0,0,1,234,214]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder37",
+"ST":"MC",
+"TRP":{"x":394.6,"y":245.8},
+"MX":[1,0.006,0.048,1,43.7,198.9]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder37",
+"ST":"MC",
+"TRP":{"x":404.95,"y":286.5},
+"MX":[1,0.008,0,1,62,198.15]
+}}]}
+]},{
+"LN":"HandL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder39",
+"ST":"MC",
+"TRP":{"x":321.55,"y":291.75},
+"MX":[1,0.058,-0.012,1,215.25,232.5]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder39",
+"ST":"MC",
+"TRP":{"x":309.5,"y":284},
+"MX":[1,0,0,1,222,237]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder38",
+"ST":"MC",
+"TRP":{"x":195.9,"y":211.6},
+"MX":[0.992,-0.12,0.141,0.991,168.1,199.1]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder38",
+"ST":"MC",
+"TRP":{"x":240.5,"y":253},
+"MX":[1,0,0,1,197,187]
+}}]}
+]}
+]}},{
+"SN":"BaseDown",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder29",
+"ST":"MC",
+"TRP":{"x":73.45,"y":267.55},
+"MX":[0.998,0.084,-0.146,0.989,16.15,202]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder29",
+"ST":"MC",
+"TRP":{"x":84.55,"y":259.45},
+"MX":[0.986,0,-0.004,1.01,4.5,200.4]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder85",
+"ST":"MC",
+"TRP":{"x":226.35,"y":186.3},
+"MX":[0.997,0.083,-0.056,0.999,39.1,1.15]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder101",
+"ST":"MC",
+"TRP":{"x":198.4,"y":191.7},
+"MX":[0.986,0.012,-0.003,1.01,33.5,-5.6]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder31",
+"ST":"MC",
+"TRP":{"x":338.8,"y":293.9},
+"MX":[0.998,-0.071,0.067,0.997,234.9,159.6]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder31",
+"ST":"MC",
+"TRP":{"x":308.05,"y":226.15},
+"MX":[0.986,0,-0.004,1.01,239.35,144.85]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder33",
+"ST":"MC",
+"TRP":{"x":260.6,"y":228.2},
+"MX":[0.989,-0.134,0.123,0.994,234.6,217.8]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder33",
+"ST":"MC",
+"TRP":{"x":264.65,"y":226.15},
+"MX":[0.986,0,-0.004,1.01,235.15,201.4]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder32",
+"ST":"MC",
+"TRP":{"x":226.2,"y":446.1},
+"MX":[1.081,0,0,0.962,16.1,155.35]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder32",
+"ST":"MC",
+"TRP":{"x":230.25,"y":303.9},
+"MX":[1.001,0,-0.004,1.01,33.2,140.8]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder30",
+"ST":"MC",
+"TRP":{"x":82.65,"y":248.45},
+"MX":[0.994,0.108,-0.108,0.994,74.3,168.2]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder30",
+"ST":"MC",
+"TRP":{"x":128.65,"y":209.95},
+"MX":[0.986,0,-0.004,1.01,70.65,160]
+}}]}
+]}
+]}},{
+"SN":"BaseUp",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder22",
+"ST":"MC",
+"TRP":{"x":78.4,"y":265.4},
+"MX":[0.998,-0.074,0.022,1.012,10.55,175.7]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder22",
+"ST":"MC",
+"TRP":{"x":66.75,"y":336.85},
+"MX":[1.012,0.09,-0.092,0.988,12.6,184.1]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder24",
+"ST":"MC",
+"TRP":{"x":205,"y":255.25},
+"MX":[1,-0.066,0.188,0.999,170.55,236.3]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder24",
+"ST":"MC",
+"TRP":{"x":203.35,"y":273.85},
+"MX":[1.016,0,0,0.992,172.4,253]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder17",
+"ST":"MC",
+"TRP":{"x":299.45,"y":453.4},
+"MX":[0.976,-0.04,-0.057,1.025,200.85,223.15]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder17",
+"ST":"MC",
+"TRP":{"x":280.15,"y":379.35},
+"MX":[1.016,0,0,0.992,200.5,241.45]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder83",
+"ST":"MC",
+"TRP":{"x":207.1,"y":218.15},
+"MX":[0.994,0.053,-0.075,1.021,57.25,-22.2]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder158",
+"ST":"MC",
+"TRP":{"x":174.65,"y":170.45},
+"MX":[0.98,-0.029,0.059,0.991,15.15,13]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder19",
+"ST":"MC",
+"TRP":{"x":182.3,"y":584.8},
+"MX":[0.937,0.009,-0.01,1.045,56.85,197.8]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder19",
+"ST":"MC",
+"TRP":{"x":191.05,"y":564.3},
+"MX":[1.016,0,0,0.992,43.4,220.25]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder20",
+"ST":"MC",
+"TRP":{"x":132.35,"y":348.3},
+"MX":[1,0.013,-0.023,1.028,115.75,205.9]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder20",
+"ST":"MC",
+"TRP":{"x":149.55,"y":314},
+"MX":[1.016,0,0,0.992,107.4,243.1]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder23",
+"ST":"MC",
+"TRP":{"x":89.25,"y":333.05},
+"MX":[0.994,-0.079,-0.004,1.017,48.65,229.55]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder23",
+"ST":"MC",
+"TRP":{"x":116.5,"y":316.5},
+"MX":[1.016,0,-0.079,0.992,46.45,240.1]
+}}]}
+]},{
+"LN":"Bang",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Bitmap 140.png",
+"ST":"MC",
+"TRP":{"x":223.55,"y":167.3},
+"MX":[0.987,0.162,-0.203,1.01,209,144.65]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Bitmap 140.png",
+"ST":"MC",
+"TRP":{"x":246.55,"y":230.35},
+"MX":[1.016,0,0,0.992,193.75,184.75]
+}}]}
+]}
+]}},{
+"SN":"BaseRight",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder52",
+"ST":"MC",
+"TRP":{"x":138.9,"y":253.3},
+"MX":[0.998,-0.049,0.02,1.001,16.9,226.7]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder52",
+"ST":"MC",
+"TRP":{"x":118.25,"y":289.5},
+"MX":[0.999,-0.034,0.034,0.999,-0.25,233.45]
+}}]}
+]},{
+"LN":"HandL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder43",
+"ST":"MC",
+"TRP":{"x":396.2,"y":180},
+"MX":[0.995,0.064,-0.11,0.998,231.75,155.5]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder43",
+"ST":"MC",
+"TRP":{"x":373.5,"y":175.5},
+"MX":[1,-0.036,-0.017,1.001,205.25,167]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder46",
+"ST":"MC",
+"TRP":{"x":398.05,"y":179.75},
+"MX":[1.04,0.029,0,0.999,261.05,150.85]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder46",
+"ST":"MC",
+"TRP":{"x":314.5,"y":199},
+"MX":[1,0,0,1,241,153]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder86",
+"ST":"MC",
+"TRP":{"x":285.1,"y":193.5},
+"MX":[0.989,-0.134,0.14,0.992,29.75,22.35]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder102",
+"ST":"MC",
+"TRP":{"x":266.55,"y":191.05},
+"MX":[0.999,-0.048,0.048,0.999,18.75,3.65]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder51",
+"ST":"MC",
+"TRP":{"x":255.8,"y":237.5},
+"MX":[1,0,-0.241,1,221.5,220]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder51",
+"ST":"MC",
+"TRP":{"x":216.5,"y":243.5},
+"MX":[1,0,0,1,189,223]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder49",
+"ST":"MC",
+"TRP":{"x":274.45,"y":208.9},
+"MX":[1,0.027,-0.095,1.066,231.4,183.45]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder49",
+"ST":"MC",
+"TRP":{"x":247.5,"y":268},
+"MX":[1,0,0,1,200,191]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder50",
+"ST":"MC",
+"TRP":{"x":200.75,"y":219},
+"MX":[0.998,-0.043,-0.019,1.002,119.5,201.55]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder50",
+"ST":"MC",
+"TRP":{"x":147,"y":273},
+"MX":[1,0,0,1,96,197]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder48",
+"ST":"MC",
+"TRP":{"x":340.45,"y":540.1},
+"MX":[1,0.003,-0.092,1,33.3,196.7]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder48",
+"ST":"MC",
+"TRP":{"x":200.5,"y":390},
+"MX":[1,0,0,1,0,197]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder53",
+"ST":"MC",
+"TRP":{"x":137.1,"y":246.7},
+"MX":[0.996,0.104,-0.09,0.995,49.7,201.35]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder53",
+"ST":"MC",
+"TRP":{"x":117.9,"y":249.95},
+"MX":[0.999,-0.034,0.034,0.999,25.75,217.1]
+}}]}
+]}
+]}},{
+"SN":"IdlePose",
+"TL":{
+"L":[
+{
+"LN":"Layer 4",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[]
+},{
+"I":3,
+"DU":2,
+"E":[]
+},{
+"I":5,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets 1/Bruno/Base/Pose/Folder177/Layer557",
+"ST":"MC",
+"TRP":{"x":390.75,"y":226.35},
+"MX":[1,-0.008,0.008,1,309.55,133]
+}}]},{
+"I":7,
+"DU":2,
+"E":[]
+},{
+"I":9,
+"DU":11,
+"E":[]
+}
+]},{
+"LN":"Layer 3",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[]
+},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets 1/Bruno/Base/Pose/Folder177/Layer558.png",
+"ST":"MC",
+"TRP":{"x":395.85,"y":251.85},
+"MX":[0.986,0.169,-0.169,0.986,345.2,153.9]
+}}]},{
+"I":5,
+"DU":4,
+"E":[]
+},{
+"I":9,
+"DU":11,
+"E":[]
+}
+]},{
+"LN":"Layer 2",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets 1/Bruno/Base/Pose/Folder177/Layer559-1.png",
+"ST":"MC",
+"TRP":{"x":320.85,"y":310.5},
+"MX":[0.982,-0.191,0.257,0.969,240,119.75]
+}}]},{
+"I":3,
+"DU":6,
+"E":[]
+},{
+"I":9,
+"DU":11,
+"E":[]
+}
+]},{
+"LN":"ArmL copy",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[]
+},{
+"I":3,
+"DU":2,
+"E":[]
+},{
+"I":5,
+"DU":2,
+"E":[]
+},{
+"I":7,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder58",
+"ST":"MC",
+"TRP":{"x":326,"y":295.5},
+"MX":[1,-0.017,0.017,1,306.05,127.35]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder58",
+"ST":"MC",
+"TRP":{"x":326,"y":295.5},
+"MX":[1,-0.012,0.012,1,307,127.25]
+}}]}
+]},{
+"LN":"Face",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder55",
+"ST":"MC",
+"TRP":{"x":250,"y":173.5},
+"MX":[1,-0.074,-0.031,0.984,198,115]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder55",
+"ST":"MC",
+"TRP":{"x":282,"y":207.5},
+"MX":[1,0,0.018,1,202,98]
+}}]},{
+"I":5,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder55",
+"ST":"MC",
+"TRP":{"x":257.75,"y":159.75},
+"MX":[1,0,0,1,203.75,96.25]
+}}]},{
+"I":7,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder55",
+"ST":"MC",
+"TRP":{"x":258,"y":159.5},
+"MX":[1.005,0,0,1,203.75,96]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder55",
+"ST":"MC",
+"TRP":{"x":258,"y":159.5},
+"MX":[1.005,0,0,1,203.75,96]
+}}]}
+]},{
+"LN":"ArmL2",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder57",
+"ST":"MC",
+"TRP":{"x":308.8,"y":240.45},
+"MX":[0.999,-0.03,0.048,1,279.9,225.1]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder57",
+"ST":"MC",
+"TRP":{"x":299,"y":237.5},
+"MX":[1,0,0,1,278,213]
+}}]},{
+"I":5,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder57",
+"ST":"MC",
+"TRP":{"x":299,"y":235.5},
+"MX":[1,0,0,1,278,211]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder57",
+"ST":"MC",
+"TRP":{"x":299,"y":235.5},
+"MX":[1,0,0,1,278,211]
+}}]}
+]},{
+"LN":"Head",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer230",
+"ST":"MC",
+"TRP":{"x":427.65,"y":126.65},
+"MX":[1.013,-0.057,0.065,0.998,63.65,17.9]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer230",
+"ST":"MC",
+"TRP":{"x":293.55,"y":217.5},
+"MX":[1,-0.008,0.008,1,78.3,2.7]
+}}]},{
+"I":5,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer230",
+"ST":"MC",
+"TRP":{"x":267.5,"y":118.5},
+"MX":[1,0,0,1,80,0]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer230",
+"ST":"MC",
+"TRP":{"x":267.5,"y":118.5},
+"MX":[1,0,0,1,80,0]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer239",
+"ST":"MC",
+"TRP":{"x":258.5,"y":267},
+"MX":[1,0,0,1,232,245]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer239",
+"ST":"MC",
+"TRP":{"x":259.5,"y":261},
+"MX":[1,0,0,1,233,239]
+}}]},{
+"I":5,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer239",
+"ST":"MC",
+"TRP":{"x":259.5,"y":260},
+"MX":[1,0,0,1,233,238]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer239",
+"ST":"MC",
+"TRP":{"x":259.5,"y":260},
+"MX":[1,0,0,1,233,238]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer238",
+"ST":"MC",
+"TRP":{"x":270.5,"y":238.6},
+"MX":[1,-0.035,0,1.048,208,214.8]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer238",
+"ST":"MC",
+"TRP":{"x":265.5,"y":283.5},
+"MX":[1,0,0,1,209,208]
+}}]},{
+"I":5,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer238",
+"ST":"MC",
+"TRP":{"x":265.5,"y":281.5},
+"MX":[1,0,0,1,209,206]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer238",
+"ST":"MC",
+"TRP":{"x":265.5,"y":281.5},
+"MX":[1,0,0,1,209,206]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer228",
+"ST":"MC",
+"TRP":{"x":298.5,"y":538.5},
+"MX":[1,-0.005,0,0.97,105,216]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer228",
+"ST":"MC",
+"TRP":{"x":292.5,"y":568.5},
+"MX":[1,0,0.003,1,104,205]
+}}]},{
+"I":5,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer228",
+"ST":"MC",
+"TRP":{"x":245.5,"y":394.5},
+"MX":[1,0,0,1,105,205]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer228",
+"ST":"MC",
+"TRP":{"x":245.5,"y":394.5},
+"MX":[1,0,0,1,105,205]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer237",
+"ST":"MC",
+"TRP":{"x":229.5,"y":237},
+"MX":[1,-0.031,0,1.058,162,224.2]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer237",
+"ST":"MC",
+"TRP":{"x":225.5,"y":275},
+"MX":[1,0,0,1,162,216]
+}}]},{
+"I":5,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer237",
+"ST":"MC",
+"TRP":{"x":225.5,"y":273},
+"MX":[1,0,0,1,162,214]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer237",
+"ST":"MC",
+"TRP":{"x":225.5,"y":273},
+"MX":[1,0,0,1,162,214]
+}}]}
+]},{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder56",
+"ST":"MC",
+"TRP":{"x":102.6,"y":334.05},
+"MX":[0.97,-0.245,0.185,1.003,-12.35,295.15]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder56",
+"ST":"MC",
+"TRP":{"x":109.55,"y":256.4},
+"MX":[1,-0.004,0.004,0.991,-0.5,227.3]
+}}]},{
+"I":5,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder56",
+"ST":"MC",
+"TRP":{"x":106.5,"y":302},
+"MX":[1,0,0,1,0,239]
+}}]},{
+"I":7,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder56",
+"ST":"MC",
+"TRP":{"x":184,"y":346},
+"MX":[1,-0.006,0.006,1,-0.6,240]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder56",
+"ST":"MC",
+"TRP":{"x":184,"y":346},
+"MX":[1,-0.006,0.006,1,-0.6,240]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer235",
+"ST":"MC",
+"TRP":{"x":241,"y":251},
+"MX":[0.991,-0.134,0.145,1.069,76.4,242.8]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer235",
+"ST":"MC",
+"TRP":{"x":246,"y":244},
+"MX":[0.997,0.083,-0.083,0.997,80.3,209.2]
+}}]},{
+"I":5,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer235",
+"ST":"MC",
+"TRP":{"x":166,"y":285},
+"MX":[1,0,0,1,78,222]
+}}]},{
+"I":9,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer235",
+"ST":"MC",
+"TRP":{"x":166,"y":285},
+"MX":[1,0,0,1,78,222]
+}}]}
+]}
+]}},{
+"SN":"MOUSEIdle",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer257",
+"ST":"MC",
+"TRP":{"x":77.7,"y":274.1},
+"MX":[0.983,0.181,-0.181,0.983,0.05,173.85]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer257",
+"ST":"MC",
+"TRP":{"x":82.1,"y":282.7},
+"MX":[0.991,0.134,-0.134,0.991,-0.2,186.2]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer257",
+"ST":"MC",
+"TRP":{"x":96.5,"y":287.9},
+"MX":[0.997,0.07,-0.07,0.997,8.2,196.85]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer257",
+"ST":"MC",
+"TRP":{"x":150.8,"y":232.05},
+"MX":[1,0.016,-0.016,1,0.1,192.85]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer257",
+"ST":"MC",
+"TRP":{"x":3.75,"y":343.3},
+"MX":[1,0.012,-0.012,1,-0.55,192.35]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder63",
+"ST":"MC",
+"TRP":{"x":193.8,"y":322.9},
+"MX":[1,-0.034,0,1,155.8,208.7]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder63",
+"ST":"MC",
+"TRP":{"x":232.6,"y":281.3},
+"MX":[1,0,0,1,154.6,209.8]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder63",
+"ST":"MC",
+"TRP":{"x":235.4,"y":280.9},
+"MX":[1,0,0,1,157.4,209.4]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder63",
+"ST":"MC",
+"TRP":{"x":195.2,"y":290.9},
+"MX":[1,0.025,0,1,160.2,202.55]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder63",
+"ST":"MC",
+"TRP":{"x":239,"y":274.5},
+"MX":[1,0,0,1,161,203]
+}}]}
+]},{
+"LN":"Face",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder65",
+"ST":"MC",
+"TRP":{"x":196.65,"y":132.6},
+"MX":[0.999,-0.035,0.048,0.999,154.4,124.3]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder65",
+"ST":"MC",
+"TRP":{"x":175.25,"y":205.3},
+"MX":[1.017,-0.15,0.088,0.968,152.2,134.75]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder65",
+"ST":"MC",
+"TRP":{"x":215.1,"y":212.5},
+"MX":[1.043,-0.049,0.038,0.991,157.75,119.4]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder65",
+"ST":"MC",
+"TRP":{"x":206.8,"y":163.9},
+"MX":[1,-0.004,0.004,0.985,163.6,111.4]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder65",
+"ST":"MC",
+"TRP":{"x":211.55,"y":195.85},
+"MX":[1,0.001,-0.001,1,164.2,109.05]
+}}]}
+]},{
+"LN":"Head",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer255",
+"ST":"MC",
+"TRP":{"x":233.2,"y":127.6},
+"MX":[0.999,-0.048,0.048,0.999,40.3,19.15]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer255",
+"ST":"MC",
+"TRP":{"x":232.4,"y":128.4},
+"MX":[0.996,-0.09,0.09,0.996,35,28.4]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer255",
+"ST":"MC",
+"TRP":{"x":237.6,"y":120.4},
+"MX":[0.999,-0.038,0.038,0.999,45.65,10.2]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer255",
+"ST":"MC",
+"TRP":{"x":241.2,"y":116},
+"MX":[1,-0.004,0.004,1,53.1,-0.7]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer255",
+"ST":"MC",
+"TRP":{"x":241.75,"y":115.7},
+"MX":[1,0.001,-0.001,1,54.3,-2.05]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer254",
+"ST":"MC",
+"TRP":{"x":224.6,"y":261},
+"MX":[1.02,0,0,1,210.55,239.2]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer254",
+"ST":"MC",
+"TRP":{"x":226.2,"y":259},
+"MX":[1.02,0,0,1,212.15,237.2]
+}}]},{
+"I":4,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer254",
+"ST":"MC",
+"TRP":{"x":227,"y":257},
+"MX":[1.02,0,0,1,212.95,235.2]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer254",
+"ST":"MC",
+"TRP":{"x":227,"y":257.4},
+"MX":[1.02,0,0,1,212.95,235.6]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer253",
+"ST":"MC",
+"TRP":{"x":217.2,"y":337.2},
+"MX":[1.024,0,-0.017,1,198.25,214.9]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer253",
+"ST":"MC",
+"TRP":{"x":217.2,"y":331.9},
+"MX":[1.024,0,-0.017,0.966,198.25,213.7]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer253",
+"ST":"MC",
+"TRP":{"x":218.45,"y":330.95},
+"MX":[1.024,0,-0.007,0.959,198.25,213.7]
+}}]}
+]},{
+"LN":"HandR",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder64",
+"ST":"MC",
+"TRP":{"x":179.1,"y":315.8},
+"MX":[1.009,0,0,1,90.4,259.6]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder64",
+"ST":"MC",
+"TRP":{"x":147.5,"y":315.8},
+"MX":[1.021,0,0,1,88.8,262.8]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder64",
+"ST":"MC",
+"TRP":{"x":150.7,"y":315},
+"MX":[1,0,0,1,93.2,262]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder64",
+"ST":"MC",
+"TRP":{"x":154.3,"y":309.4},
+"MX":[1,-0.014,0,1,96.8,257.2]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder64",
+"ST":"MC",
+"TRP":{"x":155.5,"y":308.6},
+"MX":[1,0,0,1,98,255.6]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"ST":"MC",
+"TRP":{"x":253.55,"y":264.55},
+"MX":[1.049,0,0,0.974,100.75,218.3]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"ST":"MC",
+"TRP":{"x":255.15,"y":522.75},
+"MX":[1.007,0,0,0.992,106.4,210.75]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"ST":"MC",
+"TRP":{"x":257.05,"y":226.05},
+"MX":[0.999,0,-0.004,1.002,108.75,206.4]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer251",
+"ST":"MC",
+"TRP":{"x":158.9,"y":331.4},
+"MX":[1,0.025,-0.025,1,147.1,224.25]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer251",
+"ST":"MC",
+"TRP":{"x":205.7,"y":281.05},
+"MX":[1,0,0,0.966,145.2,223.05]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer251",
+"ST":"MC",
+"TRP":{"x":206,"y":280.5},
+"MX":[1,0,0.01,0.959,144.9,222.95]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer250",
+"ST":"MC",
+"TRP":{"x":221.8,"y":254.2},
+"MX":[1.053,-0.032,0,1,48.25,237.2]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer250",
+"ST":"MC",
+"TRP":{"x":223.8,"y":256.6},
+"MX":[1.079,-0.052,0,1,43.8,240.65]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer250",
+"ST":"MC",
+"TRP":{"x":227.4,"y":254.6},
+"MX":[1.038,-0.044,0,1,50.6,239.45]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer250",
+"ST":"MC",
+"TRP":{"x":71.8,"y":313.65},
+"MX":[1.037,-0.008,0,1,54.65,233.2]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer250",
+"ST":"MC",
+"TRP":{"x":80.2,"y":324.4},
+"MX":[1.032,0,0,1,53.35,232.4]
+}}]}
+]}
+]}},{
+"SN":"MOUSELeft",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer276",
+"ST":"MC",
+"TRP":{"x":103.5,"y":263.5},
+"MX":[1,0,0,1,0,190]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer276",
+"ST":"MC",
+"TRP":{"x":85.05,"y":291.6},
+"MX":[0.996,0.079,-0.13,0.993,22.4,193.15]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer275",
+"ST":"MC",
+"TRP":{"x":244,"y":287},
+"MX":[1,0,0,1,165,217]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer275",
+"ST":"MC",
+"TRP":{"x":261.55,"y":290.85},
+"MX":[0.999,-0.052,0.052,0.999,179,225.05]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Folder105",
+"ST":"MC",
+"TRP":{"x":284,"y":227},
+"MX":[1,0,0,1,78,0]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Folder97",
+"ST":"MC",
+"TRP":{"x":288.8,"y":223.6},
+"MX":[0.998,-0.06,0.06,0.998,76.95,15.6]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer272",
+"ST":"MC",
+"TRP":{"x":257,"y":264.5},
+"MX":[1,0,0,1,230,243]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer272",
+"ST":"MC",
+"TRP":{"x":268.5,"y":264.5},
+"MX":[1,0,0,1,241.5,243]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer271",
+"ST":"MC",
+"TRP":{"x":269.5,"y":297.5},
+"MX":[1,0,0,1,221,220]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer271",
+"ST":"MC",
+"TRP":{"x":281,"y":297.5},
+"MX":[1,0,0,1,232.5,220]
+}}]}
+]},{
+"LN":"HandL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer270",
+"ST":"MC",
+"TRP":{"x":166.5,"y":311},
+"MX":[1,0,0,1,109,258]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer270",
+"ST":"MC",
+"TRP":{"x":185.4,"y":318.9},
+"MX":[0.999,-0.052,0.052,0.999,125.25,268.9]
+}}]}
+]},{
+"LN":"Body1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer269",
+"ST":"MC",
+"TRP":{"x":279,"y":406},
+"MX":[1,0,0,1,142,216]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Body2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"ST":"MC",
+"TRP":{"x":278.75,"y":406.5},
+"MX":[1,0,0,1,140.75,218]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer268",
+"ST":"MC",
+"TRP":{"x":229.5,"y":288.5},
+"MX":[1,0,0,1,171,229]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer268",
+"ST":"MC",
+"TRP":{"x":241,"y":288.5},
+"MX":[1,0,0,1,182.5,229]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer267",
+"ST":"MC",
+"TRP":{"x":176.5,"y":287.5},
+"MX":[1,0,0,1,87,225]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer267",
+"ST":"MC",
+"TRP":{"x":244.5,"y":253},
+"MX":[0.998,-0.069,0.069,0.998,97.1,238.15]
+}}]}
+]}
+]}},{
+"SN":"MOUSEDown",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer319",
+"ST":"MC",
+"TRP":{"x":106.5,"y":279},
+"MX":[1,0,0,1,0,212]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer319",
+"ST":"MC",
+"TRP":{"x":111.05,"y":259.5},
+"MX":[0.996,0.086,-0.086,0.996,10.8,183.55]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer321",
+"ST":"MC",
+"TRP":{"x":253,"y":267},
+"MX":[1,0,0,1,173,195]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer321",
+"ST":"MC",
+"TRP":{"x":221.7,"y":282.9},
+"MX":[1,0.048,-0.029,0.999,169.15,178.45]
+}}]}
+]},{
+"LN":"HandL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer320",
+"ST":"MC",
+"TRP":{"x":167.5,"y":286},
+"MX":[1,0,0,1,110,233]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer320",
+"ST":"MC",
+"TRP":{"x":164.55,"y":267.45},
+"MX":[0.993,0.117,-0.155,0.989,115.55,208.45]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Folder104",
+"ST":"MC",
+"TRP":{"x":276.2,"y":214},
+"MX":[1,-0.026,0.026,1,69.5,5.25]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Folder94",
+"ST":"MC",
+"TRP":{"x":273,"y":201.5},
+"MX":[0.999,0.035,-0.035,0.999,85.45,-16.7]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer317",
+"ST":"MC",
+"TRP":{"x":252.5,"y":261.5},
+"MX":[1,0,0,1,225,240]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer317",
+"ST":"MC",
+"TRP":{"x":253.5,"y":249},
+"MX":[1,0,0,1,226,227.5]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer316",
+"ST":"MC",
+"TRP":{"x":259,"y":279},
+"MX":[1,0,0,1,203,201]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer316",
+"ST":"MC",
+"TRP":{"x":264,"y":269},
+"MX":[1,0,0,1,208,191]
+}}]}
+]},{
+"LN":"Body2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"ST":"MC",
+"TRP":{"x":255.5,"y":383.5},
+"MX":[1,0,0,1,117.5,195]
+}}]}
+]},{
+"LN":"Body1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer315",
+"ST":"MC",
+"TRP":{"x":332.35,"y":535.5},
+"MX":[0.963,-0.017,0,1,107.95,217]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer314",
+"ST":"MC",
+"TRP":{"x":224.5,"y":278},
+"MX":[1,0,0,1,159,219]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer314",
+"ST":"MC",
+"TRP":{"x":227,"y":267},
+"MX":[1,0,0,1,161.5,208]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer322",
+"ST":"MC",
+"TRP":{"x":164,"y":281},
+"MX":[1,0,0,1,71,222]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer322",
+"ST":"MC",
+"TRP":{"x":239.95,"y":232.5},
+"MX":[1,0,0,1,73.5,200]
+}}]}
+]}
+]}},{
+"SN":"MOUSEUp",
+"TL":{
+"L":[
+{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer313",
+"ST":"MC",
+"TRP":{"x":208.25,"y":302.5},
+"MX":[1,0,-0.011,1,132.55,231]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer313",
+"ST":"MC",
+"TRP":{"x":151.5,"y":356.6},
+"MX":[1,-0.046,0.01,1,129.85,239.15]
+}}]}
+]},{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer310",
+"ST":"MC",
+"TRP":{"x":82.45,"y":297},
+"MX":[0.938,0.346,-0.356,0.934,46.05,174.9]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer310",
+"ST":"MC",
+"TRP":{"x":66.5,"y":312},
+"MX":[0.889,0.457,-0.457,0.889,44.05,185.8]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Folder103",
+"ST":"MC",
+"TRP":{"x":237.85,"y":246.6},
+"MX":[0.999,0.042,-0.053,0.999,49.65,16.1]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Folder91",
+"ST":"MC",
+"TRP":{"x":237.5,"y":251},
+"MX":[1,-0.03,0.03,1,32.5,38.1]
+}}]}
+]},{
+"LN":"HandL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer312",
+"ST":"MC",
+"TRP":{"x":128.45,"y":330},
+"MX":[1,0,-0.011,1,71.05,275]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer312",
+"ST":"MC",
+"TRP":{"x":125,"y":336},
+"MX":[1,0,0,1,67,281]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer303",
+"ST":"MC",
+"TRP":{"x":210.45,"y":293.5},
+"MX":[1,0,-0.011,1,184.15,272]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer303",
+"ST":"MC",
+"TRP":{"x":205.5,"y":300.5},
+"MX":[1,0,0,1,179,279]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer302",
+"ST":"MC",
+"TRP":{"x":230.65,"y":309},
+"MX":[1,0,-0.011,1,182.55,229]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer302",
+"ST":"MC",
+"TRP":{"x":188.1,"y":317.6},
+"MX":[1.016,0.048,0.042,1.018,171.15,233.1]
+}}]}
+]},{
+"LN":"Body1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer300",
+"ST":"MC",
+"TRP":{"x":102.9,"y":472.1},
+"MX":[0.999,0.01,-0.03,0.934,78.75,231.95]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Body2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"ST":"MC",
+"TRP":{"x":159,"y":332.5},
+"MX":[1,0,-0.018,1,73.75,240]
+}}]}
+]},{
+"LN":"JAcketB",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer301",
+"ST":"MC",
+"TRP":{"x":179.8,"y":299.5},
+"MX":[0.999,0.035,-0.046,0.999,121.7,235.95]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer301",
+"ST":"MC",
+"TRP":{"x":174,"y":301.5},
+"MX":[1,0,0,1,113,240]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer311",
+"ST":"MC",
+"TRP":{"x":131.8,"y":308.1},
+"MX":[0.999,-0.083,0.269,0.979,25.9,249.75]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer311",
+"ST":"MC",
+"TRP":{"x":133,"y":319},
+"MX":[1,0,0,1,45,252]
+}}]}
+]}
+]}},{
+"SN":"dance",
+"TL":{
+"L":[
+{
+"LN":"Layer_8",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 6",
+"ST":"MC",
+"TRP":{"x":245.4,"y":184.95},
+"MX":[1,0,0,1,189.8,127.95]
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 6",
+"ST":"MC",
+"TRP":{"x":243.8,"y":180.95},
+"MX":[1,-0.021,0.021,1,187,125.15]
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 6",
+"ST":"MC",
+"TRP":{"x":244.65,"y":176.95},
+"MX":[1,-0.022,0.022,1,187.7,121.2]
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 6",
+"ST":"MC",
+"TRP":{"x":243.05,"y":182.55},
+"MX":[1,0.03,-0.03,1,189.2,123.85]
+}}]}
+]},{
+"LN":"Layer_4",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 4",
+"ST":"MC",
+"TRP":{"x":411.05,"y":325.15},
+"MX":[1,0,0,1,308.05,208.15]
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 4",
+"ST":"MC",
+"TRP":{"x":410.1,"y":322.15},
+"MX":[1,-0.026,0.026,1,304.1,207.85]
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 4",
+"ST":"MC",
+"TRP":{"x":414.1,"y":320.2},
+"MX":[1,0.017,-0.017,1,313.05,201.45]
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 4",
+"ST":"MC",
+"TRP":{"x":414.05,"y":321.2},
+"MX":[1,0,0,1,311.05,204.2]
+}}]}
+]},{
+"LN":"Layer 2",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 2",
+"ST":"MC",
+"TRP":{"x":274.1,"y":194.5},
+"MX":[1,0,0,1,73.4,6.75]
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 2",
+"ST":"MC",
+"TRP":{"x":274.1,"y":190.5},
+"MX":[1,-0.017,0.017,1,70.3,6.1]
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 2",
+"ST":"MC",
+"TRP":{"x":274.15,"y":187.5},
+"MX":[1,-0.004,0.004,1,72.65,0.5]
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 2",
+"ST":"MC",
+"TRP":{"x":271.15,"y":193.55},
+"MX":[1,0.012,-0.012,1,72.65,3.4]
+}}]}
+]},{
+"LN":"Layer_6",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 3",
+"ST":"MC",
+"TRP":{"x":89.25,"y":267.7},
+"MX":[1,0,0,1,18.15,181]
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 3",
+"ST":"MC",
+"TRP":{"x":86.45,"y":264.85},
+"MX":[0.999,0.046,-0.046,0.999,19.3,174.9]
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 3",
+"ST":"MC",
+"TRP":{"x":89.25,"y":265.7},
+"MX":[0.999,-0.043,0.043,0.999,14.45,182.15]
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 3",
+"ST":"MC",
+"TRP":{"x":90.3,"y":268.75},
+"MX":[1,-0.021,0.021,1,17.35,183.5]
+}}]}
+]},{
+"LN":"Layer_5",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":311.7,"y":231.35},
+"MX":[1,0,0,1,295.8,215.8]
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":304.75,"y":230.4},
+"MX":[1,0.021,-0.021,1,289.1,214.45]
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":304.7,"y":222.35},
+"MX":[0.999,-0.034,0.034,0.999,288.25,207.35]
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":307.75,"y":227.35},
+"MX":[0.999,-0.035,0.035,0.999,291.3,212.35]
+}}]}
+]},{
+"LN":"Layer_3",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,236.35,401.95],
+"N":"5"
+}},
+{"SI":{
+"SN":"Symbol 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":224.25,"y":400.3},
+"LP":"LP",
+"MX":[1,0,0,1,20,216.3]
+}}]}
+]},{
+"LN":"Layer_7",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":229.9,"y":241.2},
+"MX":[-0.943,-0.302,-0.305,0.952,255.55,233.2]
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":229.9,"y":241.2},
+"MX":[-0.932,-0.334,-0.337,0.942,255.8,234.1]
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":229.9,"y":241.2},
+"MX":[-0.935,-0.326,-0.329,0.944,255.75,233.85]
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"Symbol 5",
+"ST":"MC",
+"TRP":{"x":229.95,"y":241.25},
+"MX":[-0.945,-0.296,-0.299,0.954,255.5,233.05]
+}}]}
+]}
+]}},{
+"SN":"MOUSERight",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer286",
+"ST":"MC",
+"TRP":{"x":98.25,"y":274},
+"MX":[1,0,0,1,-11.25,210]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer286",
+"ST":"MC",
+"TRP":{"x":68.15,"y":270.95},
+"MX":[0.998,-0.104,0.02,1,-26.5,211.85]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer288",
+"ST":"MC",
+"TRP":{"x":210.25,"y":321},
+"MX":[1,-0.027,0,1,182.75,201.75]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer288",
+"ST":"MC",
+"TRP":{"x":222.6,"y":324.85},
+"MX":[1.002,-0.003,-0.041,0.998,175.7,201.25]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer285",
+"ST":"MC",
+"TRP":{"x":255.25,"y":263},
+"MX":[1,0,0,1,228.75,241]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer285",
+"ST":"MC",
+"TRP":{"x":241.25,"y":263},
+"MX":[1,0,0,1,214.75,241]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer284",
+"ST":"MC",
+"TRP":{"x":270.25,"y":290},
+"MX":[1,0,0,1,219.75,211]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer284",
+"ST":"MC",
+"TRP":{"x":256.25,"y":290},
+"MX":[1,0,0,1,205.75,211]
+}}]}
+]},{
+"LN":"Face1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Folder109",
+"ST":"MC",
+"TRP":{"x":211.7,"y":76.1},
+"MX":[0.998,-0.06,0.055,0.998,56.95,17.35]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Face2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Folder106",
+"ST":"MC",
+"TRP":{"x":296.75,"y":211.5},
+"MX":[1,0.017,-0.017,1,55.3,-3]
+}}]}
+]},{
+"LN":"HandL",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer287",
+"ST":"MC",
+"TRP":{"x":179.25,"y":306},
+"MX":[1,0,0,1,121.75,252]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer287",
+"ST":"MC",
+"TRP":{"x":169.75,"y":306},
+"MX":[1,0,0,1,112.25,252]
+}}]}
+]},{
+"LN":"Body1",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer282",
+"ST":"MC",
+"TRP":{"x":265,"y":539.5},
+"MX":[1,0,0.056,0.985,87.75,219]
+}}]},{
+"I":4,
+"DU":3,
+"E":[]
+}
+]},{
+"LN":"Body2",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[]
+},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"ST":"MC",
+"TRP":{"x":245.5,"y":553},
+"MX":[1,0,0,1,106.5,214.5]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer283",
+"ST":"MC",
+"TRP":{"x":220.25,"y":281},
+"MX":[1,0,0,1,156.75,222]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer283",
+"ST":"MC",
+"TRP":{"x":213.25,"y":273.5},
+"MX":[1,0,0,1,149.75,214.5]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer289",
+"ST":"MC",
+"TRP":{"x":173.25,"y":286},
+"MX":[1,0,0,1,83.75,224]
+}}]},{
+"I":4,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer289",
+"ST":"MC",
+"TRP":{"x":154.25,"y":289.5},
+"MX":[1,0.006,0,1,64.75,227]
+}}]}
+]}
+]}},{
+"SN":"MissLeft",
+"TL":{
+"L":[
+{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder112",
+"ST":"MC",
+"TRP":{"x":319.6,"y":148.5},
+"MX":[0.998,-0.137,-0.021,0.976,133.75,156.9]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder112",
+"ST":"MC",
+"TRP":{"x":242.5,"y":259},
+"MX":[1,0.006,0,1,130,154.3]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder112",
+"ST":"MC",
+"TRP":{"x":247.5,"y":256},
+"MX":[1,0,0,1,135,152]
+}}]}
+]},{
+"LN":"Head",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder113",
+"ST":"MC",
+"TRP":{"x":271.6,"y":198.75},
+"MX":[0.998,-0.067,0.069,0.987,9.5,35.2]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder113",
+"ST":"MC",
+"TRP":{"x":226.4,"y":119.9},
+"MX":[1,0.003,0.005,1,30.8,-1.25]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder113",
+"ST":"MC",
+"TRP":{"x":230,"y":120.5},
+"MX":[1,0,0,1,35,0]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder114",
+"ST":"MC",
+"TRP":{"x":287.95,"y":229},
+"MX":[1,-0.008,0.012,0.997,255.7,207.8]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder114",
+"ST":"MC",
+"TRP":{"x":292,"y":227.1},
+"MX":[1,0,0,1,260,205.6]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder114",
+"ST":"MC",
+"TRP":{"x":292,"y":226.5},
+"MX":[1,0,0,1,260,205]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder115",
+"ST":"MC",
+"TRP":{"x":283.15,"y":185.3},
+"MX":[0.988,-0.008,0.013,1.033,258.05,164.95]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder115",
+"ST":"MC",
+"TRP":{"x":329,"y":242.7},
+"MX":[1,0,0,1,262,165.2]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder115",
+"ST":"MC",
+"TRP":{"x":329,"y":241.5},
+"MX":[1,0,0,1,262,164]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder116",
+"ST":"MC",
+"TRP":{"x":343.4,"y":532.05},
+"MX":[1,-0.016,0.02,0.981,147.25,183.3]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder116",
+"ST":"MC",
+"TRP":{"x":308.75,"y":527.25},
+"MX":[1,0,0.007,0.996,151.5,174.25]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder116",
+"ST":"MC",
+"TRP":{"x":308.75,"y":527.25},
+"MX":[1,0,0,1,154,173]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder117",
+"ST":"MC",
+"TRP":{"x":287.7,"y":249},
+"MX":[1,-0.008,0.012,0.997,223.3,174.75]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder117",
+"ST":"MC",
+"TRP":{"x":291.5,"y":247.8},
+"MX":[1,0,0,1,228,172.8]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder117",
+"ST":"MC",
+"TRP":{"x":291.5,"y":246},
+"MX":[1,0,0,1,228,171]
+}}]}
+]},{
+"LN":"Bang",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder118",
+"ST":"MC",
+"TRP":{"x":293.6,"y":190.45},
+"MX":[1,-0.008,0.012,0.997,237.5,143.5]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder118",
+"ST":"MC",
+"TRP":{"x":297.5,"y":188.5},
+"MX":[1,0,0,1,242,141]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder118",
+"ST":"MC",
+"TRP":{"x":297.5,"y":188.5},
+"MX":[1,0,0,1,242,141]
+}}]}
+]},{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder119",
+"ST":"MC",
+"TRP":{"x":248.2,"y":247.55},
+"MX":[1,-0.023,0.012,0.997,-7.45,150.45]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder119",
+"ST":"MC",
+"TRP":{"x":261.25,"y":193.65},
+"MX":[1,-0.037,0,1,-5,159.9]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder119",
+"ST":"MC",
+"TRP":{"x":155,"y":242.5},
+"MX":[1,0,0,1,0,150]
+}}]}
+]}
+]}},{
+"SN":"MissDown",
+"TL":{
+"L":[
+{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder146",
+"ST":"MC",
+"TRP":{"x":142.3,"y":249.5},
+"MX":[0.994,0.116,-0.125,0.991,6.8,195.35]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder146",
+"ST":"MC",
+"TRP":{"x":80.5,"y":288.5},
+"MX":[1,0.051,0,1,2,221]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder146",
+"ST":"MC",
+"TRP":{"x":78.5,"y":285.5},
+"MX":[1,0,0,1,0,222]
+}}]}
+]},{
+"LN":"Face",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder145",
+"ST":"MC",
+"TRP":{"x":191,"y":233.2},
+"MX":[0.974,-0.127,0.117,0.991,113,172.3]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder145",
+"ST":"MC",
+"TRP":{"x":189.4,"y":217.5},
+"MX":[1.004,0,0,0.988,121.7,136]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder145",
+"ST":"MC",
+"TRP":{"x":189.5,"y":184.5},
+"MX":[1,0,0,1,120,136]
+}}]}
+]},{
+"LN":"Head",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder144",
+"ST":"MC",
+"TRP":{"x":273.1,"y":168.9},
+"MX":[0.997,-0.094,0.051,0.982,-7.55,43]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder144",
+"ST":"MC",
+"TRP":{"x":180.5,"y":120.5},
+"MX":[0.994,0,0,1,3,-2]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder144",
+"ST":"MC",
+"TRP":{"x":178.5,"y":122.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]},{
+"LN":"HandL",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder134",
+"ST":"MC",
+"TRP":{"x":349.5,"y":247.75},
+"MX":[1.001,0.006,0.118,1,265.2,219.35]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder134",
+"ST":"MC",
+"TRP":{"x":327,"y":285},
+"MX":[1,0,0.021,1,268,237]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder134",
+"ST":"MC",
+"TRP":{"x":329,"y":280},
+"MX":[1,0,0,1,271,232]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder135",
+"ST":"MC",
+"TRP":{"x":295.25,"y":195.1},
+"MX":[0.996,-0.071,0.108,0.996,273.4,173.6]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder135",
+"ST":"MC",
+"TRP":{"x":294.05,"y":202},
+"MX":[1,0.018,0,1,282,185.8]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder135",
+"ST":"MC",
+"TRP":{"x":345,"y":228},
+"MX":[1,0,0,1,282,182]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder136",
+"ST":"MC",
+"TRP":{"x":274.55,"y":243.05},
+"MX":[1,0,0.006,1.012,245.4,219.75]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder136",
+"ST":"MC",
+"TRP":{"x":277.5,"y":251.45},
+"MX":[1,0,-0.006,0.981,248.65,228.9]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder136",
+"ST":"MC",
+"TRP":{"x":276,"y":246},
+"MX":[1,0,0,1,247,223]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder137",
+"ST":"MC",
+"TRP":{"x":293.5,"y":240.5},
+"MX":[1,0,0.006,1.012,237,159]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder137",
+"ST":"MC",
+"TRP":{"x":296.5,"y":249.7},
+"MX":[1,0,-0.006,0.996,241,169.5]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder137",
+"ST":"MC",
+"TRP":{"x":295,"y":243.5},
+"MX":[1,0,0,1,239,163]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder138",
+"ST":"MC",
+"TRP":{"x":222.05,"y":325.05},
+"MX":[1,0,0.006,1.012,60.05,164.1]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder138",
+"ST":"MC",
+"TRP":{"x":223.95,"y":329.95},
+"MX":[1,0.006,-0.006,0.981,63.95,172.85]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder138",
+"ST":"MC",
+"TRP":{"x":223,"y":327},
+"MX":[1,0,0,1,62,168]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder139",
+"ST":"MC",
+"TRP":{"x":192.05,"y":246.1},
+"MX":[1,0,0.006,1.012,131.05,164.1]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder139",
+"ST":"MC",
+"TRP":{"x":194.95,"y":255.1},
+"MX":[1,0,-0.006,0.996,134.95,174.4]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder139",
+"ST":"MC",
+"TRP":{"x":193.5,"y":249},
+"MX":[1,0,0,1,133,168]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder140",
+"ST":"MC",
+"TRP":{"x":133.5,"y":257},
+"MX":[1,0,0,1,70,196]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder140",
+"ST":"MC",
+"TRP":{"x":165.5,"y":253},
+"MX":[1,0,-0.053,1,72.4,207]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder140",
+"ST":"MC",
+"TRP":{"x":133.5,"y":265},
+"MX":[1,0,0,1,70,204]
+}}]}
+]}
+]}},{
+"SN":"MissUp",
+"TL":{
+"L":[
+{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder124",
+"ST":"MC",
+"TRP":{"x":263.85,"y":254.05},
+"MX":[0.998,-0.068,0.043,0.999,99.3,242.1]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder124",
+"ST":"MC",
+"TRP":{"x":280.85,"y":268},
+"MX":[0.999,0.04,-0.018,1,105.1,207]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder124",
+"ST":"MC",
+"TRP":{"x":203,"y":303},
+"MX":[1,0,0,1,102,221]
+}}]}
+]},{
+"LN":"Mic",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder123",
+"ST":"MC",
+"TRP":{"x":68.05,"y":330.5},
+"MX":[0.998,0.068,-0.16,0.991,14.35,219.1]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder123",
+"ST":"MC",
+"TRP":{"x":74,"y":304.5},
+"MX":[0.999,-0.048,0.029,1,0,200.4]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder123",
+"ST":"MC",
+"TRP":{"x":71,"y":310.5},
+"MX":[1,0,0,1,0,203]
+}}]}
+]},{
+"LN":"Head",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder125",
+"ST":"MC",
+"TRP":{"x":270.6,"y":223.55},
+"MX":[1.001,-0.018,-0.051,1,33.6,-8.4]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder125",
+"ST":"MC",
+"TRP":{"x":224.5,"y":255.45},
+"MX":[1,0,0.012,0.996,14.95,9]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder125",
+"ST":"MC",
+"TRP":{"x":180.5,"y":144.5},
+"MX":[1,0,0,1,20,0]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder131",
+"ST":"MC",
+"TRP":{"x":211.85,"y":280.65},
+"MX":[1,-0.009,-0.012,1.031,179.65,256.7]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder131",
+"ST":"MC",
+"TRP":{"x":210.5,"y":275.5},
+"MX":[1,0,-0.043,1,179,252]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder131",
+"ST":"MC",
+"TRP":{"x":208.5,"y":280.5},
+"MX":[1,0,0,1,176,257]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder126",
+"ST":"MC",
+"TRP":{"x":225.9,"y":315.75},
+"MX":[1,-0.009,-0.012,1.031,186.95,227.95]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder126",
+"ST":"MC",
+"TRP":{"x":221.2,"y":314},
+"MX":[1.019,0,-0.012,0.994,181.5,229]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder126",
+"ST":"MC",
+"TRP":{"x":222,"y":319.5},
+"MX":[1,0,0,1,182,234]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder127",
+"ST":"MC",
+"TRP":{"x":190.45,"y":440.8},
+"MX":[0.984,-0.009,-0.012,1.031,69,223]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder127",
+"ST":"MC",
+"TRP":{"x":176.95,"y":623.55},
+"MX":[1.008,0.017,-0.013,0.959,66.05,248.05]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder127",
+"ST":"MC",
+"TRP":{"x":177,"y":442.5},
+"MX":[1,0,0,1,62,234]
+}}]}
+]},{
+"LN":"JacketB",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder128",
+"ST":"MC",
+"TRP":{"x":163.9,"y":316.8},
+"MX":[1,-0.009,-0.012,1.031,106.9,232.75]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder128",
+"ST":"MC",
+"TRP":{"x":158.1,"y":314.5},
+"MX":[1.019,0,-0.012,0.994,100,232.95]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder128",
+"ST":"MC",
+"TRP":{"x":160,"y":320},
+"MX":[1,0,0,1,102,238]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder130",
+"ST":"MC",
+"TRP":{"x":197,"y":248.5},
+"MX":[0.995,-0.137,0.043,0.999,58.65,243]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder130",
+"ST":"MC",
+"TRP":{"x":142,"y":292.5},
+"MX":[1,-0.051,0,1,64,211]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder130",
+"ST":"MC",
+"TRP":{"x":146,"y":301.5},
+"MX":[1,0,0,1,68,216]
+}}]}
+]},{
+"LN":"Bang",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder129",
+"ST":"MC",
+"TRP":{"x":263.5,"y":257},
+"MX":[0.979,0.202,-0.202,0.979,227.15,212.75]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder129",
+"ST":"MC",
+"TRP":{"x":266.5,"y":268},
+"MX":[1,0,0,1,222,232]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder129",
+"ST":"MC",
+"TRP":{"x":263.5,"y":267},
+"MX":[1,0,0,1,219,231]
+}}]}
+]}
+]}},{
+"SN":"MissRight",
+"TL":{
+"L":[
+{
+"LN":"HandR",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder156",
+"ST":"MC",
+"TRP":{"x":153.1,"y":293.1},
+"MX":[1.032,-0.002,0.066,0.988,-19.95,111.75]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder156",
+"ST":"MC",
+"TRP":{"x":161.15,"y":289.3},
+"MX":[1.008,0.051,-0.091,1.002,17.85,93]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder156",
+"ST":"MC",
+"TRP":{"x":122,"y":232},
+"MX":[1,0,0,1,3,105]
+}}]}
+]},{
+"LN":"Face",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder150",
+"ST":"MC",
+"TRP":{"x":384.7,"y":164.5},
+"MX":[1.012,0.061,-0.025,0.998,306.85,94.4]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder150",
+"ST":"MC",
+"TRP":{"x":357.35,"y":176.2},
+"MX":[0.997,-0.078,0.083,0.998,273.75,116.95]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder150",
+"ST":"MC",
+"TRP":{"x":371.5,"y":163.5},
+"MX":[1,0,0,1,293,98]
+}}]}
+]},{
+"LN":"Head",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder151",
+"ST":"MC",
+"TRP":{"x":423.9,"y":205.65},
+"MX":[1,0.06,-0.017,0.999,193.65,-10.55]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder151",
+"ST":"MC",
+"TRP":{"x":451.1,"y":171.7},
+"MX":[0.996,-0.082,0.088,0.996,146.9,26.85]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder151",
+"ST":"MC",
+"TRP":{"x":344.5,"y":120.5},
+"MX":[1,0,0,1,175,0]
+}}]}
+]},{
+"LN":"Badge",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder152",
+"ST":"MC",
+"TRP":{"x":430.65,"y":265.55},
+"MX":[1,0.007,-0.157,0.999,386.35,243.75]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder152",
+"ST":"MC",
+"TRP":{"x":398.55,"y":262.5},
+"MX":[1,0,0.051,1,365.3,239]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder152",
+"ST":"MC",
+"TRP":{"x":405,"y":261.5},
+"MX":[1,0,0,1,373,238]
+}}]}
+]},{
+"LN":"ArmL",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder149",
+"ST":"MC",
+"TRP":{"x":455.6,"y":266.25},
+"MX":[1,0.03,-0.054,0.999,339,221.85]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder149",
+"ST":"MC",
+"TRP":{"x":428.65,"y":240},
+"MX":[1,0.009,-0.015,1,321.75,212]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder149",
+"ST":"MC",
+"TRP":{"x":435.5,"y":336},
+"MX":[1,0,0,1,328,215]
+}}]}
+]},{
+"LN":"JacketA",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder153",
+"ST":"MC",
+"TRP":{"x":429.05,"y":231.95},
+"MX":[1,0.007,-0.035,1,386.4,208.75]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder153",
+"ST":"MC",
+"TRP":{"x":404.75,"y":287},
+"MX":[1,0,0.009,1,365,204]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder153",
+"ST":"MC",
+"TRP":{"x":413,"y":287},
+"MX":[1,0,0,1,374,204]
+}}]}
+]},{
+"LN":"Body",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder154",
+"ST":"MC",
+"TRP":{"x":370.9,"y":272.6},
+"MX":[1.033,0.019,-0.027,1.002,196.55,214.2]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder154",
+"ST":"MC",
+"TRP":{"x":367.9,"y":271.5},
+"MX":[1,0,0.025,1,180.3,219]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder154",
+"ST":"MC",
+"TRP":{"x":311,"y":411.5},
+"MX":[1,0,0,1,188,219]
+}}]}
+]},{
+"LN":"JaccketB",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder155",
+"ST":"MC",
+"TRP":{"x":350.8,"y":240.5},
+"MX":[1,0.007,-0.05,1,294.7,218.1]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder155",
+"ST":"MC",
+"TRP":{"x":328.25,"y":287},
+"MX":[1,0,0.009,1,274.1,214]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder155",
+"ST":"MC",
+"TRP":{"x":336.5,"y":287},
+"MX":[1,0,0,1,283,214]
+}}]}
+]},{
+"LN":"ArmR",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder157",
+"ST":"MC",
+"TRP":{"x":201.8,"y":292.3},
+"MX":[1.099,0.014,-0.072,0.997,181.8,238.6]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder157",
+"ST":"MC",
+"TRP":{"x":267.55,"y":283.8},
+"MX":[0.975,0.003,-0.011,1,189.15,233.55]
+}}]},{
+"I":4,
+"DU":16,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder157",
+"ST":"MC",
+"TRP":{"x":270,"y":285},
+"MX":[1,0,0,1,189,235]
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleArm 2",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"6"
+}}]}
+]}
+]}},{
+"SN":"BFIDLE/BF Final MicArm 2",
+"TL":{
+"L":[
+{
+"LN":"Layer 1 copy",
+"FR":[
+{
+"I":0,
+"DU":10,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleMic",
+"FF":0,
+"ST":"G",
+"TRP":{"x":89,"y":88.5},
+"LP":"LP",
+"MX":[1,0,0,1,0,0]
+}}]},{
+"I":10,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleMic",
+"FF":0,
+"ST":"G",
+"TRP":{"x":89,"y":88.5},
+"LP":"LP",
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"BFIDLE/BF FinalHead",
+"TL":{
+"L":[
+{
+"LN":"Layer 1 copy",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleFace",
+"FF":0,
+"ST":"G",
+"TRP":{"x":169.6,"y":223.7},
+"LP":"LP",
+"MX":[1.047,0,0,0.94,104.7,96.85]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleFace",
+"FF":0,
+"ST":"G",
+"TRP":{"x":169.55,"y":223.7},
+"LP":"LP",
+"MX":[1.064,0,0,0.917,103.65,99.85]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleFace",
+"FF":0,
+"ST":"G",
+"TRP":{"x":169.5,"y":225.7},
+"LP":"LP",
+"MX":[1.016,0,0,0.985,106.5,92.7]
+}}]},{
+"I":6,
+"DU":14,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleFace",
+"FF":0,
+"ST":"G",
+"TRP":{"x":169.5,"y":158.2},
+"LP":"LP",
+"MX":[1,0,0,1,107.5,90.7]
+}}]}
+]},{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":20,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleHead 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":187.5,"y":117.5},
+"LP":"LP",
+"MX":[1,0,0,1,0,0]
+}},
+{"SI":{
+"SN":"IDLESOURCE/BF IdleHead 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":187.5,"y":117.5},
+"LP":"LP",
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"BFIDLE/BF Final Body",
+"TL":{
+"L":[
+{
+"LN":"Layer 1 copy",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleTag",
+"FF":0,
+"ST":"G",
+"TRP":{"x":127.4,"y":42.05},
+"LP":"LP",
+"MX":[1,0,0,1,100.4,21.05]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleTag",
+"FF":0,
+"ST":"G",
+"TRP":{"x":127.4,"y":47.3},
+"LP":"LP",
+"MX":[1.009,0,0,0.952,100.15,27.3]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleTag",
+"FF":0,
+"ST":"G",
+"TRP":{"x":127.4,"y":47.55},
+"LP":"LP",
+"MX":[0.981,0,0,0.963,100.9,27.35]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleTag",
+"FF":0,
+"ST":"G",
+"TRP":{"x":127.4,"y":47.55},
+"LP":"LP",
+"MX":[1,0,0,1,100.4,26.55]
+}}]},{
+"I":8,
+"DU":12,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleTag",
+"FF":0,
+"ST":"G",
+"TRP":{"x":127.4,"y":48.05},
+"LP":"LP",
+"MX":[1,0,0,1,100.4,27.05]
+}}]}
+]},{
+"LN":"Layer 1 copy 2",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":136.75,"y":76.4},
+"LP":"LP",
+"MX":[1,-0.02,0,1,86.25,-0.1]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":136.75,"y":76.6},
+"LP":"LP",
+"MX":[1,0,0,1,86.25,-0.9]
+}}]},{
+"I":5,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":136.75,"y":76.55},
+"LP":"LP",
+"MX":[1,0,0,1,86.25,-0.95]
+}}]},{
+"I":7,
+"DU":14,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 2",
+"FF":0,
+"ST":"G",
+"TRP":{"x":136.75,"y":77.5},
+"LP":"LP",
+"MX":[1,0,0,1,86.25,0]
+}}]}
+]},{
+"LN":"Layer 1 copy 3",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Idle/Folder6",
+"FF":0,
+"ST":"G",
+"TRP":{"x":132,"y":188.5},
+"LP":"LP",
+"MX":[1,0,0,1,-4,0]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Idle/Folder6",
+"FF":0,
+"ST":"G",
+"TRP":{"x":132,"y":188.5},
+"LP":"LP",
+"MX":[1,0,0,1,-4,0]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Idle/Folder6",
+"FF":0,
+"ST":"G",
+"TRP":{"x":132,"y":188.5},
+"LP":"LP",
+"MX":[1,0,0,1,-4,0]
+}}]},{
+"I":6,
+"DU":14,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Idle/Folder6",
+"FF":0,
+"ST":"G",
+"TRP":{"x":132,"y":188.5},
+"LP":"LP",
+"MX":[1,0,0,1,-4,0]
+}}]}
+]},{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":3,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":96.8,"y":70},
+"LP":"LP",
+"MX":[1,0,0,1,36.3,10]
+}}]},{
+"I":3,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":96.8,"y":70.2},
+"LP":"LP",
+"MX":[1,0,0,1,36.3,10.2]
+}}]},{
+"I":5,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":96.8,"y":70.15},
+"LP":"LP",
+"MX":[1,-0.017,0,1,36.3,11.15]
+}}]},{
+"I":7,
+"DU":14,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleVest 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":96.8,"y":71.1},
+"LP":"LP",
+"MX":[1,0,0,1,36.3,11.1]
+}}]}
+]}
+]}},{
+"SN":"BFIDLE/BF Final MicArm",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":10,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleArm 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":167.25,"y":94},
+"LP":"LP",
+"MX":[1,0,0,1,75.75,36]
+}}]},{
+"I":10,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"IDLESOURCE/BF IdleArm 1",
+"FF":0,
+"ST":"G",
+"TRP":{"x":167.25,"y":94},
+"LP":"LP",
+"MX":[1,0,0,1,75.75,36]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder41",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder41",
+"ST":"MC",
+"TRP":{"x":92.5,"y":81},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder42",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder42",
+"ST":"MC",
+"TRP":{"x":59.5,"y":58},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder81",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder81",
+"ST":"MC",
+"TRP":{"x":168.5,"y":118.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder100",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder100",
+"ST":"MC",
+"TRP":{"x":172,"y":117.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder40",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder40",
+"ST":"MC",
+"TRP":{"x":26,"y":22},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder37",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder37",
+"ST":"MC",
+"TRP":{"x":192,"y":188.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder39",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder39",
+"ST":"MC",
+"TRP":{"x":87.5,"y":47},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Folder38",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder38",
+"ST":"MC",
+"TRP":{"x":43.5,"y":66},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder29",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder29",
+"ST":"MC",
+"TRP":{"x":81.5,"y":58.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder85",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder85",
+"ST":"MC",
+"TRP":{"x":163.5,"y":118},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder101",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder101",
+"ST":"MC",
+"TRP":{"x":162.5,"y":115},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder31",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder31",
+"ST":"MC",
+"TRP":{"x":70,"y":80.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder33",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder33",
+"ST":"MC",
+"TRP":{"x":30,"y":24.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder32",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder32",
+"ST":"MC",
+"TRP":{"x":197.5,"y":161.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Folder30",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder30",
+"ST":"MC",
+"TRP":{"x":59,"y":49.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder22",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder22",
+"ST":"MC",
+"TRP":{"x":66,"y":93.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder24",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder24",
+"ST":"MC",
+"TRP":{"x":30.5,"y":21},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder17",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder17",
+"ST":"MC",
+"TRP":{"x":69.5,"y":122},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder83",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder83.png",
+"ST":"MC",
+"TRP":{"x":172.5,"y":132.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder158",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder158-1.png",
+"ST":"MC",
+"TRP":{"x":178.5,"y":135.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder19",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder19",
+"ST":"MC",
+"TRP":{"x":142.5,"y":206.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder20",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder20",
+"ST":"MC",
+"TRP":{"x":41.5,"y":71.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Folder23",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder23",
+"ST":"MC",
+"TRP":{"x":75,"y":77},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder52",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder52",
+"ST":"MC",
+"TRP":{"x":116.5,"y":60},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder43",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder43",
+"ST":"MC",
+"TRP":{"x":90.5,"y":64.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder46",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder46",
+"ST":"MC",
+"TRP":{"x":73.5,"y":46},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder86",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder86",
+"ST":"MC",
+"TRP":{"x":184.5,"y":115.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder102",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder102",
+"ST":"MC",
+"TRP":{"x":187,"y":117.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder51",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder51",
+"ST":"MC",
+"TRP":{"x":27.5,"y":20.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder49",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder49",
+"ST":"MC",
+"TRP":{"x":47.5,"y":77},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder50",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder50",
+"ST":"MC",
+"TRP":{"x":51,"y":76},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder48",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder48",
+"ST":"MC",
+"TRP":{"x":200.5,"y":193},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Folder53",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder53",
+"ST":"MC",
+"TRP":{"x":91,"y":36},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder58",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder58",
+"ST":"MC",
+"TRP":{"x":78,"y":96},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder55",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder55",
+"ST":"MC",
+"TRP":{"x":54,"y":63.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder57",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder57",
+"ST":"MC",
+"TRP":{"x":41,"y":66.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer230",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer230",
+"ST":"MC",
+"TRP":{"x":187.5,"y":118.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer239",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer239",
+"ST":"MC",
+"TRP":{"x":26.5,"y":22},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer238",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer238",
+"ST":"MC",
+"TRP":{"x":56.5,"y":75.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer228",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer228",
+"ST":"MC",
+"TRP":{"x":140.5,"y":189.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer237",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer237",
+"ST":"MC",
+"TRP":{"x":63.5,"y":59},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Folder56",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder56",
+"ST":"MC",
+"TRP":{"x":106.5,"y":63},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Layer235",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer235",
+"ST":"MC",
+"TRP":{"x":88,"y":63},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer257",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer257",
+"ST":"MC",
+"TRP":{"x":94.5,"y":84.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder63",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Folder63",
+"ST":"MC",
+"TRP":{"x":78,"y":71.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder65",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Folder65",
+"ST":"MC",
+"TRP":{"x":43,"y":53.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer255",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer255",
+"ST":"MC",
+"TRP":{"x":187.5,"y":117.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer254",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer254",
+"ST":"MC",
+"TRP":{"x":27,"y":21},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer253",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer253",
+"ST":"MC",
+"TRP":{"x":50.5,"y":77.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Folder64",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Folder64",
+"ST":"MC",
+"TRP":{"x":57.5,"y":53},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer252",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer252",
+"ST":"MC",
+"TRP":{"x":138,"y":188.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer251",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer251",
+"ST":"MC",
+"TRP":{"x":60.5,"y":60},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Layer250",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer250",
+"ST":"MC",
+"TRP":{"x":90,"y":61},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer276",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer276",
+"ST":"MC",
+"TRP":{"x":103.5,"y":73.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer275",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer275",
+"ST":"MC",
+"TRP":{"x":79,"y":70},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Folder105",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Folder105",
+"ST":"MC",
+"TRP":{"x":175.5,"y":125.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Folder97",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Folder97",
+"ST":"MC",
+"TRP":{"x":176,"y":124},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer272",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer272",
+"ST":"MC",
+"TRP":{"x":27,"y":21.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer271",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer271",
+"ST":"MC",
+"TRP":{"x":48.5,"y":77.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer270",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer270",
+"ST":"MC",
+"TRP":{"x":57.5,"y":53},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer269",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer269",
+"ST":"MC",
+"TRP":{"x":137,"y":190},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer268",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer268",
+"ST":"MC",
+"TRP":{"x":58.5,"y":59.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Layer267",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer267",
+"ST":"MC",
+"TRP":{"x":89.5,"y":62.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer319",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer319",
+"ST":"MC",
+"TRP":{"x":106.5,"y":67},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer321",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer321",
+"ST":"MC",
+"TRP":{"x":80,"y":72},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer320",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer320",
+"ST":"MC",
+"TRP":{"x":57.5,"y":53},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Folder104",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Folder104",
+"ST":"MC",
+"TRP":{"x":182.5,"y":121.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Folder94",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Folder94",
+"ST":"MC",
+"TRP":{"x":181,"y":123.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer317",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer317",
+"ST":"MC",
+"TRP":{"x":27.5,"y":21.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer316",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer316",
+"ST":"MC",
+"TRP":{"x":56,"y":78},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer315",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer315",
+"ST":"MC",
+"TRP":{"x":150.5,"y":180.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer314",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer314",
+"ST":"MC",
+"TRP":{"x":65.5,"y":59},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Layer322",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer322",
+"ST":"MC",
+"TRP":{"x":93,"y":59},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer313",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer313",
+"ST":"MC",
+"TRP":{"x":76.5,"y":71.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer310",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer310",
+"ST":"MC",
+"TRP":{"x":77.5,"y":102},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Folder103",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Folder103",
+"ST":"MC",
+"TRP":{"x":179.5,"y":125.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Folder91",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Folder91",
+"ST":"MC",
+"TRP":{"x":179.5,"y":124},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer312",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer312",
+"ST":"MC",
+"TRP":{"x":58,"y":55},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer303",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer303",
+"ST":"MC",
+"TRP":{"x":26.5,"y":21.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer302",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer302",
+"ST":"MC",
+"TRP":{"x":49,"y":80},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer300",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer300",
+"ST":"MC",
+"TRP":{"x":138.5,"y":204.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer301",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer301",
+"ST":"MC",
+"TRP":{"x":61,"y":61.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Layer311",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer311",
+"ST":"MC",
+"TRP":{"x":88,"y":67},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"Symbol 6",
+"TL":{
+"L":[
+{
+"LN":"Layer_1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"90"
+}}]}
+]}
+]}},{
+"SN":"Symbol 4",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,-2.7,0],
+"N":"4"
+}}]}]}]}},{
+"SN":"Symbol 2",
+"TL":{
+"L":[
+{
+"LN":"Layer_1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"91"
+}}]}
+]}
+]}},{
+"SN":"Symbol 3",
+"TL":{
+"L":[
+{
+"LN":"Layer_1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0.85,5.4],
+"N":"92"
+}}]}
+]}
+]}},{
+"SN":"Symbol 5",
+"TL":{
+"L":[
+{
+"LN":"Layer_1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,-1.35],
+"N":"93"
+}}]}
+]}
+]}},{
+"SN":"Symbol 1",
+"TL":{
+"L":[
+{
+"LN":"Layer_2",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,100.4,-10.2],
+"N":"94"
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,95.7,-8.75],
+"N":"95"
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,95.35,-11.25],
+"N":"96"
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,90.55,-10.75],
+"N":"97"
+}}]}
+]},{
+"LN":"Layer_1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,-14.5,-7.95],
+"N":"98"
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,-15,-12.9],
+"N":"99"
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,-11,-13.5],
+"N":"100"
+}}]},{
+"I":3,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,-19,-10.95],
+"N":"101"
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer286",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer286",
+"ST":"MC",
+"TRP":{"x":109.5,"y":64},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer288",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer288",
+"ST":"MC",
+"TRP":{"x":76.5,"y":74.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer285",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer285",
+"ST":"MC",
+"TRP":{"x":26.5,"y":22},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer284",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer284",
+"ST":"MC",
+"TRP":{"x":50.5,"y":79},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Folder109",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Folder109",
+"ST":"MC",
+"TRP":{"x":178,"y":121},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Folder106",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Folder106",
+"ST":"MC",
+"TRP":{"x":177,"y":121},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer287",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer287",
+"ST":"MC",
+"TRP":{"x":57.5,"y":54},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer282",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer282",
+"ST":"MC",
+"TRP":{"x":142.5,"y":188.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer283",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer283",
+"ST":"MC",
+"TRP":{"x":63.5,"y":59},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Layer289",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer289",
+"ST":"MC",
+"TRP":{"x":90.5,"y":57},
+"MX":[1,0,0,1,1,-5]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder112",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder112",
+"ST":"MC",
+"TRP":{"x":112.5,"y":104},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder113",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder113",
+"ST":"MC",
+"TRP":{"x":195,"y":120.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder114",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder114",
+"ST":"MC",
+"TRP":{"x":32,"y":21.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder115",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder115",
+"ST":"MC",
+"TRP":{"x":67,"y":77.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder116",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder116",
+"ST":"MC",
+"TRP":{"x":131,"y":195.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder117",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder117",
+"ST":"MC",
+"TRP":{"x":63.5,"y":75},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder118",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder118",
+"ST":"MC",
+"TRP":{"x":55.5,"y":47.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Folder119",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder119",
+"ST":"MC",
+"TRP":{"x":155,"y":92.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder146",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder146",
+"ST":"MC",
+"TRP":{"x":78.5,"y":63.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder145",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder145",
+"ST":"MC",
+"TRP":{"x":69.5,"y":48.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder144",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder144",
+"ST":"MC",
+"TRP":{"x":178.5,"y":122.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder134",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder134",
+"ST":"MC",
+"TRP":{"x":58,"y":48},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder135",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder135",
+"ST":"MC",
+"TRP":{"x":63,"y":46},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder136",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder136",
+"ST":"MC",
+"TRP":{"x":29,"y":23},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder137",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder137",
+"ST":"MC",
+"TRP":{"x":56,"y":80.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder138",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder138",
+"ST":"MC",
+"TRP":{"x":161,"y":159},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder139",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder139",
+"ST":"MC",
+"TRP":{"x":60.5,"y":81},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Folder140",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder140",
+"ST":"MC",
+"TRP":{"x":63.5,"y":61},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder124",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder124",
+"ST":"MC",
+"TRP":{"x":101,"y":82},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder123",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder123",
+"ST":"MC",
+"TRP":{"x":71,"y":107.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder125",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder125",
+"ST":"MC",
+"TRP":{"x":160.5,"y":144.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder131",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder131",
+"ST":"MC",
+"TRP":{"x":32.5,"y":23.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder126",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder126",
+"ST":"MC",
+"TRP":{"x":40,"y":85.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder127",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder127",
+"ST":"MC",
+"TRP":{"x":115,"y":208.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder128",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder128",
+"ST":"MC",
+"TRP":{"x":58,"y":82},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder130",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder130",
+"ST":"MC",
+"TRP":{"x":78,"y":85.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Folder129",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder129",
+"ST":"MC",
+"TRP":{"x":44.5,"y":36},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder156",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder156",
+"ST":"MC",
+"TRP":{"x":119,"y":127},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder150",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder150",
+"ST":"MC",
+"TRP":{"x":78.5,"y":65.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder151",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder151",
+"ST":"MC",
+"TRP":{"x":169.5,"y":120.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder152",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder152",
+"ST":"MC",
+"TRP":{"x":32,"y":23.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder149",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder149",
+"ST":"MC",
+"TRP":{"x":107.5,"y":121},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder153",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder153",
+"ST":"MC",
+"TRP":{"x":39,"y":83},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder154",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder154",
+"ST":"MC",
+"TRP":{"x":123,"y":192.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder155",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder155",
+"ST":"MC",
+"TRP":{"x":53.5,"y":73},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Folder157",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder157",
+"ST":"MC",
+"TRP":{"x":81,"y":50},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleMic",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"148"
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleFace",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.94,0,0,1,0,0],
+"N":"149"
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleHead 1",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"150"
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleHead 2",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"151"
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleTag",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.942,0,0,1,0,0],
+"N":"152"
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleVest 2",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.951,0,0,1,0,0],
+"N":"153"
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Idle/Folder6",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Idle/Assets/Folder6",
+"ST":"MC",
+"TRP":{"x":138,"y":188.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleVest 1",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.951,0,0,1,0,0],
+"N":"155"
+}}]}
+]}
+]}},{
+"SN":"IDLESOURCE/BF IdleArm 1",
+"TL":{
+"L":[
+{
+"LN":"Layer 1",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"156"
+}}]}
+]}
+]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Bitmap 140.png",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"0"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets 1/Bruno/Base/Pose/Folder177/Layer557",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"1"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets 1/Bruno/Base/Pose/Folder177/Layer558.png",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"2"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets 1/Bruno/Base/Pose/Folder177/Layer559-1.png",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"3"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder41",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.997,0,0],
+"N":"7"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder42",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.998,0,0],
+"N":"8"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder81",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,1.002,0,0],
+"N":"9"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder100",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.024,0,0,1.017,0,0],
+"N":"10"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder40",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.996,0,0,1,0,0],
+"N":"11"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder37",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.999,0,0],
+"N":"12"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder39",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"13"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Right/Assets/Folder38",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.999,0,0],
+"N":"14"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder29",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,0.99,0,0],
+"N":"15"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder85",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"16"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder101",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.014,0,0,0.99,0,0],
+"N":"17"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder31",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,0.99,0,0],
+"N":"18"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder33",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.002,0,0,0.99,0,0],
+"N":"19"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder32",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.925,0,0,0.99,0,0],
+"N":"20"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Down/Assets/Folder30",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.99,0,0],
+"N":"21"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder22",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.984,0,0,0.988,0,0],
+"N":"22"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder24",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.984,0,0,0.984,0,0],
+"N":"23"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder17",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.984,0,0,0.974,0,0],
+"N":"24"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder83.png",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.004,0,0,0.977,0,0],
+"N":"25"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder158-1.png",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.02,0,0,1.008,0,0],
+"N":"26"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder19",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.984,0,0,0.957,0,0],
+"N":"27"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder20",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.984,0,0,0.973,0,0],
+"N":"28"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Up/Assets/Folder23",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.984,0,0,0.983,0,0],
+"N":"29"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder52",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.999,0,0],
+"N":"30"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder43",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,0.996,0,0],
+"N":"31"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder46",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.961,0,0,1,0,0],
+"N":"32"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder86",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.002,0,0,0.998,0,0],
+"N":"33"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder102",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"34"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder51",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.972,0,0],
+"N":"35"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder49",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.934,0,0],
+"N":"36"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder50",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.997,0,0],
+"N":"37"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder48",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.996,0,0],
+"N":"38"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Left/Assets/Folder53",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,1,0,0],
+"N":"39"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder58",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"40"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder55",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.995,0,0,1,0,0],
+"N":"41"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder57",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.999,0,0],
+"N":"42"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer230",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.986,0,0,1,0,0],
+"N":"43"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer239",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"44"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer238",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,0.954,0,0],
+"N":"45"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer228",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"46"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer237",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.945,0,0],
+"N":"47"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Folder56",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.98,0,0],
+"N":"48"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Pose/Assets/Layer235",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.927,0,0],
+"N":"49"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer257",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"50"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Folder63",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"51"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Folder65",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.958,0,0,1,0,0],
+"N":"52"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer255",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"53"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer254",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.98,0,0,1,0,0],
+"N":"54"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer253",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.977,0,0,1,0,0],
+"N":"55"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Folder64",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.98,0,0,1,0,0],
+"N":"56"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer252",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.953,0,0,0.998,0,0],
+"N":"57"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer251",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"58"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Idle/Assets/Layer250",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.926,0,0,1,0,0],
+"N":"59"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer276",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.998,0,0],
+"N":"60"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer275",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"61"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Folder105",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"62"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Folder97",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"63"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer272",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"64"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer271",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"65"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer270",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"66"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer269",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"67"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer268",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"68"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Right/Assets/Layer267",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"69"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer319",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"70"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer321",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"71"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer320",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.999,0,0],
+"N":"72"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Folder104",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"73"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Folder94",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"74"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer317",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"75"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer316",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"76"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer315",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.039,0,0,1,0,0],
+"N":"77"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer314",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"78"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Down/Assets/Layer322",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"79"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer313",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"80"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer310",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"81"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Folder103",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"82"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Folder91",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"83"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer312",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"84"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer303",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"85"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer302",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.984,0,0,0.981,0,0],
+"N":"86"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer300",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1.001,0,0,1.07,0,0],
+"N":"87"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer301",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"88"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Up/Assets/Layer311",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,0.985,0,0],
+"N":"89"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer286",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.996,0,0,1,0,0],
+"N":"102"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer288",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,1,0,0],
+"N":"103"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer285",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"104"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer284",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"105"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Folder109",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"106"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Folder106",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"107"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer287",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"108"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer282",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1.014,0,0],
+"N":"109"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer283",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"110"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/MOUSE/Left/Assets/Layer289",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"111"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder112",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.992,0,0,1,0,0],
+"N":"112"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder113",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"113"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder114",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"114"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder115",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.968,0,0],
+"N":"115"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder116",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"116"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder117",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"117"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder118",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"118"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Right/Assets/Folder119",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"119"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder146",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"120"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder145",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.996,0,0,1,0,0],
+"N":"121"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder144",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,1,0,0],
+"N":"122"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder134",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,0.993,0,0],
+"N":"123"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder135",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.998,0,0],
+"N":"124"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder136",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.988,0,0],
+"N":"125"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder137",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.988,0,0],
+"N":"126"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder138",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.988,0,0],
+"N":"127"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder139",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.988,0,0],
+"N":"128"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Down/Assets/Folder140",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.999,0,0],
+"N":"129"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder124",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.999,0,0,1,0,0],
+"N":"130"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder123",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.996,0,0],
+"N":"131"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder125",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,0.999,0,0],
+"N":"132"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder131",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.97,0,0],
+"N":"133"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder126",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.982,0,0,0.97,0,0],
+"N":"134"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder127",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.991,0,0,0.97,0,0],
+"N":"135"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder128",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.982,0,0,0.97,0,0],
+"N":"136"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder130",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.996,0,0,1,0,0],
+"N":"137"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Up/Assets/Folder129",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"138"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder156",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.969,0,0,0.994,0,0],
+"N":"139"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder150",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.986,0,0,0.999,0,0],
+"N":"140"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder151",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.998,0,0,1,0,0],
+"N":"141"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder152",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.989,0,0],
+"N":"142"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder149",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"143"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder153",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,1,0,0],
+"N":"144"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder154",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.968,0,0,0.997,0,0],
+"N":"145"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder155",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[1,0,0,0.999,0,0],
+"N":"146"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Miss/Left/Assets/Folder157",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.91,0,0,1,0,0],
+"N":"147"
+}}]}]}]}},{
+"SN":"MouseBFRendered.psd Assets/Bruno/Base/Idle/Assets/Folder6",
+"TL":{
+"L":[
+{"LN":"Layer 1",
+"FR":[
+{"I":0,
+"DU":1,
+"E":[
+{"ASI":{
+"MX":[0.951,0,0,1,0,0],
+"N":"154"
+}}]}]}]}}
+]},
+"MD":{
+"V":"BTA 1.2.0",
+"N":"BrunoANIM2B",
+"BGC":"#999999",
+"W":4438,
+"H":2808,
+"ASV":3,
+"FRT":24
+}}
