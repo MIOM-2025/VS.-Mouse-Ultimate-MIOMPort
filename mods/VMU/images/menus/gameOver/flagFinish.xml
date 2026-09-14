@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-Created with Tex-Packer-EX v0.6.8 https://strawberrysage.github.io/tex-packer-ex
--->
-<TextureAtlas imagePath="flagFinish.png" width="234" height="240">
-  <SubTexture name="flagLoop.png" x="3" y="3"  width="119" height="113" frameX="-684" frameY="-52" frameWidth="821" frameHeight="229"/>
-  <SubTexture name="flagLoop1.png" x="128" y="3"  width="103" height="113" frameX="-684" frameY="-52" frameWidth="821" frameHeight="229"/>
-  <SubTexture name="flagLoop2.png" x="3" y="122"  width="107" height="115" frameX="-684" frameY="-50" frameWidth="821" frameHeight="229"/>
-</TextureAtlas>

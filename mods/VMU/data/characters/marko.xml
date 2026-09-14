@@ -1,8 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character sprite="Marko/Phase1" icon="marko" scale="0.9" camx="150" camy="-50" color="#661521" holdTime="6" isGF="false">
-	<anim name="idle" anim="anim_i" x="124.44" y="-3.33"/>
-	<anim name="singLEFT" anim="anim_l" x="131.12" y="3.33"/>
-	<anim name="singDOWN" anim="anim_d" x="-34.45" y="-7"/>
-	<anim name="singUP" anim="anim_u" x="25.56" y="37.22"/>
-	<anim name="singRIGHT" anim="anim_r" x="66.11" y="-15.56"/>
-</character>

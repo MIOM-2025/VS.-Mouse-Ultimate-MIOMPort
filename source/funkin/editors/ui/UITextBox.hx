@@ -202,41 +202,32 @@ class UITextBox extends UISliceSprite implements IUIFocusable {
 			case END:
 				position = label.text.length;
 			case V:
+				UIState.playEditorSound(Flags.DEFAULT_EDITOR_PASTE_SOUND);
 				// Hey lj here, fixed copying because before we checked if the modifier was left or right ctrl
 				// but somehow it gave a int outside of the KeyModifier's range :sob:
 				// apparently there is a boolean that just checks for you. yw :D
 
 				// if we are not holding ctrl, ignore
-				if (!modifier.ctrlKey) {
-					UIState.playEditorSound(Flags.DEFAULT_EDITOR_TEXTTYPE_SOUND);
+				if (!modifier.ctrlKey)
 					return;
-				}
-
-				UIState.playEditorSound(Flags.DEFAULT_EDITOR_PASTE_SOUND);
-
 				// we pasting
 				var data:String = Clipboard.generalClipboard.getData(TEXT_FORMAT);
 				if (data != null)
 					onTextInput(data);
 			case C:
-				// if we are not holding ctrl, ignore
-				if (!modifier.ctrlKey) {
-					UIState.playEditorSound(Flags.DEFAULT_EDITOR_TEXTTYPE_SOUND);
-					return;
-				}
-
 				UIState.playEditorSound(Flags.DEFAULT_EDITOR_COPY_SOUND);
+				// if we are not holding ctrl, ignore
+				if (!modifier.ctrlKey)
+					return;
 
 				// copying
 				Clipboard.generalClipboard.setData(TEXT_FORMAT, label.text);
 			case X:
-				// if we are not holding ctrl, ignore
-				if (!modifier.ctrlKey) {
-					UIState.playEditorSound(Flags.DEFAULT_EDITOR_TEXTTYPE_SOUND);
-					return;
-				}
-
 				UIState.playEditorSound(Flags.DEFAULT_EDITOR_CUT_SOUND);
+
+				// if we are not holding ctrl, ignore
+				if (!modifier.ctrlKey)
+					return;
 
 				// cutting
 				Clipboard.generalClipboard.setData(TEXT_FORMAT, label.text);

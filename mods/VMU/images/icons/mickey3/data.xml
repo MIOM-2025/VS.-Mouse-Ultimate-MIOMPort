@@ -1,9 +1,0 @@
-<!DOCTYPE codename-engine-icon>
-<icon>
-	<steps>
-		<step percent="0" type="neutral"/>
-		<step percent="80" type="losing"/>
-	</steps>
-	<anim name="neutral" anim="mickneutral" looped="true" offsety="0" fps="24"/>
-	<anim name="losing" anim="micklosing" looped="true" offsety="0"   fps="24"/>
-</icon>

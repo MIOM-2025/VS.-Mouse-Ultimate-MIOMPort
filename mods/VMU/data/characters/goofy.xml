@@ -1,9 +1,0 @@
-<!DOCTYPE codename-engine-character>
-<character x="-150" y="-500" sprite="Goofy/Phase2" scale="0.9" camx="-600" camy="-160" color="#57D050" isGF="false">
-	<anim name="idle" anim="idle instance 1"/>
-	<anim name="idle-loop" anim="idle instance 1" loop="true" indices="8..11"/>
-	<anim name="singLEFT" anim="Left" x="620" y="430"/>
-	<anim name="singDOWN" anim="Down" x="670" y="485"/>
-	<anim name="singUP" anim="Up" x="500" y="605"/>
-	<anim name="singRIGHT" anim="Right" x="780" y="340"/>
-</character>

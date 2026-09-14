@@ -1,45 +1,21 @@
 package funkin.backend;
 
-import animate.FlxAnimate;
 import flixel.FlxCamera;
 import flixel.FlxG;
-import flixel.math.FlxAngle;
-import flixel.math.FlxMatrix;
-import flixel.math.FlxPoint;
-import flixel.math.FlxRect;
+import flixel.math.FlxMath;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
-import flixel.graphics.frames.FlxFrame;
-
 import funkin.backend.system.Flags;
 
-@:access(animate.FlxAnimate)
 class FunkinText extends FlxText
 {
 	public var zoomFactor:Float = 1;
 	public var zoomFactorEnabled:Bool = true;
 
-	public var angleFactor:Float = 1;
-	public var angleFactorEnabled:Bool = true;
-
-	/**
-	 * Change the skew of your sprite's graphic.
-	 */
-	public var skew(default, null):FlxPoint;
-
-	/**
-	 * The matrix to use for rendering if `matrixExposed` is true.
-	 */
-	public var transformMatrix(default, null):FlxMatrix;
-
-	/**
-	 * Whether to draw the matrix exposed with `transformMatrix`.
-	 */
-	public var matrixExposed:Bool = false;
-
 	public function new(X:Float = 0, Y:Float = 0, FieldWidth:Float = 0, ?Text:String, ?Size:Int, Border:Bool = true)
 	{
-		if (Size == null) Size = Flags.DEFAULT_FONT_SIZE;
+		if (Size == null)
+			Size = Flags.DEFAULT_FONT_SIZE;
 
 		super(X, Y, FieldWidth, Text, Size);
 
@@ -53,106 +29,70 @@ class FunkinText extends FlxText
 		}
 	}
 
-	override function initVars()
+	private inline function __shouldDoZoomFactor():Bool
 	{
-		super.initVars();
-		skew = new FlxPoint();
-		transformMatrix = new FlxMatrix();
+		return zoomFactorEnabled && zoomFactor != 1;
 	}
 
-	override function destroy()
+	private inline function __getZoomScaleX(camera:FlxCamera):Float
 	{
-		super.destroy();
-		skew = FlxDestroyUtil.put(skew);
-		transformMatrix = null;
+		return (camera.scaleX > 0 ? Math.max : Math.min)(0, FlxMath.lerp(1 / camera.scaleX, 1, zoomFactor));
 	}
 
-	override function drawComplex(camera:FlxCamera):Void
+	private inline function __getZoomScaleY(camera:FlxCamera):Float
 	{
-		_frame.prepareMatrix(_matrix, ANGLE_0, checkFlipX(), checkFlipY());
-		_matrix.translate(-origin.x, -origin.y);
+		return (camera.scaleY > 0 ? Math.max : Math.min)(0, FlxMath.lerp(1 / camera.scaleY, 1, zoomFactor));
+	}
 
-		if (frameOffsetAngle != null && frameOffsetAngle != angle)
+	private inline function __getZoomAnchorX(camera:FlxCamera):Float
+	{
+		if (Flags.USE_LEGACY_ZOOM_FACTOR)
+			return camera.width * 0.5;
+
+		return camera.width * 0.5 + camera.scroll.x * scrollFactor.x;
+	}
+
+	private inline function __getZoomAnchorY(camera:FlxCamera):Float
+	{
+		if (Flags.USE_LEGACY_ZOOM_FACTOR)
+			return camera.height * 0.5;
+
+		return camera.height * 0.5 + camera.scroll.y * scrollFactor.y;
+	}
+
+	override public function draw():Void
+	{
+		if (!__shouldDoZoomFactor())
 		{
-			var angleOff = (frameOffsetAngle - angle) * FlxAngle.TO_RAD;
-			var cos = Math.cos(angleOff), sin = Math.sin(angleOff);
-			// cos doesnt need to be negated
-			_matrix.rotateWithTrig(cos, -sin);
-			_matrix.translate(-frameOffset.x, -frameOffset.y);
-			_matrix.rotateWithTrig(cos, sin);
-		}
-		else
-			_matrix.translate(-frameOffset.x, -frameOffset.y);
-
-		_matrix.scale(scale.x, scale.y);
-
-		if (matrixExposed) _matrix.concat(transformMatrix);
-		else {
-			if (angle != 0)
-			{
-				updateTrig();
-				_matrix.rotateWithTrig(_cosAngle, _sinAngle);
-			}
-			if (skew.x != 0 || skew.y != 0)
-			{
-				FlxAnimate._skewMatrix.setTo(1, Math.tan(skew.y * FlxAngle.TO_RAD), Math.tan(skew.x * FlxAngle.TO_RAD), 1, 0, 0);
-				_matrix.concat(FlxAnimate._skewMatrix);
-			}
+			super.draw();
+			return;
 		}
 
-		getScreenPosition(_point, camera).subtractPoint(offset).addPoint(origin);
-		_matrix.translate(_point.x, _point.y);
+		var camera:FlxCamera = this.camera;
 
-		if (isPixelPerfectRender(camera))
-		{
-			_matrix.tx = Math.floor(_matrix.tx);
-			_matrix.ty = Math.floor(_matrix.ty);
-		}
+		if (camera == null)
+			camera = FlxG.camera;
 
-		// Copied from FunkinSprite
-		final ox = camera.width * 0.5, oy = camera.height * 0.5;
-		final sx = (camera.scaleX > 0.0 ? Math.max : Math.min)(0.0, (1.0 - zoomFactor) / camera.scaleX + zoomFactor);
-		final sy = (camera.scaleY > 0.0 ? Math.max : Math.min)(0.0, (1.0 - zoomFactor) / camera.scaleY + zoomFactor);
+		var oldX:Float = x;
+		var oldY:Float = y;
+		var oldScaleX:Float = scale.x;
+		var oldScaleY:Float = scale.y;
 
-		if (zoomFactorEnabled && zoomFactor != 1) {
-			_matrix.setTo(
-				_matrix.a * sx, _matrix.b * sy,
-				_matrix.c * sx, _matrix.d * sy,
-				(_matrix.tx - ox) * sx + ox,
-				(_matrix.ty - oy) * sy + oy
-			);
-		}
+		var zoomScaleX:Float = __getZoomScaleX(camera);
+		var zoomScaleY:Float = __getZoomScaleY(camera);
 
-		if (angleFactorEnabled && angleFactor != 1) {
-			_matrix.translate(-ox, -oy);
-			_matrix.rotate(-camera.angle * FlxAngle.TO_RAD * (1.0 - angleFactor));
-			_matrix.translate(ox, oy);
-		}
-		
-		if (layer != null)
-			layer.drawPixels(this, camera, _frame, framePixels, _matrix, colorTransform, blend, antialiasing, shaderEnabled ? shader : null);
-		else
-			camera.drawPixels(_frame, framePixels, _matrix, colorTransform, blend, antialiasing, shaderEnabled ? shader : null);
-	}
+		var anchorX:Float = __getZoomAnchorX(camera);
+		var anchorY:Float = __getZoomAnchorY(camera);
 
-	override function getScreenBounds(?rect:FlxRect, ?camera:FlxCamera):FlxRect
-	{
-		if (camera == null) camera = FlxG.camera;
-		rect = super.getScreenBounds(rect, camera);
+		x = (x - anchorX) * zoomScaleX + anchorX;
+		y = (y - anchorY) * zoomScaleY + anchorY;
 
-		if (zoomFactorEnabled && zoomFactor != 1) {
-			final ox = camera.width * 0.5, oy = camera.height * 0.5;
-			final sx = (camera.scaleX > 0.0 ? Math.max : Math.min)(0.0, (1.0 - zoomFactor) / camera.scaleX + zoomFactor);
-			final sy = (camera.scaleY > 0.0 ? Math.max : Math.min)(0.0, (1.0 - zoomFactor) / camera.scaleY + zoomFactor);
+		scale.set(scale.x * zoomScaleX, scale.y * zoomScaleY);
 
-			rect.set(
-				(rect.x - ox) * sx + ox,
-				(rect.y - oy) * sy + oy,
-				rect.width * sx,
-				rect.height * sy
-			);
-		}
+		super.draw();
 
-		return rect;
+		x = oldX;
+		y = oldY;
+		scale.set(oldScaleX, oldScaleY);
 	}
 }

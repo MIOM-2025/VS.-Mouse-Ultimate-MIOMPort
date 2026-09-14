@@ -159,14 +159,12 @@ class CharacterPropertiesWindow extends UISliceSprite {
 			icon: character.icon,
 			iconColor: character.iconColor,
 			holdTime: character.holdTime,
-			defaultAimFPS: character.defaultAimFPS,
 			customProperties: character.extra.copy()
 		};
 
 		character.icon = info.icon;
 		character.iconColor = info.iconColor;
 		character.holdTime = info.holdTime;
-		character.defaultAimFPS = info.defaultAimFPS;
 		character.extra = info.customProperties.copy();
 
 		if (addToUndo) CharacterEditor.undos.addToUndo(CCharEditInfo(oldInfo, info));

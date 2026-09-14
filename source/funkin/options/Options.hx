@@ -24,7 +24,6 @@ class Options
 	public static var hitboxPos:Bool = false;
 	public static var storageType:String = "EXTERNAL_DATA";
 	public static var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
-	public static var hitboxAlpha:Float = 0.7;
 	public static var hitboxType:String = "Gradient";
 	public static var hitboxMode:String = 'Normal';
 	public static var mobileExtraKeyReturns:Array<String> = ['SHIFT', 'SPACE', 'Q', 'E'];
@@ -50,7 +49,6 @@ class Options
 	public static var devMode:Bool = false;
 	public static var betaUpdates:Bool = false;
 	public static var splashesEnabled:Bool = true;
-	public static var legacyMemoryCounter:Bool = false;
 	@:dox(hide) @:doNotSave public static var hitWindow:Float = 250; // DEPRECATED
 	public static var songOffset:Float = 0;
 	public static var framerate:Int = #if mobile 60 #else 120 #end;
@@ -71,7 +69,6 @@ class Options
 	 */
 	public static var intensiveBlur:Bool = true;
 	public static var editorSFX:Bool = true;
-	public static var charterSwapEventSides:Bool = false;
 
 	public static var editorCharterPrettyPrint:Bool = false;
 	public static var editorCharacterPrettyPrint:Bool = true;

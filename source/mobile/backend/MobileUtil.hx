@@ -16,21 +16,84 @@ import sys.io.Process;
 
 using StringTools;
 
-/** 
+/**
 * @Authors MaysLastPlay, ArkoseLabs, MarioMaster (MasterX-39), Dechis (dx7405)
-* @version: 0.4.0
+* @version: 0.5.0
 **/
 typedef CustomStorageModeData = { modes:Array<ModeData> }
 typedef ModeData = { Name:String, Folder:String }
+
 class MobileUtil
 {
 	#if sys
 	public static inline function getAssetDirectory():String
-		return #if android haxe.io.Path.addTrailingSlash("/sdcard/Android/data/com.yoshman29.codenameengine/files") #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
+		return #if android haxe.io.Path.addTrailingSlash(getExternalDataPath())
+		       #elseif ios lime.system.System.documentsDirectory
+		       #else Sys.getCwd() #end;
 
 	#if android
+	/**
+	 * 自动获取当前 app 的包名。
+	 * 优先从 AndroidContext.getExternalFilesDir() 解析，
+	 * 其次从 applicationStorageDirectory 解析，
+	 * 最后回退到一个默认值。
+	 */
+	public static function getPackageName():String
+	{
+		// 1) 从 AndroidContext.getExternalFilesDir() 解析
+		//    通常返回: /storage/emulated/0/Android/data/<pkg>/files
+		try
+		{
+			var extDir = AndroidContext.getExternalFilesDir();
+			if (extDir != null && extDir.length > 0)
+			{
+				var parts = extDir.replace("\\", "/").split("/");
+				for (i in 0...parts.length)
+				{
+					if (parts[i] == "data" && i + 1 < parts.length && parts[i + 1].indexOf(".") != -1)
+						return parts[i + 1];
+				}
+			}
+		}
+		catch (e:Dynamic) {}
+
+		// 2) 从 applicationStorageDirectory 解析
+		//    通常返回: /data/user/0/<pkg>/files/
+		try
+		{
+			var appDir = LimeSystem.applicationStorageDirectory;
+			if (appDir != null && appDir.length > 0)
+			{
+				var parts = appDir.replace("\\", "/").split("/")
+					.filter(function(s) return s.length > 0);
+				for (i in 0...parts.length)
+				{
+					if (parts[i] == "0" && i + 1 < parts.length && parts[i + 1].indexOf(".") != -1)
+						return parts[i + 1];
+				}
+			}
+		}
+		catch (e:Dynamic) {}
+
+		// 3) 兜底
+		return "com.miom.vmuport";
+	}
+
+	/** /sdcard/Android/data/<pkg>/files */
+	public static inline function getExternalDataPath():String
+		return '/sdcard/Android/data/${getPackageName()}/files';
+
+	/** /sdcard/Android/media/<pkg> */
+	public static inline function getExternalMediaPath():String
+		return '/sdcard/Android/media/${getPackageName()}';
+
+	/** /sdcard/Android/obb/<pkg> */
+	public static inline function getExternalObbPath():String
+		return '/sdcard/Android/obb/${getPackageName()}';
+
 	public static inline function getCustomStoragePath():String
 		return AndroidContext.getExternalFilesDir() + '/storageModes.json';
+
 	public static inline function getStorageTypePath():String
 		return AndroidContext.getExternalFilesDir() + '/storagetype.txt';
 
@@ -89,14 +152,14 @@ class MobileUtil
 				daPath = "/sdcard/.CodenameEngine";
 			/* obb doesnt work and I dont wanna fix it -ArkoseLabs
 			case 'EXTERNAL_OBB':
-				daPath = "/sdcard/Android/obb/com.yoshman29.codenameengine";
+				daPath = getExternalObbPath();
 			*/
 			case 'EXTERNAL_MEDIA':
-				daPath = "/sdcard/Android/media/com.yoshman29.codenameengine";
+				daPath = getExternalMediaPath();
 			case 'EXTERNAL_DATA':
-				daPath = "/sdcard/Android/data/com.yoshman29.codenameengine/files";
+				daPath = getExternalDataPath();
 			default: //technically not needed but here for safety -ArkoseLabs
-				if (daPath == null || daPath == '') daPath = "/sdcard/Android/data/com.yoshman29.codenameengine/files";
+				if (daPath == null || daPath == '') daPath = getExternalDataPath();
 		}
 		daPath = Path.addTrailingSlash(daPath);
 		currentDirectory = daPath;
@@ -120,7 +183,7 @@ class MobileUtil
 		}
 		catch (e:Dynamic)
 		{
-			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getDirectory() + "mods/" + 
+			Application.current.window.alert("Looks like you doesn't have directory named\n" + MobileUtil.getDirectory() + "mods/" +
 			"\nBut maybe this couldn't be right, android loves to give errors like this\nPress OK & let's see what happens\nCurrent Error You Got:\n" + e, "Warning!");
 			//lime.system.System.exit(1);
 		}
@@ -159,7 +222,7 @@ class MobileUtil
 		var process = new Process('chmod -R ${permissions} ${fullPath}');
 
 		var exitCode = process.exitCode();
-		if (exitCode == 0) 
+		if (exitCode == 0)
 			trace('Success: Permissions for the ${fullPath} file have been set to (${permissions})');
 		else
 		{
@@ -172,12 +235,12 @@ class MobileUtil
 
 	public static function getDirectory():String
 	{
-		#if android	
+		#if android
 		var _currentDirectory = currentDirectory;
 		if (_currentDirectory == null || _currentDirectory == "") {
-    	    trace("currentDirectory is null, initializing again...");
-    	    _currentDirectory = initDirectory(); 
-    	}
+			trace("currentDirectory is null, initializing again...");
+			_currentDirectory = initDirectory();
+		}
 		return _currentDirectory;
 		#elseif ios
 		return LimeSystem.documentsDirectory;
@@ -209,21 +272,36 @@ class MobileUtil
 	}
 	#end
 
+	/**
+	 * 复制 / 解压资源到外部存储。
+	 *
+	 * 默认行为（folders == null）：
+	 *   强制解压 "assets/" 与 "mods/" 前缀下的所有文件，
+	 *   命中即覆盖，不做字节比对。
+	 *
+	 * 显式传入 folders 时，仅按传入的前缀过滤，
+	 *   并且依然执行"强制覆盖"（本方法整体语义就是强制解压）。
+	 *
+	 * @param folders     可选，指定要解压的目录前缀列表（如 ["assets/data/"]）。
+	 * @param onProgress  进度回调 (relativePath, current, total)。
+	 * @param onComplete  完成回调。
+	 */
 	public static function copyAssets(folders:Array<String> = null, onProgress:String->Int->Int->Void = null, onComplete:Void->Void = null):Void {
 		#if mobile
 		var rootTarget = getAssetDirectory();
 		try {
 			var assetList:Array<String> = Assets.list();
 
+			// 默认强制解压的前缀（顶层 mods/ 与 assets/ 都会被命中，
+			// 所以 assets/assets/、assets/mods/ 都在范围内）
+			var forcePrefixes:Array<String> = ["assets/", "mods/"];
+
 			var toCopy = assetList.filter(function(assetKey) {
 				var cleanPath = assetKey;
 				var colonIndex = cleanPath.indexOf(":");
-				if (colonIndex != -1) {
-					cleanPath = cleanPath.substring(colonIndex + 1);
-				}
+				if (colonIndex != -1) cleanPath = cleanPath.substring(colonIndex + 1);
 
-				var defaultRoots:Array<String> = ["assets/", "mods/"];
-
+				// 显式传入 folders 时，按传入的前缀来
 				if (folders != null) {
 					for (f in folders) {
 						if (StringTools.startsWith(cleanPath, f)) return true;
@@ -231,8 +309,9 @@ class MobileUtil
 					return false;
 				}
 
-				for (root in defaultRoots) {
-					if (StringTools.startsWith(cleanPath, root)) return true;
+				// 否则默认：强制解压 assets/ 与 mods/
+				for (p in forcePrefixes) {
+					if (StringTools.startsWith(cleanPath, p)) return true;
 				}
 				return false;
 			});
@@ -248,58 +327,30 @@ class MobileUtil
 
 				var cleanPath = assetKey;
 				var colonIndex = cleanPath.indexOf(":");
-				if (colonIndex != -1) {
-					cleanPath = cleanPath.substring(colonIndex + 1);
-				}
+				if (colonIndex != -1) cleanPath = cleanPath.substring(colonIndex + 1);
 
 				var fullPath = Path.join([rootTarget, cleanPath]);
 
 				var directory = Path.directory(fullPath);
 				if (!FileSystem.exists(directory)) FileSystem.createDirectory(directory);
-				var shouldCopy = !FileSystem.exists(fullPath);
 
-				if (!shouldCopy) {
+				// 强制解压：直接覆盖，不做 size / byte 比对
+				var bytes:Bytes = null;
+				try {
+					bytes = Assets.getBytes(assetKey);
+				} catch (e:Dynamic) {
 					try {
-						var assetBytes = Assets.getBytes(assetKey);
-						var localBytes = File.getBytes(fullPath);
-						
-						if (localBytes != null && assetBytes != null) {
-							if (localBytes.length != assetBytes.length) {
-								shouldCopy = true;
-							} else {
-								for (j in 0...localBytes.length) {
-									if (localBytes.get(j) != assetBytes[j]) {
-										shouldCopy = true;
-										break;
-									}
-								}
-							}
-						}
-					} catch (e:Dynamic) {
-						shouldCopy = true;
+						var text:String = Assets.getText(assetKey);
+						if (text != null) bytes = Bytes.ofString(text);
+					} catch (e2:Dynamic) {
+						trace('Failed to read text fallback for $assetKey: $e2');
 					}
 				}
 
-				if (shouldCopy) {
-					var bytes:Bytes = null;
-					try {
-						bytes = Assets.getBytes(assetKey);
-					} catch (e:Dynamic) {
-						try {
-							var text:String = Assets.getText(assetKey);
-							if (text != null) {
-								bytes = Bytes.ofString(text);
-							}
-						} catch (e2:Dynamic) {
-							trace('Failed to read text fallback for $assetKey: $e2');
-						}
-					}
-
-					if (bytes != null) {
-						File.saveBytes(fullPath, bytes);
-					} else {
-						trace('Could not extract data for asset: $assetKey');
-					}
+				if (bytes != null) {
+					File.saveBytes(fullPath, bytes);
+				} else {
+					trace('Could not extract data for asset: $assetKey');
 				}
 
 				if (onProgress != null) onProgress(cleanPath, i + 1, total);
