@@ -1,0 +1,66 @@
+{"L":[
+{
+"LN":"SAWDOWN",
+"FR":[
+{
+"I":0,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"FERAL DONALD/SYMBOLS/SAWDOWN",
+"FF":0,
+"ST":"G",
+"TRP":{"x":341.25,"y":482.5},
+"LP":"LP",
+"MX":[1,-0.025,0,1,286.85,399.75]
+}}]},{
+"I":1,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"FERAL DONALD/SYMBOLS/SAWDOWN",
+"FF":1,
+"ST":"G",
+"TRP":{"x":341.25,"y":482.5},
+"LP":"LP",
+"MX":[1,0.05,0,1,286.85,395.7]
+}}]},{
+"I":2,
+"DU":1,
+"E":[
+{"SI":{
+"SN":"FERAL DONALD/SYMBOLS/SAWDOWN",
+"FF":2,
+"ST":"G",
+"TRP":{"x":341.25,"y":482.45},
+"LP":"LP",
+"MX":[1,-0.054,0,1,286.85,401.35]
+}}]},{
+"I":3,
+"DU":11,
+"E":[
+{"SI":{
+"SN":"FERAL DONALD/SYMBOLS/SAWDOWN",
+"FF":3,
+"ST":"G",
+"TRP":{"x":341.25,"y":482.35},
+"LP":"LP",
+"MX":[1,0,0,1,286.85,398.35]
+}}]}
+]},{
+"LN":"ARMCHAINDOWN",
+"FR":[
+{
+"I":0,
+"DU":14,
+"E":[
+{"SI":{
+"SN":"FERAL DONALD/SYMBOLS/ARMCHAINDOWN",
+"FF":0,
+"ST":"G",
+"TRP":{"x":95.45,"y":41},
+"LP":"LP",
+"MX":[1,0,0,1,-12.15,-9.7]
+}}]}
+]}
+]}

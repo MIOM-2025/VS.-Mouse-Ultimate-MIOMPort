@@ -1,0 +1,18 @@
+<!DOCTYPE codename-mod-options>
+<menu name="VMU Options" desc="Modify VMU Options to your preference!">
+    <checkbox id="botplay" name="Botplay" desc="Open botplay"/>
+    <checkbox id="middleScroll" name="MiddleScroll" desc="Open MiddleScroll"/>
+    <checkbox id="modcharts" name="Modcharts"/>
+    <checkbox id="warning" name="Warning Screen"/>
+
+    <menu name="Graphics" desc="Configure visual effects.">
+        <checkbox id="overlay" name="Video Effects" desc="Enable/Disable the Overlay Effects in the WUAS Part/Crisis."/>
+        <checkbox id="stickers" name="Stickers" desc="Enable/Disable the Stickers in Crisis."/>
+        <checkbox id="subtitles" name="Subtitles" desc="Enable/Disable the subtitles in Vehement."/>
+    </menu>
+
+    <menu name="Secret" desc="DO NOT CHECK THIS! I implore you. This isn't THE RIGHT TIME! I just Don't Wanna Be here right now... Now. now. now. now. now. now. now.">
+        <checkbox id="jeff" name="Jeff" desc="Try it out for yourself!"/>
+        <checkbox id="godrays" name="Godrays" desc="Enable/Disable the Godray Script. To activate, press 2 while in a song!"/>
+    </menu>
+</menu>

@@ -1,0 +1,19 @@
+<!DOCTYPE codename-engine-stage>
+<stage zoom="0.5" name="Clubhouse (Crisis)" folder="stages/clubhouse/">
+	<sprite x="-500" y="-850" name="C-outside" sprite="CRISIS/C-fullBG" scroll="0.8" scale="1.5"><anim name="OUTSIDE" anim="OUTSIDE.png"/></sprite>
+	<sprite x="-400" y="-850" name="C-bg"      sprite="CRISIS/C-fullBG" scroll="1"   scale="1.5"><anim name="CLUBHOUSE" anim="CLUBHOUSE.png"/></sprite>
+	<sprite x="400" y="-850" name="C-window" sprite="CRISIS/C-fullBG" scroll="1"   scale="1.5"><anim name="WINDOW" anim="WINDOW.png"/></sprite>
+	<sprite x="-400" y="-850" name="C-bgStuff" sprite="CRISIS/C-fullBG" scroll="1"   scale="1.5"><anim name="BG STUFF" anim="BG STUFF.png"/></sprite>
+
+	<gf x="525" y="70" scale="0.65"/>
+
+	<sprite x="-400" y="-850" name="C-fg" sprite="CRISIS/C-fullBG" scroll="1" scale="1.5"><anim name="FG 2" anim="FG 2.png"/></sprite>
+
+	<dad x="240" y="180" camyoffset="-10"/>
+	<boyfriend x="1000" y="130" camyoffset="0" scale="0.95"/>
+
+	<sprite x="-400" y="-850" name="C-fg3" sprite="CRISIS/C-fullBG" scroll="1" scale="1.8"><anim name="FG 3" anim="FG 3.png"/></sprite>
+	<sprite x="-400" y="-850" name="C-fg2" sprite="CRISIS/C-fullBG" scroll="1.5" scale="1.8"><anim name="FG 1" anim="FG 1.png"/></sprite>
+
+	<combo x="456.25" y="12.5"/>
+</stage>

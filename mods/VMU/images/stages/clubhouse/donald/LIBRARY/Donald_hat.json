@@ -1,0 +1,74 @@
+{"L":[
+{
+"LN":"Layer_1_copy_copy",
+"FR":[
+{
+"I":0,
+"DU":14,
+"E":[
+{"SI":{
+"SN":"Duplicate Items Folder/Idle_7.png",
+"ST":"MC",
+"TRP":{"x":118.5,"y":153.5},
+"MX":[1,0,0,1,0,0]
+}}]}
+]},{
+"LN":"Layer_1_copy",
+"FR":[
+{
+"I":0,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"Duplicate Items Folder/Idle_10.png",
+"ST":"MC",
+"TRP":{"x":58.9,"y":191.55},
+"MX":[0.984,-0.177,0.177,0.984,-32.95,13.5]
+}}]},{
+"I":2,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"Duplicate Items Folder/Idle_10.png",
+"ST":"MC",
+"TRP":{"x":58.95,"y":191.6},
+"MX":[0.963,-0.27,0.27,0.963,-49.5,23.05]
+}}]},{
+"I":4,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"Duplicate Items Folder/Idle_10.png",
+"ST":"MC",
+"TRP":{"x":58.95,"y":191.6},
+"MX":[0.998,-0.06,0.06,0.998,-11.45,3.95]
+}}]},{
+"I":6,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"Duplicate Items Folder/Idle_10.png",
+"ST":"MC",
+"TRP":{"x":58.9,"y":191.6},
+"MX":[0.999,0.035,-0.035,0.999,6.75,-1.9]
+}}]},{
+"I":8,
+"DU":2,
+"E":[
+{"SI":{
+"SN":"Duplicate Items Folder/Idle_10.png",
+"ST":"MC",
+"TRP":{"x":58.95,"y":191.6},
+"MX":[1,0.012,-0.012,1,2.4,-0.7]
+}}]},{
+"I":10,
+"DU":4,
+"E":[
+{"SI":{
+"SN":"Duplicate Items Folder/Idle_10.png",
+"ST":"MC",
+"TRP":{"x":58.9,"y":191.55},
+"MX":[1,0,0,1,0,0]
+}}]}
+]}
+]}

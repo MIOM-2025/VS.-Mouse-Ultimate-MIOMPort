@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Tex-Packer-EX v0.6.8 https://strawberrysage.github.io/tex-packer-ex
+-->
+<TextureAtlas imagePath="donald.png" width="3898" height="1989">
+  <SubTexture name="sprite_1.png" x="1514" y="0"  width="624" height="1060" frameX="-0" frameY="-0" frameWidth="624" frameHeight="1060"/>
+  <SubTexture name="sprite_10.png" x="2056" y="1060"  width="841" height="876" frameX="-0" frameY="-0" frameWidth="841" frameHeight="876"/>
+  <SubTexture name="sprite_13.png" x="0" y="0"  width="1514" height="1239" frameX="-0" frameY="-0" frameWidth="1514" frameHeight="1239"/>
+  <SubTexture name="sprite_2.png" x="2138" y="0"  width="762" height="933" frameX="-0" frameY="-0" frameWidth="762" frameHeight="933"/>
+  <SubTexture name="sprite_3.png" x="2900" y="0"  width="463" height="913" frameX="-0" frameY="-0" frameWidth="463" frameHeight="913"/>
+  <SubTexture name="sprite_7.png" x="0" y="1239"  width="907" height="750" frameX="-0" frameY="-0" frameWidth="907" frameHeight="750"/>
+  <SubTexture name="sprite_8.png" x="1514" y="1060"  width="542" height="889" frameX="-0" frameY="-0" frameWidth="542" frameHeight="889"/>
+  <SubTexture name="sprite_9.png" x="3363" y="0"  width="535" height="872" frameX="-0" frameY="-0" frameWidth="535" frameHeight="872"/>
+</TextureAtlas>

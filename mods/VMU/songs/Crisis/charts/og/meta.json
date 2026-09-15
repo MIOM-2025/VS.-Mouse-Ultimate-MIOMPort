@@ -1,0 +1,20 @@
+{
+	"color": "#661521",
+	"customValues": {
+		"composer": "Saster"
+	},
+	"opponentModeAllowed": false,
+	"icon": "marko",
+	"difficulties": [
+		"NORMAL"
+	],
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Crisis",
+	"variants": [
+		"Legacy"
+	],
+	"beatsPerMeasure": 6,
+	"needsVoices": true,
+	"bpm": 185
+}

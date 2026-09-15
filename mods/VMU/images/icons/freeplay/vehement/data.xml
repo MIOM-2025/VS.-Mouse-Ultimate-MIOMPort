@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-icon>
+<icon scale="1.5">
+	<steps>
+		<step percent="0" type="neutral"/>
+		<step percent="80" type="losing"/>
+	</steps>
+	<anim name="neutral" anim="idle" looped="true" offsety="0" fps="6"/>
+	<anim name="selected" anim="select" looped="false" offsety="0" fps="6"/>
+</icon>

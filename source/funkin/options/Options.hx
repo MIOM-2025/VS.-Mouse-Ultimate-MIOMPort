@@ -20,7 +20,7 @@ class Options
 	/**
 	 * MOBILE SETTINGS
 	 */
-	public static var extraButtons:Int = 2;
+	public static var extraButtons:Int = 0;
 	public static var hitboxPos:Bool = false;
 	public static var storageType:String = "EXTERNAL_DATA";
 	public static var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
@@ -220,6 +220,9 @@ class Options
 		__save.bind(name, path);
 		__load();
 
+		// —— 强制加载上一次加载的模组 ——
+		forceLoadLastMod();
+
 		if (!__eventAdded) {
 			Lib.application.onExit.add(function(i:Int) {
 				Logs.traceColored([
@@ -234,6 +237,34 @@ class Options
 		}
 		FlxG.sound.volume = volume;
 		applySettings();
+	}
+
+	/**
+	 * 强制加载上一次加载的模组（lastLoadedMod）。
+	 * 若没有记录或已加载则跳过。
+	 */
+	public static function forceLoadLastMod() {
+		var mod = lastLoadedMod;
+		if (mod == null || mod.length == 0) return;
+
+		try {
+			// 检查是否已加载（按你项目的 Mods API 调整）
+			var alreadyLoaded:Bool = false;
+			#if MODS_ALLOWED
+			alreadyLoaded = Mods.loadedMods != null && Mods.loadedMods.exists(mod);
+			#end
+
+			if (!alreadyLoaded) {
+				Mods.loadMod(mod);
+				Logs.traceColored([
+					Logs.getPrefix("Options"),
+					Logs.logText("强制加载上次模组 ", YELLOW),
+					Logs.logText(mod, GREEN)
+				], VERBOSE);
+			}
+		} catch (e:Dynamic) {
+			Logs.trace('强制加载上次模组 "$mod" 失败: $e', ERROR);
+		}
 	}
 
 	public static function applySettings() {

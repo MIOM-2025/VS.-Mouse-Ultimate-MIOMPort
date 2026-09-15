@@ -1,0 +1,42 @@
+1|0.07|Whoops!
+1|1.48|Need a hand there, friend?
+1|3.37|Let's try again.
+2|0.03|Whoops!
+2|1.08|Need a hand there, pal?
+2|3.18|Let's try that again.
+3|0.41|Whoops!
+3|1.38|Need a hand there, pal?
+3|3.34|Let's try that again.
+4|0.73|Let's try that again.
+5|0.01|*Sigh* Am I gonna have to teach you how to sing?
+5|3.59|What, do you need help singing or something?
+5|5.64|Surely it can't be that bad at rhythm, right?
+5|8.88|Right?
+6|0.03|This is... a little awkward.
+6|2.18|Maybe try again.
+6|4.01|I guess Bruno wasn't really worth talking about after all.
+6|7.50|You know, I was gonna ask if you could fix our lightbulb for us,
+6|10.38|but... you don't seem that bright, pal.
+7|0.03|Are you even trying?
+7|1.03|It's... sorry.
+7|2.81|A bit out of place there.
+8|0.10|You know, I'm not even sure if you're trying at this point.
+8|3.09|Uh... maybe we can try something else, like... checkers or something?
+8|7.04|No?
+8|8.01|Okay!
+9|0.04|Using a microphone ain't that hard, fella.
+9|2.07|You just talk into it!
+9|4.36|Surely you'd think the person who brought their own microphone could actually sing!
+10|0.01|All right, that's it! I've had enough.
+10|2.00|Just let me know when you're ready to start taking this seriously!
+11|0.03|All right, that's it!
+11|0.73|I'm [BEEP] done with this.
+11|1.80|Just let me know when you got your act together.
+12|0.05|All right, that's it!
+12|0.88|I'm done.
+13|0.04|All right, that's it!
+13|0.86|I'm [BEEP] over this.
+13|1.70|Just let me know when you got your act together, all right?
+14|0.03|All right, that's it!
+14|0.78|I'm done.
+14|1.24|Just let me know when you got your [BEEP] act together!

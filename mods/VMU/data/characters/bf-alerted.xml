@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-character>
+<character x="-20" y="200" sprite="Bruno/bruno-alerted" flipX="true" camy="-150" isPlayer="true" icon="bf2" color="#4CC3FF" applyStageMatrix="true">
+	<anim name="idle" anim="AlertedIdle" x="5" y="-35" loop="true"/>
+	<anim name="singLEFT" anim="AlertedLeft" x="77" y="-36"/>
+	<anim name="singLEFTmiss" anim="AlertMissLeft" x="96" y="-76"/>
+	<anim name="singDOWN" anim="AlertedDown" x="18" y="-138"/>
+	<anim name="singDOWNmiss" anim="AlertMissDDown" x="13" y="-162"/>
+	<anim name="singUP" anim="AlertedUp" x="-116" y="99"/>
+	<anim name="singUPmiss" anim="AlertMissUp" x="-101" y="49"/>
+	<anim name="singRIGHT" anim="AlertedRight" x="-50" y="-27"/>
+	<anim name="singRIGHTmiss" anim="AlertMissRight" x="-85" y="-27"/>
+</character>

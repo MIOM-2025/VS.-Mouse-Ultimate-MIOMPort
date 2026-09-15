@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character x="100" y="30" sprite="Gloria/gloria" camx="-250" camy="-100" icon="gf" color="#A5004D" applyStageMatrix="true" isGF="true">
+	<anim name="danceLeft" anim="animz/GF_IDLE" indices="0..14"/>
+	<anim name="danceRight" anim="animz/GF_IDLE" indices="15..29"/>
+	<anim name="danceLeft-alt" anim="animz/GF_IDLE alt" indices="0..14"/>
+	<anim name="danceRight-alt" anim="animz/GF_IDLE alt" indices="15..29"/>
+	<anim name="cuteanim" anim="animz/GF_guh"/>
+	<anim name="cheer" anim="animz/GF_cheer"/>
+	<anim name="sad" anim="animz/GF_sad"/>
+	<anim name="micthrow" anim="animz 2/GF_micthrow"/>
+	<anim name="danceLeft-worried" anim="animz 2/GF_IDLE worried" indices="0..14"/>
+	<anim name="danceRight-worried" anim="animz 2/GF_IDLE worried" indices="15..29"/>
+	<anim name="idle-scared" anim="animz 2/GF_IDLE scared"/>
+</character>
