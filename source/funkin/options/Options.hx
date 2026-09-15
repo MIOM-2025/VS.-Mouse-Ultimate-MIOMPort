@@ -62,7 +62,7 @@ class Options
 	public static var modchartingHoldSubdivisions:Int = 4;
 	#end
 
-	public static var lastLoadedMod:String = null;
+	public static var lastLoadedMod:String = "VMU";
 
 	/**
 	 * EDITORS SETTINGS
@@ -220,8 +220,8 @@ class Options
 		__save.bind(name, path);
 		__load();
 
-		// —— 强制加载上一次加载的模组 ——
-		forceLoadLastMod();
+		// 强制每次启动都加载 VMU 模组
+		lastLoadedMod = "VMU";
 
 		if (!__eventAdded) {
 			Lib.application.onExit.add(function(i:Int) {
@@ -237,34 +237,6 @@ class Options
 		}
 		FlxG.sound.volume = volume;
 		applySettings();
-	}
-
-	/**
-	 * 强制加载上一次加载的模组（lastLoadedMod）。
-	 * 若没有记录或已加载则跳过。
-	 */
-	public static function forceLoadLastMod() {
-		var mod = lastLoadedMod;
-		if (mod == null || mod.length == 0) return;
-
-		try {
-			// 检查是否已加载（按你项目的 Mods API 调整）
-			var alreadyLoaded:Bool = false;
-			#if MODS_ALLOWED
-			alreadyLoaded = Mods.loadedMods != null && Mods.loadedMods.exists(mod);
-			#end
-
-			if (!alreadyLoaded) {
-				Mods.loadMod(mod);
-				Logs.traceColored([
-					Logs.getPrefix("Options"),
-					Logs.logText("强制加载上次模组 ", YELLOW),
-					Logs.logText(mod, GREEN)
-				], VERBOSE);
-			}
-		} catch (e:Dynamic) {
-			Logs.trace('强制加载上次模组 "$mod" 失败: $e', ERROR);
-		}
 	}
 
 	public static function applySettings() {
@@ -304,6 +276,7 @@ class Options
 
 	public static function save() {
 		volume = FlxG.sound.volume;
+		lastLoadedMod = "VMU";
 		__flush();
 	}
 }
