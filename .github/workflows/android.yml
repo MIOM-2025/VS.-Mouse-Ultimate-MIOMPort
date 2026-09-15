@@ -20,15 +20,16 @@ jobs:
         with:
           haxe-version: 4.3.7
 
+      # 【修改点 1】将 r25c 降级为 r21e 以兼容 liblime.so
       - name: Setup Android NDK
         id: setup-ndk
         uses: nttld/setup-ndk@main
         with:
-          ndk-version: r25c
+          ndk-version: r21e
+
       - name: Restore Previous Cache
         uses: actions/cache@v4
         with:
-          # not caching the bin folder to prevent asset duplication and stuff like that
           key: cache-build-android
           path: |
             ~/.gradle
@@ -46,6 +47,7 @@ jobs:
             .haxelib\
           restore-keys: |
             cache-build-android
+
       - name: Installing/Updating libraries
         run: |
           haxe -cp commandline -D analyzer-optimize --run Main setup -s
@@ -54,9 +56,11 @@ jobs:
         run: |
           haxelib run lime setup -alias -y
           haxelib run lime config ANDROID_SDK $ANDROID_HOME
+          # 使用刚刚 setup-ndk 设置好的 NDK 路径
           haxelib run lime config ANDROID_NDK_ROOT $ANDROID_NDK_HOME
           haxelib run lime config JAVA_HOME $JAVA_HOME_17_X64
           haxelib run lime config ANDROID_SETUP true
+
       - name: Fix Haxelib
         run: |
           haxelib set lime git
@@ -65,14 +69,23 @@ jobs:
           haxelib set flixel-addons git
           haxelib set flixel-animate git
           haxelib set hxdiscord_rpc git
+
+      # 【修改点 2】构建前强制清理旧的 obj 和 haxe 缓存，防止旧 NDK 残留导致链接失败
+      - name: Clean old native objects
+        run: |
+          rm -rf export/release/android/obj/
+          rm -rf export/release/android/haxe/
+
       - name: Building the game
         run: |
           haxelib run lime build android -final -D ONLY_ARM64
+
       - name: Uploading artifact (entire build)
         uses: actions/upload-artifact@v4
         with:
           name: Codename Engine Android
           path: export/release/android/bin/app/build/outputs/apk/release/*
+
       - name: Clear Previous Cache
         uses: actions/github-script@v6
         with:
@@ -92,10 +105,10 @@ jobs:
                 console.log("Cache cleared.")
               }
             }
+
       - name: Upload New Cache
         uses: actions/cache@v4
         with:
-          # caching again since for some reason it doesnt work with the first post cache shit
           key: cache-build-android
           path: |
             ~/.gradle
