@@ -18,7 +18,7 @@ using StringTools;
 
 /** 
 * @Authors MaysLastPlay, ArkoseLabs, MarioMaster (MasterX-39), Dechis (dx7405)
-* @version: 0.4.0
+* @version: 0.4.1
 **/
 typedef CustomStorageModeData = { modes:Array<ModeData> }
 typedef ModeData = { Name:String, Folder:String }
@@ -26,9 +26,41 @@ class MobileUtil
 {
 	#if sys
 	public static inline function getAssetDirectory():String
-		return #if android haxe.io.Path.addTrailingSlash("/sdcard/Android/data/com.miom.vmuport/files") #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
+		return #if android haxe.io.Path.addTrailingSlash(getExternalDataPath()) #elseif ios lime.system.System.documentsDirectory #else Sys.getCwd() #end;
 
 	#if android
+	/**
+	 * 自动从 AndroidContext.getExternalFilesDir() 反推当前包名。
+	 * 该路径固定格式: /storage/emulated/0/Android/data/<包名>/files
+	 * 取 "data" 后一段即为包名（含 "." 作为校验，避免误取 "files" 等）。
+	 */
+	public static function getPackageName():String
+	{
+		try {
+			var extDir = AndroidContext.getExternalFilesDir();
+			if (extDir != null && extDir.length > 0) {
+				var parts = extDir.replace("\\", "/").split("/");
+				for (i in 0...parts.length) {
+					if (parts[i] == "data" && i + 1 < parts.length && parts[i + 1].indexOf(".") != -1)
+						return parts[i + 1];
+				}
+			}
+		} catch (e:Dynamic) {
+			trace("Failed to auto-detect package name: " + e);
+		}
+		// 兜底
+		return "com.yoshman29.codenameengine";
+	}
+
+	public static inline function getExternalDataPath():String
+		return '/sdcard/Android/data/${getPackageName()}/files';
+
+	public static inline function getExternalMediaPath():String
+		return '/sdcard/Android/media/${getPackageName()}';
+
+	public static inline function getExternalObbPath():String
+		return '/sdcard/Android/obb/${getPackageName()}';
+
 	public static inline function getCustomStoragePath():String
 		return AndroidContext.getExternalFilesDir() + '/storageModes.json';
 	public static inline function getStorageTypePath():String
@@ -77,7 +109,7 @@ class MobileUtil
 		{
 			if (line.startsWith(curStorageType) && (line != '' || line != null)) {
 				var dat = line.split("|");
-				daPath = dat[1];
+				if (dat.length >= 2) daPath = dat[1];
 			}
 		}
 
@@ -89,14 +121,14 @@ class MobileUtil
 				daPath = "/sdcard/.CodenameEngine";
 			/* obb doesnt work and I dont wanna fix it -ArkoseLabs
 			case 'EXTERNAL_OBB':
-				daPath = "/sdcard/Android/obb/com.miom.vmuport";
+				daPath = getExternalObbPath();
 			*/
 			case 'EXTERNAL_MEDIA':
-				daPath = "/sdcard/Android/media/com.miom.vmuport";
+				daPath = getExternalMediaPath();
 			case 'EXTERNAL_DATA':
-				daPath = "/sdcard/Android/data/com.miom.vmuport/files";
+				daPath = getExternalDataPath();
 			default: //technically not needed but here for safety -ArkoseLabs
-				if (daPath == null || daPath == '') daPath = "/sdcard/Android/data/com.miom.vmuport/files";
+				if (daPath == null || daPath == '') daPath = getExternalDataPath();
 		}
 		daPath = Path.addTrailingSlash(daPath);
 		currentDirectory = daPath;
@@ -209,6 +241,9 @@ class MobileUtil
 	}
 	#end
 
+	/**
+	 * @param folders Optional list of specific folders (e.g. ["assets/data/"]). If null, copies all assets.
+	 */
 	public static function copyAssets(folders:Array<String> = null, onProgress:String->Int->Int->Void = null, onComplete:Void->Void = null):Void {
 		#if mobile
 		var rootTarget = getAssetDirectory();
@@ -222,17 +257,11 @@ class MobileUtil
 					cleanPath = cleanPath.substring(colonIndex + 1);
 				}
 
-				var defaultRoots:Array<String> = ["assets/", "mods/"];
+				if (!StringTools.startsWith(cleanPath, "assets/")) return false;
+				if (folders == null) return true;
 
-				if (folders != null) {
-					for (f in folders) {
-						if (StringTools.startsWith(cleanPath, f)) return true;
-					}
-					return false;
-				}
-
-				for (root in defaultRoots) {
-					if (StringTools.startsWith(cleanPath, root)) return true;
+				for (f in folders) {
+					if (StringTools.startsWith(cleanPath, f)) return true;
 				}
 				return false;
 			});

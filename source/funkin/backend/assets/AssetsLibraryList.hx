@@ -4,7 +4,6 @@ package funkin.backend.assets;
 import funkin.backend.assets.TranslatedAssetLibrary;
 #end
 import funkin.backend.assets.IModsAssetLibrary;
-import funkin.backend.assets.AssetSource;
 import lime.utils.AssetLibrary;
 import haxe.ds.Map;
 
@@ -16,7 +15,7 @@ class AssetsLibraryList extends AssetLibrary {
 	}
 
 	public var rootDirectory:String = "./assets";
-	
+
 	// is true if any library in `libraries` contains some kind of compressed library. 
 	public var hasCompressedLibrary(get, never):Bool;
 	function get_hasCompressedLibrary():Bool {
@@ -32,6 +31,9 @@ class AssetsLibraryList extends AssetLibrary {
 	#if TRANSLATIONS_SUPPORT
 	public var transLib:TranslatedAssetLibrary;
 	#end
+
+	private var cacheLibraryTypePaths:Map<Null<String>, Map<String, AssetLibrary>> = [];
+	private var cacheTimeTypePaths:Map<Null<String>, Map<String, Float>> = [];
 
 	public function removeLibrary(lib:AssetLibrary) {
 		if (lib != null) {
@@ -53,86 +55,64 @@ class AssetsLibraryList extends AssetLibrary {
 		}
 		return lib;
 	}
+	public function existsSpecific(id:String, type:String, source:AssetSource = BOTH) {
+		if (!id.startsWith("assets/") && existsSpecific('assets/$id', type, source))
+			return true;
 
-	var assetPathCacheLibrary:Map<AssetSource, Map<Null<String>, Map<String, AssetLibrary>>> = [];
-	var assetPathCacheTime:Map<AssetSource, Map<Null<String>, Map<String, Float>>> = [];
+		// Prevent massive lags on repetitive usage
+		final sec = haxe.Timer.stamp();
 
-	private function shouldSkipLib(lib:AssetLibrary, source:AssetSource) {
-		if (source == BOTH || lib.tag == BOTH) return false;
-		return source != lib.tag;
-	}
+		var cacheLibraryPaths:Map<String, AssetLibrary> = cacheLibraryTypePaths.get(type);
+		var cacheTimePaths:Map<String, Float> = cacheTimeTypePaths.get(type);
+		if (cacheLibraryPaths == null) {
+			cacheLibraryTypePaths.set(type, cacheLibraryPaths = []);
+			cacheTimeTypePaths.set(type, cacheTimePaths = []);
+		}
 
-	public function getAssetPathLibrary(id:String, type:Null<String>, source:AssetSource = BOTH):Null<AssetLibrary> {
-		var cacheLibraryPaths:Map<String, AssetLibrary> = null;
-		if (Flags.PATHS_CACHE_LIFETIME != 0) {
-			// Prevent massive lags on repetitive usage, primarily with getting note sprite sheets in mania charts (usually 2k+ notes)
-			final time = haxe.Timer.stamp();
-
-			var cacheLibraryTypes = assetPathCacheLibrary.get(source), cacheTimeTypes = assetPathCacheTime.get(source);
-			if (cacheLibraryTypes == null) {
-				assetPathCacheLibrary.set(source, cacheLibraryTypes = []);
-				assetPathCacheTime.set(source, cacheTimeTypes = []);
-			}
-
-			cacheLibraryPaths = cacheLibraryTypes.get(type);
-			var cacheTimePaths = cacheTimeTypes.get(type);
-			if (cacheLibraryPaths == null) {
-				cacheLibraryTypes.set(type, cacheLibraryPaths = []);
-				cacheTimeTypes.set(type, cacheTimePaths = []);
-			}
-
-			if (cacheTimePaths.exists(id)) {
-				final library = cacheLibraryPaths.get(id);
-
-				if (Flags.PATHS_CACHE_LIFETIME != null) {
-					final cacheSafeTime = cacheTimePaths.get(id) + Flags.PATHS_CACHE_LIFETIME;
-
-					if (library != null) {
-						if (time < cacheSafeTime) return library;
-						else if (!shouldSkipLib(library, source)
-							&& (type == null ? library.exists(id, @:privateAccess library.types.get(id)) : library.exists(id, type))
-						) {
-							cacheTimePaths.set(id, time);
-							return library;
-						}
-
-						cacheLibraryPaths.remove(id);
-					}
-					else if (time < cacheSafeTime) {
-						return null;
-					}
+		if (cacheTimePaths.exists(id)) {
+			final cacheSafetime = cacheTimePaths.get(id) + 6;
+			if (cacheLibraryPaths.exists(id)) {
+				if (sec < cacheSafetime) return true;
+				else if (cacheLibraryPaths.get(id).exists(id, type)) {
+					cacheTimePaths.set(id, sec);
+					return true;
 				}
-				else
-					return library;
+
+				cacheLibraryPaths.remove(id);
+			}
+			else if (sec < cacheSafetime) {
+				return false;
 			}
 
-			cacheTimePaths.set(id, time);
+			//cacheTimePaths.remove(id);
 		}
 
-		for (library in libraries) {
-			if (shouldSkipLib(library, source)) continue;
-			if (type == null ? library.exists(id, @:privateAccess library.types.get(id)) : library.exists(id, type)) {
-				if (cacheLibraryPaths != null) cacheLibraryPaths.set(id, library);
-				return library;
+		cacheTimePaths.set(id, sec);
+
+		for (k=>l in libraries) {
+			if (shouldSkipLib(l, source)) continue;
+			if (l.exists(id, type)) {
+				cacheLibraryPaths.set(id, l);
+				return true;
 			}
 		}
 
-		return null;
+		return false;
 	}
-
-	public function existsSpecific(id:String, type:String, source:AssetSource = BOTH)
-		return (!id.startsWith("assets/") && existsSpecific('assets/$id', type, source)) || getAssetPathLibrary(id, type, source) != null;
-
 	public override inline function exists(id:String, type:String):Bool
 		return existsSpecific(id, type, BOTH);
 
-	public function getSpecificPath(id:String, source:AssetSource = BOTH):Null<String> {
-		final library = getAssetPathLibrary(id, null, source);
-		if (library != null) {
-			final path = library.getPath(id);
-			if (path != null) return path;
-		}
+	public function getSpecificPath(id:String, source:AssetSource = BOTH) {
+		for(k=>e in libraries) {
+			if (shouldSkipLib(e, source)) continue;
 
+			@:privateAccess
+			if (e.exists(id, e.types.get(id))) {
+				var path = e.getPath(id);
+				if (path != null)
+					return path;
+			}
+		}
 		return null;
 	}
 
@@ -178,20 +158,36 @@ class AssetsLibraryList extends AssetLibrary {
 	}
 
 	public function getSpecificAsset(id:String, type:String, source:AssetSource = BOTH):Dynamic {
-		if (!id.startsWith("assets/")) {
-			final asset = getSpecificAsset('assets/$id', type, source);
-			if (asset != null) return asset;
-		}
+		try {
+			if (!id.startsWith("assets/")) {
+				var ass = getSpecificAsset('assets/$id', type, source);
+				if (ass != null) {
+					return ass;
+				}
+			}
+			for(k=>l in libraries) {
+				if (shouldSkipLib(l, source)) continue;
 
-		final library = getAssetPathLibrary(id, type, source);
-		if (library != null) {
-			final asset = library.getAsset(id, type);
-			if (asset != null) return asset;
+				@:privateAccess
+				if (l.exists(id, l.types.get(id))) {
+					var asset = l.getAsset(id, type);
+					if (asset != null) {
+						return asset;
+					}
+				}
+			}
+			return null;
+		} catch(e) {
+			// TODO: trace the error
+			throw e;
 		}
-
 		return null;
 	}
 
+	private function shouldSkipLib(lib:AssetLibrary, source:AssetSource) {
+		if (source == BOTH || lib.tag == BOTH) return false;
+		return source != lib.tag;
+	}
 	public override inline function getAsset(id:String, type:String):Dynamic
 		return getSpecificAsset(id, type, BOTH);
 
@@ -221,13 +217,12 @@ class AssetsLibraryList extends AssetLibrary {
 		Logs.infos("Used cne test / cne build. Switching into source assets.");
 		switchToSourceAssets();
 		#elseif USE_ADAPTED_ASSETS
-		if (sys.FileSystem.exists('${Main.pathBack}assets/') && !sys.FileSystem.exists('assets/')) {
+		if (sys.FileSystem.exists('./${Main.pathBack}assets/') && !sys.FileSystem.exists('./assets/')) {
 			Logs.infos("Source assets detected. Switching into source assets.");
 			switchToSourceAssets();
 		}
+		__defaultLibraries.push(ModsFolder.loadLibraryFromFolder('assets', rootDirectory, true, SOURCE));
 		#end
-
-		__defaultLibraries.push(ModsFolder.loadLibraryFromFolder('assets', #if mobile MobileUtil.getAssetDirectory() + #end rootDirectory, true, null, SOURCE));
 
 		#end
 
@@ -241,7 +236,7 @@ class AssetsLibraryList extends AssetLibrary {
 		ModsFolder.addonsPath = '${Main.pathBack}addons/';
 		#end
 
-		rootDirectory = '${Main.pathBack}assets/';
+		rootDirectory = './${Main.pathBack}assets/';
 	}
 	#end
 
@@ -253,21 +248,14 @@ class AssetsLibraryList extends AssetLibrary {
 
 	public function reset() {
 		unloadLibraries();
-		resetAssetPathCache();
 
-		libraries.resize(0);
+		cacheLibraryTypePaths.clear();
+		cacheTimeTypePaths.clear();
+
+		libraries = [];
 
 		// adds default libraries in again
 		for (d in __defaultLibraries) addLibrary(d);
-	}
-
-	public function resetAssetPathCache() {
-		for (source in [AssetSource.SOURCE, AssetSource.MODS, AssetSource.BOTH]) {
-			assetPathCacheLibrary[source]?.clear();
-			assetPathCacheTime[source]?.clear();
-		}
-		assetPathCacheLibrary.clear();
-		assetPathCacheTime.clear();
 	}
 
 	public function addLibrary(lib:AssetLibrary, ?tag:AssetSource, ?addTransLib:Bool = true) {
