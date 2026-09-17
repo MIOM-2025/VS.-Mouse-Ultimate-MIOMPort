@@ -8,8 +8,6 @@ latest/*
 pages/
 docs/doc.xml
 addons/*
-!mods/readme.txt
-addons/*
 !addons/readme.txt
 dev-libs/
 *.sum
