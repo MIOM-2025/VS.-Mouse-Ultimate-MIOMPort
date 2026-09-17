@@ -1,315 +1,237 @@
-//
-import sys.FileSystem;
-import funkin.options.type.TextOption;
-import funkin.options.type.Checkbox;
-import funkin.options.type.NumOption;
-import funkin.options.keybinds.KeybindsOptions;
-import funkin.options.TreeMenuScreen;
-import funkin.savedata.FunkinSave;
-import funkin.backend.assets.ModsFolder;
-import funkin.backend.system.framerate.Framerate;
+package funkin.options;
 
-import flixel.text.FlxText.FlxTextFormat;
-import flixel.text.FlxText.FlxTextFormatMarkerPair;
+import haxe.xml.Access;
+import flixel.util.typeLimit.OneOfThree;
+import funkin.editors.ui.UIState;
+import funkin.options.categories.*;
+import funkin.options.type.*;
 
-using StringTools;
-
-var menuLength:Int = -1;
-
-var previewSprite:FunkinSprite = new FunkinSprite();
-var previewSpriteOverlay:FunkinSprite = new FunkinSprite();
-var overlay:Float = FlxG.save.data.strumOverlay;
-
-function create() {
-    forceUpdate.push(globalUpdate);
+typedef OptionCategory = {
+	var name:String;
+	var desc:String;
+	var ?state:OneOfThree<TreeMenuScreen, Class<TreeMenuScreen>, (name:String, desc:String) -> TreeMenuScreen>;
+	var ?substate:OneOfThree<MusicBeatSubstate, Class<MusicBeatSubstate>, (name:String, desc:String) -> MusicBeatSubstate>;
+	var ?suffix:String;
 }
 
-var descText:String = "";
+class OptionsMenu extends TreeMenu {
+	public static var mainOptions:Array<OptionCategory> = [
+		{  // name and desc are actually the translations ids!  - Nex
+			name: 'optionsTree.controls-name',
+			desc: 'optionsTree.controls-desc',
+			suffix: '',
+			substate: funkin.options.keybinds.KeybindsOptions
+		},
+		{
+			name: 'optionsTree.gameplay-name',
+			desc: 'optionsTree.gameplay-desc',
+			state: GameplayOptions
+		},
+		{
+			name: 'optionsTree.appearance-name',
+			desc: 'optionsTree.appearance-desc',
+			state: AppearanceOptions
+		},
+		{
+			name: 'optionsTree.mobile-name',
+			desc: 'optionsTree.mobile-desc',
+			state: MobileOptions
+		},
+		#if TRANSLATIONS_SUPPORT
+		{
+			name: 'optionsTree.language-name',
+			desc: 'optionsTree.language-desc',
+			state: LanguageOptions
+		},
+		#end
+		{
+			name: 'optionsTree.miscellaneous-name',
+			desc: 'optionsTree.miscellaneous-desc',
+			state: MiscOptions
+		}
+	];
 
-function postCreate() {
-    playMusic("mainMenu", 1);
-    
-    bg.visible = false;
+	var bg:FlxSprite;
+	var debugOption:TextOption;
 
-    titleLabel.font = Paths.font("8bit-jve.ttf");
-    descLabel.font = Paths.font("8bit-jve.ttf");
+	override function create() {
+		super.create();
 
-    titleLabel.size = 48;
-    descLabel.size = 32;
+		CoolUtil.playMenuSong();
 
-    titleLabel.x += 10;
-    descLabel.x += 10;
+		DiscordUtil.call("onMenuLoaded", ["Options Menu"]);
 
-    for(txt in [titleLabel, descLabel])
-        textCrispy(txt);
+		add(bg = new FlxSprite().loadAnimatedGraphic(Paths.image('menus/menuBGBlue')));
+		bg.antialiasing = true;
+		bg.scrollFactor.set();
+		updateBG();
 
-    for(spr in [previewSprite, previewSpriteOverlay]) {
-        add(spr);
-        spr.alpha = 0;
-        spr.setPosition(FlxG.width + 75, FlxG.height * .5 + 135);
-        spr.antialiasing = Options.antialiasing;
-        spr.scale.set(0.5,0.5);
-        spr.scrollFactor.set();
-    }
+		for (i in mainOptions) if (i.name == "optionsTree.language-name" && Flags.DISABLE_LANGUAGES) mainOptions.remove(i);
 
-    previewSprite.ID = 1;
-    previewSprite.alpha = 0;
-    previewSprite.loadGraphic(Paths.image("menus/options/preview-no-overlay"));
-    previewSpriteOverlay.loadGraphic(Paths.image("menus/options/preview-overlay"));
-    previewSpriteOverlay.onDraw = (spr) -> {
-        spr.alpha = previewSprite.alpha * FlxG.save.data.strumOverlay / 100;
-        spr.draw();
-    }
+		addMenu(new TreeMenuScreen('optionsMenu.header.title', 'optionsMenu.header.desc', [for (o in mainOptions) new TextOption(o.name, o.desc, o.suffix != null ? o.suffix : " >", () -> {
+			if (o.substate != null) {
+				persistentUpdate = false;
+				persistentDraw = true;
 
-    for(spr in [previewSprite, previewSpriteOverlay]) {
-        spr.updateHitbox();
-        spr.x -= spr.width * 1.15;
-        spr.y -= spr.height * .5;
-    }
-}
+				if (o.substate is MusicBeatSubstate)
+					openSubState(o.substate);
+				else if(Reflect.isFunction(o.substate)) {
+					var substate:(name:String, desc:String) -> MusicBeatSubstate = o.substate;
+					openSubState(substate(o.name, o.desc));
+				}
+				else // o.substate is Class<TreeMenuScreen>
+					openSubState(Type.createInstance(o.substate, [o.name, o.desc]));
+			}
+			else {
+				if (o.state is TreeMenuScreen)
+					addMenu(o.state);
+				else if (Reflect.isFunction(o.state)) {
+					var state:(name:String, desc:String) -> TreeMenuScreen = o.state;
+					addMenu(state(o.name, o.desc));
+				}
+				else { // o.state is Class<TreeMenuScreen>
+					addMenu(Type.createInstance(o.state, [o.name, o.desc]));
+				}
+			}
+		})]));
 
-function update(elapsed:Float) {
-    if (previewSprite.ID == 0)
-        previewSprite.alpha += elapsed * 5;
-    else
-        previewSprite.alpha -= elapsed * 10;
+		checkDebugOption();
+		var first = tree.first();
 
-    if(menuLength != treeLength) {
-        menuLength = treeLength;
-        for (menu in tree) {
-            if (menu.health != -1) {
-                menu.health = -1;
-                switch (menu.rawName) {
-                    case "optionsTree.gameplay-name":
-                        menu.members.remove(menu.members[2]); // remove naughtyness
+		for (i in funkin.backend.assets.ModsFolder.getLoadedMods()) {
+			var xmlPath = Paths.xml('config/options/LIB_$i');
 
-                        final cneVersion = FlxG.stage.application.meta.get('version');
-                        if (Flags.CURRENT_API_VERSION < 2 || cneVersion == "1.0.1") {
-                            menu.members.remove(menu.members[8]); // remove stream vocals due to issues with memory
-                        }
+			if (Paths.assetsTree.existsSpecific(xmlPath, "TEXT")) {
+				var access:Access = null;
+				try access = new Access(Xml.parse(Paths.assetsTree.getSpecificAsset(xmlPath, "TEXT")))
+				catch(e) Logs.trace('Error while parsing options.xml: ${Std.string(e)}', ERROR);
+				if (access != null) for (o in parseOptionsFromXML(first, access)) first.add(o);
+			}
+		}
 
-                        var noHitCheckbox:Checkbox = null;
-                        var mechanicsHitCheckbox:Checkbox = null;
-                        var scrollSpeedChangeCheckbox:Checkbox = null;
+		addDPad("UP_DOWN");
+		addButton("A_B");
+		addDPadCamera();
+		addButtonCamera();
+	}
 
-                        menu.insert(1, noHitCheckbox = new Checkbox("No Hit Mode", "Don't miss a note or you lose!!! Effects exp gained after songs (#1X Multipler# -> _2X Multipler_).", "nh", null, FlxG.save.data));
-                        menu.insert(1, scrollSpeedChangeCheckbox = new Checkbox("Scroll Speed Changes", "Enable/Disable any scroll speed changes midsong.", "scrollSpeedChange", null, FlxG.save.data));
-                        menu.insert(1, mechanicsHitCheckbox = new Checkbox("Mechanics", "Enable/Disable Gameplay Mechanics, effects exp gained after songs (#1X Multipler# -> *.5X Multipler*).", "mechanics", null, FlxG.save.data));
-                        menu.insert(1, new Checkbox("Window Shake", "Enable/Disable this if you want cool monitor movements while you're playing the game (not effective if you play on fullscreen!)", "mWindow", null, FlxG.save.data));
+	function checkDebugOption() {
+		var first = tree.first();
+		if (Options.devMode) {
+			if (debugOption == null) {
+				first.insert(CoolUtil.minInt(first.length, mainOptions.length),
+					debugOption = new TextOption('optionsTree.debug-name', 'optionsTree.debug-desc', ' >', () -> addMenu(new DebugOptions()))
+				);
+			}
+		}
+		else if (debugOption != null) {
+			first.remove(debugOption, true);
+			debugOption = flixel.util.FlxDestroyUtil.destroy(debugOption);
+			if (first.curSelected >= first.length) first.changeSelection(0, true);
+		}
+	}
 
-                        for (i => checkBox in [mechanicsHitCheckbox, scrollSpeedChangeCheckbox, noHitCheckbox])
-                            checkBox.members[0].color = FlxColor.interpolate(0xFF8CDBFF, 0xFFC9FEFF, i/3);
+	public function updateBG() {
+		var scaleX:Float = FlxG.width / bg.width;
+		var scaleY:Float = FlxG.height / bg.height;
+		bg.scale.x = bg.scale.y = Math.max(scaleX, scaleY) * 1.15;
+		bg.screenCenter();
+	}
 
-                    case "optionsTree.appearance-name":
-                        menu.insert(1, new NumOption("Strum Overlay", "Change the opacity of the black overlay behind your strumline.", 0, 100, 5, "strumOverlay", null, FlxG.save.data));
-                        // It isn't ready yet, sorry
-                        //menu.insert(1, new Checkbox("Photo-Sensitive Mode", "Check this if you are sensitive to flashing lights.", "antiFlash", null, FlxG.save.data));
+	override function onResize(width:Int, height:Int) {
+		super.onResize(width, height);
+		if (!UIState.resolutionAware) return;
 
-                        for (i in 3...5) menu.members.remove(menu.members[i]);
-                        menu.members.remove(menu.members[3]);
-                        //menu.members[4].suffix = "/Shaders >";
-                    case "optionsMenu.advanced":
+		updateBG();
+	}
 
-                        var shaderOption = menu.members[3];
-                        menu.members.remove(shaderOption);
-                        menu.members.insert(4, shaderOption);
+	override function menuChanged() {
+		super.menuChanged();
+		checkDebugOption();
+	}
 
-                        menu.members.remove(menu.members[2]); // remove low memory mode
+	override function exit() {
+		Options.save();
+		Options.applySettings();
+		FlxG.save.flush();
+		super.exit();
+	}
 
-                        shaderOption.selectCallback = () -> {
-                            menu.members[3].locked = !shaderOption.checked;
-                        };
+	// XML STUFF
+	public function parseOptionsFromXML(screen:TreeMenuScreen, xml:Access):Array<FlxSprite> {
+		var options:Array<FlxSprite> = [];
 
-                        menu.add(new TextOption("Specific Shaders ", "Change more advanced Shader options.", ">", () -> {
-                            var spefShadersTree:TreeMenuScreen = new TreeMenuScreen("Specific Shaders", "Change more advanced Shader options (HIGH END being shaders that lag the most, MEDIUM being shaders that kinda lag, and LOW END being shaders that don't cause issues on most systems).");
-                            var highEndText:TextOption = null;
-                            spefShadersTree.add(highEndText = new TextOption("High End Shaders ", "", ">", () -> {
-                                var intShadersTree:TreeMenuScreen = new TreeMenuScreen("Intensive Shaders", "Change INTENSIVE Shader options (Hardest to run -> easiest to run, top to bottom).");
-                                intShadersTree.add(new Checkbox("Bloom Effects", "Enable/Disable Bloom Shaders.", "bloom", null, FlxG.save.data));
-                                intShadersTree.add(new Checkbox("God Rays Shaders", "Enable/Disable God Rays Shaders.", "godrays", null, FlxG.save.data));
-                                intShadersTree.add(new Checkbox("Particles Shaders", "Enable/Disable Particles Shaders.", "particles", null, FlxG.save.data));
-                                intShadersTree.add(new Checkbox("Glitch Shaders", "Enable/Disable Glitch Shaders.", "glitch", null, FlxG.save.data));
-                                spefShadersTree.parent.addMenu(intShadersTree);
+		for(node in xml.elements) {
+			switch(node.name) {
+				case "separator":
+					options.push(new Separator(node.has.height ? Std.parseFloat(node.att.height) : 67));
+			}
 
-                                for (i => member in intShadersTree.members)
-                                    member.members[0].color = FlxColor.interpolate(0xFFFE2323, 0xFFFFE3E3, i/intShadersTree.members.length);
-                            }));
-                            highEndText.color = 0xFFFFACAC;
-                            var medEndText:TextOption = null;
-                            spefShadersTree.add(medEndText = new TextOption("Medium Shaders ", "", ">", () -> {
-                                var medShadersTree:TreeMenuScreen = new TreeMenuScreen("Medium Shaders", "Change MEDIUM Shader options (Hardest to run -> easiest to run, top to bottom).");
-                                medShadersTree.add(new Checkbox("Fog Shaders", "Enable/Disable Fog Shaders.", "fog", null, FlxG.save.data));
-                                medShadersTree.add(new Checkbox("Water Shaders", "Enable/Disable Water Shaders.", "water", null, FlxG.save.data));
-                                medShadersTree.add(new Checkbox("Chromatic Shaders", "Enable/Disable Chromatic Shaders.", "chromwarp", null, FlxG.save.data));
-                                medShadersTree.add(new Checkbox("Warp Shaders", "Enable/Disable Warp Shaders.", "warp", null, FlxG.save.data));
-                                medShadersTree.add(new Checkbox("Fire Shaders", "Enable/Disable Fire Shaders.", "fire", null, FlxG.save.data));
-                                spefShadersTree.parent.addMenu(medShadersTree);
+			if (!node.has.name) {
+				Logs.warn("An option node requires a name attribute.");
+				continue;
+			}
+			var name = node.getAtt("name");
+			var desc = node.getAtt("desc").getDefault("optionsMenu.desc-missing");
+			if (screen.prefix?.length > 0) {
+				name = screen.prefix + name;
+				if (node.has.desc) desc = screen.prefix + desc;
+			}
 
-                                for (i => member in medShadersTree.members)
-                                    member.members[0].color = FlxColor.interpolate(0xFFFFF97D, 0xFFFFFFFF, i/medShadersTree.members.length);
-                            }));
-                            medEndText.color = 0xFFFFF5AC;
-                            var lowEndText:TextOption = null;
-                            spefShadersTree.add(lowEndText = new TextOption("Low End Shaders ", "", ">", () -> {
-                                var lowShadersTree:TreeMenuScreen = new TreeMenuScreen("Low Shaders", "Change LOW Shader options (Hardest to run -> easiest to run, top to bottom).");
-                                lowShadersTree.add(new Checkbox("Static Shaders", "Enable/Disable Static Shaders.", "static", null, FlxG.save.data));
-                                lowShadersTree.add(new Checkbox("Pixel Shaders", "Enable/Disable Pixel Shaders.", "pixel", null, FlxG.save.data));
-                                lowShadersTree.add(new Checkbox("Saturation Shaders", "Enable/Disable Saturation Shaders.", "saturation", null, FlxG.save.data));
-                                lowShadersTree.add(new Checkbox("Impact Shaders", "Enable/Disable Impact Shaders.", "impact", null, FlxG.save.data));
-                                spefShadersTree.parent.addMenu(lowShadersTree);
-                                
-                                for (i => member in lowShadersTree.members)
-                                    member.members[0].color = FlxColor.interpolate(0xFF88FF5D, 0xFFFFFFFF, i/lowShadersTree.members.length);
-                            }));
-                            lowEndText.color = 0xFFC2FFAC;
-                            menu.parent.addMenu(spefShadersTree);
-                        }));
+			switch(node.name) {
+				case "checkbox":
+					if (!node.has.id) {
+						Logs.warn("A checkbox option requires an \"id\" for option saving.");
+						continue;
+					}
+					options.push(new Checkbox(name, desc, node.att.id, null, FlxG.save.data));
+				case "number":
+					if (!node.has.id) {
+						Logs.warn("A number option requires an \"id\" for option saving.");
+						continue;
+					}
+					var step = node.has.change ? Std.parseFloat(node.att.change) : (node.has.step ? Std.parseFloat(node.att.step) : null);
+					options.push(new NumOption(name, desc, Std.parseFloat(node.att.min), Std.parseFloat(node.att.max), step, node.att.id, null, FlxG.save.data));
+				case "choice":
+					if (!node.has.id) {
+						Logs.warn("A choice option requires an \"id\" for option saving.");
+						continue;
+					}
 
-                        menu.members[0].changedCallback(Std.string(Options.quality));
-                        shaderOption.selectCallback();
+					var optionOptions:Array<Dynamic> = [];
+					var optionDisplayOptions:Array<String> = [];
 
-                    // ========== 修改后的 miscellaneous 部分 ==========
-                    case "optionsTree.miscellaneous-name":
-                        // 先保留第一个成员的引用，以便后续操作
-                        var firstMember = menu.members[0];
-                        
-                        // 移除中间所有选项，直到只剩第一个和最后一个
-                        while (menu.members.length > 2) {
-                            menu.members.remove(menu.members[1]);
-                        }
-                        
-                        #if desktop
-                        // 桌面端：移除原最后一项，并添加 Genocides Swag 作为新的最后一项（第二个）
-                        menu.members.remove(menu.members[1]); // 移除原来的最后一个
-                        var gSwagCheck = new Checkbox(
-                            "Genocides Swag",
-                            "Uncheck this if you cannot play Genocides. You'll loose a VERY swag surprise....",
-                            "gSwag",
-                            null,
-                            FlxG.save.data
-                        );
-                        menu.add(gSwagCheck);
-                        #end
-                        
-                        // 覆盖重置存档按钮的回调（如果它恰好在保留的两个中）
-                        for (member in menu.members) {
-                            if (member.rawText == "MiscOptions.resetSaveData-name") {
-                                member.selectCallback = () -> {
-                                    FunkinSave.save.erase();
-                                    FunkinSave.highscores.clear();
-                                    FunkinSave.flush();
-                                    
-                                    FlxG.save.erase();
-                                    FlxG.save.data.dustinMigrated = true;
-                                    FlxG.save.flush();
-                                    
-                                    ModsFolder.switchMod(ModsFolder.currentModFolder);
-                                }
-                            }
-                        }
-                    // =========================================
-                }
-                for(member in menu.members) {
-                    if(member.__text != null) {
-                        var txt = textCrispy(new FunkinText(0, 0, 0, member.__text.text, 24, false));
-                        txt.setFormat(Paths.font("8bit-jve.ttf"), 68, member.__text.color, 'left');
+					for(choice in node.elements) {
+						optionOptions.push(choice.att.value);
+						optionDisplayOptions.push(choice.att.name);
+					}
 
-                        if(member.checkbox != null) {
-                            member.checkbox.x = member.__text.x + txt.width + 20;
-                            member.checkbox.y -= txt.height * .25;
-                        }
+					if(optionOptions.length > 0)
+						options.push(new ArrayOption(name, desc, optionOptions, optionDisplayOptions, node.att.id, null, FlxG.save.data));
+				case 'radio':
+					if (!node.has.id) {
+						Logs.warn("A radio option requires an \"id\" for option saving.");
+						continue;
+					}
+					var f = Std.parseFloat(node.att.value);
+					options.push(new RadioButton(screen, name, desc, node.att.id, Math.isNaN(f) ? node.att.value : f, null, FlxG.save.data, node.has.forId ? node.att.forId : null));
+				case 'slider':
+					if (!node.has.id) {
+						Logs.warn("A slider option requires an \"id\" for option saving.");
+						continue;
+					}
+					var step = node.has.change ? Std.parseFloat(node.att.change) : (node.has.step ? Std.parseFloat(node.att.step) : null);
+					var segments = node.has.segments ? Std.parseInt(node.att.segments) : 5;
+					options.push(new SliderOption(name, desc, Std.parseFloat(node.att.min), Std.parseFloat(node.att.max), step, segments, node.att.id, Std.parseInt(node.att.barWidth), null, FlxG.save.data));
+				case "menu":
+					options.push(new TextOption(name, desc, ' >', () -> {
+						var screen = new TreeMenuScreen(name, desc, node.getAtt("prefix").getDefault(""));
+						for (o in parseOptionsFromXML(screen, node)) screen.add(o);
+						addMenu(screen);
+					}));
+			}
+		}
 
-                        if(member.__number != null) {
-                            member.__number.visible = false;
-                            var numTxt = textCrispy(new FunkinText(txt.width + 15, 0, 0, member.__number.text, 24, false));
-                            numTxt.setFormat(Paths.font("8bit-jve.ttf"), 68, member.__text.color, 'left');
-                            if (member.text == "Strum Overlay") {
-                                txt.onDraw = (spr) -> {
-                                    previewSprite.ID = previewSpriteOverlay.ID = (member.alpha == 1 ? 0 : 1);
-                                    txt.draw();
-                                }
-                            }
-                            member.changedCallback = (num) -> {
-                                numTxt.text = ": " + num;
-                            }
-                            member.add(numTxt);
-                        }
-
-                        if(member.slider != null) {
-                            member.slider.x = member.__text.x + txt.width;
-                            //member.slider.y -= txt.height * .25;
-                        }
-
-                        if(member.__selectionText != null) {
-                            member.__selectionText.visible = false;
-                            var selTxt = textCrispy(new FunkinText(txt.width + 15, 0, 0, member.__selectionText.text, 24, false));
-                            selTxt.setFormat(Paths.font("8bit-jve.ttf"), 68, member.color, 'left');
-                            switch(member.rawText) {
-                                case "AppearanceOptions.Advanced.quality-name":
-                                    member.changedCallback = (val:String) -> {
-                                        var qualitly:Int = Std.parseInt(val);
-                                        switch (qualitly) {
-                                            case 0: // LOW
-                                                set_shaders_low();
-                                            case 1: // HIGH
-                                                set_shaders_high();
-                                        }
-
-                                        if (qualitly <= 1) Options.antialiasing = true;
-                                        menu.members[1].checked = Options.antialiasing;
-                                        menu.members[2].checked = Options.gameplayShaders;
-
-                                        for (member in 0...menu.members.length) 
-                                            menu.members[member].locked = false;
-                                        
-                                        menu.members[3].locked = qualitly <= 1;
-                                        menu.members[2].locked = qualitly <= 1;
-
-                                        var antialiasing = qualitly == 0 ? false : (qualitly == 1 ? true : Options.antialiasing);
-                                        FlxG.game.stage.quality = (FlxG.enableAntialiasing = antialiasing) ? 0/*BEST*/ : 2/*LOW*/;
-                                        selTxt.text = member.formatTextOption();
-                                    };
-                                default:
-                                    member.changedCallback = (str) -> {
-                                        selTxt.text = member.formatTextOption();
-                                    }
-                            }
-                            member.add(selTxt);
-                        }
-                        member.remove(member.__text);
-                        member.add(txt);
-                    }
-                }
-            }
-        }
-    }
-}
-
-var markup:Array<FlxTextFormatMarkerPair> = [
-    new FlxTextFormatMarkerPair(new FlxTextFormat(0xFFFF5D5D), "*"),
-    new FlxTextFormatMarkerPair(new FlxTextFormat(0xFF55DAFF), "#"),
-    new FlxTextFormatMarkerPair(new FlxTextFormat(0xFFFFFF00), "_")
-];
-
-function postUpdate() {
-    if(descText != descLabel.text) {
-        descLabel.text = descLabel.text.replace("Naughtyness", "Mechanics");
-        descLabel.applyMarkup(descLabel.text, markup);
-        descText = descLabel.text;
-    }
-}
-
-function globalUpdate(elapsed:Float) {
-    if(KeybindsOptions.instance != null) {
-        if(KeybindsOptions.instance.scriptName == "optionsTree.controls-desc") {
-            KeybindsOptions.instance.scriptName = "options/KeybindsOptions";
-            KeybindsOptions.instance.scriptsAllowed = true;
-            KeybindsOptions.instance.loadScript();
-            KeybindsOptions.instance.stateScripts.call("create");
-        }
-    }
-}
-
-function destroy() {
-    FlxG.save.flush(); // I am tired of the variables reseting sometimes
+		return options;
+	}
 }
