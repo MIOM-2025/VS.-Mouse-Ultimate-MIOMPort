@@ -20,8 +20,6 @@ import openfl.Assets;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.text.TextFormat;
-import openfl.text.TextField;
-import openfl.text.Font;
 import openfl.utils.AssetLibrary;
 #if sys
 import sys.FileSystem;
@@ -51,15 +49,20 @@ class Main extends Sprite
 	public static var scaleMode:FunkinRatioScaleMode;
 	public static var framerateSprite:Framerate;
 
-	var gameWidth:Int = 1280;
-	var gameHeight:Int = 720;
-	var skipSplash:Bool = true;
-	var startFullscreen:Bool = false;
+	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels).
+	var gameHeight:Int = 720; // Height of the game in pixels (might be less / more in actual pixels).
+	var skipSplash:Bool = true; // Whether to skip the flixel splash screen that appears in release mode.
+	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 
 	public static var game:FunkinGame;
 
+	/**
+	 * The time since the game was focused last time in seconds.
+	 */
 	public static var timeSinceFocus(get, never):Float;
 	public static var time:Int = 0;
+
+	// You can pretty much ignore everything from here on - your code should go in your states.
 
 	public static function preInit() {
 		funkin.backend.utils.NativeAPI.registerAsDPICompatible();
@@ -79,43 +82,9 @@ class Main extends Sprite
 		MobileUtil.initDirectory();
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
-
-		// ==== 解压进度数字 ====
-		// VCR 字体：优先用 Assets 里嵌入的 fontName，拿不到就退到族名
-		var vcrFontName:String = "VCR OSD Mono";
-		try {
-			var vcrFont = Assets.getFont("assets/fonts/vcr.ttf");
-			if (vcrFont != null && vcrFont.fontName != null && vcrFont.fontName.length > 0)
-				vcrFontName = vcrFont.fontName;
-		} catch (e:Dynamic) {
-			// 静默 fallback
-		}
-
-		var progressText = new TextField();
-		progressText.text = "";
-		progressText.textColor = 0xFFFFFF;
-		progressText.selectable = false;
-		progressText.mouseEnabled = false;
-		progressText.defaultTextFormat = new TextFormat(vcrFontName, 48);
-		progressText.setTextFormat(progressText.defaultTextFormat);
-		progressText.x = 20;
-		progressText.y = 20;
-		progressText.autoSize = openfl.text.TextFieldAutoSize.LEFT;
-		addChild(progressText);
-
-		// ==== 分帧异步解压，UI 每帧刷新 ====
-		MobileUtil.copyAssetsAsync(
-			function(_, copied, total) {
-				// 只显示 "剩余/总数"
-				progressText.text = '${total - copied}/$total';
-			},
-			function() {
-				if (progressText.parent != null) removeChild(progressText);
-				progressText = null;
-			}
-		);
+		//Sys.setCwd(haxe.io.Path.addTrailingSlash(MobileUtil.getDirectory()));
+		MobileUtil.copyAssets();
 		#end
-
 		CrashHandler.init();
 
 		#if !web framerateSprite = new Framerate(); #end
@@ -142,6 +111,7 @@ class Main extends Sprite
 		#end;
 	public static var startedFromSource:Bool = #if TEST_BUILD true #else false #end;
 
+	// DEPRECATED
 	@:dox(hide) public static function execAsync(func:Void->Void) ThreadUtil.execAsync(func);
 
 	private static function getTimer():Int {
@@ -253,7 +223,11 @@ class Main extends Sprite
 	}
 
 	private static function onStateSwitchPost() {
+		// manual asset clearing since base openfl one does'nt clear lime one
+		// does'nt clear bitmaps since flixel fork does it auto
+
 		@:privateAccess {
+			// clear uint8 pools
 			for(length=>pool in openfl.display3D.utils.UInt8Buff._pools) {
 				for(b in pool.clear())
 					b.destroy();
