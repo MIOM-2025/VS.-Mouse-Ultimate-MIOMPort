@@ -23,13 +23,6 @@ var buttonsReady:Bool = false;
 var choiceMade:Bool = false;
 
 function postCreate() {
-    // ---- 新增：存档跳过逻辑 ----
-    if (FlxG.save.data.warning == false) {
-        FlxG.switchState(new TitleState());
-        return;
-    }
-    // --------------------------
-
     MusicBeatTransition.script = null;
     bg1 = new FlxBackdrop(Paths.image('pause/background-gray-2'));
     bg1.velocity.set(-50, -50);
@@ -179,15 +172,12 @@ function showScreen(icon:FunkinSprite, txt:FunkinText, color:Int) {
 }
 
 function hideScreen(icon:FunkinSprite, txt:FunkinText) {
-    var moveDelta = FlxG.height - txt.y; // 计算第一句的移动距离
-
     FlxTween.tween(icon, {alpha: 0}, 0.5, {ease: FlxEase.quadInOut});
-    FlxTween.tween(txt, {alpha: 0, y: txt.y + moveDelta}, 0.5, {ease: FlxEase.quintOut});
+    FlxTween.tween(txt, {alpha: 0, y: FlxG.height}, 0.5, {ease: FlxEase.quintOut});
     FlxTween.tween(icon.scale, {x: 0.1, y: 0.1}, 0.5, {ease: FlxEase.quadIn});
 
     if (txt == flashingLightsText) {
-        // 让第二句也以相同的位移量向下移动
-        FlxTween.tween(promptGroup, {alpha: 0, y: promptGroup.y + moveDelta}, 0.5, {ease: FlxEase.quintOut});
+        FlxTween.tween(promptGroup, {alpha: 0}, 0.5, {ease: FlxEase.quadInOut});
         FlxTween.tween(yesBtn, {alpha: 0}, 0.3);
         FlxTween.tween(noBtn, {alpha: 0}, 0.3);
     }
@@ -233,9 +223,9 @@ function update(elapsed:Float) {
         }
     }
 
-    // 第二页：鼠标点击任意位置继续（防连点已在内部处理）
+    // 第二页：鼠标点击任意位置继续
     if (canPress && step == 1 && FlxG.mouse.justPressed) {
-        canPress = false; // 立即锁住，防止过渡中再次触发
+        canPress = false;
         hideScreen(headphonesIcon, headphonesText);
         FlxTween.tween(bg1, {alpha: 0}, 0.8);
         FlxG.sound.play(Paths.sound('stickersounds/mouse/4'), 0.5);
@@ -246,20 +236,14 @@ function update(elapsed:Float) {
 }
 
 function onChoiceMade(isYes:Bool) {
-    // ---- 新增：保存存档，下次不再弹出 ----
-    FlxG.save.data.warning = false;
-    FlxG.save.flush();
-    // -----------------------------------
-
     choiceMade = true;
     buttonsReady = false;
 
-    // 根据选择更新闪烁设定，并播放音效
+    // 根据选择播放音效
     if (!isYes) {
         Options.flashingLights = false;
         FlxG.sound.play(Paths.sound('settingTurnOff'));
     } else {
-        Options.flashingLights = true; // 显式设为 true
         FlxG.sound.play(Paths.sound('stickersounds/mouse/4'), 0.5);
     }
 
@@ -271,9 +255,9 @@ function onChoiceMade(isYes:Bool) {
 
     // 被点击的按钮水平移动到屏幕中央（Y 不变），并放大
     var targetX = (FlxG.width - chosen.width) / 2;
-    FlxTween.tween(chosen, {x: targetX}, 0.5, {ease: FlxEase.expoInOut});
+    FlxTween.tween(chosen, {x: targetX}, 0.5, {ease: FlxEase.quadInOut});
     FlxTween.tween(chosen.scale, {x: 1.2, y: 1.2}, 0.5, {
-        ease: FlxEase.expoInOut,
+        ease: FlxEase.quadInOut,
         onComplete: function(_) {
             // 移动到中央后，等待 0.5 秒再进入下一步
             new FlxTimer().start(0.5, function(_) {

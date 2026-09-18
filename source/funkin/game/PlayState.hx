@@ -581,6 +581,8 @@
 		@:noCompletion @:dox(hide) private var _startCountdownCalled:Bool = false;
 		@:noCompletion @:dox(hide) private var _endSongCalled:Bool = false;
 
+		@:noCompletion @:dox(hide) private static var _ONE_ARG:Array<Dynamic> = [null];
+
 		@:dox(hide)
 		var __vocalSyncTimer:Float = 1;
 
@@ -938,6 +940,13 @@
 			if (chartingMode) {
 				WindowUtils.prefix = Charter.undos.unsaved ? Flags.UNDO_PREFIX : "";
 				WindowUtils.suffix = TU.translate("playtesting.chartPlaytesting");
+				if (Flags.CHANGE_WINDOW_TITLE_PLAYSTATE) {
+					WindowUtils.prefix = Charter.undos.unsaved ? Flags.UNDO_PREFIX : "";
+					WindowUtils.suffix = TU.translate("playtesting.chartPlaytesting");
+				}
+
+				WindowUtils.prefix = Charter.undos.unsaved ? Flags.UNDO_PREFIX : "";
+				WindowUtils.suffix = TU.translate("playtesting.chartPlaytesting");
 
 				SaveWarning.showWarning = Charter.undos.unsaved;
 				SaveWarning.selectionClass = CharterSelection;
@@ -1110,6 +1119,7 @@
 			addHitbox(Options.hitboxMode + extraKeyString);
 			addHitboxCamera();
 			for (hitbox in mobileManager.hitboxes) {
+				hitbox.showAlpha = Options.hitboxAlpha;
 				if (getMobilePadButton("pause") != null)
 					hitbox.deadZones.push(getMobilePadButton("pause"));
 			}
@@ -1151,7 +1161,7 @@
 
 			super.destroy();
 
-			WindowUtils.resetAffixes();
+			if (Flags.CHANGE_WINDOW_TITLE_PLAYSTATE) WindowUtils.resetAffixes();
 			SaveWarning.reset();
 
 			instance = null;
@@ -1331,7 +1341,7 @@
 			paused = true;
 
 			// 1 / 1000 chance for Gitaroo Man easter egg
-			if (allowGitaroo && FlxG.random.bool(Flags.GITAROO_CHANCE))
+			if (!chartingMode && allowGitaroo && FlxG.random.bool(Flags.GITAROO_CHANCE))
 			{
 				// gitaroo man easter egg
 				FlxG.switchState(new GitarooPause());
@@ -1428,11 +1438,12 @@
 		@:dox(hide)
 		override public function update(elapsed:Float)
 		{
-			scripts.call("update", [elapsed]);
+			_ONE_ARG[0] = elapsed;
+			scripts.call("update", _ONE_ARG);
 
 			if (inCutscene) {
 				super.update(elapsed);
-				scripts.call("postUpdate", [elapsed]);
+				scripts.call("postUpdate", _ONE_ARG);
 				return;
 			}
 
@@ -1445,14 +1456,9 @@
 			if (Options.camZoomOnBeat && camZooming) {
 				var beat = Conductor.getBeats(camZoomingEvery, camZoomingInterval, camZoomingOffset);
 				if (camZoomingLastBeat != beat) {
-					camZoomingLastBeat = beat;
-					if (useCamZoomMult) {
-						if (camZoomingMult < maxCamZoomMult) camZoomingMult += camZoomingStrength;
-					}
-					else if (FlxG.camera.zoom < maxCamZoom) {
-						FlxG.camera.zoom += camGameZoomMult * camZoomingStrength;
-						camHUD.zoom += camHUDZoomMult * camZoomingStrength;
-					}
+				camZoomingLastBeat = beat;
+
+				doBopZoom();
 				}
 			}
 
@@ -1522,7 +1528,7 @@
 
 			super.update(elapsed);
 
-			scripts.call("postUpdate", [elapsed]);
+			scripts.call("postUpdate", _ONE_ARG);
 		}
 
 		override function draw() {
@@ -1530,6 +1536,29 @@
 			if (!e.cancelled)
 				super.draw();
 			scripts.event("postDraw", e);
+		}
+
+		public function doBopZoom()
+		{
+			var event:BopZoomEvent = EventManager.get(BopZoomEvent).recycle(useCamZoomMult, maxCamZoomMult, camZoomingStrength);
+			gameAndCharsEvent("onBopZoom", event);
+
+			if (event.cancelled)
+			{
+				gameAndCharsEvent("onPostBopZoom", event);
+				return;
+			}
+
+			if (event.useZoomMultiplier) {
+				if (camZoomingMult < event.maxZoomMultiplier)
+					camZoomingMult += event.zoomStrength;
+			}
+			else if (FlxG.camera.zoom < maxCamZoom) {
+				FlxG.camera.zoom += camGameZoomMult * event.zoomStrength;
+					camHUD.zoom += camHUDZoomMult * event.zoomStrength;
+			}
+
+			gameAndCharsEvent("onPostBopZoom", event);
 		}
 
 		public function moveCamera() if (strumLines.members[curCameraTarget] != null) {
@@ -1682,6 +1711,9 @@
 
 					if (event.params[0] == false) {
 						cam.zoom = finalZoom;
+						if (cam == camHUD) defaultHudZoom = finalZoom;
+						else defaultCamZoom = finalZoom;
+					} else if (event.params[4] == "CLASSIC") {
 						if (cam == camHUD) defaultHudZoom = finalZoom;
 						else defaultCamZoom = finalZoom;
 					} else

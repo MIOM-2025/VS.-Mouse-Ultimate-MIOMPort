@@ -3,31 +3,27 @@
 const float amount = 1.0;
 
 uniform float dim;
+float Directions = 16.0;
+float Quality = 8.0;
 uniform float Size;
 
 void main(void)
 {
     vec2 uv = openfl_TextureCoordv.xy;
-    vec2 texSize = openfl_TextureSize;
-    vec2 scale = Size / texSize;
+    float Pi = 6.28318530718;
+    vec4 Color = flixel_texture2D(bitmap, uv);
 
-    vec4 color = flixel_texture2D(bitmap, uv);
-    vec4 sum = color;
+    for(float d = 0.0; d < Pi; d += Pi / Directions)
+    {
+        for(float i = 1.0 / Quality; i <= 1.0; i += 1.0 / Quality)
+        {
+            float ex = (cos(d) * Size * i) / openfl_TextureSize.x;
+            float why = (sin(d) * Size * i) / openfl_TextureSize.y;
+            Color += flixel_texture2D(bitmap, uv + vec2(ex, why));
+        }
+    }
 
-    // 8 directions hardcoded (angles: 0, 45, 90, 135, 180, 225, 270, 315)
-    sum += flixel_texture2D(bitmap, uv + vec2( 1.0,  0.0) * scale);
-    sum += flixel_texture2D(bitmap, uv + vec2( 0.70710678,  0.70710678) * scale);
-    sum += flixel_texture2D(bitmap, uv + vec2( 0.0,  1.0) * scale);
-    sum += flixel_texture2D(bitmap, uv + vec2(-0.70710678,  0.70710678) * scale);
-    sum += flixel_texture2D(bitmap, uv + vec2(-1.0,  0.0) * scale);
-    sum += flixel_texture2D(bitmap, uv + vec2(-0.70710678, -0.70710678) * scale);
-    sum += flixel_texture2D(bitmap, uv + vec2( 0.0, -1.0) * scale);
-    sum += flixel_texture2D(bitmap, uv + vec2( 0.70710678, -0.70710678) * scale);
-
-    // Compensation factor: original 128 samples / 8 samples = 16, combined with denominator
-    float factor = 16.0 / (dim * 128.0 - 15.0);
-    sum *= factor;
-
-    vec4 bloom = (color / dim) + sum;
+    Color /= (dim * Quality) * Directions - 15.0;
+    vec4 bloom = (flixel_texture2D(bitmap, uv) / dim) + Color;
     gl_FragColor = bloom;
 }

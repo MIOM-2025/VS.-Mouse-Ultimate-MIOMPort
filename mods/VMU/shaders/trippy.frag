@@ -1,6 +1,8 @@
 #pragma header
 
+vec2 iResolution = openfl_TextureSize;
 uniform float iTime;
+
 uniform float darkness;
 uniform float intensity;
 

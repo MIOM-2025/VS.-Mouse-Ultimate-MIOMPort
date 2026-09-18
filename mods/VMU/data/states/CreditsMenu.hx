@@ -5,13 +5,12 @@ import funkin.backend.utils.DiscordUtil;
 import openfl.display.BlendMode;
 import flixel.util.FlxAxes;
 import flixel.text.FlxText;
-import flixel.FlxCamera;  // 新增
 
 var iconGroup:FlxTypedGroup<FunkinSprite>;
 var iconTimers:Array<Float> = [];
-var folders:Array<String> = ["directors", "coders", "artnim", "musicians", "va", "port", "specialthanks"]; // folder Categories .
+var folders:Array<String> = ["directors", "coders", "artnim", "musicians", "va", "specialthanks"]; // folder Categories .
 var milestones:Array<Int> = [500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000, 12500, 15000, 17500, 20000, 25000, 30000, 35000, 40000, 45000, 50000];
-var folderCounts:Array<Int> = [4, 3, 16, 7, 3, 6, 21]; 
+var folderCounts:Array<Int> = [4, 3, 16, 7, 3, 21]; 
 
 // THIS WAS A PAIN TO WRITE
 var creditNames:Array<Array<String>> = [
@@ -20,7 +19,6 @@ var creditNames:Array<Array<String>> = [
     ["totallynotdumb", "Borupen", "flyplague", "Novasaur", "Candias", "SkeeterYeti", "weedeet", "Stonesteve", "PaigeyPaper", "FadoraDude", "ToasterTrash", "BrownieBro", "Bradley", "Erick Animations", "TerminalRepo", "Mr. DJ"], // artnim
     ["MarStarBro", "Drop0ff", "RiverMusic", "smileysqueak", "JordoPrice", "Olimac31", "Cytrogen"],
     ["Smooth Brewed Sound", "Donald Ducc", "Brock Baker"],
-    ["MIOM", "Icarus Higgs", "Luzew", "Wolf Yeying", "Exist", "wsha"], 
     ["MickeyTesticles", "Ristar", "Gally", "TheShipySea", "Xender", "JukoDuko", "DuskieWhy", "SariSorta", "LuigiOmega", "Skylar", "CableKid", "ComicVito", "MuraSaki", "PurbleBun/Polygon64", "Toknull", "Rookies Team", "MOUSE! Team", "The Funkin' Crew Inc.", "Disney", "And you!", "NICE"]
 ];
 
@@ -33,12 +31,11 @@ var creditRoles:Array<Array<String>> = [
     "Sprite Artist", "Sprite Artist", "Sprite Artist, Concept Artist & Animator", "Sprite Artist", "Sprite, Thumbnail, Concept, Visualizer Artist & Animator"], // this sucks im sorry
     ["Musician", "Musician", "Musician", "Musician", "Musician", "Musician", "Musician"],
     ["Mickey Mouse VA", "Donald Duck VA", "Goofy VA"],
-    ["Lead porter", "Port Playtester", "Port Playtester", "Port Playtester", "Port Playtester", "Port Playtester"], 
     ["Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks", "Special Thanks"]
 ];
 
 var folderDisplayNames:Array<String> = [ // this is OBVIOUSLY for da category text
-    "Directors",  "Programmers", "Art / Animation", "Musicians", "Voice Actors", "Port developer", "Special Thanks!"];
+    "Directors",  "Programmers", "Art / Animation", "Musicians", "Voice Actors", "Special Thanks!"];
 
 var curSelected:Int = 0;
 var animSpeed:Float = 0.15;
@@ -46,12 +43,6 @@ var totalClicks:Int = 0;
 var cooldown:Float = 0;
 var clickCounterText, descText, roleTxt:FunkinText;
 var trophy:FunkinSprite; // DONT LET THEM KNOW! Well. I Suppose it is kind of visible in its own way...
-
-// ---------- 新增 Back 按钮相关变量 ----------
-var backButton:FlxText;
-var backCam:FlxCamera;
-var pendingBack:Bool = false;
-var mouseOverBack:Bool = false;
 
 function postCreate() {
     CoolUtil.playMusic(Paths.music("credits"), false, 1, true, 80);
@@ -110,23 +101,6 @@ function postCreate() {
     trophy.alpha = 0;
     add(trophy);
 
-    // ---------- 创建 Back 按钮（左下角） ----------
-    backButton = new FlxText(15, FlxG.height - 100, 0, "Back", 48);
-    backButton.setFormat(Paths.font("WickedMouse.ttf"), 48, FlxColor.WHITE, "left");
-    backButton.antialiasing = Options.antialiasing;
-    backButton.borderStyle = FlxTextBorderStyle.OUTLINE;
-    backButton.borderColor = FlxColor.BLACK;
-    backButton.borderSize = 3;
-
-    backCam = new FlxCamera(0, 0, FlxG.width, FlxG.height);
-    backCam.bgColor = FlxColor.TRANSPARENT;
-    backCam.zoom = 1;
-    backCam.scroll.set(0, 0);
-    FlxG.cameras.add(backCam);
-
-    backButton.cameras = [backCam];
-    add(backButton);
-
     new FlxTimer().start(2, function(tmr:FlxTimer) updateDiscordRPC(), 0);
     loadIcons();
 }
@@ -182,23 +156,6 @@ function update(elapsed:Float) {
 
     if (controls.BACK) FlxG.switchState(new MainMenuState());
 
-    // ---------- Back 按钮交互逻辑 ----------
-    var backMousePos = FlxG.mouse.getWorldPosition(backCam);
-    mouseOverBack = backButton.overlapsPoint(backMousePos);
-    backButton.color = mouseOverBack ? FlxColor.BLUE : FlxColor.WHITE;
-
-    if (FlxG.mouse.justPressed) {
-        if (mouseOverBack) {
-            pendingBack = true;
-        }
-    }
-    if (FlxG.mouse.justReleased) {
-        if (pendingBack && mouseOverBack) {
-            goBack();
-        }
-        pendingBack = false;
-    }
-
 	var leftP = FlxG.keys.justPressed.LEFT || (FlxG.mouse.overlaps(leftScrollText) && FlxG.mouse.justPressed);
 	var rightP = FlxG.keys.justPressed.RIGHT || (FlxG.mouse.overlaps(rightScrollText) && FlxG.mouse.justPressed);
 	var scroll = FlxG.mouse.wheel;
@@ -243,7 +200,7 @@ function update(elapsed:Float) {
             FlxG.sound.play(Paths.sound("squish/itsMe"), 1);
             cooldown = 10;
         }
-        if (curSelected == 6) {
+        if (curSelected == 5) {
             roleText.alpha = 0; 
             roleText.text = "";
         } else {
@@ -255,7 +212,6 @@ function update(elapsed:Float) {
         roleText.alpha = FlxMath.lerp(roleText.alpha, 0, 0.15 * 60 * elapsed);
     }
 
-    // 图标点击处理（注意不要和 Back 按钮冲突，Back 按钮在左下角，图标在中央）
     if (isHoveringAny && FlxG.mouse.justPressed) {
         var icon = iconGroup.members[hoveredID];
         
@@ -319,9 +275,4 @@ function updateDiscordRPC() {
     }
     
     DiscordUtil.changePresence("Credits Menu", "Clicks: " + totalClicks + " (Trophies: " + unlockedCount + "/25)");
-}
-
-// ---------- 退出按钮回调 ----------
-function goBack() {
-    FlxG.switchState(new MainMenuState());
 }

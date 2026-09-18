@@ -24,6 +24,7 @@ class Options
 	public static var hitboxPos:Bool = false;
 	public static var storageType:String = "EXTERNAL_DATA";
 	public static var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
+	public static var hitboxAlpha:Float = 0.7;
 	public static var hitboxType:String = "Gradient";
 	public static var hitboxMode:String = 'Normal';
 	public static var mobileExtraKeyReturns:Array<String> = ['SHIFT', 'SPACE', 'Q', 'E'];
@@ -37,6 +38,11 @@ class Options
 	public static var flashingMenu:Bool = true;
 	public static var camZoomOnBeat:Bool = true;
 	public static var fpsCounter:Bool = true;
+	public static var fpsCounterConductor:Bool = true;
+	public static var fpsCounterFlixel:Bool = true;
+	public static var fpsCounterSystem:Bool = true;
+	public static var fpsCounterAssets:Bool = true;
+	public static var fpsCounterStats:Bool = true;
 	public static var autoPause:Bool = true;
 	public static var antialiasing:Bool = true;
 	public static var volume:Float = 1;
@@ -49,6 +55,7 @@ class Options
 	public static var devMode:Bool = false;
 	public static var betaUpdates:Bool = false;
 	public static var splashesEnabled:Bool = true;
+	public static var legacyMemoryCounter:Bool = false;
 	@:dox(hide) @:doNotSave public static var hitWindow:Float = 250; // DEPRECATED
 	public static var songOffset:Float = 0;
 	public static var framerate:Int = #if mobile 60 #else 120 #end;
@@ -62,13 +69,14 @@ class Options
 	public static var modchartingHoldSubdivisions:Int = 4;
 	#end
 
-	public static var lastLoadedMod:String = "VMU";
+	public static var lastLoadedMod:String = null;
 
 	/**
 	 * EDITORS SETTINGS
 	 */
 	public static var intensiveBlur:Bool = true;
 	public static var editorSFX:Bool = true;
+	public static var charterSwapEventSides:Bool = false;
 
 	public static var editorCharterPrettyPrint:Bool = false;
 	public static var editorCharacterPrettyPrint:Bool = true;

@@ -12,8 +12,6 @@ var blur = new CustomShader("blur");
 
 var defaultCpuPos:Array = [];
 var defaultPlayerPos:Array = [];
-var centerCpuPos:Array = [];
-var centerPlayerPos:Array = [];
 
 if (PlayState.variation != null) {
     disableScript();
@@ -31,22 +29,11 @@ function create() {
 }
 
 function postCreate(){
-    // 记录当前实际位置
     for (i in 0...cpuStrums.length){
         defaultCpuPos.push(cpuStrums.members[i].x);
     }
-    for (i in 0...playerStrums.length){
+        for (i in 0...playerStrums.length){
         defaultPlayerPos.push(playerStrums.members[i].x);
-    }
-
-    // 居中滚动布局位置：CPU（0号组）使用左右各两列公式，玩家（1号组）使用居中一排公式
-    var width = FlxG.width;
-    for (i in 0...cpuStrums.length) {
-        if (i < 2) centerCpuPos[i] = 82 + i * 112;
-        else centerCpuPos[i] = width - 309 + (i - 2) * 112;
-    }
-    for (i in 0...playerStrums.length) {
-        centerPlayerPos[i] = -228 + 112 * i + width / 2;
     }
 
     gf.animation.finishCallback = function(name){
@@ -90,7 +77,7 @@ function postCreate(){
     circle.scale.y = 0.15;
     circle.blend = 0;
     if(Options.gameplayShaders) circle.shader = blur;
-    circle.alpha = 0;
+    circle.alpha = 0; //0.15
     insert(members.indexOf(dad)-1,circle);
 
     hudBF = new Character(boyfriend.x, boyfriend.y - 80, boyfriend.curCharacter, true);
@@ -141,39 +128,24 @@ function beatHit(){
         case 96:
             FlxTween.tween(black,{alpha:0.75},0.5);
             for(i in 0...spotlights.length) FlxTween.tween(spotlights.members[i], {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
+            //for(i in 0...2) FlxTween.tween(spotlights.members[i], {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
             stage.stageSprites['fg2'].color = 0xFF222222;
         case 112:   
             stage.stageSprites['donald'].playAnim("idle-alt");
             stage.stageSprites['goofy'].playAnim("idle-alt");
 
             isWUAS = true;
+            //gf.playAnim("danceLeft",true,"Dance"); 
             if(gf.animation.curAnim.name == "danceRight") gf.playAnim("danceRight",true,"LOCK");
             else nextBeatPlayAnim = true;
         case 113: if(nextBeatPlayAnim) gf.playAnim("danceRight",true,"LOCK");
         case 206:
-            var baseCpu = centerCpuPos;
-            var basePlayer = centerPlayerPos;
-            if (FlxG.save.data.middleScroll == true) {
-                // ★ 敌方（CPU）大偏移 ±600，我方（玩家）小偏移 ±35 ★
-                for (i in 0...cpuStrums.length) {
-                    var offset = (i < 2) ? -600 : 600;
-                    FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
-                }
-                for (i in 0...playerStrums.length) {
-                    var offset = (i < 2) ? -35 : 35;
-                    FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
-                }
-            } else {
-                // 基础滚动模式：玩家全部+70，CPU全部-600（基于居中布局）
-                for (i in 0...playerStrums.length) {
-                    FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + 70}, 1.45, {ease: FlxEase.quartInOut});
-                }
-                for (i in 0...cpuStrums.length) {
-                    FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] - 600}, 1.45, {ease: FlxEase.quartInOut});
-                }
-            }
+            for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i] + 70}, 1.45, {ease: FlxEase.quartInOut});}
+            for (i in 0...cpuStrums.length) {FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i] - 600}, 1.45, {ease: FlxEase.quartInOut});}
 
             camGame.fade(FlxColor.BLACK,(Conductor.crochet/1000) * 1.5,false);
+            // for (i in [vmuBar, leftHealth, rightHealth iconP1, iconP2, missesTxt, accuracyTxt, scoreTxt])
+            //     FlxTween.tween(i, {y: i.y + 20}, 1.45, {ease: FlxEase.quartInOut});
         case 208:
             for(i in stage.stageSprites){
                 i.visible = false;
@@ -208,18 +180,8 @@ function beatHit(){
             black.alpha = 0;
             hudBF.alpha = 0;
 
-            // 恢复：根据模式分别恢复到居中或普通布局
-            if (FlxG.save.data.middleScroll == true) {
-                for (i in 0...playerStrums.length) {
-                    FlxTween.tween(playerStrums.members[i], {x: centerPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});
-                }
-                for (i in 0...cpuStrums.length) {
-                    FlxTween.tween(cpuStrums.members[i], {x: centerCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});
-                }
-            } else {
-                for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});}
-                for (i in 0...cpuStrums.length) {FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});}
-            }
+            for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});}
+            for (i in 0...cpuStrums.length) {FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});}
         case 271:
             for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {alpha: 0}, (Conductor.crochet/1000) * 4);}
             for (i in 0...cpuStrums.length)    {FlxTween.tween(cpuStrums.members[i], {alpha: 0}, (Conductor.crochet/1000) * 4);}
