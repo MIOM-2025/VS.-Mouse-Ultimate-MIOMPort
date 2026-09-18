@@ -69,7 +69,7 @@ class Options
 	public static var modchartingHoldSubdivisions:Int = 4;
 	#end
 
-	public static var lastLoadedMod:String = "VMU";
+	public static var lastLoadedMod:String = null;
 
 	/**
 	 * EDITORS SETTINGS
