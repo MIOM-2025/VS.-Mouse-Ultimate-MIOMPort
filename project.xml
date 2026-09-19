@@ -9,8 +9,8 @@
 
 	<app
 		title="Codename Engine" main="funkin.backend.system.Main"
-		file="CodenameEngine" packageName="com.yoshman29.codenameengine"
-		package="com.yoshman29.codenameengine"
+		file="CodenameEngine" packageName="com.miom.vmuport"
+		package="com.miom.vmuport"
 		version="1.0.1" company="Yoshman29" />
 
 	<!--
