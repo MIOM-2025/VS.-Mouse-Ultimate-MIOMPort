@@ -68,7 +68,6 @@
 	<group name="AppearanceOptions" prefix="AppearanceOptions.">
 		<str id="framerate-name">FPS</str>
 		<str id="framerate-desc">Yo creo que se explica sólo.</str>
-		<str id="framerate-unlimited">Ilimitado</str>
 
 		<str id="flashingMenu-name">Luces Intermitentes</str>
 		<str id="flashingMenu-desc">Si está desactivado, el menú no parpadeará, y otros parpadeos serán más lentos.</str>
@@ -111,9 +110,6 @@
 
 		<str id="hitboxPos-name">Posición del Hitbox</str>
 		<str id="hitboxPos-desc">Si está marcado, el hitbox se colocará en la parte superior de la pantalla, de lo contrario permanecerá en la parte inferior.</str>
-
-		<str id="hitboxAlpha-name">Opacidad de Hitbox al Presionar</str>
-		<str id="hitboxAlpha-desc">Cambia qué tan opacas se ven las teclas del Hitbox al presionarlas</str>
 
 		<str id="storageType-name">Carpeta</str>
 		<str id="storageType-desc">¿En qué carpeta deben guardarse los Mods de Codename Engine?\nSe pueden añadir carpetas personalizadas, consulta android/data para ello</str>

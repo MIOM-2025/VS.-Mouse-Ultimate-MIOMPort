@@ -33,7 +33,6 @@ class GlyphInfoWindow extends UIWindow {
 	public var button:ComponentButton;
 	var compon(get, never):AlphabetComponent;
 	var data(get, never):AlphabetLetterData;
-	var advanceStyle(get, never):AdvanceMode;
 
 	public function new() {
 		var width = 360;
@@ -56,7 +55,6 @@ class GlyphInfoWindow extends UIWindow {
 
 			var index = data.components.indexOf(compon);
 			compon.anim = val;
-			data.advanceStyle = advanceStyle;
 			var anim = AlphabetEditor.instance.bigLetter.text + Std.string(index);
 			AlphabetEditor.instance.bigLetter.animation.remove(anim);
 			AlphabetEditor.instance.tape.animation.remove(anim);
@@ -68,7 +66,6 @@ class GlyphInfoWindow extends UIWindow {
 		xBox = new UINumericStepper(prefixBox.x, prefixBox.y + prefixBox.bHeight + itemMargin + labelOffset, 0, 1, 2, null, null, 80);
 		xBox.onChange = valueSet.bind(xBox, function(val) { // kinda dumb but blame cne ui
 			compon.x = -val;
-			data.advanceStyle = advanceStyle;
 		});
 		members.push(xBox);
 
@@ -86,7 +83,6 @@ class GlyphInfoWindow extends UIWindow {
 			compon.scaleX = val;
 			if (outlineCheck.checked)
 				data.components[compon.outIndex].scaleX = val;
-			data.advanceStyle = advanceStyle;
 		});
 		members.push(scaleXBox);
 
@@ -179,7 +175,6 @@ class GlyphInfoWindow extends UIWindow {
 				--AlphabetEditor.instance.outlineIdx;
 				--data.startIndex;
 			}
-			data.advanceStyle = advanceStyle;
 		}
 		members.push(outlineCheck);
 		
@@ -208,7 +203,6 @@ class GlyphInfoWindow extends UIWindow {
 		outlineBox = new UITextBox(colorModeDrop.x, colorModeDrop.y + colorModeDrop.bHeight + itemMargin + labelOffset * 2 + 3, "", 190);
 		outlineBox.onChange = function(val) {
 			data.components[compon.outIndex].anim = val;
-			data.advanceStyle = advanceStyle;
 			var anim = AlphabetEditor.instance.bigLetter.text + Std.string(compon.outIndex);
 			AlphabetEditor.instance.bigLetter.animation.remove(anim);
 			AlphabetEditor.instance.tape.animation.remove(anim);
@@ -221,7 +215,6 @@ class GlyphInfoWindow extends UIWindow {
 		outlineXBox.onChange = valueSet.bind(outlineXBox, function(val) { // kinda dumb but blame cne ui
 			if (outlineCheck.checked)
 				data.components[compon.outIndex].x = val;
-			data.advanceStyle = advanceStyle;
 		});
 		members.push(outlineXBox);
 
@@ -309,13 +302,10 @@ class GlyphInfoWindow extends UIWindow {
 		func(item.value);
 	}
 
-	inline function get_compon() {
+	function get_compon() {
 		return AlphabetEditor.instance.curSelectedComponent;
 	}
-	inline function get_data() {
+	function get_data() {
 		return AlphabetEditor.instance.curSelectedData;
-	}
-	function get_advanceStyle() {
-		return data.advanceStyle == CALCULATED ? AUTO : data.advanceStyle;
 	}
 }

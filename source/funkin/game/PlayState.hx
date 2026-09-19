@@ -1119,7 +1119,6 @@
 			addHitbox(Options.hitboxMode + extraKeyString);
 			addHitboxCamera();
 			for (hitbox in mobileManager.hitboxes) {
-				hitbox.showAlpha = Options.hitboxAlpha;
 				if (getMobilePadButton("pause") != null)
 					hitbox.deadZones.push(getMobilePadButton("pause"));
 			}
@@ -1456,9 +1455,14 @@
 			if (Options.camZoomOnBeat && camZooming) {
 				var beat = Conductor.getBeats(camZoomingEvery, camZoomingInterval, camZoomingOffset);
 				if (camZoomingLastBeat != beat) {
-				camZoomingLastBeat = beat;
-
-				doBopZoom();
+					camZoomingLastBeat = beat;
+					if (useCamZoomMult) {
+						if (camZoomingMult < maxCamZoomMult) camZoomingMult += camZoomingStrength;
+					}
+					else if (FlxG.camera.zoom < maxCamZoom) {
+						FlxG.camera.zoom += camGameZoomMult * camZoomingStrength;
+						camHUD.zoom += camHUDZoomMult * camZoomingStrength;
+					}
 				}
 			}
 
@@ -1536,29 +1540,6 @@
 			if (!e.cancelled)
 				super.draw();
 			scripts.event("postDraw", e);
-		}
-
-		public function doBopZoom()
-		{
-			var event:BopZoomEvent = EventManager.get(BopZoomEvent).recycle(useCamZoomMult, maxCamZoomMult, camZoomingStrength);
-			gameAndCharsEvent("onBopZoom", event);
-
-			if (event.cancelled)
-			{
-				gameAndCharsEvent("onPostBopZoom", event);
-				return;
-			}
-
-			if (event.useZoomMultiplier) {
-				if (camZoomingMult < event.maxZoomMultiplier)
-					camZoomingMult += event.zoomStrength;
-			}
-			else if (FlxG.camera.zoom < maxCamZoom) {
-				FlxG.camera.zoom += camGameZoomMult * event.zoomStrength;
-					camHUD.zoom += camHUDZoomMult * event.zoomStrength;
-			}
-
-			gameAndCharsEvent("onPostBopZoom", event);
 		}
 
 		public function moveCamera() if (strumLines.members[curCameraTarget] != null) {
