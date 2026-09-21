@@ -100,11 +100,14 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
+		if (FlxG.keys.justPressed.F)  FlxG.fullscreen = !FlxG.fullscreen;
+
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 
-		#if mobile
-		if (ScreenUtil.touch.justPressed)
-			pressedEnter = true;
+		#if FLX_TOUCH
+		for (touch in FlxG.touches.list)
+			if (touch.justPressed)
+				pressedEnter = true;
 		#end
 
 		var gamepad:FlxGamepad = FlxG.gamepads.lastActive;
@@ -238,7 +241,7 @@ class TitleState extends MusicBeatState
 					if (parentFolder != "" && !parentFolder.endsWith("/")) parentFolder += "/";
 					for(sprNode in node.elements) {
 						var spr = XMLUtil.createSpriteFromXML(sprNode, parentFolder);
-						switch(sprNode.name) {
+						switch(node.name) {
 							case "press-enter":
 								titleText = spr;
 							default:

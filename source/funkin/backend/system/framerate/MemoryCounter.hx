@@ -23,77 +23,30 @@ class MemoryCounter extends Sprite {
 			label.y = 0;
 			label.text = "MEM";
 			label.multiline = label.wordWrap = false;
-			label.defaultTextFormat = new TextFormat(Framerate.fontName, 12, -1);
+			label.defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/DTM-Mono.ttf").fontName, 12, -1);
 			label.selectable = false;
 			addChild(label);
 		}
 		memoryPeakText.alpha = 0.5;
-		#if !(cpp && (windows || mac || linux) || mobile)
-		memoryPeakText.visible = false;
-		#end
+
+		this.memoryText.antiAliasType = ADVANCED;
+        this.memoryText.sharpness = 400/*MAX ON OPENFL*/;
+
+		this.memoryPeakText.antiAliasType = ADVANCED;
+        this.memoryPeakText.sharpness = 400/*MAX ON OPENFL*/;
 	}
 
 	public function reload() {}
-
-	private var usingLegacy:Bool = false;
 
 	public override function __enterFrame(t:Int) {
 		if (alpha <= 0.05) return;
 		super.__enterFrame(t);
 
-		#if (cpp && (windows || mac || linux || mobile))
-		var legacy = funkin.options.Options.legacyMemoryCounter;
+		memory = MemoryUtil.currentMemUsage();
+		if (memoryPeak < memory) memoryPeak = memory;
+		memoryText.text = CoolUtil.getSizeString(memory);
+		memoryPeakText.text = ' / ${CoolUtil.getSizeString(memoryPeak)}';
 
-		if (legacy) {
-			if (legacy != usingLegacy) {
-				usingLegacy = legacy;
-				memoryPeak = 0;
-			}
-
-			final mem = MemoryUtil.currentMemUsage();
-			if (memoryPeak 		< mem) memoryPeak = mem;
-			if (mem == memory) {
-				updateLabelPosition();
-				return;
-			}
-
-			memory = mem;
-			memoryPeakText.visible = true;
-			memoryText.text = CoolUtil.getSizeString(memory);
-			memoryPeakText.text = ' / ${CoolUtil.getSizeString(memoryPeak)}';
-		} else {
-			if (legacy != usingLegacy) usingLegacy = legacy;
-
-			final gcMem = MemoryUtil.currentMemUsage();
-			final osMem = MemoryUtil.currentProcessMemUsage();
-
-			if (gcMem == memory && osMem == memoryPeak) {
-				updateLabelPosition();
-				return;
-			}
-
-			memory = gcMem;
-			memoryPeak = osMem;
-			memoryPeakText.visible = true;
-			memoryText.text = CoolUtil.getSizeString(gcMem);
-			memoryPeakText.text = ' / ${CoolUtil.getSizeString(osMem)}';
-		}
-		#else
-
-		final mem = MemoryUtil.currentMemUsage();
-
-		if (mem == memory) {
-			updateLabelPosition();
-			return;
-		}
-
-		memory = mem;
-		memoryText.text = CoolUtil.getSizeString(mem);
-		#end
-
-		updateLabelPosition();
-	}
-
-	private inline function updateLabelPosition():Void
 		memoryPeakText.x = memoryText.x + memoryText.width;
+	}
 }

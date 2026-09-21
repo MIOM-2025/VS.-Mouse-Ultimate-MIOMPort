@@ -1,7 +1,6 @@
 package flx3d;
 
 #if THREE_D_SUPPORT
-import flx3d._internal.TextureView3D;
 import away3d.containers.View3D;
 import away3d.library.assets.IAsset;
 import flixel.FlxG;
@@ -19,35 +18,7 @@ import flixel.FlxSprite;
 class FlxView3D extends FlxSprite
 {
 	#if THREE_D_SUPPORT
-	@:noCompletion private var bmp:BitmapData = null;
-	private var _textureView:TextureView3D;
-	private var legacyRender:Bool = false;
-
-	// With new rendering, it seems to only work if 2 or more views are being rendered.
-	// This workaround creates a second instance if there is only one view.
-	// "There is nothing more permanent than a temporary solution"
-	// -idk who said this i just wanted to quote it
-	private static var workaroundInstance:FlxView3D;
-	private static var createdWorkaround:Bool = false;
-
-	private inline function createWorkaround()
-	{
-		if (!createdWorkaround && !legacyRender)
-		{
-			createdWorkaround = true;
-			workaroundInstance = new FlxView3D(0, 0, 1, 1);
-			FlxG.state.add(workaroundInstance);
-		}
-	}
-
-	private inline function destroyWorkaround()
-	{
-		if (workaroundInstance == this)
-		{
-			workaroundInstance = null;
-			createdWorkaround = false;
-		}
-	}
+	@:noCompletion private var bmp:BitmapData;
 
 	/**
 	 * The Away3D View
@@ -69,39 +40,19 @@ class FlxView3D extends FlxSprite
 	 */
 	public function new(x:Float = 0, y:Float = 0, width:Int = -1, height:Int = -1)
 	{
-		legacyRender = false;
-
 		super(x, y);
-		if (legacyRender)
-		{
-			view = new View3D();
-		}
-		else
-		{
-			_textureView = new TextureView3D();
-			_textureView.onUpdateBitmap = function(bitmap)
-			{
-				bmp = bitmap;
-				loadGraphic(bmp);
-			}
 
-			view = _textureView;
-		}
-
+		view = new View3D();
 		view.visible = false;
 
-		this.width = width == -1 ? FlxG.width : width;
-		this.height = height == -1 ? FlxG.height : height;
-		if (legacyRender)
-		{
-			bmp = new BitmapData(Std.int(view.width), Std.int(view.height), true, 0x0);
-			loadGraphic(bmp);
-		}
+		view.width = width == -1 ? FlxG.width : width;
+		view.height = height == -1 ? FlxG.height : height;
 
 		view.backgroundAlpha = 0;
 		FlxG.stage.addChildAt(view, 0);
 
-		createWorkaround();
+		bmp = new BitmapData(Std.int(view.width), Std.int(view.height), true, 0x0);
+		loadGraphic(bmp);
 	}
 
 	/**
@@ -133,34 +84,26 @@ class FlxView3D extends FlxSprite
 			view.dispose();
 			view = null;
 		}
-
-		destroyWorkaround();
 	}
 
 	@:noCompletion override function draw()
 	{
+		super.draw();
+
 		if (dirty3D)
 		{
-			if (legacyRender)
-			{
-				view.visible = false;
-				FlxG.stage.addChildAt(view, 0);
+			view.visible = false;
+			FlxG.stage.addChildAt(view, 0);
 
-				var old = FlxG.game.filters;
-				FlxG.game.filters = null;
+			var old = FlxG.game.filters;
+			FlxG.game.filters = null;
 
-				view.renderer.queueSnapshot(bmp);
-				view.render();
+			view.renderer.queueSnapshot(bmp);
+			view.render();
 
-				FlxG.game.filters = old;
-				FlxG.stage.removeChild(view);
-			}
-			else
-			{
-				view.render();
-			}
+			FlxG.game.filters = old;
+			FlxG.stage.removeChild(view);
 		}
-		super.draw();
 	}
 
 	@:noCompletion override function set_width(newWidth:Float):Float

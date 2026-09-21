@@ -28,7 +28,7 @@ class FramerateCategory extends Sprite {
 			label.autoSize = LEFT;
 			label.x = 0;
 			label.y = 0;
-			label.defaultTextFormat = new TextFormat(Framerate.fontName, label == this.title ? 18 : 12, -1);
+			label.defaultTextFormat = new TextFormat(openfl.utils.Assets.getFont("assets/fonts/DTM-Mono.ttf").fontName, label == this.title ? 18 : 12, -1);
 			label.selectable = false;
 			addChild(label);
 		}
@@ -36,6 +36,11 @@ class FramerateCategory extends Sprite {
 		this.title.multiline = this.title.wordWrap = false;
 		this.text.multiline = true;
 
+		this.title.antiAliasType = ADVANCED;
+        this.title.sharpness = 400/*MAX ON OPENFL*/;
+
+		this.text.antiAliasType = ADVANCED;
+        this.text.sharpness = 400/*MAX ON OPENFL*/;
 
 		this.text.y = this.title.y + this.title.height + 2;
 	}
@@ -51,8 +56,5 @@ class FramerateCategory extends Sprite {
 		bgSprite.x = -Framerate.instance.x;
 		bgSprite.scaleX = width;
 		bgSprite.scaleY = height;
-	}
-	public static inline function addLine(buf:StringBuf, ...values:Array<Dynamic>):Void {
-		for (v in values) buf.add(v);
 	}
 }

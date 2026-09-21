@@ -1,14 +1,20 @@
 package funkin.backend.scripting;
 
+#if ALLOW_MULTITHREADING
+import sys.thread.Thread;
+#end
+
 import hscript.IHScriptCustomBehaviour;
 
 class MultiThreadedScript implements IFlxDestroyable implements IHScriptCustomBehaviour {
+	var thread:#if ALLOW_MULTITHREADING Thread #else Dynamic #end;
+
 	/**
 	 * Script being ran.
 	 */
 	public var script:Script;
 
-	private var __variables:Map<String, Bool>;
+	private var __variables:Array<String>;
 
 	/**
 	 * Return value of the last call.
@@ -40,16 +46,21 @@ class MultiThreadedScript implements IFlxDestroyable implements IHScriptCustomBe
 
 		script.load();
 
-		__variables = new Map();
-		for (f in Type.getInstanceFields(Type.getClass(this)))
-			__variables.set(f, true);
+		#if ALLOW_MULTITHREADING
+		thread = Thread.createWithEventLoop(function() {
+			// Prevent the thread from being auto deleted
+			Thread.current().events.promise();
+		});
+		#end
+
+		__variables = Type.getInstanceFields(Type.getClass(this));
 	}
 
 	public function hget(name:String):Dynamic
-		return __variables.exists(name) ? Reflect.getProperty(this, name) : script.get(name);
+		return __variables.contains(name) ? Reflect.getProperty(this, name) : script.get(name);
 
 	public function hset(name:String, val:Dynamic):Dynamic {
-		if (__variables.exists(name))
+		if (__variables.contains(name))
 			Reflect.setProperty(this, name, val);
 		else
 			script.set(name, val);
@@ -58,7 +69,7 @@ class MultiThreadedScript implements IFlxDestroyable implements IHScriptCustomBe
 
 	public function call(func:String, args:Array<Dynamic>) {
 		#if ALLOW_MULTITHREADING
-		funkin.backend.utils.ThreadUtil.execAsync(() -> {
+		thread.events.run(function() {
 			callEnded = false;
 			returnValue = script.call(func, args);
 			callEnded = true;
@@ -74,5 +85,13 @@ class MultiThreadedScript implements IFlxDestroyable implements IHScriptCustomBe
 			script.call("destroy");
 			script.destroy();
 		}
+
+		#if ALLOW_MULTITHREADING
+		if (thread != null) {
+			thread.events.runPromised(function() {
+				// close the thing
+			});
+		}
+		#end
 	}
 }

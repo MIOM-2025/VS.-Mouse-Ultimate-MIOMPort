@@ -11,29 +11,13 @@ class HScript extends Script {
 	public var expr:Expr;
 	public var code:String = null;
 	//public var folderlessPath:String;
-	var __importedPaths:Map<String, Bool>;
+	var __importedPaths:Array<String>;
 
 	public static function initParser() {
 		var parser = new Parser();
 		parser.allowJSON = parser.allowMetadata = parser.allowTypes = true;
 		parser.preprocessorValues = Script.getDefaultPreprocessors();
 		return parser;
-	}
-
-	/** Pool of idle parsers, reused across script instances to avoid repeated Parser construction. **/
-	private static var __parserPool:Array<Parser> = [];
-
-	private static function getParser():Parser {
-		var parser = __parserPool.pop();
-		if (parser == null)
-			return initParser();
-		parser.line = 1; // reusing a parser only requires resetting `line`; all other vars get reset on parse
-		return parser;
-	}
-
-	private static function returnParser(parser:Parser) {
-		if (parser != null)
-			__parserPool.push(parser);
 	}
 
 	public override function onCreate(path:String) {
@@ -45,12 +29,11 @@ class HScript extends Script {
 			if(Assets.exists(rawPath)) code = Assets.getText(rawPath);
 		} catch(e) Logs.error('Error while reading $path: ${Std.string(e)}');
 
-		parser = getParser();
+		parser = initParser();
 		//folderlessPath = Path.directory(path);
-		__importedPaths = [path => true];
+		__importedPaths = [path];
 
 		interp.errorHandler = _errorHandler;
-		interp.warnHandler = _warnHandler;
 		interp.importFailedCallback = importFailedCallback;
 		interp.staticVariables = Script.staticVariables;
 		interp.allowStaticVariables = interp.allowPublicVariables = true;
@@ -69,7 +52,7 @@ class HScript extends Script {
 
 	public override function loadFromString(code:String) {
 		try {
-			if (code != null && code.length > 0)
+			if (code != null && code.trim() != "")
 				expr = parser.parseString(code, fileName);
 		} catch(e:Error) {
 			_errorHandler(e);
@@ -90,13 +73,13 @@ class HScript extends Script {
 		var assetsPath = 'assets/$prefix${cl.join("/")}';
 		for(hxExt in ["hx", "hscript", "hsc", "hxs"]) {
 			var p = '$assetsPath.$hxExt';
-			if (__importedPaths.exists(p))
+			if (__importedPaths.contains(p))
 				return true; // no need to reimport again
 			if (Assets.exists(p)) {
 				var code = Assets.getText(p);
 				var expr:Expr = null;
 				try {
-					if (code != null && code.length > 0) {
+					if (code != null && code.trim() != "") {
 						parser.line = 1; // fun fact: this is all you need to reuse a parser without issues. all the other vars get reset on parse.
 						expr = parser.parseString(code, cl.join("/") + "." + hxExt);
 					}
@@ -108,7 +91,7 @@ class HScript extends Script {
 				if (expr != null) {
 					@:privateAccess
 					interp.exprReturn(expr);
-					__importedPaths.set(p, true);
+					__importedPaths.push(p);
 				}
 				return true;
 			}
@@ -132,28 +115,10 @@ class HScript extends Script {
 			Logs.logText(fn, GREEN),
 			Logs.logText(err, RED)
 		], ERROR);
-
+		
 		#if mobile
-		funkin.backend.utils.NativeAPI.showMessageBox("HSCRIPT ERROR", fn + err, MSG_ERROR);
-		#end
-	}
-
-	private function _warnHandler(error:Error) {
-		var fileName = error.origin;
-		var oldfn = '$fileName:${error.line}: ';
-		if(remappedNames.exists(fileName))
-			fileName = remappedNames.get(fileName);
-		var fn = '$fileName:${error.line}: ';
-		var err = error.toString();
-		while(err.startsWith(oldfn) || err.startsWith(fn)) {
-			if (err.startsWith(oldfn)) err = err.substr(oldfn.length);
-			if (err.startsWith(fn)) err = err.substr(fn.length);
-		}
-
-		Logs.traceColored([
-			Logs.logText(fn, GREEN),
-			Logs.logText(err, YELLOW)
-		], WARNING);
+        //funkin.backend.utils.NativeAPI.showMessageBox("HSCRIPT ERROR", fn + err, MSG_ERROR);
+	    #end
 	}
 
 	public override function setParent(parent:Dynamic) {
@@ -178,9 +143,8 @@ class HScript extends Script {
 
 		interp.allowStaticVariables = interp.allowPublicVariables = false;
 		var savedVariables:Map<String, Dynamic> = [];
-		var defaultVars = Script.getDefaultVariables(this);
 		for(k=>e in interp.variables) {
-			if (!Reflect.isFunction(e) && !defaultVars.exists(k)) {
+			if (!Reflect.isFunction(e)) {
 				savedVariables[k] = e;
 			}
 		}
@@ -193,7 +157,7 @@ class HScript extends Script {
 		load();
 		setParent(oldParent);
 
-		for(k=>e in defaultVars)
+		for(k=>e in savedVariables)
 			interp.variables.set(k, e);
 
 		interp.allowStaticVariables = interp.allowPublicVariables = true;
@@ -201,10 +165,11 @@ class HScript extends Script {
 
 	private override function onCall(funcName:String, parameters:Array<Dynamic>):Dynamic {
 		if (interp == null) return null;
+		if (!interp.variables.exists(funcName)) return null;
 
 		var func = interp.variables.get(funcName);
 		if (func != null && Reflect.isFunction(func))
-			return Reflect.callMethod(null, func, parameters == null ? Script._EMPTY_ARGS : parameters);
+			return Reflect.callMethod(null, func, parameters);
 
 		return null;
 	}
@@ -215,8 +180,6 @@ class HScript extends Script {
 
 	public override function set(val:String, value:Dynamic) {
 		interp.variables.set(val, value);
-		// A runtime-injected variable may shadow a previously-cached VNotFound/type-resolve result, so drop stale cache entries.
-		interp.invalidateCache();
 	}
 
 	public override function trace(v:Dynamic) {
@@ -229,12 +192,5 @@ class HScript extends Script {
 
 	public override function setPublicMap(map:Map<String, Dynamic>) {
 		this.interp.publicVariables = map;
-	}
-
-	override public function destroy() {
-		returnParser(parser);
-		parser = null;
-		interp = null;
-		super.destroy();
 	}
 }

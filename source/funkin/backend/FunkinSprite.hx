@@ -1,7 +1,5 @@
 package funkin.backend;
 
-import animate.FlxAnimate;
-import animate.FlxAnimateController.FlxAnimateAnimation;
 import flixel.addons.effects.FlxSkewedSprite;
 import flixel.animation.FlxAnimation;
 import flixel.math.FlxMatrix;
@@ -9,6 +7,7 @@ import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.util.typeLimit.OneOfTwo;
+import flxanimate.animate.FlxAnim.FlxSymbolAnimation;
 import funkin.backend.scripting.events.sprite.PlayAnimContext;
 import funkin.backend.system.interfaces.IBeatReceiver;
 import funkin.backend.system.interfaces.IOffsetCompatible;
@@ -16,10 +15,6 @@ import funkin.backend.utils.XMLUtil.AnimData;
 import funkin.backend.utils.XMLUtil.BeatAnim;
 import funkin.backend.utils.XMLUtil.IXMLEvents;
 import haxe.io.Path;
-import flixel.graphics.frames.FlxFrame;
-import flixel.math.FlxAngle;
-import animate.internal.RenderTexture;
-import animate.FlxAnimateFrames;
 
 enum abstract XMLAnimType(Int)
 {
@@ -48,7 +43,7 @@ enum abstract XMLAnimType(Int)
 	}
 }
 
-class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffsetCompatible implements IXMLEvents
+class FunkinSprite extends FlxSkewedSprite implements IBeatReceiver implements IOffsetCompatible implements IXMLEvents
 {
 	public var extra:Map<String, Dynamic> = [];
 
@@ -56,15 +51,10 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 	public var beatAnims:Array<BeatAnim> = [];
 	public var name:String;
 	public var zoomFactor:Float = 1;
-	public var angleFactor:Float = 1;
 	public var debugMode:Bool = false;
 	public var animDatas:Map<String, AnimData> = [];
 	public var animEnabled:Bool = true;
 	public var zoomFactorEnabled:Bool = true;
-	public var angleFactorEnabled:Bool = true;
-
-	//Backwards compatibility
-	public var animateAtlas(get, never):FunkinSprite;
 
 	public var globalCurFrame(get, set):Int;
 
@@ -76,10 +66,9 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 	public var beatOffset:Int = 0;
 	public var skipNegativeBeats:Bool = false;
 
-	public var animateSettings:FlxAnimateSettings = {};
-
-	// originally used for zoom factor, now unused
-	var _rect2:FlxRect;
+	public var animateAtlas:FlxAnimate;
+	@:noCompletion public var atlasPlayingAnim:String;
+	@:noCompletion public var atlasPath:String;
 
 	public function new(?X:Float = 0, ?Y:Float = 0, ?SimpleGraphic:FlxGraphicAsset)
 	{
@@ -94,8 +83,6 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 		}
 
 		moves = false;
-		applyStageMatrix = true;
-		postStageMatrixApply = Flags.USE_LEGACY_FLXANIMATE_STAGE_MATRIX;
 	}
 
 	/**
@@ -111,6 +98,8 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 		@:privateAccess {
 			spr.setPosition(source.x, source.y);
 			spr.frames = source.frames;
+			if (casted != null && casted.animateAtlas != null && casted.atlasPath != null)
+				spr.loadSprite(casted.atlasPath);
 			spr.animation.copyFrom(source.animation);
 			spr.visible = source.visible;
 			spr.alpha = source.alpha;
@@ -120,9 +109,9 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 
 			if (casted != null) {
 				spr.skew.set(casted.skew.x, casted.skew.y);
+				spr.transformMatrix = casted.transformMatrix;
+				spr.matrixExposed = casted.matrixExposed;
 				spr.animOffsets = casted.animOffsets.copy();
-				spr.zoomFactor = casted.zoomFactor;
-				spr.angleFactor = casted.angleFactor;
 			}
 		}
 		return spr;
@@ -131,24 +120,29 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 	public override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+		if (animateAtlas != null)
+			animateAtlas.update(elapsed);
 
 		// hate how it looks like but hey at least its optimized and fast  - Nex
 		if (!debugMode && isAnimFinished()) {
 			var name = getAnimName() + '-loop';
-			if (hasAnim(name))
+			if (hasAnimation(name))
 				playAnim(name, null, lastAnimContext);
 		}
-	}
-
-	override function initVars() {
-		super.initVars();
-		_rect2 = FlxRect.get();
 	}
 
 	public function loadSprite(path:String, Unique:Bool = false, Key:String = null)
 	{
 		var noExt = Path.withoutExtension(path);
-		frames = Paths.getFrames(path, true, null, null, animateSettings);
+		if (Assets.exists('$noExt/Animation.json'))
+		{
+			atlasPath = noExt;
+			animateAtlas = new FlxAnimate(x, y, noExt);
+		}
+		else
+		{
+			frames = Paths.getFrames(path, true);
+		}
 		return this;
 	}
 
@@ -178,21 +172,50 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 	{
 	}
 
-	public override function draw() {
-		// re-implementing the `onDraw` functionality from `FlxSprite` since `FlxAnimate` didn't have this, so we have to add it back in ourselves
-	    if (this.isAnimate && this.__drawOverrided) {
-	        this.__drawOverrided = false;
-	        this.onDraw(this);
-	        this.__drawOverrided = true;
-			return;
-	    }
-	    super.draw();
-	}
-
 	// ANIMATE ATLAS DRAWING
 	#if REGION
+	public override function draw()
+	{
+		if (animateAtlas != null)
+		{
+			copyAtlasValues();
+			animateAtlas.draw();
+		}
+		else
+		{
+			super.draw();
+		}
+	}
+
+	public function copyAtlasValues()
+	{
+		@:privateAccess {
+			animateAtlas.cameras = cameras; // investigate if we can use _cameras
+			animateAtlas.scrollFactor = scrollFactor;
+			animateAtlas.scale = scale;
+			animateAtlas.offset = offset;
+			animateAtlas.frameOffset = frameOffset;
+			animateAtlas.x = x;
+			animateAtlas.y = y;
+			animateAtlas.angle = angle;
+			animateAtlas.alpha = alpha;
+			animateAtlas.visible = visible;
+			animateAtlas.flipX = flipX;
+			animateAtlas.flipY = flipY;
+			animateAtlas.shader = shader;
+			animateAtlas.shaderEnabled = shaderEnabled;
+			animateAtlas.antialiasing = antialiasing;
+			animateAtlas.skew = skew;
+			animateAtlas.transformMatrix = transformMatrix;
+			animateAtlas.matrixExposed = matrixExposed;
+			animateAtlas.colorTransform = colorTransform;
+		}
+	}
+
 	public override function destroy()
 	{
+		animateAtlas = FlxDestroyUtil.destroy(animateAtlas);
+
 		if (animOffsets != null) {
 			for (key in animOffsets.keys()) {
 				final point = animOffsets[key];
@@ -203,10 +226,63 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 			animOffsets = null;
 		}
 		super.destroy();
-
-		_rect2 = FlxDestroyUtil.put(_rect2);
 	}
 	#end
+
+	// ZOOM FACTOR
+	private inline function __shouldDoZoomFactor()
+		return zoomFactorEnabled && zoomFactor != 1;
+
+	public override function getScreenBounds(?newRect:FlxRect, ?camera:FlxCamera):FlxRect
+	{
+		if (camera == null)
+			camera = FlxG.camera;
+
+		var r = super.getScreenBounds(newRect, camera);
+
+		if(__shouldDoZoomFactor()) {
+			r.x -= camera.width / 2;
+			r.y -= camera.height / 2;
+
+			var ratio = (camera.zoom > 0 ? Math.max : Math.min)(0, FlxMath.lerp(1 / camera.zoom, 1, zoomFactor));
+			r.x *= ratio;
+			r.y *= ratio;
+			r.width *= ratio;
+			r.height *= ratio;
+
+			r.x += camera.width / 2;
+			r.y += camera.height / 2;
+		}
+		return r;
+	}
+
+	override public function isOnScreen(?camera:FlxCamera):Bool
+	{
+		if (forceIsOnScreen)
+			return true;
+
+		if (camera == null)
+			camera = FlxG.camera;
+
+		var bounds = getScreenBounds(_rect, camera);
+		if (bounds.width == 0 && bounds.height == 0)
+			return false;
+		return camera.containsRect(bounds);
+	}
+
+	// ZOOM FACTOR RENDERING
+	public override function doAdditionalMatrixStuff(matrix:FlxMatrix, camera:FlxCamera)
+	{
+		super.doAdditionalMatrixStuff(matrix, camera);
+		if(__shouldDoZoomFactor()) {
+			matrix.translate(-camera.width / 2, -camera.height / 2);
+
+			var requestedZoom = (camera.zoom >= 0 ? Math.max : Math.min)(FlxMath.lerp(1, camera.zoom, zoomFactor), 0);
+			var diff = requestedZoom / camera.zoom;
+			matrix.scale(diff, diff);
+			matrix.translate(camera.width / 2, camera.height / 2);
+		}
+	}
 
 	// OFFSETTING
 	#if REGION
@@ -231,7 +307,7 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 
 	public function playAnim(AnimName:String, ?Force:Null<Bool>, Context:PlayAnimContext = NONE, Reversed:Bool = false, Frame:Int = 0):Void
 	{
-		if (AnimName == null || (!hasAnim(AnimName) && !debugMode))
+		if (AnimName == null)
 			return;
 
 		if (Force == null) {
@@ -239,7 +315,19 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 			Force = anim != null && anim.forced;
 		}
 
-		animation.play(AnimName, Force, Reversed, Frame);
+		if (animateAtlas != null)
+		{
+			@:privateAccess
+			// if (!animateAtlas.anim.animsMap.exists(AnimName) && !animateAtlas.anim.symbolDictionary.exists(AnimName)) return;
+			animateAtlas.anim.play(AnimName, Force, Reversed, Frame);
+			atlasPlayingAnim = AnimName;
+		}
+		else
+		{
+			if (!animation.exists(AnimName) && !debugMode)
+				return;
+			animation.play(AnimName, Force, Reversed, Frame);
+		}
 
 		var daOffset = getAnimOffset(AnimName);
 		frameOffset.set(daOffset.x, daOffset.y);
@@ -248,7 +336,7 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 		lastAnimContext = Context;
 	}
 
-	public inline function addAnim(name:String, prefix:String, frameRate:Float = 24, ?looped:Bool, ?forced:Bool, ?indices:Array<Int>, x:Float = 0, y:Float = 0, animType:XMLAnimType = NONE, animateAtlasLabel:Bool = false)
+	public inline function addAnim(name:String, prefix:String, frameRate:Float = 24, ?looped:Bool, ?forced:Bool, ?indices:Array<Int>, x:Float = 0, y:Float = 0, animType:XMLAnimType = NONE)
 	{
 		return XMLUtil.addAnimToSprite(this, {
 			name: name,
@@ -259,16 +347,22 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 			x: x,
 			y: y,
 			indices: indices,
-			forced: forced,
-			label: animateAtlasLabel
+			forced: forced
 		});
 	}
 
-	public inline function removeAnim(name:String) {
-		animation.remove(name);
+	public inline function removeAnim(name:String)
+	{
+		if (animateAtlas != null)
+			@:privateAccess animateAtlas.anim.animsMap.remove(name);
+		else
+			animation.remove(name);
 	}
 
-	public function getAnim(name:String):OneOfTwo<FlxAnimation, FlxAnimateAnimation> {
+	public function getAnim(name:String):OneOfTwo<FlxAnimation, FlxSymbolAnimation>
+	{
+		if(animateAtlas != null)
+			return animateAtlas.anim.getByName(name);
 		return animation.getByName(name);
 	}
 
@@ -279,26 +373,40 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 		return FlxPoint.weak(0, 0);
 	}
 
-	public inline function hasAnim(AnimName:String):Bool
-		return animation.exists(AnimName);
+	public inline function hasAnim(AnimName:String):Bool @:privateAccess
+		return animateAtlas != null ? (animateAtlas.anim.animsMap.exists(AnimName)
+			|| animateAtlas.anim.symbolDictionary.exists(AnimName)) : animation.exists(AnimName);
 
-	public inline function getAnimName()
-		return animation.name;
+	public inline function getAnimName() {
+		return (animateAtlas != null) ? atlasPlayingAnim : animation.name;
+	}
 
-	public inline function isAnimReversed():Bool
-		return animation.curAnim?.reversed ?? false;
+	public inline function isAnimReversed():Bool {
+		return animateAtlas != null ? animateAtlas.anim.reversed : animation.curAnim != null ? animation.curAnim.reversed : false;
+	}
 
-	public inline function getNameList():Array<String>
-		return animation.getNameList();
+	public inline function getNameList():Array<String> {
+		if (animateAtlas != null)
+			return [for (name in @:privateAccess animateAtlas.anim.animsMap.keys()) name];
+		else
+			return animation.getNameList();
+	}
 
 	public inline function stopAnim()
-		animation.stop();
+	{
+		if (animateAtlas != null)
+			animateAtlas.anim.pause();
+		else
+			animation.stop();
+	}
 
-	public inline function isAnimFinished()
-		return animation.curAnim?.finished ?? true;
+	public inline function isAnimFinished() {
+		return animateAtlas != null ? animateAtlas.anim.finished : (animation.curAnim != null ? animation.curAnim.finished : true);
+	}
 
-	public inline function isAnimAtEnd()
-		return animation.curAnim?.isAtEnd ?? false;
+	public inline function isAnimAtEnd() {
+		return animateAtlas != null ? animateAtlas.anim.isAtEnd : (animation.curAnim != null ? animation.curAnim.isAtEnd : false);
+	}
 
 	override function updateAnimation(elapsed:Float) {
 		if (animEnabled)
@@ -306,9 +414,9 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 	}
 
 	// Backwards compat (the names used to be all different and it sucked, please lets use the same format in the future)  - Nex
-	@:dox(hide) public inline function hasAnimation(AnimName:String) return hasAnim(AnimName);
-	@:dox(hide) public inline function removeAnimation(name:String) return removeAnim(name);
-	@:dox(hide) public inline function stopAnimation() return stopAnim();
+	public inline function hasAnimation(AnimName:String) return hasAnim(AnimName);
+	public inline function removeAnimation(name:String) return removeAnim(name);
+	public inline function stopAnimation() return stopAnim();
 	#end
 
 	// Getter / Setters
@@ -320,47 +428,10 @@ class FunkinSprite extends FlxAnimate implements IBeatReceiver implements IOffse
 		return beatInterval = v;
 	}
 
-	@:noCompletion
-	@:deprecated("`FunkinSprite.animateAtlas` is deprecated, just use `FunkinSprite` instead")
-	public function get_animateAtlas():FunkinSprite
-    	return isAnimate ? this : null;
-
-	@:noCompletion private inline function get_globalCurFrame()
-		return animation.curAnim?.curFrame ?? 0;
-
+	@:noCompletion private inline function get_globalCurFrame() {
+		return animateAtlas != null ? (animateAtlas.anim.curFrame) : (animation.curAnim != null ? animation.curAnim.curFrame : 0);
+	}
 	@:noCompletion private inline function set_globalCurFrame(val:Int) {
-		if (animation.curAnim != null)
-			animation.curAnim.curFrame = val;
-		return val;
+		return animateAtlas != null ? (animateAtlas.anim.curFrame = val) : (animation.curAnim != null ? animation.curAnim.curFrame = val : val);
 	}
-
-    override function prepareDrawMatrix(matrix:FlxMatrix, camera:FlxCamera):Void {
-		super.prepareDrawMatrix(matrix, camera);
-
-		final ox = camera.width * 0.5, oy = camera.height * 0.5;
-		final sx = (camera.scaleX > 0.0 ? Math.max : Math.min)(0.0, (1.0 - zoomFactor) / camera.scaleX + zoomFactor);
-		final sy = (camera.scaleY > 0.0 ? Math.max : Math.min)(0.0, (1.0 - zoomFactor) / camera.scaleY + zoomFactor);
-
-		if (zoomFactorEnabled && zoomFactor != 1) {
-			matrix.setTo(
-				matrix.a * sx, matrix.b * sy,
-				matrix.c * sx, matrix.d * sy,
-				(matrix.tx - ox) * sx + ox,
-				(matrix.ty - oy) * sy + oy
-			);
-		}
-
-		if (angleFactorEnabled && angleFactor != 1) {
-			matrix.translate(-ox, -oy);
-			matrix.rotate(-camera.angle * FlxAngle.TO_RAD * (1.0 - angleFactor));
-			matrix.translate(ox, oy);
-		}
-	}
-
-	override function checkFlipX() {
-		return super.checkFlipX() != camera.flipX;
-	}
-	override function checkFlipY() {
-		return super.checkFlipY() != camera.flipY;
-	}
-		}
+}

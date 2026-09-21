@@ -16,14 +16,12 @@ class Main {
 				dDoc: [
 					"Usage: setup",
 					"",
-					"This command runs through all libraries in building/libs.xml, and installs them.",
-					"This will generate a sum file; if the building/libs-mobile.xml file has remained unchanged,",
-					"then the setup process will not start. This may be avoided by using --ignore-sum.",
+					"This command runs through all libraries in libs.xml, and install them.",
+					"If they're already installed, they will be updated.",
 					"",
-					"--all | --reinstall : Reinstall all libraries. This enforces --ignore-sum.",
+					"--all : Reinstall all libraries.",
 					"--no-vscheck : Don't check if Visual Studio is installed.",
-					"-s | --silent | --silent-progress : Don't show download progress.",
-					"-i | --ignore-sum : Ignore the library sum file, proceeding with the setup process anyway."
+					"-s | --silent | --silent-progress : Don't show download progress."
 				].join("\n")
 			},
 			{

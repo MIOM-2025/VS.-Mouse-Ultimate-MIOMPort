@@ -21,20 +21,6 @@ class Script extends FlxBasic implements IFlxDestroyable {
 	 * Gets the default variables for a script.
 	 */
 	public static function getDefaultVariables(?script:Script):Map<String, Dynamic> {
-		var vars = _defaultVariablesTemplate != null ? _defaultVariablesTemplate : (_defaultVariablesTemplate = buildDefaultVariables());
-		var copy = vars.copy();
-		copy.set("state", flixel.FlxG.state); // `state` changes on state switch, so it can't be cached
-		copy.set("window", lime.app.Application.current.window); // same for `window`: evaluated at script creation time like before
-		return copy;
-	}
-
-	/**
-	 * Cached template of the default variables.
-	 * Built once (including the `Type.resolveClass` lookups) and shallow-copied per script.
-	 */
-	private static var _defaultVariablesTemplate:Map<String, Dynamic> = null;
-
-	private static function buildDefaultVariables():Map<String, Dynamic> {
 		return [
 			// Haxe related stuff
 			"Std"				=> Std,
@@ -42,19 +28,15 @@ class Script extends FlxBasic implements IFlxDestroyable {
 			"Reflect"			=> Reflect,
 			"StringTools"		=> StringTools,
 			"Json"				=> haxe.Json,
-			"Xml"				=> Xml,
-			"Type"				=> Type,
-			"Date"				=> Date,
-			"Lambda"			=> Lambda,
-			#if sys "Sys"		=> Sys, #end
 
 			// OpenFL & Lime related stuff
-			"BlendMode"			=> CoolUtil.getMacroAbstractClass("openfl.display.BlendMode"),
 			"Assets"			=> openfl.utils.Assets,
 			"Application"		=> lime.app.Application,
 			"Main"				=> funkin.backend.system.Main,
+			"window"			=> lime.app.Application.current.window,
 
 			// Flixel related stuff
+			"state"				=> flixel.FlxG.state,
 			"FlxG"				=> flixel.FlxG,
 			"FlxSprite"			=> flixel.FlxSprite,
 			"FlxBasic"			=> flixel.FlxBasic,
@@ -104,10 +86,9 @@ class Script extends FlxBasic implements IFlxDestroyable {
 			"FunkinShader"		=> funkin.backend.shaders.FunkinShader,
 			"CustomShader"		=> funkin.backend.shaders.CustomShader,
 			"FunkinText"		=> funkin.backend.FunkinText,
-			"FlxAnimate"		=> animate.FlxAnimate,
+			"FlxAnimate"		=> funkin.backend.FlxAnimate,
 			"FunkinSprite"		=> funkin.backend.FunkinSprite,
 			"Alphabet"			=> funkin.menus.ui.Alphabet,
-			"Flags"				=> funkin.backend.system.Flags,
 
 			"CoolUtil"			=> funkin.backend.utils.CoolUtil,
 			"IniUtil"			=> funkin.backend.utils.IniUtil,
@@ -115,7 +96,6 @@ class Script extends FlxBasic implements IFlxDestroyable {
 			#if sys "ZipUtil"	=> funkin.backend.utils.ZipUtil, #end
 			"MarkdownUtil"		=> funkin.backend.utils.MarkdownUtil,
 			"EngineUtil"		=> funkin.backend.utils.EngineUtil,
-			"ThreadUtil"		=> funkin.backend.utils.ThreadUtil,
 			"MemoryUtil"		=> funkin.backend.utils.MemoryUtil,
 			"BitmapUtil"		=> funkin.backend.utils.BitmapUtil,
 
@@ -197,11 +177,6 @@ class Script extends FlxBasic implements IFlxDestroyable {
 	 * Currently executing script.
 	 */
 	public static var curScript:Script = null;
-
-	/**
-	 * Shared empty argument array, used when calling scripts without parameters (avoids allocations).
-	 */
-	private static var _EMPTY_ARGS:Array<Dynamic> = [];
 
 	/**
 	 * Script name (with extension)
@@ -344,7 +319,7 @@ class Script extends FlxBasic implements IFlxDestroyable {
 		var oldScript = curScript;
 		curScript = this;
 
-		var result = onCall(func, parameters);
+		var result = onCall(func, parameters == null ? [] : parameters);
 
 		curScript = oldScript;
 		return result;
