@@ -245,7 +245,7 @@ class AlphabetEditor extends UIState {
 		infoWindow = new GlyphInfoWindow();
 		uiGroup.add(infoWindow);
 
-		componentList = new UIButtonList<ComponentButton>(0, 720 - 170 - 30, 230, 170, "Components:", FlxPoint.get(230, 50), FlxPoint.get(0, 0), 0);
+		componentList = new UIButtonList<ComponentButton>(15, 720 - 170 - 15, 230, 170, "Components:", FlxPoint.get(230, 50), FlxPoint.get(0, 0), 0);
 		componentList.dragCallback = (button, oldID, newID) -> {
 			queueReorder = true; // not do it for every button reordered
 		}
@@ -290,6 +290,11 @@ class AlphabetEditor extends UIState {
 		}
 
 		DiscordUtil.call("onEditorLoaded", ["Alphabet Editor", __typeface]);
+
+		addDPad("LEFT_RIGHT");
+		addDPadCamera();
+		mobileManager.x += 225;
+		//mobileManager.y -= 25;
 	}
 
 	override function destroy() {
@@ -304,6 +309,7 @@ class AlphabetEditor extends UIState {
 	var lastChar:String = "";
 	public override function update(elapsed:Float) {
 		super.update(elapsed);
+		handleMobileControl();
 
 		if (glyphChar.label.text != lastChar) {
 			if (glyphChar.label.text == "") {
@@ -378,6 +384,13 @@ class AlphabetEditor extends UIState {
 			tape.text += tape.manualLetters.join(" ");
 		}
 		tape.x = lerp(tape.x, targetX, 0.25);
+	}
+
+	function handleMobileControl() {
+		if (mobileCJustPressed("LEFT"))
+			_tape_left(null);
+		if (mobileCJustPressed("RIGHT"))
+			_tape_right(null);
 	}
 
 	function updateTape() {
@@ -532,6 +545,7 @@ class ComponentButton extends UIButton {
 		super(0, 0, component.anim, function() {
 			AlphabetEditor.instance.curSelectedComponent = component;
 			AlphabetEditor.instance.findOutline();
+			AlphabetEditor.instance.infoWindow.button = this;
 			AlphabetEditor.instance.infoWindow.updateInfo();
 		}, 230, 50);
 		this.component = component;
@@ -560,6 +574,7 @@ class ComponentButton extends UIButton {
 
 			data.components.remove(component);
 			AlphabetEditor.instance.curSelectedComponent = (AlphabetEditor.instance.curSelectedComponent == component) ? null : AlphabetEditor.instance.curSelectedComponent;
+			AlphabetEditor.instance.infoWindow.button = (AlphabetEditor.instance.infoWindow.button == this) ? null : AlphabetEditor.instance.infoWindow.button;
 			AlphabetEditor.instance.findOutline();
 			AlphabetEditor.instance.infoWindow.updateInfo();
 

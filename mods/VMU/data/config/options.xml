@@ -1,5 +1,7 @@
 <!DOCTYPE codename-mod-options>
 <menu name="VMU Options" desc="Modify VMU Options to your preference!">
+    <checkbox id="botplay" name="Botplay" desc="Open botplay"/>
+    <checkbox id="middleScroll" name="MiddleScroll" desc="Open MiddleScroll"/>
     <checkbox id="modcharts" name="Modcharts"/>
     <checkbox id="warning" name="Warning Screen"/>
 

@@ -1,7 +1,5 @@
 package funkin.backend.system;
 
-import sys.io.File;
-import sys.FileSystem;
 import flixel.addons.transition.FlxTransitionSprite.GraphicTransTileDiamond;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.addons.transition.TransitionData;
@@ -9,35 +7,42 @@ import flixel.graphics.FlxGraphic;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.system.ui.FlxSoundTray;
+import funkin.backend.assets.AssetSource;
 import funkin.backend.assets.AssetsLibraryList;
 import funkin.backend.assets.ModsFolder;
 import funkin.backend.system.framerate.Framerate;
-import funkin.backend.assets.AssetSource;
 import funkin.backend.system.framerate.SystemInfo;
 import funkin.backend.system.modules.*;
+import funkin.backend.utils.ThreadUtil;
 import funkin.editors.SaveWarning;
+import funkin.options.PlayerSettings;
 import openfl.Assets;
 import openfl.Lib;
 import openfl.display.Sprite;
 import openfl.text.TextFormat;
 import openfl.utils.AssetLibrary;
-import lime.system.System as LimeSystem;
-
-#if ALLOW_MULTITHREADING
-import sys.thread.Thread;
+#if sys
+import sys.FileSystem;
+import sys.io.File;
+#elseif js
+import js.html.FileSystem;
+import js.html.File;
+#end
+#if android
+import android.content.Context;
+import android.os.Build;
 #end
 
 class Main extends Sprite
 {
 	public static var instance:Main;
 
-	public static var modToLoad:String = "VMU";
+	public static var modToLoad:String = null;
 	public static var forceGPUOnlyBitmapsOff:Bool = #if (desktop || mobile) false #else true #end;
 	public static var noTerminalColor:Bool = false;
 	public static var verbose:Bool = false;
 
 	public static var scaleMode:FunkinRatioScaleMode;
-	
 	public static var framerateSprite:Framerate;
 
 	var gameWidth:Int = 1280; // Width of the game in pixels (might be less / more in actual pixels).
@@ -55,10 +60,6 @@ class Main extends Sprite
 
 	// You can pretty much ignore everything from here on - your code should go in your states.
 
-	#if ALLOW_MULTITHREADING
-	public static var gameThreads:Array<Thread> = [];
-	#end
-
 	public static function preInit() {
 		funkin.backend.utils.NativeAPI.registerAsDPICompatible();
 		funkin.backend.system.CommandLineHandler.parseCommandLine(Sys.args());
@@ -73,26 +74,24 @@ class Main extends Sprite
 
 		#if mobile
 		#if android
-		StorageUtil.requestPermissions();
+		MobileUtil.getPermissions();
+		MobileUtil.initDirectory();
 		#end
-		Sys.setCwd(StorageUtil.getStorageDirectory());
+		Sys.setCwd(MobileUtil.getAssetDirectory());
+		//Sys.setCwd(haxe.io.Path.addTrailingSlash(MobileUtil.getDirectory()));
+		MobileUtil.copyAssets();
 		#end
-
 		CrashHandler.init();
 
 		#if !web framerateSprite = new Framerate(); #end
 
 		addChild(game = new FunkinGame(gameWidth, gameHeight, MainState, Options.framerate, Options.framerate, skipSplash, startFullscreen));
 
-		#if android FlxG.android.preventDefaultKeys = [BACK]; #end
-
 		#if !web
 		addChild(framerateSprite);
-		#if mobile
-		FlxG.stage.window.onResize.add((w:Int, h:Int) -> framerateSprite.setScale());
-		#end
 		SystemInfo.init();
 		#end
+		#if android FlxG.android.preventDefaultKeys = [BACK]; #end
 	}
 
 	@:dox(hide)
@@ -108,16 +107,8 @@ class Main extends Sprite
 		#end;
 	public static var startedFromSource:Bool = #if TEST_BUILD true #else false #end;
 
-
-	private static var __threadCycle:Int = 0;
-	public static function execAsync(func:Void->Void) {
-		#if ALLOW_MULTITHREADING
-		var thread = gameThreads[(__threadCycle++) % gameThreads.length];
-		thread.events.run(func);
-		#else
-		func();
-		#end
-	}
+	// DEPRECATED
+	@:dox(hide) public static function execAsync(func:Void->Void) ThreadUtil.execAsync(func);
 
 	private static function getTimer():Int {
 		return time = Lib.getTimer();
@@ -129,10 +120,6 @@ class Main extends Sprite
 		MemoryUtil.init();
 		@:privateAccess
 		FlxG.game.getTimer = getTimer;
-		#if ALLOW_MULTITHREADING
-		for(i in 0...4)
-			gameThreads.push(Thread.createWithEventLoop(function() {Thread.current().events.promise();}));
-		#end
 		FunkinCache.init();
 		Paths.assetsTree = new AssetsLibraryList();
 
@@ -159,7 +146,7 @@ class Main extends Sprite
 
 		FlxG.fixedTimestep = false;
 
-		FlxG.scaleMode = scaleMode = new FunkinRatioScaleMode();
+		if (!funkin.backend.system.Controls.instance.mobileC) FlxG.scaleMode = scaleMode = new FunkinRatioScaleMode();
 
 		Conductor.init();
 		AudioSwitchFix.init();
@@ -167,25 +154,22 @@ class Main extends Sprite
 		FlxG.signals.focusGained.add(onFocus);
 		FlxG.signals.preStateSwitch.add(onStateSwitch);
 		FlxG.signals.postStateSwitch.add(onStateSwitchPost);
+		FlxG.signals.postUpdate.add(onUpdate);
 
-		FlxG.mouse.useSystemCursor = !Controls.instance.touchC;
+		FlxG.mouse.useSystemCursor = !Controls.instance.mobileC;
 		#if DARK_MODE_WINDOW
 		if(funkin.backend.utils.NativeAPI.hasVersion("Windows 10")) funkin.backend.utils.NativeAPI.redrawWindowHeader();
 		#end
 
 		ModsFolder.init();
 		#if MOD_SUPPORT
-		if (FileSystem.exists(#if mobile StorageUtil.getStorageDirectory(true) + #end "mods/autoload.txt"))
-			modToLoad = File.getContent(#if mobile StorageUtil.getStorageDirectory(true) + #end "mods/autoload.txt").trim();
+		if (FileSystem.exists("mods/autoload.txt"))
+			modToLoad = File.getContent("mods/autoload.txt").trim();
 
 		ModsFolder.switchMod(modToLoad.getDefault(Options.lastLoadedMod));
 		#end
 
 		initTransition();
-		
-		#if mobile
-		LimeSystem.allowScreenTimeout = Options.screenTimeOut;
-		#end
 	}
 
 	public static function refreshAssets() @:privateAccess {
@@ -222,7 +206,16 @@ class Main extends Sprite
 	}
 
 	private static function onStateSwitch() {
+	  if (!funkin.backend.system.Controls.instance.mobileC)
 		scaleMode.resetSize();
+	}
+
+	public static function onUpdate() {
+		if (PlayerSettings.solo.controls.DEV_CONSOLE)
+			NativeAPI.allocConsole();
+
+		if (PlayerSettings.solo.controls.FPS_COUNTER)
+			Framerate.debugMode = (Framerate.debugMode + 1) % 3;
 	}
 
 	private static function onStateSwitchPost() {

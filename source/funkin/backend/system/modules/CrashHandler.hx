@@ -1,26 +1,21 @@
 package funkin.backend.system.modules;
 
+import funkin.backend.utils.NativeAPI;
 import haxe.CallStack;
-import openfl.events.UncaughtErrorEvent;
-import openfl.events.ErrorEvent;
+import openfl.Lib;
 import openfl.errors.Error;
+import openfl.events.ErrorEvent;
+import openfl.events.UncaughtErrorEvent;
+import lime.system.System as LimeSystem;
+import haxe.io.Path;
 #if sys
 import sys.FileSystem;
 import sys.io.File;
 #end
 
-using StringTools;
-using flixel.util.FlxArrayUtil;
-
-/**
- * Crash Handler.
- * @author YoshiCrafter29, Ne_Eo, MAJigsaw77 and Homura Akemi (HomuHomu833)
- */
-class CrashHandler
-{
-	public static function init():Void
-	{
-		openfl.Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
+final class CrashHandler {
+	public static function init():Void {
+		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
 		#if cpp
 		untyped __global__.__hxcpp_set_critical_error_handler(onError);
 		#elseif hl
@@ -28,7 +23,11 @@ class CrashHandler
 		#end
 	}
 
-	public static function onUncaughtError(e:UncaughtErrorEvent) {
+	private static function onUncaughtError(e:UncaughtErrorEvent):Void {
+		e.preventDefault();
+		e.stopPropagation();
+		e.stopImmediatePropagation();
+
 		var m:String = e.error;
 		if (Std.isOfType(e.error, Error)) {
 			var err:Error = cast e.error;
@@ -37,112 +36,58 @@ class CrashHandler
 			var err:ErrorEvent = cast e.error;
 			m = '${err.text}';
 		}
-		var stack = CallStack.exceptionStack();
-		var stackLabel:String = "";
+		var stack = haxe.CallStack.exceptionStack();
+		var stackBuffer = new StringBuf();
 		for(e in stack) {
 			switch(e) {
-				case CFunction: stackLabel += "Non-Haxe (C) Function";
-				case Module(c): stackLabel += 'Module ${c}';
+				case CFunction: stackBuffer.add("Non-Haxe (C) Function\n");
+				case Module(c): stackBuffer.add('Module ${c}\n');
 				case FilePos(parent, file, line, col):
 					switch(parent) {
 						case Method(cla, func):
-							stackLabel += '(${file}) ${cla.split(".").last()}.$func() - line $line';
+							stackBuffer.add('${Path.withoutExtension(file)}.$func() - line $line\n');
 						case _:
-							stackLabel += '(${file}) - line $line';
+							stackBuffer.add('${file} - line $line\n');
 					}
 				case LocalFunction(v):
-					stackLabel += 'Local Function ${v}';
+					stackBuffer.add('Local Function ${v}\n');
 				case Method(cl, m):
-					stackLabel += '${cl} - ${m}';
+					stackBuffer.add('${cl} - ${m}\n');
 			}
-			stackLabel += "\r\n";
 		}
+		var stackLabel = stackBuffer.toString();
+		#if sys
+		try
+		{
+			if (!FileSystem.exists('crash'))
+				FileSystem.createDirectory('crash');
+
+			File.saveContent('crash/' + Date.now().toString().replace(' ', '-').replace(':', "'") + '.txt', '$m\n$stackLabel');
+		}
+		catch (e:haxe.Exception)
+			trace('Couldn\'t save error message. (${e.message})');
+		#end
 
 		e.preventDefault();
 		e.stopPropagation();
 		e.stopImmediatePropagation();
 
-		var m:String = e.error;
-		if (Std.isOfType(e.error, Error))
-		{
-			var err = cast(e.error, Error);
-			m = '${err.message}';
-		}
-		else if (Std.isOfType(e.error, ErrorEvent))
-		{
-			var err = cast(e.error, ErrorEvent);
-			m = '${err.text}';
-		}
-		var stack = haxe.CallStack.exceptionStack();
-		var stackLabelArr:Array<String> = [];
-		var stackLabel:String = "";
-		for (e in stack)
-		{
-			switch (e)
-			{
-				case CFunction:
-					stackLabelArr.push("Non-Haxe (C) Function");
-				case Module(c):
-					stackLabelArr.push('Module ${c}');
-				case FilePos(parent, file, line, col):
-					switch (parent)
-					{
-						case Method(cla, func):
-							stackLabelArr.push('${haxe.io.Path.withoutExtension(file)}.$func() [line $line]');
-						case _:
-							stackLabelArr.push('${file} [line $line]');
-					}
-				case LocalFunction(v):
-					stackLabelArr.push('Local Function ${v}');
-				case Method(cl, m):
-					stackLabelArr.push('${cl} - ${m}');
-			}
-		}
-		stackLabel = stackLabelArr.join('\r\n');
+		NativeAPI.showMessageBox("Error!", '$m\n$stackLabel', MSG_ERROR);
 
-		#if sys
-		saveErrorMessage('$m\n$stackLabel');
+		#if js
+		if (FlxG.sound.music != null)
+			FlxG.sound.music.stop();
+
+		js.Browser.window.location.reload(true);
+		#else
+		LimeSystem.exit(1);
 		#end
-
-		NativeAPI.showMessageBox("Error!", '$m\n$stackLabel');
-		lime.system.System.exit(1);
 	}
 
 	#if (cpp || hl)
 	private static function onError(message:Dynamic):Void
 	{
-		final log:Array<String> = [];
-
-		if (message != null && message.length > 0)
-			log.push(message);
-
-		log.push(haxe.CallStack.toString(haxe.CallStack.exceptionStack(true)));
-
-		#if sys
-		saveErrorMessage(log.join('\n'));
-		#end
-
-		NativeAPI.showMessageBox("Critical Error!", log.join('\n'));
-		#if DISCORD_ALLOWED DiscordClient.shutdown(); #end
-		lime.system.System.exit(1);
-	}
-	#end
-
-	#if sys
-	private static function saveErrorMessage(message:String):Void
-	{
-		final folder:String = 'logs/';
-		try
-		{
-			if (!FileSystem.exists(folder))
-				FileSystem.createDirectory(folder);
-
-			File.saveContent(folder
-				+ Date.now().toString().replace(' ', '-').replace(':', "'")
-				+ '.txt', message);
-		}
-		catch (e:haxe.Exception)
-			trace('Couldn\'t save error message. (${e.message})');
+		throw Std.string(message);
 	}
 	#end
 }

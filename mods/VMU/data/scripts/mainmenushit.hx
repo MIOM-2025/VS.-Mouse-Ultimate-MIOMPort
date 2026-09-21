@@ -19,7 +19,7 @@ public function createMainMenu() {
     trophyGroup = new FlxTypedGroup<FunkinSprite>();
     add(trophyGroup);
 	versionText = new FunkinText(5, FlxG.height - 2, 0);
-    versionText.text = "VS. Mouse Ultimate (Cancelled Build)\n" + "[TAB] Open Mods menu";
+    versionText.text = "VS. Mouse Ultimate (Cancelled Build)\n" + "MIOM MobilePort\n" + "[TAB] Open Mods menu";
     versionText.setFormat(Paths.font("CreatoDisplay-ExtraBold.otf"), 16, 0xFFFFFFFF, "right");
     versionText.setBorderStyle(FlxTextBorderStyle.OUTLINE, 0xFF000000, 1.5);
     versionText.y = 5;

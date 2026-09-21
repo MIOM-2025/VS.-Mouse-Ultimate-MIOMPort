@@ -183,12 +183,15 @@ class FreeplayState extends MusicBeatState
 
 		add(scoreText);
 
+		addDPad("FULL");
+		addButton("A_B_X_Y");
+		addDPadCamera();
+		addButtonCamera();
+
 		changeSelection(0, true);
 		changeCoopMode(0, true);
 
 		interpColor = new FlxInterpolateColor(bg.color);
-		
-		addTouchPad('LEFT_FULL', 'A_B_X_Y');
 	}
 
 	#if PRELOAD_ALL
@@ -241,7 +244,7 @@ class FreeplayState extends MusicBeatState
 		if (canSelect) {
 			changeSelection((controls.UP_P ? -1 : 0) + (controls.DOWN_P ? 1 : 0) - FlxG.mouse.wheel);
 			changeDiff((controls.LEFT_P ? -1 : 0) + (controls.RIGHT_P ? 1 : 0));
-			changeCoopMode(((#if TOUCH_CONTROLS touchPad.buttonX.justPressed || #end controls.CHANGE_MODE) ? 1 : 0)); // TODO: make this configurable
+			changeCoopMode(((controls.CHANGE_MODE || mobileCJustPressed("X")) ? 1 : 0)); // TODO: make this configurable
 			// putting it before so that its actually smooth
 			updateOptionsAlpha();
 		}
@@ -263,7 +266,7 @@ class FreeplayState extends MusicBeatState
 		if (!disableAutoPlay && !songInstPlaying && (autoplayElapsed > timeUntilAutoplay)) {
 			if (curPlayingInst != (curPlayingInst = Paths.inst(curSong.name, curDifficulties[curDifficulty], curSong.instSuffix))) {
 				var streamed = false;
-				if (Options.streamedMusic) {
+				/*if (Options.streamedMusic) {
 					var sound = Assets.getMusic(curPlayingInst, true, false);
 					streamed = sound != null;
 
@@ -271,7 +274,7 @@ class FreeplayState extends MusicBeatState
 						FlxG.sound.playMusic(sound, 0);
 						Conductor.changeBPM(curSong.bpm, curSong.beatsPerMeasure, curSong.stepsPerBeat);
 					}
-				}
+				}*/
 
 				if (!streamed) {
 					var huh:Void->Void = function() {
@@ -292,7 +295,7 @@ class FreeplayState extends MusicBeatState
 				}
 			}
 			songInstPlaying = true;
-			if (disableAsyncLoading && !Options.streamedMusic) dontPlaySongThisFrame = true;
+			if (disableAsyncLoading/* && !Options.streamedMusic*/) dontPlaySongThisFrame = true;
 		}
 		#end
 
@@ -304,7 +307,7 @@ class FreeplayState extends MusicBeatState
 		}
 
 		#if sys
-		if (#if TOUCH_CONTROLS touchPad.buttonY.justPressed || #end FlxG.keys.justPressed.EIGHT && Sys.args().contains("-livereload"))
+		if (FlxG.keys.justPressed.EIGHT && Sys.args().contains("-livereload") || mobileCJustPressed("Y"))
 			convertChart();
 		#end
 
@@ -432,6 +435,11 @@ class FreeplayState extends MusicBeatState
 		updateScore();
 
 		var coopBinds = [CoolUtil.keyToString(Options.P1_CHANGE_MODE[0]), CoolUtil.keyToString(Options.P2_CHANGE_MODE[0])].filter(x -> x != "---");
+		if (controls.mobileC)
+		{
+			if (getMobilePadButton("buttonX") != null)
+				coopBinds = ["X"];
+		}
 		if (coopBinds.length == 2 && coopBinds[1] == coopBinds[0]) coopBinds.pop();
 		else if (coopBinds.length == 0) coopBinds.push("---");
 

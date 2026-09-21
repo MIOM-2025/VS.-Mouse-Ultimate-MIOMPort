@@ -17,6 +17,7 @@ import haxe.xml.Access;
 import haxe.xml.Printer;
 import lime.ui.MouseCursor;
 import openfl.ui.Mouse;
+import openfl.display.BlendMode;
 
 using funkin.backend.utils.MatrixUtil;
 
@@ -59,6 +60,12 @@ class StageEditor extends UIState {
 	public var storedSkew:FlxPoint = new FlxPoint();
 	public var storedAngle:Float = 0;
 	public var angleOffset:Float = 0;
+
+	var _isPressed:Bool = false;
+    var _isJustPressed:Bool = false;
+    var _isJustReleased:Bool = false;
+    var _deltaX:Float = 0;
+    var _deltaY:Float = 0;
 
 	public var showCharacters:Bool = true;
 
@@ -260,6 +267,7 @@ class StageEditor extends UIState {
 					stageSpritesWindow.add(button);
 				} else if(sprite == null) {
 					var basic = new FlxBasic(); // prevent awkward layering
+					basic.exists = false;
 					insert(i, basic);
 					var button = new StageUnknownButton(0,0, basic, xml);
 					stageSpritesWindow.add(button);
@@ -308,8 +316,8 @@ class StageEditor extends UIState {
 				sprite.extra.set(exID("type"), node.name);
 				sprite.extra.set(exID("imageFile"), '${node.getAtt("sprite").getDefault(sprite.name)}');
 				sprite.extra.set(exID("parentNode"), parent);
-				sprite.extra.set(exID("highMemory"), parent.name == "highMemory");
-				sprite.extra.set(exID("lowMemory"), parent.name == "lowMemory");
+				sprite.extra.set(exID("highMemory"), parent.name == "high-memory");
+				sprite.extra.set(exID("lowMemory"), parent.name == "low-memory");
 				//sprite.active = false;
 			}
 			if(sprite is StageCharPos)
@@ -359,10 +367,10 @@ class StageEditor extends UIState {
 		var parent = new Access(node.x.parent);
 
 		var charName = switch(node.name) {
-			case "dad" | "opponent": "dad";
-			case "gf" | "girlfriend": "gf";
-			case "bf" | "boyfriend" | "player": "bf";
-			default: (charPos.flipX) ? "bf" : "dad";
+			case "dad" | "opponent": Flags.DEFAULT_OPPONENT;
+			case "gf" | "girlfriend": Flags.DEFAULT_GIRLFRIEND;
+			case "bf" | "boyfriend" | "player": Flags.DEFAULT_CHARACTER;
+			default: (charPos.flipX) ? Flags.DEFAULT_CHARACTER : Flags.DEFAULT_OPPONENT;
 		}
 
 		var char = new Character(0,0, charName, charPos.flipX, true);
@@ -374,14 +382,11 @@ class StageEditor extends UIState {
 		}
 		char.name = charName;
 		char.debugMode = true;
-		// Play first anim, and make it the last frame
+		char.useRenderTexture = true;
+		// Play first anim, and make it the last frame by reversing and stopping.
 		var animToPlay = char.getAnimOrder()[0];
-		char.playAnim(animToPlay, true, NONE);
-		var lastIndx = (char.animateAtlas != null) ?
-			char.animateAtlas.anim.length - 1 :
-			char.animation.curAnim.numFrames - 1;
-		char.playAnim(animToPlay, true, NONE, false, lastIndx);
-		char.stopAnimation();
+		char.playAnim(animToPlay, true, NONE, true, 0);
+		char.stopAnim();
 
 		// Add it to the stage
 		char.visible = true;
@@ -394,8 +399,8 @@ class StageEditor extends UIState {
 		char.extra.set(exID("camY"), charPos.camyoffset);
 
 		char.extra.set(exID("parentNode"), parent);
-		char.extra.set(exID("highMemory"), parent.name == "highMemory");
-		char.extra.set(exID("lowMemory"), parent.name == "lowMemory");
+		char.extra.set(exID("highMemory"), parent.name == "high-memory");
+		char.extra.set(exID("lowMemory"), parent.name == "low-memory");
 
 		chars.push(char);
 		stage.applyCharStuff(char, charPos.name, 0);
@@ -424,82 +429,100 @@ class StageEditor extends UIState {
 	private var nextScroll:FlxPoint = FlxPoint.get(0,0);
 
 	public override function update(elapsed:Float) {
-		super.update(elapsed);
+        super.update(elapsed);
 
-		if (true) {
-			if(FlxG.keys.justPressed.ANY)
-				UIUtil.processShortcuts(topMenu);
-		}
+        // --- INPUT ABSTRACTION ---
+        _isPressed = FlxG.mouse.pressed;
+        _isJustPressed = FlxG.mouse.justPressed;
+        _isJustReleased = FlxG.mouse.justReleased;
+        _deltaX = FlxG.mouse.deltaScreenX;
+        _deltaY = FlxG.mouse.deltaScreenY;
 
-		//if (character != null)
-		//	characterPropertiresWindow.characterInfo.text = '${character.getNameList().length} Animations\nFlipped: ${character.flipX}\nSprite: ${character.sprite}\nAnim: ${character.getAnimName()}\nOffset: (${character.frameOffset.x}, ${character.frameOffset.y})';
+        FlxG.mouse.getWorldPosition(stageCamera, mousePoint);
 
-		currentCursor = ARROW;
+        if (controls.mobileC) {
+            var touchUtil = ScreenUtil.touch;
+            if (touchUtil.pressed) _isPressed = true;
+            if (touchUtil.justPressed) _isJustPressed = true;
+            if (touchUtil.justReleased) _isJustReleased = true;
 
-		FlxG.mouse.getWorldPosition(stageCamera, mousePoint);
-		if ((!stageSpritesWindow.hovered && !stageSpritesWindow.dragging) && !topMenuSpr.hovered) {
-			if (FlxG.mouse.wheel != 0) {
-				zoom += 0.25 * FlxG.mouse.wheel;
-				updateZoom();
-			}
+            var touchInst = touchUtil.instance;
+            if (touchInst != null) {
+                _deltaX = touchUtil.deltaScreenX;
+                _deltaY = touchUtil.deltaScreenY;
+                touchInst.getWorldPosition(stageCamera, mousePoint);
+            }
+        }
 
-			var prevMode = mouseMode;
+        if (true) {
+            if(FlxG.keys.justPressed.ANY)
+                UIUtil.processShortcuts(topMenu);
+        }
 
-			// TODO: make this work with multiple selections
-			if(selection.length == 1) {
-				for(sprite in selection) {
-					if(sprite is FunkinSprite) {
-						handleSelection(cast sprite);
-					}
-				}
-			}
+        currentCursor = ARROW;
 
-			//if (FlxG.mouse.justReleasedRight) {
-			//	closeCurrentContextMenu();
-			//	openContextMenu(topMenu[2].childs);
-			//}
+        if ((!stageSpritesWindow.hovered && !stageSpritesWindow.dragging) && !topMenuSpr.hovered) {
+            var wheelDelta:Float = FlxG.mouse.wheel;
+            
+            if (controls.mobileC) {
+                var pDelta = ScreenUtil.touch.pinchDelta;
+                if (pDelta != 0) {
+                    wheelDelta = pDelta * 0.02; 
+                }
+            }
 
-			if (mouseMode == NONE && prevMode == NONE) {
-				if (FlxG.mouse.pressed) {
-					var x = FlxG.mouse.deltaScreenX;
-					var y = FlxG.mouse.deltaScreenY;
-					movedTillRel.x += x; movedTillRel.y += y;
-					nextScroll.set(nextScroll.x - x, nextScroll.y - y);
-					currentCursor = HAND;
-				}
+            if (wheelDelta != 0) {
+                zoom += 0.25 * wheelDelta;
+                updateZoom();
+            }
 
-				if (FlxG.mouse.justReleased) {
-					if (Math.abs(movedTillRel.x) < 16 && Math.abs(movedTillRel.y) < 16) {
-						var point = FlxG.mouse.getWorldPosition(stageCamera, _point);
-						var sprites = getRealSprites();
-						for (i in 0...sprites.length) {
-							var sprite = sprites[sprites.length - i - 1];
-							//if(sprite.animateAtlas != null) continue;
+            var prevMode = mouseMode;
 
-							calcSpriteBounds(sprite);
-							//trace("Sprite: " + sprite);
-							//trace("Sprite bounds: " + sprite.extra.get(exID("bounds")));
-							if (cast(sprite.extra.get(exID("bounds")), FlxRect).containsPoint(point)) {
-								selectSprite(sprite); break;
-							}
-						}
-					}
-					movedTillRel.set();
-				}
-			}
-		}/* else if (!FlxG.mouse.pressed)
-			currentCursor = ARROW;*/
+            if(selection.length == 1) {
+                for(sprite in selection) {
+                    if(sprite is FunkinSprite) {
+                        handleSelection(cast sprite);
+                    }
+                }
+            }
 
-		stageCamera.scroll.set(
-			lerp(stageCamera.scroll.x, nextScroll.x, 0.35),
-			lerp(stageCamera.scroll.y, nextScroll.y, 0.35)
-		);
+            if (mouseMode == NONE && prevMode == NONE) {
+                var isPinching = controls.mobileC && ScreenUtil.touch.activeTouchesCount >= 2;
+                
+                if (_isPressed && !isPinching) { 
+                    movedTillRel.x += _deltaX; movedTillRel.y += _deltaY; 
+                    nextScroll.set(nextScroll.x - _deltaX, nextScroll.y - _deltaY);
+                    currentCursor = HAND;
+                }
 
-		stageCamera.zoom = lerp(stageCamera.zoom, __camZoom, 0.125);
+                if (_isJustReleased) {
+                    if (Math.abs(movedTillRel.x) < 16 && Math.abs(movedTillRel.y) < 16) {
+                        var point = mousePoint;
+                        var sprites = getRealSprites();
+                        for (i in 0...sprites.length) {
+                            var sprite = sprites[sprites.length - i - 1];
 
-		WindowUtils.prefix = undos.unsaved ? "* " : "";
-		SaveWarning.showWarning = undos.unsaved;
-	}
+                            calcSpriteBounds(sprite);
+                            if (cast(sprite.extra.get(exID("bounds")), FlxRect).containsPoint(point)) {
+                                selectSprite(sprite); break;
+                            }
+                        }
+                    }
+                    movedTillRel.set();
+                }
+            }
+        }
+
+        stageCamera.scroll.set(
+            lerp(stageCamera.scroll.x, nextScroll.x, 0.35),
+            lerp(stageCamera.scroll.y, nextScroll.y, 0.35)
+        );
+
+        stageCamera.zoom = lerp(stageCamera.zoom, __camZoom, 0.125);
+
+        WindowUtils.prefix = undos.unsaved ? "* " : "";
+        SaveWarning.showWarning = undos.unsaved;
+    }
 
 	// TOP MENU OPTIONS
 	#if REGION
@@ -510,7 +533,7 @@ class StageEditor extends UIState {
 
 	function _file_save(_) {
 		#if sys
-		FlxG.sound.play(Paths.sound('editors/save'));
+		UIState.playEditorSound(Flags.DEFAULT_EDITOR_SAVE_SOUND);
 		CoolUtil.safeSaveFile(
 			'${Paths.getAssetsRoot()}/data/stages/${__stage}.xml',
 			buildStage()
@@ -522,7 +545,7 @@ class StageEditor extends UIState {
 	}
 
 	function _file_saveas(_) {
-		FlxG.sound.play(Paths.sound('editors/save'));
+		UIState.playEditorSound(Flags.DEFAULT_EDITOR_SAVE_SOUND);
 		openSubState(new SaveSubstate(buildStage(), {
 			defaultSaveFile: '${__stage}.xml'
 		}));
@@ -554,6 +577,31 @@ class StageEditor extends UIState {
 		openSubState(substate);
 	}
 
+	function _solid_new(_) {
+		var node:Access = new Access(Xml.createElement("solid"));
+		stage.stageXML.x.addChild(node.x);
+		node.att.name = "solid_" + stageSpritesWindow.buttons.members.length;
+
+		var sprite:FunkinSprite = new FunkinSprite();
+		insert(members.indexOf(stage), sprite);
+		sprite.extra.set(exID("node"), node);
+		sprite.extra.set(exID("type"), node.name);
+		sprite.extra.set(exID("imageFile"), '');
+		sprite.extra.set(exID("parentNode"), stage.stageXML.x);
+		sprite.extra.set(exID("highMemory"), false);
+		sprite.extra.set(exID("lowMemory"), false);
+		sprite.antialiasing = true;
+		xmlMap.set(sprite, node);
+
+		var button:StageSpriteButton = new StageSolidButton(0, 0, sprite, node);
+		sprite.extra.set(exID("button"), button);
+		stageSpritesWindow.add(button);
+
+		var substate = new StageSpriteEditScreen(button, "layouts/stage/solidEditScreen");
+		substate.newSprite = true;
+		openSubState(substate);
+	}
+
 	function _character_new(_) {
 		var node:Access = new Access(Xml.createElement("char"));
 		stage.stageXML.x.addChild(node.x);
@@ -565,9 +613,7 @@ class StageEditor extends UIState {
 		// Play first anim, and make it the last frame
 		var animToPlay = char.getAnimOrder()[0];
 		char.playAnim(animToPlay, true, NONE);
-		var lastIndx = (char.animateAtlas != null) ?
-			char.animateAtlas.anim.length - 1 :
-			char.animation.curAnim.numFrames - 1;
+		var lastIndx = char.animation.curAnim.numFrames - 1;
 		char.playAnim(animToPlay, true, NONE, false, lastIndx);
 		char.stopAnimation();
 
@@ -670,8 +716,12 @@ class StageEditor extends UIState {
 				if(sprite.spriteAnimType != LOOP)
 					spriteXML.set("type", sprite.spriteAnimType.toString());
 				saveToXml(spriteXML, "color", sprite.color.toWebString(), "#FFFFFF");
+				@:privateAccess saveToXml(spriteXML, "blend", sprite.blend.toString(), null);
 				// TODO: save custom parameters
 				//saveToXml(spriteXML, "flipX", sprite.flipX, false);
+
+				if (node.hasNode.anim) for (animNode in node.nodes.anim)
+					spriteXML.addChild(animNode.x);
 				newNode = spriteXML;
 			} else if(button is StageCharacterButton) {
 				var button:StageCharacterButton = cast button;
@@ -734,7 +784,7 @@ class StageEditor extends UIState {
 	}
 
 	function _edit_undo(_) {
-		FlxG.sound.play(Flags.DEFAULT_EDITOR_UNDO_SOUND);
+		UIState.playEditorSound(Flags.DEFAULT_EDITOR_UNDO_SOUND);
 		var undo = undos.undo();
 		switch(undo) {
 			case null:
@@ -760,7 +810,7 @@ class StageEditor extends UIState {
 	}
 
 	function _edit_redo(_) {
-		FlxG.sound.play(Paths.sound(Flags.DEFAULT_EDITOR_REDO_SOUND));
+		UIState.playEditorSound(Flags.DEFAULT_EDITOR_REDO_SOUND);
 		var redo = undos.redo();
 		switch(redo) {
 			case null:
@@ -1073,123 +1123,119 @@ class StageEditor extends UIState {
 	}
 
 	function handleSelection(sprite:FunkinSprite) {
-		if(!sprite.extra.exists(exID("buttonBoxes"))) return;
-		var buttonBoxes:Array<FlxPoint> = cast sprite.extra.get(exID("buttonBoxes"));
+        if(!sprite.extra.exists(exID("buttonBoxes"))) return;
+        var buttonBoxes:Array<FlxPoint> = cast sprite.extra.get(exID("buttonBoxes"));
 
-		dotCheckSize = DrawUtil.dot.frameWidth / 0.7/stageCamera.zoom; // basically adjust it to the zoom.
+        dotCheckSize = DrawUtil.dot.frameWidth / 0.7/stageCamera.zoom; 
 
-		var prevMode = mouseMode;
-		if(FlxG.mouse.justPressed) {
-			for (i in StageEditorMouseMode.SKEW_TOP...(StageEditorMouseMode.SKEW_BOTTOM + 1)) {
-				var cappedI1 = CoolUtil.maxInt(i - StageEditorMouseMode.SKEW_TOP - 1, 0);
-				var cappedI2 = CoolUtil.minInt(i - StageEditorMouseMode.SKEW_TOP + 1, 3);
-				var point1 = buttonBoxes[cappedI1];
-				var point2 = buttonBoxes[cappedI2];
-				if (checkLine(point1, point2, point2.x - point1.x, point2.y - point1.y)) {
-					mousePoint.copyTo(clickPoint);
-					storedPos.set(sprite.x, sprite.y);
-					storedSkew.copyFrom(sprite.skew);
-					storedScale.copyFrom(sprite.scale);
-					storedAngle = sprite.angle;
-					mouseMode = i;
-				}
-			}
+        var prevMode = mouseMode;
+        if(_isJustPressed) { // Swapped
+            for (i in StageEditorMouseMode.SKEW_TOP...(StageEditorMouseMode.SKEW_BOTTOM + 1)) {
+                var cappedI1 = CoolUtil.maxInt(i - StageEditorMouseMode.SKEW_TOP - 1, 0);
+                var cappedI2 = CoolUtil.minInt(i - StageEditorMouseMode.SKEW_TOP + 1, 3);
+                var point1 = buttonBoxes[cappedI1];
+                var point2 = buttonBoxes[cappedI2];
+                if (checkLine(point1, point2, point2.x - point1.x, point2.y - point1.y)) {
+                    mousePoint.copyTo(clickPoint);
+                    storedPos.set(sprite.x, sprite.y);
+                    storedSkew.copyFrom(sprite.skew);
+                    storedScale.copyFrom(sprite.scale);
+                    storedAngle = sprite.angle;
+                    mouseMode = i;
+                }
+            }
 
-			for(i=>edge in edges) {
-				if(checkDot(buttonBoxes[i])) {
-					mouseMode = switch(edge) {
-						case TOP_LEFT: SCALE_TOP_LEFT;
-						case TOP_MIDDLE: SCALE_TOP;
-						case TOP_RIGHT: SCALE_TOP_RIGHT;
-						case MIDDLE_LEFT: SCALE_LEFT;
-						case MIDDLE_RIGHT: SCALE_RIGHT;
-						case BOTTOM_LEFT: SCALE_BOTTOM_LEFT;
-						case BOTTOM_MIDDLE: SCALE_BOTTOM;
-						case BOTTOM_RIGHT: SCALE_BOTTOM_RIGHT;
-						case CENTER_CIRCLE: MOVE_CENTER;
-						case ROTATE_CIRCLE:
-							angleOffset = 90;
-							ROTATE;
-						case ROTATE_CORNER:
-							angleOffset = Math.atan(sprite.height / sprite.width) * FlxAngle.TO_DEG;
-							ROTATE;
-						default: NONE;
-					}
-					Logs.trace("Clicked Dot: " + mouseMode.toString());
-					mousePoint.copyTo(clickPoint);
-					storedPos.set(sprite.x, sprite.y);
-					storedSkew.set(sprite.skew.x, sprite.skew.y);
-					storedScale.copyFrom(sprite.scale);
-					storedAngle = sprite.angle;
-				}
-				
-				if(mouseMode == MOVE_CENTER){
-					trace(mouseMode);
-					storedPos.set(sprite.x, sprite.y);
-				}
-			}
-		}
-		for(i=>edge in edges) {
-			if(checkDot(buttonBoxes[i])) {
-				// TODO: make it show both sided arrows when resizing, unless its at minimum size then show only one
-				// TODO: make this rotate with the sprite
-				currentCursor = switch(edge) {
-					// RESIZE_NESW; //RESIZE_NS; //RESIZE_NWSE; //RESIZE_WE;
-					case TOP_LEFT: RESIZE_TL;
-					case TOP_MIDDLE: RESIZE_T;
-					case TOP_RIGHT: RESIZE_TR;
-					case MIDDLE_LEFT: RESIZE_L;
-					case CENTER_CIRCLE: 
-						#if (mac) FlxG.mouse.pressed ? DRAG : DRAG_OPEN 
-						#elseif (linux) FlxG.mouse.pressed ? DRAG : CLICK 
-						#else MOVE #end;
-					case MIDDLE_RIGHT: RESIZE_R;
-					case BOTTOM_LEFT: RESIZE_BL;
-					case BOTTOM_MIDDLE: RESIZE_B;
-					case BOTTOM_RIGHT: RESIZE_BR;
-					//case TOP_LEFT | BOTTOM_RIGHT: MouseCursor.RESIZE_NWSE;
-					//case TOP_MIDDLE | BOTTOM_MIDDLE: MouseCursor.RESIZE_NS;
-					//case TOP_RIGHT | BOTTOM_LEFT: MouseCursor.RESIZE_NESW;
-					//case MIDDLE_LEFT | MIDDLE_RIGHT: MouseCursor.RESIZE_WE;
+            for(i=>edge in edges) {
+                if(checkDot(buttonBoxes[i])) {
+                    mouseMode = switch(edge) {
+                        case TOP_LEFT: SCALE_TOP_LEFT;
+                        case TOP_MIDDLE: SCALE_TOP;
+                        case TOP_RIGHT: SCALE_TOP_RIGHT;
+                        case MIDDLE_LEFT: SCALE_LEFT;
+                        case MIDDLE_RIGHT: SCALE_RIGHT;
+                        case BOTTOM_LEFT: SCALE_BOTTOM_LEFT;
+                        case BOTTOM_MIDDLE: SCALE_BOTTOM;
+                        case BOTTOM_RIGHT: SCALE_BOTTOM_RIGHT;
+                        case CENTER_CIRCLE: MOVE_CENTER;
+                        case ROTATE_CIRCLE:
+                            angleOffset = 90;
+                            ROTATE;
+                        case ROTATE_CORNER:
+                            angleOffset = Math.atan(sprite.height / sprite.width) * FlxAngle.TO_DEG;
+                            ROTATE;
+                        default: NONE;
+                    }
+                    Logs.trace("Clicked Dot: " + mouseMode.toString());
+                    mousePoint.copyTo(clickPoint);
+                    storedPos.set(sprite.x, sprite.y);
+                    storedSkew.set(sprite.skew.x, sprite.skew.y);
+                    storedScale.copyFrom(sprite.scale);
+                    storedAngle = sprite.angle;
+                }
+                
+                if(mouseMode == MOVE_CENTER){
+                    trace(mouseMode);
+                    storedPos.set(sprite.x, sprite.y);
+                }
+            }
+        }
+        for(i=>edge in edges) {
+            if(checkDot(buttonBoxes[i])) {
+                currentCursor = switch(edge) {
+                    case TOP_LEFT: RESIZE_TL;
+                    case TOP_MIDDLE: RESIZE_T;
+                    case TOP_RIGHT: RESIZE_TR;
+                    case MIDDLE_LEFT: RESIZE_L;
+                    case CENTER_CIRCLE: 
+                        #if (mac) _isPressed ? DRAG : DRAG_OPEN 
+                        #elseif (linux) _isPressed ? DRAG : CLICK 
+                        #else MOVE #end;
+                    case MIDDLE_RIGHT: RESIZE_R;
+                    case BOTTOM_LEFT: RESIZE_BL;
+                    case BOTTOM_MIDDLE: RESIZE_B;
+                    case BOTTOM_RIGHT: RESIZE_BR;
 
-					case ROTATE_CIRCLE | ROTATE_CORNER: FlxG.mouse.pressed ? DRAG : #if mac DRAG_OPEN #else CLICK #end;
-					default: ARROW;
-				}
-				break;
-			}
-		}
+                    case ROTATE_CIRCLE | ROTATE_CORNER: _isPressed ? DRAG : #if mac DRAG_OPEN #else CLICK #end;
+                    default: ARROW;
+                }
+                break;
+            }
+        }
 
-		mouseMode = (FlxG.mouse.justReleased) ? NONE : mouseMode;
+        mouseMode = (_isJustReleased) ? NONE : mouseMode;
 
-		if (prevMode == NONE && mouseMode == NONE) return;
+		if (prevMode != mouseMode)
+			call("mouseModeChanged", [sprite]);
 
-		if (prevMode != NONE && mouseMode == NONE) {
-			undos.addToUndo(CTransform(sprite, {
-				x: storedPos.x,
-				y: storedPos.y,
-				scaleX: storedScale.x,
-				scaleY: storedScale.y,
-				skewX: storedSkew.x,
-				skewY: storedSkew.y,
-				angle: storedAngle
-			}, {
-				x: sprite.x,
-				y: sprite.y,
-				scaleX: sprite.scale.x,
-				scaleY: sprite.scale.y,
-				skewX: sprite.skew.x,
-				skewY: sprite.skew.y,
-				angle: sprite.angle
-			}));
-		}
+        if (prevMode == NONE && mouseMode == NONE) return;
 
-		if(mouseMode == NONE) return;
+        if (prevMode != NONE && mouseMode == NONE) {
+            undos.addToUndo(CTransform(sprite, {
+                x: storedPos.x,
+                y: storedPos.y,
+                scaleX: storedScale.x,
+                scaleY: storedScale.y,
+                skewX: storedSkew.x,
+                skewY: storedSkew.y,
+                angle: storedAngle
+            }, {
+                x: sprite.x,
+                y: sprite.y,
+                scaleX: sprite.scale.x,
+                scaleY: sprite.scale.y,
+                skewX: sprite.skew.x,
+                skewY: sprite.skew.y,
+                angle: sprite.angle
+            }));
+        }
 
-		var relative = clickPoint.subtractNew(mousePoint);
-		call(mouseMode.toString(), [sprite, relative]);
-		cast(sprite.extra.get(exID("button")), StageElementButton).updateInfo();
-		relative.put();
-	}
+        if(mouseMode == NONE) return;
+
+        var relative = clickPoint.subtractNew(mousePoint);
+        call(mouseMode.toString(), [sprite, relative]);
+        cast(sprite.extra.get(exID("button")), StageElementButton).updateInfo();
+        relative.put();
+    }
 
 	public static var dotCheckSize:Float = 53;
 

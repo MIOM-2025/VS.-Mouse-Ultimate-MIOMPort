@@ -17,13 +17,19 @@ var infoTexts:Array<FunkinText> = [];
 var boardTargetScale:Float = 1;
 var infoData;
 
-// 鼠标交互变量
-var hoveredIndex:Int = -1;          // 当前悬停的选项索引，-1 表示无悬停
-var textCam:FlxCamera;              // 已在 create 中定义
+// 鼠标交互变量（与第二段代码一致）
+var selectedIndex:Int = 0;          // 当前选中的选项索引
+var mousePressIndex:Int = -1;       // 按下时悬停的选项索引
+var hasSwitchedDuringPress:Bool = false; // 按住期间是否切换过选中项
+
+var textCam:FlxCamera;
 var board:FlxSprite;
 var grpText:FlxGroup;
 
 function create(e) {
+    #if mobile	
+    try { removeTouchPad(); } catch (e:Dynamic) { try { removeMobilePad(); } catch (e:Dynamic) { try { removeButton(); removeDPad();} catch (e:Dynamic) { } } }
+    #end
     grey.strength = 0;
     for (poo in FlxG.cameras.list) poo.addShader(grey);
     isVehement = (songName.toLowerCase() == 'vehement'); 
@@ -70,7 +76,7 @@ function create(e) {
 
     var i:Float = 2;
     for(e in menuItems) {
-        text = new FlxText(0, 120 + (i * 56), 0, e, 8);
+        var text = new FlxText(0, 120 + (i * 56), 0, e, 8);
         text.setFormat(Paths.font("WickedMouse.ttf"), 32, FlxColor.WHITE, "center", FlxTextBorderStyle.SHADOW, FlxColor.BLACK);
         text.borderSize = 2;
         text.camera = textCam;
@@ -100,9 +106,16 @@ function create(e) {
     }
 
     add(grpText);
+
+    // 初始化选中项
+    selectedIndex = 0;
+    updateSelectionVisuals();
 }
 
 function update(elapsed:Float) {
+    #if mobile	
+    try { removeTouchPad(); } catch (e:Dynamic) { try { removeMobilePad(); } catch (e:Dynamic) { try { removeButton(); removeDPad();} catch (e:Dynamic) { } } }
+    #end
     grey.strength = lerp(grey.strength, 1, 0.05);
     checker.alpha = lerp(checker.alpha, 0.5, 0.04);
 
@@ -127,66 +140,61 @@ function update(elapsed:Float) {
 
     pauseMusic.volume = lerp(pauseMusic.volume, 0.5, 0.02);
 
-    // ========== 鼠标交互（替代键盘选择） ==========
-    var mousePos = FlxG.mouse.getScreenPosition(textCam);
-    var newHover:Int = -1;
+    // ========== 鼠标交互（修复后，与第二段代码逻辑一致） ==========
+    var mousePoint = FlxG.mouse.getWorldPosition(textCam);
+    var mouseOverIndex = -1;
 
-    // 遍历所有菜单项，检测鼠标悬停
+    // 检测鼠标悬停的选项
     for (i in 0...grpText.members.length) {
         var item = grpText.members[i];
-        if (item.visible && item.overlapsPoint(mousePos, false, textCam)) {
-            newHover = i;
+        if (item.visible &&
+            mousePoint.x >= item.x && mousePoint.x <= item.x + item.width &&
+            mousePoint.y >= item.y && mousePoint.y <= item.y + item.height) {
+            mouseOverIndex = i;
             break;
         }
     }
 
-    // 更新悬停状态（高亮）
-    if (newHover != hoveredIndex) {
-        // 恢复旧悬停项颜色（如果有）
-        if (hoveredIndex != -1 && hoveredIndex < grpText.members.length) {
-            grpText.members[hoveredIndex].color = FlxColor.WHITE;
-        }
-        // 设置新悬停项颜色（淡黄色）
-        if (newHover != -1) {
-            grpText.members[newHover].color = 0xFFFFE066; // 淡黄
-            // 播放悬停音效（可选）
+    // 鼠标按下时记录
+    if (FlxG.mouse.justPressed) {
+        mousePressIndex = mouseOverIndex;
+        hasSwitchedDuringPress = false;
+    }
+
+    // 按住期间允许拖动切换选中项
+    if (FlxG.mouse.pressed) {
+        if (mouseOverIndex != -1 && mouseOverIndex != selectedIndex) {
+            selectedIndex = mouseOverIndex;
+            updateSelectionVisuals();
             FlxG.sound.play(Paths.sound("menu/pauseScroll"), 0.5);
+            hasSwitchedDuringPress = true;
         }
-        hoveredIndex = newHover;
     }
 
-    // 鼠标松开时触发选择
-    if (FlxG.mouse.justReleased && hoveredIndex != -1) {
-        selectItem(hoveredIndex);
+    // 鼠标释放：只有未切换过且按下时有悬停项才触发选择
+    if (FlxG.mouse.justReleased) {
+        if (!hasSwitchedDuringPress && mousePressIndex != -1) {
+            // ★ 关键修复：设置当前选中项，并调用原版选择逻辑
+            curSelected = mousePressIndex;
+            selectOption();  // 原版暂停菜单的选择处理，能正确处理所有选项
+        }
+        mousePressIndex = -1;
+        hasSwitchedDuringPress = false;
+    }
+}
+
+function updateSelectionVisuals() {
+    for (i in 0...grpText.members.length) {
+        var item = grpText.members[i];
+        if (i == selectedIndex) {
+            item.color = 0xFFFFE066; // 淡黄色高亮
+        } else {
+            item.color = FlxColor.WHITE;
+        }
     }
 }
 
-// ========== 选项选择逻辑（根据选项文本执行动作） ==========
-function selectItem(index:Int) {
-    var optionText = menuItems[index];
-    // 播放选择音效
-    FlxG.sound.play(Paths.sound("menu/select"), 1);
-
-    // 根据选项文本执行对应操作（可自行修改）
-    switch (optionText.toLowerCase()) {
-        case "resume", "continue":
-            // 恢复游戏（关闭暂停子状态）
-            close();
-        case "restart", "retry":
-            // 重新开始当前歌曲
-            FlxG.resetState();
-        case "options", "settings":
-            // 打开选项菜单（示例，需根据实际实现调整）
-            // 这里可以调用 FlxG.switchState(new OptionsMenuState()) 或打开子状态
-            trace("Options selected");
-        case "exit", "quit", "back":
-            // 退出到自由选歌界面（或主菜单）
-            FlxG.switchState(new FreeplayState());
-        default:
-            // 如果未匹配，则关闭（默认行为）
-            close();
-    }
-}
+// 注意：我们不再需要自定义 selectItem 函数，因为原版 selectOption 已处理所有选项
 
 function destroy() {
     for (poo in FlxG.cameras.list) poo.removeShader(grey);
@@ -200,6 +208,3 @@ function postCreate() {
         if (label != null) label.visible = false;
     }
 }
-
-// 注意：原 onChangeItem 函数已移除，因为键盘选择不再使用。
-// 如需保留键盘支持，可自行添加，但会与“全白”要求冲突。

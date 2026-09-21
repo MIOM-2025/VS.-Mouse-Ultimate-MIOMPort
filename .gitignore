@@ -7,9 +7,11 @@ latest/*
 .haxelib/
 pages/
 docs/doc.xml
-#mods/*
+mods/*
 addons/*
 !mods/readme.txt
 addons/*
 !addons/readme.txt
 dev-libs/
+*.sum
+.vs/

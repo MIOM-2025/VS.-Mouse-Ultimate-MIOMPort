@@ -27,9 +27,10 @@ function create(e) {
 function update(elapsed:Float) if (controls.ACCEPT) FlxG.switchState(new PlayState());
 function setGameResolution(newWidth, newHeight) {
 	FlxG.resizeWindow(newWidth, newHeight);
-	FlxG.scaleMode.width = FlxG.initialWidth = FlxG.width = newWidth;
-	FlxG.scaleMode.height = FlxG.initialHeight = FlxG.height = newHeight;
-
+	try{
+	        FlxG.scaleMode.width = FlxG.initialWidth = FlxG.width = newWidth;
+	        FlxG.scaleMode.height = FlxG.initialHeight = FlxG.height = newHeight;
+        } catch (e:Dynamic) { }
 	window.x = Std.int(Capabilities.screenResolutionX / 2 - window.width / 2);
 	window.y = Std.int(Capabilities.screenResolutionY / 2 - window.height / 2);
 }

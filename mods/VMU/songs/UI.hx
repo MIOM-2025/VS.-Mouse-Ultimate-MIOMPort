@@ -23,13 +23,19 @@ var isCrisis:Bool = false;
 var isVehement:Bool = false;
 public var healthPercent:Float = 1;
 var isWelcomeLegacy = (PlayState.SONG.meta.name == "Welcome" && PlayState.variation == "Legacy");
-
+    if (FlxG.save.data.middleScroll == true && !(PlayState.SONG.meta.name == "Crisis" && PlayState.variation != "Legacy")){
+        importScript("data/scripts/MiddleScroll");
+    }
+    if (FlxG.save.data.botplay == true){
+        importScript("data/scripts/botplay");
+    }
 if (isWelcomeLegacy) {
     disableScript();
     return;
 }
 
 function create() {
+
     if(!isWelcomeLegacy){
         PauseSubState.script = 'data/scripts/menus/VMU Pause';
         var songName:String = PlayState.SONG.meta.name.toLowerCase();
@@ -111,11 +117,15 @@ function postCreate() {
     add(timeTxt);
 
     // ========== 修改：将 missesTxt 和 scoreTxt 的 Y 坐标固定为 150 ==========
-    missesTxt.y = scoreTxt.y = 150;   // 原来为条件表达式
+if (Options.downscroll != true) {
+    missesTxt.y = scoreTxt.y = FlxG.height - 130;
+} else {
+    missesTxt.y = scoreTxt.y = 100;
+}
     // =====================================================================
 
-    missesTxt.x += 75;
-    scoreTxt.x = missesTxt.x + 225;
+    missesTxt.x += 20;
+    scoreTxt.x = missesTxt.x + 325;
 
     for(i in [missesTxt, scoreTxt]){
         i.setFormat(Paths.font("WickedMouse.ttf"), 21, FlxColor.WHITE, FlxTextAlign.LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);

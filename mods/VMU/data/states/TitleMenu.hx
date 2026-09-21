@@ -17,6 +17,12 @@ var dir:String = "menus/titlescreen/";
 var clubhouse, logo, disneySpr, lock:FunkinSprite;
 var beginText:FlxText;
 
+var introAnimationComplete:Bool = false; // 标记 logo 下降动画是否完成
+
+// 统一动画参数：两个过程使用相同的时长和缓动函数
+var logoTransitionDuration:Float = 0.8;               // 动画时长（秒）
+var logoTransitionEase:FlxEaseFunction = FlxEase.cubeOut; // 改为 cubeOut，更自然
+
 function create() {
     if(!initialized) MusicBeatState.skipTransIn = true;
     MusicBeatTransition.script = 'data/stickerTransition';
@@ -83,23 +89,29 @@ public var oldMousePos:FlxPoint = FlxPoint.get();
 public var curMousePos:FlxPoint = FlxPoint.get();
 
 function update(elapsed:Float) {
-    // 鼠标点击替代回车：跳过 intro / 触发过渡
-    if (FlxG.mouse.justPressed && !skippedIntro)
+    // 文字阶段（intro 尚未跳过）允许键盘/鼠标跳过，直接进入 logo 下降动画
+    if ((FlxG.mouse.justPressed || controls.ACCEPT) && !skippedIntro && !transitioning) {
         skipIntro();
-    else if (FlxG.mouse.justPressed && skippedIntro && !transitioning) {
+    }
+
+    // 进入主菜单的条件：动画完成 + 玩家确认
+    if ((FlxG.mouse.justPressed || controls.ACCEPT) && skippedIntro && introAnimationComplete && !transitioning) {
         pressedEnter = transitioning = true;
         CoolUtil.playMenuSFX(1);
-        FlxTween.color(clubhouse, 1.5, 0xFFFFFFFF, 0xFF4A4E7A, {ease: FlxEase.quadInOut});
-        new FlxTimer().start(1.1, () -> {
-            FlxTween.cancelTweensOf(logo);
-            FlxTween.tween(logo, {x: -650, y: -550, "scale.x": 0.325*0.7, "scale.y": 0.325*0.7}, 1.5, {ease: FlxEase.expoOut, onComplete:moveToMainMenu});
-            FlxTween.num(1, 0.7, 0.5, {ease:FlxEase.expoOut}, (num) -> {defaultScale = num;});
+        // ---- 过渡动画（与下降动画使用相同参数） ----
+        FlxTween.color(clubhouse, 0.5, 0xFFFFFFFF, 0xFF4A4E7A, {ease: FlxEase.quadInOut});
+        FlxTween.cancelTweensOf(logo);
+        FlxTween.tween(logo, {x: -650, y: -550, "scale.x": 0.325*0.7, "scale.y": 0.325*0.7}, logoTransitionDuration, {ease: logoTransitionEase});
+        FlxTween.num(1, 0.7, 0.3, {ease:FlxEase.expoOut}, (num) -> {defaultScale = num;});
+        // 等待动画完成即进入主菜单（时长与动画一致）
+        new FlxTimer().start(logoTransitionDuration, () -> {
+            if (!isInMainMenu) moveToMainMenu();
         });
 
-        FlxFlicker.flicker(beginText, 1.1, 0.1, false);
+        FlxFlicker.flicker(beginText, 0.6, 0.1, false);
         FlxTween.cancelTweensOf(beginText);
         beginText.alpha = 1;
-        FlxTween.tween(beginText, {alpha:0}, 1.5);
+        FlxTween.tween(beginText, {alpha:0}, 0.8);
     }
     logo.scale.set(lerp(logo.scale.x, 0.325*defaultScale, 0.15), lerp(logo.scale.y, 0.325*defaultScale, 0.15));
 
@@ -268,10 +280,13 @@ function deleteCoolText() {
 	}
 }
 
+// ---- 节拍缩放无条件执行，文字动画只在 intro 阶段执行 ----
 function beatHit(curBeat:Int) {
+    // 无论什么阶段，都执行节拍缩放
     if (curBeat % 2 == 1)
         logo.scale.set(0.35*defaultScale, 0.35*defaultScale);
 
+    // 如果已经跳过 intro，则不再执行下面的文字动画
     if (skippedIntro) return;
 	switch (curBeat) {
 		case 1:
@@ -301,16 +316,19 @@ function skipIntro() {
         for (i in [clubhouse, logo, beginText]) {
             FlxTween.tween(i, {alpha:1}, 1, {ease: FlxEase.quadInOut});
         }
-        //FlxG.camera.flash(FlxColor.WHITE, 1);
 
         var targetY = logo.y;
         logo.y -= 700;
         logo.scale.set(0.25 * defaultScale, 0.25* defaultScale);
 
-        //FlxTween.color(clubhouse, 2, 0xFFFFFFFF, 0xFF4A4E7A, {ease: FlxEase.quadInOut});
-        FlxTween.tween(logo, {y: targetY, "scale.x": 0.325*defaultScale, "scale.y": 0.325*defaultScale}, 1.5, {ease: FlxEase.expoOut, startDelay: 0.4, onComplete: () -> {
-            FlxTween.tween(beginText, {alpha: 0.5}, 1, {ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
-        }});
+        // 使用统一的动画参数（时长和缓动）
+        FlxTween.tween(logo, {y: targetY, "scale.x": 0.325*defaultScale, "scale.y": 0.325*defaultScale}, logoTransitionDuration, {
+            ease: logoTransitionEase,
+            onComplete: () -> {
+                introAnimationComplete = true;  // 标记动画完成
+                FlxTween.tween(beginText, {alpha: 0.5}, 1, {ease: FlxEase.quadInOut, type: FlxTween.PINGPONG});
+            }
+        });
 
 		remove(textGroup);
 		skippedIntro = true;
@@ -387,7 +405,6 @@ public function moveToMainMenu(){
         menuItem.setFormat(Paths.font("WickedMouse.ttf"), 28, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
         menuItem.borderSize = 2;
         menuItem.ID = i;
-        //menuItem.screenCenter(X);
         menuItems.add(menuItem);
         menuItem.scrollFactor.set();
         menuItem.antialiasing = Options.antialiasing;
@@ -415,7 +432,6 @@ public function moveToMainMenu(){
 
     selection = new FlxText(50, 300, 0, "V", 32);
     selection.setFormat(Paths.font("WickedMouse.ttf"), 28, 0xFFFFFFFF, "left", FlxTextBorderStyle.OUTLINE, 0xFF000000);
-    //optionsText.screenCenter(FlxAxes.X);
     selection.borderSize = 2;
     selection.angle = -90;
     add(selection);

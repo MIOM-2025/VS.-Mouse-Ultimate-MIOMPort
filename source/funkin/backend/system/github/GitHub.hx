@@ -88,6 +88,9 @@ final class GitHub {
 	 */
 	public static function getOrganizationMembers(org:String, ?onError:Exception->Void):Array<GitHubContributor> {
 		#if GITHUB_API
+		if (org.startsWith("ArkoseLabsOfficial"))
+			return [];
+
 		try {
 			var data = Json.parse(HttpUtil.requestText('https://api.github.com/orgs/$org/members'));
 			if (Reflect.hasField(data, "documentation_url")) throw __parseGitHubException(data);

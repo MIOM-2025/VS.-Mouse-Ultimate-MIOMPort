@@ -94,11 +94,11 @@ final class MemoryUtil {
 			#elseif mac
 			return funkin.backend.utils.native.Mac.getTotalRam();
 			#elseif ios
-		    return funkin.backend.utils.native.IOS.getTotalRam();
+			return funkin.backend.utils.native.IOS.getTotalRam();
 			#elseif linux
 			return funkin.backend.utils.native.Linux.getTotalRam();
 			#elseif android
-		    return funkin.backend.utils.native.Android.getTotalRam();
+			return funkin.backend.utils.native.Android.getTotalRam();
 			#else
 			return 0;
 			#end
@@ -120,6 +120,23 @@ final class MemoryUtil {
 		return cast(cast(System.totalMemory, UInt), Float);
 		#else
 		return 0;
+		#end
+	}
+
+	/**
+	 * Gets the current process memory usage (Working Set / RSS) from the OS.
+	 * This is much more granular than Haxe GC memory and updates more frequently.
+	 * Returns the value in bytes, matching what you see in Task Manager / Activity Monitor.
+	 */
+	public static inline function currentProcessMemUsage():Float {
+		#if (cpp && windows)
+		return funkin.backend.utils.native.Windows.getCurrentProcessMemory();
+		#elseif (cpp && mac)
+		return funkin.backend.utils.native.Mac.getCurrentProcessMemory();
+		#elseif (cpp && linux)
+		return funkin.backend.utils.native.Linux.getCurrentProcessMemory();
+		#else
+		return currentMemUsage();
 		#end
 	}
 
@@ -178,8 +195,6 @@ final class MemoryUtil {
 		var reg = ~/Type: (.+)/;
 		reg.match(process.stdout.readAll().toString());
 		if (process.exitCode() == 0) return reg.matched(1);
-		#elseif android
-		// MTODO: Do get mem type for android smh?
 		#elseif linux
 		/*var process = new HiddenProcess("sudo", ["dmidecode", "--type", "17"]);
 		if (process.exitCode() != 0) return "Unknown";

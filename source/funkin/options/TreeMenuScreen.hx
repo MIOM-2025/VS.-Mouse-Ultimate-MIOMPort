@@ -22,7 +22,7 @@ class TreeMenuScreen extends FlxSpriteGroup {
 
 	public var name:String;
 	public var desc:String;
-	public var prevMenuTPadModes:Array<String> = [];
+	public var prevMenuMPadModes:Array<String> = [];
 	/**
 	 * The prefix to add to the translations ids.
 	**/
@@ -61,25 +61,38 @@ class TreeMenuScreen extends FlxSpriteGroup {
 	var curFloatOption:ITreeFloatOption;
 	var __firstFrame:Bool = true;
 
-	public function new(name:String, desc:String, ?prefix:String, ?objects:Array<FlxSprite>, ?menuTPadModes:Array<String>) {
+	public function new(name:String, desc:String, prefix:String = "", ?objects:Array<FlxSprite>, ?menuMPadModes:Array<String>) {
 		super();
 		this.prefix = prefix;
 		rawName = name;
 		rawDesc = desc;
 
 		turboBasics = [leftTurboControl, rightTurboControl, upTurboControl, downTurboControl];
-		
-		#if TOUCH_CONTROLS
-		if (menuTPadModes != null)
-		{
-			final state = MusicBeatState.getState();
-			this.prevMenuTPadModes = [state.touchPad.curDPadMode, state.touchPad.curActionMode];
-			state.removeTouchPad();
 
-			state.addTouchPad(menuTPadModes[0], menuTPadModes[1]);
-			state.addTouchPadCamera();
+		//fix custom controls
+		if (menuMPadModes == null) {
+			final state = MusicBeatState.instance;
+			this.prevMenuMPadModes = ["UP_DOWN", "A_B"];
+			state.addDPad("FULL");
+			state.addButton("A_B");
+			state.addDPadCamera();
+			state.addButtonCamera();
 		}
-		#end
+
+		if (menuMPadModes != null)
+		{
+			final state = MusicBeatState.instance;
+			if (state != null && state.mobileManager != null) {
+				this.prevMenuMPadModes = [state.mobileManager.curDPadMode, state.mobileManager.curActionMode];
+				state.removeDPad();
+				state.removeButton();
+
+				state.addDPad(menuMPadModes[0]);
+				state.addButton(menuMPadModes[1]);
+				state.addDPadCamera();
+				state.addButtonCamera();
+			}
+		}
 
 		if (objects != null) for (object in objects) add(object);
 	}
@@ -108,18 +121,18 @@ class TreeMenuScreen extends FlxSpriteGroup {
 			for (basic in turboBasics) basic.update(elapsed);
 
 			var change = (upTurboControl.activated ? -1 : 0) + (downTurboControl.activated ? 1 : 0) - FlxG.mouse.wheel, mouseControl = false;
-			/*if (FlxG.mouse.justPressed && !funkin.backend.system.Controls.instance.touchC) {
+			if (FlxG.mouse.justPressed && !funkin.backend.system.Controls.instance.mobileC) {
 				for (i in CoolUtil.maxInt(curSelected - 3, 0)...CoolUtil.minInt(curSelected + 4, length))
 					if (i != curSelected && members[i] != null && mouseOverlaps(members[i])) {
 						change = i - curSelected;
 						mouseControl = true;
 						break;
 					}
-			}*/
+			}
 			changeSelection(change);
 
 			if (length > 0 && curOption != null) {
-				if (controls.ACCEPT) curOption.select();
+				if (controls.ACCEPT || (!mouseControl && (FlxG.mouse.justPressed && !funkin.backend.system.Controls.instance.mobileC) && mouseOverlaps(members[curSelected]))) curOption.select();
 				if (curFloatOption != null) {
 					if (controls.LEFT) curFloatOption.changeValue(-elapsed);
 					if (controls.RIGHT) curFloatOption.changeValue(elapsed);
@@ -136,18 +149,18 @@ class TreeMenuScreen extends FlxSpriteGroup {
 		updateItems();
 	}
 
+	dynamic function updateItem(object:FlxSprite, itemHeight:Float, centerY:Float, lerpRatio:Float) {
+		object.y = CoolUtil.fpsLerp(object.y, centerY - itemHeight * 0.5, lerpRatio);
+		object.x = x + 100 - Math.pow(Math.abs((object.y - (FlxG.height - itemHeight) * 0.5) / itemHeight / FlxG.height * FlxG.initialHeight), 1.6) * 15;
+	}
+
 	public function updateItems(force = false) {
 		var r = force ? 1 : 0.25, initY = FlxG.height * 0.5;
 		var i = curSelected, y = initY, object:FlxSprite = null, itemHeight:Float = 0;
 
-		inline function updateItem() {
-			object.y = CoolUtil.fpsLerp(object.y, y - itemHeight * 0.5, r);
-			object.x = x + 100 - Math.pow(Math.abs((object.y - (FlxG.height - itemHeight) * 0.5) / itemHeight / FlxG.height * FlxG.initialHeight), 1.6) * 15;
-		}
-
 		while (i < length) if ((object = members[i++]) != null) {
 			itemHeight = object.height;
-			updateItem();
+			updateItem(object, itemHeight, y, r);
 			y += itemHeight;
 		}
 
@@ -155,7 +168,7 @@ class TreeMenuScreen extends FlxSpriteGroup {
 		i = curSelected;
 		while (i-- > 0) if ((object = members[i]) != null) {
 			y -= (itemHeight = object.height);
-			updateItem();
+			updateItem(object, itemHeight, y, r);
 		}
 	}
 
@@ -168,17 +181,20 @@ class TreeMenuScreen extends FlxSpriteGroup {
 		else parent.removeMenu(this);
 
 		CoolUtil.playMenuSFX(CANCEL).persist = true;
-		
-		#if TOUCH_CONTROLS
-		if (prevMenuTPadModes.length > 0)
-		{
-			final state = MusicBeatState.getState();
-			state.removeTouchPad();
 
-			state.addTouchPad(prevMenuTPadModes[0], prevMenuTPadModes[1]);
-			state.addTouchPadCamera();
+		if (prevMenuMPadModes.length > 0)
+		{
+			final state = MusicBeatState.instance;
+			if (state != null && state.mobileManager != null) {
+				state.removeDPad();
+				state.removeButton();
+				state.addDPad(prevMenuMPadModes[0]);
+				state.addButton(prevMenuMPadModes[1]);
+				state.addDPadCamera();
+				state.addButtonCamera();
+			}
+			
 		}
-		#end
 	}
 
 	public function changeSelection(change:Int, force:Bool = false) {
