@@ -1,6 +1,7 @@
 importScript("data/scripts/lyrics");
 
 import openfl.display.BlendMode;
+import openfl.geom.ColorTransform;
 import flixel.effects.FlxFlicker;
 import flixel.util.FlxColor;
 
@@ -86,6 +87,9 @@ function postCreate() {
 }
 
 function setUpChars(){
+    if (goofyChar == null || goofyChar.length < 3) return;
+    if (donaldChar == null || donaldChar.length < 2) return;
+    if (mickeyChar == null || mickeyChar.length < 3) return;
     goofyChar[0].scale.set(0.8, 0.8);
     goofyChar[1].scale.set(0.75, 0.75);
     goofyChar[2].scale.set(0.75, 0.75);
@@ -133,6 +137,7 @@ function update(elapsed:Float) {
 }
 
 function postUpdate(elapsed:Float) {
+    if (donaldChar == null || donaldChar[0] == null || donaldChar[0].animation.curAnim == null) return;
     if (allowDonaldTween && donaldChar[0].animation.curAnim.name == "idle-alt") {
         if (donaldTween == null) donaldTween = FlxTween.tween(donaldChar[0], {x: minX}, 4, {type: FlxTween.PINGPONG, ease: FlxEase.sineInOut});
         else donaldTween.active = true;
@@ -161,9 +166,9 @@ function stepHit() {
     switch (curStep) {
         case 798:
             swapChars(0, 2); 
-            mickeyChar[2].playAnim("nerves", true, "LOCK");
-        case 1260, 1713: mickeyChar[3].playAnim("laugh", true, "LOCK");
-        case 1910: mickeyChar[3].playAnim("bois", true, "LOCK");
+            if (mickeyChar[2] != null) mickeyChar[2].playAnim("nerves", true, "LOCK");
+        case 1260, 1713: if (mickeyChar[3] != null) mickeyChar[3].playAnim("laugh", true, "LOCK");
+        case 1910: if (mickeyChar[3] != null) mickeyChar[3].playAnim("bois", true, "LOCK");
     }
 }
 
@@ -179,8 +184,8 @@ function beatHit(curBeat:Int) {
     }
 
     switch(curBeat) {
-        case 103: 
-            goofyChar[0].visible = true;
+        case 103:
+            if (goofyChar[0] != null) goofyChar[0].visible = true;
             stage.stageSprites['goofy'].visible = false;
         case 136:
             bgFade(true);
@@ -223,20 +228,25 @@ function beatHit(curBeat:Int) {
         case 240:
             allowDonaldTween = false;
             if (donaldTween != null) donaldTween.cancel(); 
-            donaldChar[0].setPosition(200, donaldChar[0].y - 100);
-            goofyChar[0].setPosition(1100, goofyChar[0].y - 150);
+            if (donaldChar[0] != null) donaldChar[0].setPosition(200, donaldChar[0].y - 100);
+            if (goofyChar[0] != null) goofyChar[0].setPosition(1100, goofyChar[0].y - 150);
 
             adjustColor.brightness = 0;
             adjustColor.hue = 0;
             adjustColor.contrast = 0;
 
             if(Options.gameplayShaders){
-                for (grp in [stage.stageSprites, [boyfriend, gf, mickeyChar, donaldChar, goofyChar]]) {
-                    for (a in grp) {
-                        a.shader = adjustColor;
-                    }
+                // This device's Animate runtime crashes when a filter is baked (NULL texture),
+                // and a camera filter makes FlxAnimate bake too. Darken without shaders/filters:
+                // stage sprites get a colour transform, characters get a dimming alpha.
+                for (a in stage.stageSprites) {
+                    if (a != null) a.colorTransform = new ColorTransform(0.75, 0.75, 0.75, 1, 0, 0, 0, 0);
                 }
-                FlxTween.tween(adjustColor, {brightness: -30, hue: -15, contrast: 15}, 1, {ease: FlxEase.quadOut});
+                for (c in [boyfriend, gf]) if (c != null) c.alpha = 0.75;
+                for (arr in [mickeyChar, donaldChar, goofyChar]) {
+                    if (arr == null) continue;
+                    for (c in arr) if (c != null) c.alpha = 0.75;
+                }
             }
         case 305, 309: FlxTween.tween(dad, {alpha: 0.5}, 0.5);
         case 307, 312: FlxTween.tween(dad, {alpha: 1}, 0.75);
