@@ -8,7 +8,7 @@
 	<architecture exclude="arm64-v8a" if="ONLY_ARMV7" />
 
 	<app
-		title="Codename Engine" main="funkin.backend.system.Main"
+		title="VS. Mouse ULTIMATE (Cancelled Build) Port" main="funkin.backend.system.Main"
 		file="CodenameEngine" packageName="com.vmu.miomport"
 		package="com.vmu.miomport"
 		version="1.0.1" company="Yoshman29" />
