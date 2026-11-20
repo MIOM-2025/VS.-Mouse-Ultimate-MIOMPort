@@ -20,7 +20,7 @@ var creditNames:Array<Array<String>> = [
     ["totallynotdumb", "Borupen", "flyplague", "Novasaur", "Candias", "SkeeterYeti", "weedeet", "Stonesteve", "PaigeyPaper", "FadoraDude", "ToasterTrash", "BrownieBro", "Bradley", "Erick Animations", "TerminalRepo", "Mr. DJ"], // artnim
     ["MarStarBro", "Drop0ff", "RiverMusic", "smileysqueak", "JordoPrice", "Olimac31", "Cytrogen"],
     ["Smooth Brewed Sound", "Donald Ducc", "Brock Baker"],
-    ["MIOM", "Icarus Higgs", "Luzew", "Wolf Yeying", "Exist", "wsha"], 
+    ["MIOm", "Icarus Higgs", "Luzew", "Wolf Yeying", "Exist", "wsha"],
     ["MickeyTesticles", "Ristar", "Gally", "TheShipySea", "Xender", "JukoDuko", "DuskieWhy", "SariSorta", "LuigiOmega", "Skylar", "CableKid", "ComicVito", "MuraSaki", "PurbleBun/Polygon64", "Toknull", "Rookies Team", "MOUSE! Team", "The Funkin' Crew Inc.", "Disney", "And you!", "NICE"]
 ];
 
@@ -44,7 +44,7 @@ var curSelected:Int = 0;
 var animSpeed:Float = 0.15;
 var totalClicks:Int = 0;
 var cooldown:Float = 0;
-var clickCounterText, descText, roleTxt:FunkinText;
+var clickCounterText, descText, roleTxt, miomText:FunkinText;
 var trophy:FunkinSprite; // DONT LET THEM KNOW! Well. I Suppose it is kind of visible in its own way...
 
 // ---------- 新增 Back 按钮相关变量 ----------
@@ -97,6 +97,17 @@ function postCreate() {
         i.angle = (i == leftScrollText ? 90 : -90);
     }
     descText.alpha = roleText.alpha = 0; 
+
+    // MIOM 的专属字体：注意大小写必须是 MIOm（小写 m 才是特殊字形）。
+    miomText = new FunkinText(0, FlxG.height - 125, FlxG.width);
+    miomText.text = "MIOm";
+    miomText.setFormat(Paths.font("MIOM.ttf"), 32, 0xFFFFFFFF, "center");
+    miomText.setBorderStyle(FlxTextBorderStyle.OUTLINE, 0xFF000000, 2);
+    miomText.scrollFactor.set();
+    miomText.alpha = 0;
+    miomText.antialiasing = Options.antialiasing;
+    add(miomText);
+
     clickCounterText.alpha = 0.5;
 
     if (FlxG.save.data.totalCreditsClicks == null) FlxG.save.data.totalCreditsClicks = 0;
@@ -135,6 +146,7 @@ function loadIcons() {
     iconGroup.clear();
     iconTimers = [];
     descText.alpha = roleText.alpha = 0;
+    if (miomText != null) miomText.alpha = 0;
 
     categoryText.text = folderDisplayNames[curSelected];
     categoryText.scale.set(1.2, 1.2);
@@ -236,9 +248,11 @@ function update(elapsed:Float) {
     }
 
     if (cooldown > 0) cooldown -= elapsed;
+    var isMIOMCredit:Bool = isHoveringAny && curSelected == 5 && hoveredID == 0;
     if (isHoveringAny) {
-        descText.text = creditNames[curSelected][hoveredID];
-        descText.alpha = FlxMath.lerp(descText.alpha, 1, 0.15 * 60 * elapsed);
+        if (!isMIOMCredit) descText.text = creditNames[curSelected][hoveredID];
+        descText.alpha = FlxMath.lerp(descText.alpha, isMIOMCredit ? 0 : 1, 0.15 * 60 * elapsed);
+        miomText.alpha = FlxMath.lerp(miomText.alpha, isMIOMCredit ? 1 : 0, 0.15 * 60 * elapsed);
         if (curSelected == 4 && hoveredID == 0 && cooldown <= 0) {
             FlxG.sound.play(Paths.sound("squish/itsMe"), 1);
             cooldown = 10;
@@ -252,6 +266,7 @@ function update(elapsed:Float) {
         }
     } else {
         descText.alpha = FlxMath.lerp(descText.alpha, 0, 0.15 * 60 * elapsed);
+        miomText.alpha = FlxMath.lerp(miomText.alpha, 0, 0.15 * 60 * elapsed);
         roleText.alpha = FlxMath.lerp(roleText.alpha, 0, 0.15 * 60 * elapsed);
     }
 
