@@ -95,6 +95,9 @@ def frame_replace(m):
 
 for path in FM:
     src = read(path)
+    if "FilterRenderer.bakeFrame" not in src:
+        print("[patch_animate] %s uses FilterRenderer.maskFrame; no Frame patch needed" % path)
+        continue
     if "catch (e:Dynamic)" in src and "bakedFrame = FilterRenderer.bakeFrame" in src:
         print("[patch_animate] already patched %s" % path)
         continue
