@@ -71,6 +71,11 @@ function postCreate() {
     for (i in [healthBarBG, healthBar, accuracyTxt, iconP1, iconP2]) i.visible = false;
     FlxG.cameras.add(vmuCam, false).bgColor = 0;
 
+    // Judgment/combo sprites live on camCombo. Put that camera on top so the
+    // ratings are never hidden behind the mobile arrows (especially downscroll).
+    FlxG.cameras.remove(camCombo, false);
+    FlxG.cameras.add(camCombo, false);
+
     var prefix = isCrisis ? 'crisis' : 'vmu';
     vmuBar = new FlxSprite().loadGraphic(Paths.image('game/healthBars/' + prefix + 'HealthBar'));
     vmuBar.camera = vmuCam;
