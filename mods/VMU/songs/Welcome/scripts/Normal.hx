@@ -153,23 +153,26 @@ function beatHit(){
         case 206:
             var baseCpu = centerCpuPos;
             var basePlayer = centerPlayerPos;
-            if (FlxG.save.data.middleScroll == true) {
-                // ★ 敌方（CPU）大偏移 ±600，我方（玩家）小偏移 ±35 ★
-                for (i in 0...cpuStrums.length) {
-                    var offset = (i < 2) ? -600 : 600;
-                    FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
-                }
-                for (i in 0...playerStrums.length) {
-                    var offset = (i < 2) ? -35 : 35;
-                    FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
-                }
-            } else {
-                // 基础滚动模式：玩家全部+70，CPU全部-600（基于居中布局）
-                for (i in 0...playerStrums.length) {
-                    FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + 70}, 1.45, {ease: FlxEase.quartInOut});
-                }
-                for (i in 0...cpuStrums.length) {
-                    FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] - 600}, 1.45, {ease: FlxEase.quartInOut});
+            // 箭头模式下箭头就是触控按钮，不能再左右移动，否则触控列会跟着跑。
+            if (Options.hitboxMode != "Arrows") {
+                if (FlxG.save.data.middleScroll == true) {
+                    // ★ 敌方（CPU）大偏移 ±600，我方（玩家）小偏移 ±35 ★
+                    for (i in 0...cpuStrums.length) {
+                        var offset = (i < 2) ? -600 : 600;
+                        FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
+                    }
+                    for (i in 0...playerStrums.length) {
+                        var offset = (i < 2) ? -35 : 35;
+                        FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
+                    }
+                } else {
+                    // 基础滚动模式：玩家全部+70，CPU全部-600（基于居中布局）
+                    for (i in 0...playerStrums.length) {
+                        FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + 70}, 1.45, {ease: FlxEase.quartInOut});
+                    }
+                    for (i in 0...cpuStrums.length) {
+                        FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] - 600}, 1.45, {ease: FlxEase.quartInOut});
+                    }
                 }
             }
 
@@ -209,16 +212,19 @@ function beatHit(){
             hudBF.alpha = 0;
 
             // 恢复：根据模式分别恢复到居中或普通布局
-            if (FlxG.save.data.middleScroll == true) {
-                for (i in 0...playerStrums.length) {
-                    FlxTween.tween(playerStrums.members[i], {x: centerPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});
+            // 箭头模式没有移动过箭头，自然也不需要恢复。
+            if (Options.hitboxMode != "Arrows") {
+                if (FlxG.save.data.middleScroll == true) {
+                    for (i in 0...playerStrums.length) {
+                        FlxTween.tween(playerStrums.members[i], {x: centerPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});
+                    }
+                    for (i in 0...cpuStrums.length) {
+                        FlxTween.tween(cpuStrums.members[i], {x: centerCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});
+                    }
+                } else {
+                    for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});}
+                    for (i in 0...cpuStrums.length) {FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});}
                 }
-                for (i in 0...cpuStrums.length) {
-                    FlxTween.tween(cpuStrums.members[i], {x: centerCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});
-                }
-            } else {
-                for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});}
-                for (i in 0...cpuStrums.length) {FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});}
             }
         case 271:
             for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {alpha: 0}, (Conductor.crochet/1000) * 4);}
