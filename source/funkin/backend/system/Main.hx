@@ -166,6 +166,10 @@ class Main extends Sprite
 		if (FileSystem.exists("mods/autoload.txt"))
 			modToLoad = File.getContent("mods/autoload.txt").trim();
 
+		// VMU is bundled with the app: fall back to it when autoload.txt is missing.
+		if (modToLoad == null && FileSystem.exists("mods/VMU/data/config/modpack.ini"))
+			modToLoad = "VMU";
+
 		ModsFolder.switchMod(modToLoad.getDefault(Options.lastLoadedMod));
 		#end
 
