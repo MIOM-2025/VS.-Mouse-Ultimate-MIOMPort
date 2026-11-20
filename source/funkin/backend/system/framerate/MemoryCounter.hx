@@ -28,9 +28,8 @@ class MemoryCounter extends Sprite {
 			addChild(label);
 		}
 		memoryPeakText.alpha = 0.5;
-		#if !(cpp && (windows || mac || linux) || mobile)
+		// Only the current memory usage is shown; the peak/max readout was removed.
 		memoryPeakText.visible = false;
-		#end
 	}
 
 	public function reload() {}
