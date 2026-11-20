@@ -60,16 +60,11 @@ function create() {
 	// video2.y -= 100;
 	insert(3, video2);
 
-    var vRes = {w:640, h:360};
-
     for (vid in [video, video3, video2]){
-        // vid.setGraphicSize(FlxG.width, FlxG.height);
-        // vid.scale.set(-vRes.w, -vRes.h);
-        vid.scale.set(2.09,2.09);
-        vid.updateHitbox();
-        vid.screenCenter();
-        vid.x = vRes.w/2;
-        vid.y = vRes.h/2;
+        // Fit as soon as the decoder reports the real frame size, then keep it
+        // fitted every frame (see update()) so a late format change can't leave gaps.
+        fitVideo(vid);
+        if (vid.bitmap != null) vid.bitmap.onFormatSetup.add(function() fitVideo(vid));
     }
 
 
@@ -104,11 +99,24 @@ function beatHit() {
 	// trace("test");
 }
 
+function fitVideo(vid) {
+	if (vid == null || vid.bitmap == null) return;
+	var vw:Float = vid.bitmap.width;
+	var vh:Float = vid.bitmap.height;
+	if (vw <= 0 || vh <= 0) return;
+	var s:Float = Math.max(FlxG.width / vw, FlxG.height / vh);
+	vid.scale.set(s, s);
+	vid.updateHitbox();
+	vid.screenCenter();
+}
+
 function update() {
-	if (camVideos.alpha != 1) {
-		if(Options.gameplayShaders) video2.shader = null;
-	} else {
-		if(Options.gameplayShaders) video2.shader = linear;
+	// Real-time fullscreen: keep every video layer covering the screen.
+	for (v in [video, video2, video3]) fitVideo(v);
+	if (!Options.gameplayShaders) return;
+	var on:Bool = camVideos.alpha == 1;
+	for (v in [video, video2, video3]) {
+		if (v != null) v.shader = on ? linear : null;
 	}
 }
 
