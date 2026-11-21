@@ -78,26 +78,14 @@ class MobileOptions extends TreeMenuScreen
 				FlxG.sound.muteKeys = [FlxKey.ZERO, FlxKey.NUMPADZERO];
 			}
 		}));
-		#if android
-		add(externalOption = new ArrayOption(getNameID('storageType'), getDescID('storageType'), storageTypes,
-			storageTypes, 'storageType'));
-		#end
+		// VMU port: storage is always Android/data, the location picker is gone.
+		storageTypes = ['EXTERNAL_DATA'];
 	}
 
 	override function close()
 	{
 		super.close();
 
-		#if android
-		if (lastExternal != externalOption.displayOptions[externalOption.currentSelection])
-		{
-			Options.save();
-			File.saveContent(MobileUtil.getStorageTypePath(), Options.storageType);
-			MobileUtil.initDirectory();
-			persistentUpdate = false;
-			funkin.backend.utils.NativeAPI.showMessageBox(TU.translate('MobileOptions.storageTypeChange-title'), TU.translate('MobileOptions.storageTypeChange-body'));
-			LimeSystem.exit(1);
-		}
-		#end
+		// VMU port: storage location is fixed to Android/data.
 	}
 }
