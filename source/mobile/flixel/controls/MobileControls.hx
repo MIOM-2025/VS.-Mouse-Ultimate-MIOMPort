@@ -48,6 +48,8 @@ class MobileControls extends FlxSpriteGroup {
 	}
 
 	public function addButtonCamera() {
+		// VMU port: on-screen engine buttons are intentionally not created.
+		if (true) return;
 		var cam:FlxCamera = new FlxCamera();
 		cam.bgColor.alpha = 0;
 		FlxG.cameras.add(cam, false);
@@ -59,6 +61,8 @@ class MobileControls extends FlxSpriteGroup {
 	}
 
 	public function addDPadCamera() {
+		// VMU port: on-screen engine d-pad is intentionally not created.
+		if (true) return;
 		var cam:FlxCamera = new FlxCamera();
 		cam.bgColor.alpha = 0;
 		FlxG.cameras.add(cam, false);
@@ -106,6 +110,8 @@ class MobileControls extends FlxSpriteGroup {
 	}
 
 	public function addButton(name:String) {
+		// VMU port: on-screen engine buttons are intentionally not created.
+		if (true) return;
 		if (buttons.length > 0)
 			removeButton();
 		var p = loadJson(name, Config.MODDED_BUTTON_JSON, Config.BUTTON_JSON);
@@ -119,6 +125,8 @@ class MobileControls extends FlxSpriteGroup {
 	}
 
 	public function addDPad(name:String) {
+		// VMU port: on-screen engine d-pad is intentionally not created.
+		if (true) return;
 		if (dpads.length > 0)
 			removeDPad();
 		var p = loadJson(name, Config.MODDED_DPAD_JSON, Config.DPAD_JSON);
