@@ -949,6 +949,7 @@
 		}
 
 		@:dox(hide) public override function createPost() {
+		addPauseButton();
 			startCutscene("", cutscene, null, true);
 			super.createPost();
 
@@ -1489,7 +1490,7 @@
 			while(events.length > 0 && events.last().time <= Conductor.songPosition)
 				executeEvent(events.pop());
 
-			if (controls.PAUSE && startedCountdown && canPause)
+			if ((controls.PAUSE || (mobilePauseButton != null && mobilePauseButton.justPressed)) && startedCountdown && canPause)
 				pauseGame();
 
 			if (generatedMusic)
