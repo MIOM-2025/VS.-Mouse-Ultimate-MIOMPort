@@ -39,6 +39,14 @@ class TreeMenu extends UIState {
 	var __drawer:TreeMenuDrawer;
 	var __treeCreated:Bool = false;
 
+	public var backButton:FlxSprite;
+	var backHeld:Bool = false;
+
+	/**
+	 * Only the options menu shows a back button.
+	 */
+	public function shouldShowBackButton():Bool return false;
+
 	public function new(?exitCallback:TreeMenu->Void,
 		scriptsAllowed:Bool = true, ?scriptName:String)
 	{
@@ -75,6 +83,8 @@ class TreeMenu extends UIState {
 		add(bgLabel);
 		add(titleLabel);
 		add(descLabel);
+
+		if (shouldShowBackButton()) createBackButton();
 
 		FlxG.camera.scroll.x = -FlxG.width;
 		menuChanged();
@@ -232,6 +242,8 @@ class TreeMenu extends UIState {
 			}
 		}
 
+		updateBackButton();
+
 		// in case path gets so long it goes offscreen, ALTHOUGH this nevers happens anyway since we have set a expected width to the label.
 		//titleLabel.x = lerp(titleLabel.x, Math.max(0, FlxG.width - 4 - titleLabel.width), 0.125);
 	}
@@ -263,6 +275,47 @@ class TreeMenu extends UIState {
 	public function destroyPreviousMenus() {
 		for (menu in previousMenus) menu.destroy();
 		previousMenus.resize(0);
+	}
+
+	function createBackButton():Void
+	{
+		if (backButton != null) return;
+
+		backButton = new FlxSprite(0, 0);
+		backButton.frames = Paths.getFrames('mobile/backButton');
+		backButton.animation.addByIndices('idle', 'back', [0], "", 24, false);
+		backButton.animation.addByPrefix('press', 'back', 24, false);
+		backButton.animation.play('idle');
+		backButton.scale.set(0.45, 0.45);
+		backButton.updateHitbox();
+		backButton.scrollFactor.set(0, 0);
+		backButton.antialiasing = true;
+		// 放右上角，避开底部 TouchPad，不会误触
+		backButton.x = FlxG.width - backButton.width - 8;
+		backButton.y = 6;
+		add(backButton);
+	}
+
+	function updateBackButton():Void
+	{
+		if (backButton == null || !backButton.exists) return;
+
+		if (!backHeld && mobile.funkin.backend.utils.OptionTouch.pressingOn(backButton))
+		{
+			backHeld = true;
+			FlxTween.cancelTweensOf(backButton.scale);
+			FlxTween.tween(backButton.scale, {x: 0.36, y: 0.36}, 0.08, {ease: FlxEase.quadOut});
+		}
+
+		var fire:Bool = mobile.funkin.backend.utils.OptionTouch.releasedOn(backButton);
+		if (backHeld && (fire || !mobile.funkin.backend.utils.OptionTouch.anyPressed))
+		{
+			backHeld = false;
+			FlxTween.cancelTweensOf(backButton.scale);
+			FlxTween.tween(backButton.scale, {x: 0.45, y: 0.45}, 0.12, {ease: FlxEase.quadOut});
+
+			if (fire && treeLength > 0) tree.last().close();
+		}
 	}
 
 	public function exit() {
