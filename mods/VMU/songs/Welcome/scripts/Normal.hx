@@ -14,6 +14,8 @@ var defaultCpuPos:Array = [];
 var defaultPlayerPos:Array = [];
 var centerCpuPos:Array = [];
 var centerPlayerPos:Array = [];
+var defaultPlayerY:Array = [];
+var centerY:Float = 0;
 
 if (PlayState.variation != null) {
     disableScript();
@@ -37,7 +39,10 @@ function postCreate(){
     }
     for (i in 0...playerStrums.length){
         defaultPlayerPos.push(playerStrums.members[i].x);
+        defaultPlayerY.push(playerStrums.members[i].y);
     }
+    // Middle-scroll judgement line height: the strum line sits higher, around the middle.
+    centerY = FlxG.height * 0.5 - 100;
 
     // 居中滚动布局位置：CPU（0号组）使用左右各两列公式，玩家（1号组）使用居中一排公式
     var width = FlxG.width;
@@ -166,9 +171,9 @@ function beatHit(){
                         FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
                     }
                 } else {
-                    // 基础滚动模式：玩家全部+70，CPU全部-600（基于居中布局）
+                    // 基础滚动模式：我方箭头移到中间并向上抬到居中判定位置，敌方全部移到左边
                     for (i in 0...playerStrums.length) {
-                        FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + 70}, 1.45, {ease: FlxEase.quartInOut});
+                        FlxTween.tween(playerStrums.members[i], {x: centerPlayerPos[i], y: centerY}, 1.45, {ease: FlxEase.quartInOut});
                     }
                     for (i in 0...cpuStrums.length) {
                         FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] - 600}, 1.45, {ease: FlxEase.quartInOut});
@@ -222,7 +227,10 @@ function beatHit(){
                         FlxTween.tween(cpuStrums.members[i], {x: centerCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});
                     }
                 } else {
-                    for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});}
+                    // 回到默认布局：x 和 y 都回原位
+                    for (i in 0...playerStrums.length) {
+                        FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i], y: defaultPlayerY[i]}, 1.45, {ease: FlxEase.quartOut});
+                    }
                     for (i in 0...cpuStrums.length) {FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});}
                 }
             }
