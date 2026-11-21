@@ -219,8 +219,11 @@ class MobileUtil
 		var list:Array<String> = Assets.list();
 		var versionPath = rootTarget + "mods/.version";
 		var version = "";
-		try version = lime.app.Application.current.meta.get("version");
-		catch (e:Dynamic) version = "";
+		try {
+			version = lime.app.Application.current.meta.get("version");
+		} catch (e:Dynamic) {
+			version = "";
+		}
 
 		var stored = "";
 		try { if (FileSystem.exists(versionPath)) stored = File.getContent(versionPath).trim(); } catch (e:Dynamic) {}
@@ -240,7 +243,9 @@ class MobileUtil
 			} catch (e:Dynamic) {}
 
 			var exists = false;
-			try exists = FileSystem.exists(fullPath); catch (e:Dynamic) {}
+			try {
+				exists = FileSystem.exists(fullPath);
+			} catch (e:Dynamic) {}
 
 			var textFile = ~/.(hx|xml|json|ini|txt|ttf|otf)$/.match(cleanPath);
 			if (exists && !(refreshAll && textFile)) {
