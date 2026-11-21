@@ -111,13 +111,22 @@ class Main extends Sprite
 	var __installBack:openfl.display.Shape;
 	var __installLabel:openfl.text.TextField;
 
+	function __installFontName():String
+	{
+		try {
+			var f = openfl.Assets.getFont("assets/fonts/WickedMouse.ttf");
+			if (f != null) return f.fontName;
+		} catch (e:Dynamic) {}
+		return "sans-serif";
+	}
+
 	function startAssetInstall():Void
 	{
 		var stage = openfl.Lib.current.stage;
 		__installBack = new openfl.display.Shape();
 		__installBar = new openfl.display.Shape();
 		__installLabel = new openfl.text.TextField();
-		var installFormat = new openfl.text.TextFormat(null, 22, 0xFFFFFF);
+		var installFormat = new openfl.text.TextFormat(__installFontName(), 26, 0xFFFFFF);
 		installFormat.align = openfl.text.TextFormatAlign.CENTER;
 		__installLabel.defaultTextFormat = installFormat;
 		__installLabel.width = stage.stageWidth;
@@ -186,7 +195,7 @@ class Main extends Sprite
 			__installBar.graphics.endFill();
 		}
 
-		__installLabel.text = "Installing assets... " + Std.int(ratio * 100) + "%";
+		__installLabel.text = "Installing assets... " + __installIndex + " / " + __installTotal + " (" + Std.int(ratio * 100) + "%)";
 	}
 	#end
 
