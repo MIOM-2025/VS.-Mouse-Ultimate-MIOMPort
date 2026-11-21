@@ -86,14 +86,15 @@ function beatHit() {
 	switch (curBeat) {
 		case 112:
 			FlxTween.tween(camVideos, {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
+			FlxTween.tween(video2, {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
 		case 144:
 			FlxTween.tween(video, {alpha: 0}, 0.5, {ease: FlxEase.quartOut});
 		case 176:
 			FlxTween.tween(video3, {alpha: 0.6}, 0.5, {ease: FlxEase.quartOut});
 		case 206:
 			FlxTween.tween(video3, {alpha: 0},(Conductor.crochet/1000) * 1.5);
-		case 240:
-			FlxTween.tween(video2, {alpha: 0}, 0.00001, {ease: FlxEase.quartOut});
+		case 232:
+			FlxTween.tween(video2, {alpha: 0}, 0.5, {ease: FlxEase.quartOut});
 	}
 
 	// trace("test");
