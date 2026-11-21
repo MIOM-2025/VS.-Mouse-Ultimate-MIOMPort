@@ -290,7 +290,6 @@ class MusicBeatState extends FlxState implements IBeatCancellableReceiver
 		Framerate.offset.y = 0;
 		super.create();
 		add(mobileManager);
-		setupMobilePauseButton();
 		call("create");
 	}
 
@@ -353,57 +352,42 @@ class MusicBeatState extends FlxState implements IBeatCancellableReceiver
 	}
 
 	#if mobile
-	var mobilePauseButton:FlxSprite;
-	var mobilePauseCamera:FlxCamera;
+	/** Mobile pause button, same as the newer engine's port: funkin.mobile.MobileButton. */
+	public var mobilePauseButton:funkin.mobile.MobileButton;
 
-	/** Top-right pause button; the port's older touch pads are gone, this one stays. */
-	function setupMobilePauseButton():Void
+	public function createMobileCamera():FlxCamera
 	{
-		if (!(this is funkin.game.PlayState)) return;
-
-		mobilePauseCamera = new FlxCamera();
-		mobilePauseCamera.bgColor.alpha = 0;
-		FlxG.cameras.add(mobilePauseCamera, false);
-
-		var bx:Float = FlxG.width - 76, by:Float = 10;
-		mobilePauseButton = new FlxSprite(bx, by);
-		mobilePauseButton.makeGraphic(56, 56, 0x66000000);
-		mobilePauseButton.cameras = [mobilePauseCamera];
-		add(mobilePauseButton);
-
-		var bar1 = new FlxSprite(bx + 16, by + 14).makeGraphic(7, 28, 0xFFFFFFFF);
-		var bar2 = new FlxSprite(bx + 29, by + 14).makeGraphic(7, 28, 0xFFFFFFFF);
-		bar1.cameras = [mobilePauseCamera];
-		bar2.cameras = [mobilePauseCamera];
-		add(bar1);
-		add(bar2);
-
-		FlxG.mouse.visible = false;
+		var cam:FlxCamera = new FlxCamera();
+		cam.bgColor.alpha = 0;
+		FlxG.cameras.add(cam, false);
+		return cam;
 	}
 
-	function updateMobilePauseButton():Void
+	public function addPauseButton():funkin.mobile.MobileButton
 	{
-		if (mobilePauseButton == null) return;
+		if (mobilePauseButton == null)
+			add(mobilePauseButton = funkin.mobile.MobileButton.createPause(createMobileCamera()));
+		return mobilePauseButton;
+	}
 
-		// Right click toggles the cursor back on.
-		if (FlxG.mouse.justPressedRight) FlxG.mouse.visible = !FlxG.mouse.visible;
-
-		if (FlxG.mouse.justPressed)
-		{
-			var p = FlxG.mouse.getScreenPosition();
-			var mx:Float = p.x, my:Float = p.y;
-			p.put();
-			if (mx >= FlxG.width - 80 && mx <= FlxG.width && my >= 0 && my <= 72)
-			{
-				// In a cutscene/dialogue the same button ends the scene; in gameplay it pauses.
-				if (subState != null) subState.close();
-				else if (this is funkin.game.PlayState) cast(this, funkin.game.PlayState).pauseGame();
-			}
+	public function removePauseButton():Void
+	{
+		if (mobilePauseButton != null) {
+			remove(mobilePauseButton, true);
+			mobilePauseButton = null;
 		}
 	}
+
+	public function updateMobilePauseButton():Void
+	{
+		if (FlxG.mouse.justPressedRight) FlxG.mouse.visible = !FlxG.mouse.visible;
+	}
 	#else
-	function setupMobilePauseButton():Void {}
-	function updateMobilePauseButton():Void {}
+	public var mobilePauseButton:Dynamic = null;
+	public function createMobileCamera():FlxCamera return null;
+	public function addPauseButton():Dynamic return null;
+	public function removePauseButton():Void {}
+	public function updateMobilePauseButton():Void {}
 	#end
 
 	@:dox(hide) public function stepHit(curStep:Int):Void
