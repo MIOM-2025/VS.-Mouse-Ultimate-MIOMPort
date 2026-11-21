@@ -113,7 +113,7 @@ class MobileButton extends FlxSprite
 		if (!enabled || !exists || !alive || !visible)
 			return false;
 
-		var camera = FlxG.camera;
+		var camera = (cameras != null && cameras.length > 0) ? cameras[0] : FlxG.camera;
 		var point = FlxPoint.get();
 		var result = false;
 
