@@ -85,13 +85,15 @@ function create() {
 function beatHit() {
 	switch (curBeat) {
 		case 112:
+			// loop1 and loop3 appear together with loop2, not later.
 			FlxTween.tween(camVideos, {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
 			FlxTween.tween(video2, {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
-		case 144:
+			FlxTween.tween(video3, {alpha: 0.6}, 0.5, {ease: FlxEase.quartOut});
+		case 132:
 			FlxTween.tween(video, {alpha: 0}, 0.5, {ease: FlxEase.quartOut});
 		case 176:
 			FlxTween.tween(video3, {alpha: 0.6}, 0.5, {ease: FlxEase.quartOut});
-		case 206:
+		case 194:
 			FlxTween.tween(video3, {alpha: 0},(Conductor.crochet/1000) * 1.5);
 		case 232:
 			FlxTween.tween(video2, {alpha: 0}, 0.5, {ease: FlxEase.quartOut});
