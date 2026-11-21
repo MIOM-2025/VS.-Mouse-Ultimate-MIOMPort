@@ -20,7 +20,7 @@ class Options
 	/**
 	 * MOBILE SETTINGS
 	 */
-	public static var extraButtons:Int = 2;
+	public static var extraButtons:Int = 0;
 	public static var hitboxPos:Bool = false;
 	public static var storageType:String = "EXTERNAL_DATA";
 	public static var controlsAlpha:Float = FlxG.onMobile ? 0.6 : 0;
@@ -221,6 +221,8 @@ class Options
 		if (__save == null) __save = new FlxSave();
 		__save.bind(name, path);
 		__load();
+		// VMU has no extra keys, so the old saved value must never survive.
+		extraButtons = 0;
 
 		if (!__eventAdded) {
 			Lib.application.onExit.add(function(i:Int) {
