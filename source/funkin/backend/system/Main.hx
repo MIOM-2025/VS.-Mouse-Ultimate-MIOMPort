@@ -80,6 +80,9 @@ class Main extends Sprite
 		Sys.setCwd(MobileUtil.getAssetDirectory());
 		//Sys.setCwd(haxe.io.Path.addTrailingSlash(MobileUtil.getDirectory()));
 		MobileUtil.copyAssets();
+		// mods live in the APK assets but ModsFolder reads them from the data directory,
+		// so install them there on first launch (and refresh scripts after an update).
+		MobileUtil.copyModsToStorage();
 		#end
 		CrashHandler.init();
 
