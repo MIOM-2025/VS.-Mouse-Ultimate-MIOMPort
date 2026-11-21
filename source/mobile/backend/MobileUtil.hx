@@ -237,6 +237,8 @@ class MobileUtil
 		} catch (e:Dynamic) {}
 	}
 
+	public static var __copyFailed:Array<String> = [];
+
 	/** Copies one bundled asset into the writable storage directory. */
 	public static function installAsset(assetKey:String, rootTarget:String):Void {
 		var cleanPath = assetKey;
@@ -249,17 +251,53 @@ class MobileUtil
 			if (!FileSystem.exists(directory)) FileSystem.createDirectory(directory);
 		} catch (e:Dynamic) {}
 
+		// Text assets (scripts, xml, json, fonts) are compared by size and refreshed
+		// on every launch, so an empty/stale copy from an older build can never stick
+		// around and leave the game without its text.
+		var textFile = ~/\.(hx|xml|json|ini|txt|ttf|otf|frag)$/.match(cleanPath);
+
 		var exists = false;
 		try {
 			exists = FileSystem.exists(fullPath);
 		} catch (e:Dynamic) {}
 
-		var textFile = ~/\.(hx|xml|json|ini|txt|ttf|otf)$/.match(cleanPath);
-		if (exists && !(getRefreshAll() && textFile)) return;
-
 		try {
-			File.saveBytes(fullPath, Assets.getBytes(assetKey));
-		} catch (e:Dynamic) trace('[MobileUtil] could not copy ' + cleanPath + ': ' + e);
+			var bytes = Assets.getBytes(assetKey);
+			var plainText:Bool = ~/\.(hx|xml|json|ini|txt)$/.match(cleanPath);
+			if (bytes == null && plainText) {
+				// Some builds expose text assets only through getText; use it so scripts
+				// and language files are never left behind.
+				var text = Assets.getText(assetKey);
+				if (text != null) {
+					if (exists) {
+						try {
+							var localText = File.getContent(fullPath);
+							if (localText == text) return;
+						} catch (e:Dynamic) {}
+					}
+					File.saveContent(fullPath, text);
+					return;
+				}
+			}
+			if (bytes == null) {
+				__copyFailed.push(cleanPath + ' (null bytes)');
+				return;
+			}
+			if (exists) {
+				if (!textFile) return;
+				var local = File.getBytes(fullPath);
+				if (local != null && local.length == bytes.length) return;
+			}
+			File.saveBytes(fullPath, bytes);
+		} catch (e:Dynamic) {
+			__copyFailed.push(cleanPath + ' (' + e + ')');
+		}
+	}
+
+	public static function writeCopyLog():Void {
+		try {
+			File.saveContent(getDirectory() + 'copy.log', 'failed: ' + __copyFailed.length + '\n' + __copyFailed.join('\n'));
+		} catch (e:Dynamic) {}
 	}
 
 	/**
