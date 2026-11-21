@@ -193,6 +193,30 @@ function hideScreen(icon:FunkinSprite, txt:FunkinText) {
     }
 }
 
+var __tapLock:Bool = false;
+
+/** True only for one single finger tap; multi-touch frames are ignored. */
+function singleTap():Bool {
+    var count:Int = 0;
+    var first:Dynamic = null;
+    #if FLX_TOUCH
+    for (t in FlxG.touches.list) {
+        if (t.pressed || t.justPressed) {
+            count++;
+            if (first == null) first = t;
+        }
+    }
+    #end
+    if (count > 1) { __tapLock = true; return false; }
+    if (count == 0) __tapLock = false;
+    if (count == 1) {
+        if (first.justPressed && !__tapLock) { __tapLock = true; return true; }
+        return false;
+    }
+    if (FlxG.mouse.justPressed && !__tapLock) { __tapLock = true; return true; }
+    return false;
+}
+
 function update(elapsed:Float) {
     // 波浪效果仅作用于 yes 和 no（索引 39-41, 46-47）
     if (step == 0 && promptGroup.alpha > 0) {
@@ -224,7 +248,7 @@ function update(elapsed:Float) {
         }
 
         // 鼠标点击（松开时触发）
-        if (mouse.justPressed) {
+        if (singleTap()) {
             if (mouse.overlaps(yesBtn)) {
                 onChoiceMade(true);
             } else if (mouse.overlaps(noBtn)) {
@@ -234,7 +258,7 @@ function update(elapsed:Float) {
     }
 
     // 第二页：鼠标点击任意位置继续（防连点已在内部处理）
-    if (canPress && step == 1 && FlxG.mouse.justPressed) {
+    if (canPress && step == 1 && singleTap()) {
         canPress = false; // 立即锁住，防止过渡中再次触发
         hideScreen(headphonesIcon, headphonesText);
         FlxTween.tween(bg1, {alpha: 0}, 0.8);
