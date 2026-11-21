@@ -158,6 +158,7 @@ class Main extends Sprite
 		{
 			openfl.Lib.current.stage.removeEventListener(openfl.events.Event.ENTER_FRAME, __installStep);
 			MobileUtil.writeModsVersion();
+			MobileUtil.writeCopyLog();
 			removeChild(__installBack);
 			removeChild(__installLabel);
 			removeChild(__installBar);
