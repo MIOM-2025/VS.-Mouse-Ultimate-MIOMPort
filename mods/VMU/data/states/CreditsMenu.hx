@@ -99,9 +99,10 @@ function postCreate() {
     descText.alpha = roleText.alpha = 0; 
 
     // MIOM 的专属字体：注意大小写必须是 MIOm（小写 m 才是特殊字形）。
-    miomText = new FunkinText(0, FlxG.height - 125, FlxG.width);
+    // Bigger MIOM credit, its bottom edge lines up with the role/description line.
+    miomText = new FunkinText(0, FlxG.height - 125 + 32 - 56, FlxG.width);
     miomText.text = "MIOm";
-    miomText.setFormat(Paths.font("MIOM.ttf"), 32, 0xFFFFFFFF, "center");
+    miomText.setFormat(Paths.font("MIOM.ttf"), 56, 0xFFFFFFFF, "center");
     miomText.setBorderStyle(FlxTextBorderStyle.OUTLINE, 0xFF000000, 2);
     miomText.scrollFactor.set();
     miomText.alpha = 0;
