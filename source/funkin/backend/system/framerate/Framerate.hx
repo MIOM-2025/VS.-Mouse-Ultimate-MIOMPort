@@ -52,6 +52,14 @@ class Framerate extends Sprite {
 		super();
 		if (instance != null) throw "Cannot create another instance";
 		instance = this;
+		// Register the embedded font; a bare path in TextFormat would fall back to the system font.
+		try {
+			var embedded = openfl.utils.Assets.getFont("assets/fonts/WickedMouse.ttf");
+			if (embedded != null) {
+				openfl.text.Font.registerFont(embedded);
+				fontName = embedded.fontName;
+			}
+		} catch (e:Dynamic) {}
 		textFormat = new TextFormat(fontName, 12, -1);
 
 		isLoaded = true;
