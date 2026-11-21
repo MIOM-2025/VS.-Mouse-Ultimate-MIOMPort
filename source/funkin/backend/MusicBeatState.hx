@@ -390,7 +390,7 @@ class MusicBeatState extends FlxState implements IBeatCancellableReceiver
 
 		if (FlxG.mouse.justPressed)
 		{
-			var p = FlxG.mouse.getScreenPosition(null, mobilePauseCamera);
+			var p = FlxG.mouse.getScreenPosition();
 			var mx:Float = p.x, my:Float = p.y;
 			p.put();
 			if (mx >= FlxG.width - 80 && mx <= FlxG.width && my >= 0 && my <= 72)
