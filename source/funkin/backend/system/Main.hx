@@ -78,12 +78,17 @@ class Main extends Sprite
 		MobileUtil.initDirectory();
 		#end
 		Sys.setCwd(MobileUtil.getAssetDirectory());
-		//Sys.setCwd(haxe.io.Path.addTrailingSlash(MobileUtil.getDirectory()));
-		MobileUtil.copyAssets();
-		// mods live in the APK assets but ModsFolder reads them from the data directory,
-		// so install them there on first launch (and refresh scripts after an update).
-		MobileUtil.copyModsToStorage();
+		// Install the bundled assets/mods into the writable storage directory on first
+		// launch (or after an update), showing a progress bar while it runs.
+		startAssetInstall();
+		return;
 		#end
+
+		finishInit();
+	}
+
+	function finishInit():Void
+	{
 		CrashHandler.init();
 
 		#if !web framerateSprite = new Framerate(); #end
@@ -96,6 +101,92 @@ class Main extends Sprite
 		#end
 		#if android FlxG.android.preventDefaultKeys = [BACK]; #end
 	}
+
+	#if mobile
+	var __installRoot:String = "";
+	var __installList:Array<String> = [];
+	var __installIndex:Int = 0;
+	var __installTotal:Int = 0;
+	var __installBar:openfl.display.Shape;
+	var __installBack:openfl.display.Shape;
+	var __installLabel:openfl.text.TextField;
+
+	function startAssetInstall():Void
+	{
+		var stage = openfl.Lib.current.stage;
+		__installBack = new openfl.display.Shape();
+		__installBar = new openfl.display.Shape();
+		__installLabel = new openfl.text.TextField();
+		__installLabel.defaultTextFormat = new openfl.text.TextFormat(null, 22, 0xFFFFFF);
+		__installLabel.width = stage.stageWidth;
+		__installLabel.textAlign = openfl.text.TextFormatAlign.CENTER;
+		__installLabel.y = stage.stageHeight * 0.5 - 48;
+
+		addChild(__installBack);
+		addChild(__installLabel);
+		addChild(__installBar);
+
+		__installRoot = MobileUtil.getAssetDirectory();
+		__installList = [];
+		for (id in openfl.Assets.list())
+		{
+			var clean = id;
+			var ci = clean.indexOf(":");
+			if (ci != -1) clean = clean.substring(ci + 1);
+			if (StringTools.startsWith(clean, "assets/") || StringTools.startsWith(clean, "mods/") || StringTools.startsWith(clean, "addons/"))
+				__installList.push(id);
+		}
+		__installTotal = __installList.length;
+		__installIndex = 0;
+		drawInstallBar(0);
+
+		stage.addEventListener(openfl.events.Event.ENTER_FRAME, __installStep);
+	}
+
+	function __installStep(_):Void
+	{
+		var i:Int = 0;
+		while (i < 20 && __installIndex < __installTotal)
+		{
+			MobileUtil.installAsset(__installList[__installIndex++], __installRoot);
+			i++;
+		}
+		drawInstallBar(__installTotal == 0 ? 1 : __installIndex / __installTotal);
+
+		if (__installIndex >= __installTotal)
+		{
+			openfl.Lib.current.stage.removeEventListener(openfl.events.Event.ENTER_FRAME, __installStep);
+			MobileUtil.writeModsVersion();
+			removeChild(__installBack);
+			removeChild(__installLabel);
+			removeChild(__installBar);
+			finishInit();
+		}
+	}
+
+	function drawInstallBar(ratio:Float):Void
+	{
+		var stage = openfl.Lib.current.stage;
+		var w = stage.stageWidth, h = stage.stageHeight;
+		var barW = w * 0.6, barH = 18;
+		var bx = (w - barW) / 2, by = h * 0.5;
+
+		__installBack.graphics.clear();
+		__installBack.graphics.beginFill(0x000000);
+		__installBack.graphics.drawRect(0, 0, w, h);
+		__installBack.graphics.endFill();
+
+		__installBar.graphics.clear();
+		if (ratio > 0)
+		{
+			__installBar.graphics.beginFill(0xFFFFFF);
+			__installBar.graphics.drawRect(bx, by, barW * ratio, barH);
+			__installBar.graphics.endFill();
+		}
+
+		__installLabel.text = "Installing assets... " + Std.int(ratio * 100) + "%";
+	}
+	#end
 
 	@:dox(hide)
 	public static var audioDisconnected:Bool = false;
