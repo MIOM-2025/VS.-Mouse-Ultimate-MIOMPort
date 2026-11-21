@@ -16,6 +16,8 @@ var centerCpuPos:Array = [];
 var centerPlayerPos:Array = [];
 var defaultPlayerY:Array = [];
 var centerY:Float = 0;
+var defaultComboX:Float = 0;
+var defaultComboY:Float = 0;
 
 if (PlayState.variation != null) {
     disableScript();
@@ -43,6 +45,7 @@ function postCreate(){
     }
     // Middle-scroll judgement line height: the strum line sits higher, around the middle.
     centerY = FlxG.height * 0.5 - 100;
+    if (comboGroup != null) { defaultComboX = comboGroup.x; defaultComboY = comboGroup.y; }
 
     // 居中滚动布局位置：CPU（0号组）使用左右各两列公式，玩家（1号组）使用居中一排公式
     var width = FlxG.width;
@@ -171,12 +174,15 @@ function beatHit(){
                         FlxTween.tween(playerStrums.members[i], {x: basePlayer[i] + offset}, 1.45, {ease: FlxEase.quartInOut});
                     }
                 } else {
-                    // 基础滚动模式：我方箭头移到中间并向上抬到居中判定位置，敌方全部移到左边
+                    // 非居中：我方箭头移到屏幕中间（y 不变），敌方保持标准间隔整体左移，判定文字数字移到居中位置
                     for (i in 0...playerStrums.length) {
-                        FlxTween.tween(playerStrums.members[i], {x: centerPlayerPos[i], y: centerY}, 1.45, {ease: FlxEase.quartInOut});
+                        FlxTween.tween(playerStrums.members[i], {x: centerPlayerPos[i]}, 1.45, {ease: FlxEase.quartInOut});
                     }
                     for (i in 0...cpuStrums.length) {
-                        FlxTween.tween(cpuStrums.members[i], {x: baseCpu[i] - 600}, 1.45, {ease: FlxEase.quartInOut});
+                        FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i] - 400}, 1.45, {ease: FlxEase.quartInOut});
+                    }
+                    if (comboGroup != null) {
+                        FlxTween.tween(comboGroup, {x: FlxG.width * 0.5 - 190, y: FlxG.height * 0.5 - 60 + (Options.downscroll ? 150 : -150)}, 1.45, {ease: FlxEase.quartInOut});
                     }
                 }
             }
@@ -227,11 +233,13 @@ function beatHit(){
                         FlxTween.tween(cpuStrums.members[i], {x: centerCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});
                     }
                 } else {
-                    // 回到默认布局：x 和 y 都回原位
                     for (i in 0...playerStrums.length) {
-                        FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i], y: defaultPlayerY[i]}, 1.45, {ease: FlxEase.quartOut});
+                        FlxTween.tween(playerStrums.members[i], {x: defaultPlayerPos[i]}, 1.45, {ease: FlxEase.quartOut});
                     }
                     for (i in 0...cpuStrums.length) {FlxTween.tween(cpuStrums.members[i], {x: defaultCpuPos[i]}, 1.45, {ease: FlxEase.quartOut});}
+                    if (comboGroup != null) {
+                        FlxTween.tween(comboGroup, {x: defaultComboX, y: defaultComboY}, 1.45, {ease: FlxEase.quartOut});
+                    }
                 }
             }
         case 271:
