@@ -15,6 +15,8 @@ typedef OptionCategory = {
 }
 
 class OptionsMenu extends TreeMenu {
+	override function shouldShowBackButton():Bool return true;
+
 	public static var mainOptions:Array<OptionCategory> = [
 		{  // name and desc are actually the translations ids!  - Nex
 			name: 'optionsTree.controls-name',
