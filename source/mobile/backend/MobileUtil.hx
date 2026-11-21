@@ -209,6 +209,59 @@ class MobileUtil
 	}
 	#end
 
+	static var __refreshAll:Null<Bool> = null;
+
+	/** Whether bundled text assets should overwrite the installed copies (new app version). */
+	public static function getRefreshAll():Bool {
+		if (__refreshAll != null) return __refreshAll;
+		var version = "";
+		try {
+			version = lime.app.Application.current.meta.get("version");
+		} catch (e:Dynamic) {}
+		var stored = "";
+		try {
+			var p = getDirectory() + "mods/.version";
+			if (FileSystem.exists(p)) stored = File.getContent(p).trim();
+		} catch (e:Dynamic) {}
+		__refreshAll = stored != version;
+		return __refreshAll;
+	}
+
+	public static function writeModsVersion():Void {
+		var version = "";
+		try {
+			version = lime.app.Application.current.meta.get("version");
+		} catch (e:Dynamic) {}
+		try {
+			File.saveContent(getDirectory() + "mods/.version", version);
+		} catch (e:Dynamic) {}
+	}
+
+	/** Copies one bundled asset into the writable storage directory. */
+	public static function installAsset(assetKey:String, rootTarget:String):Void {
+		var cleanPath = assetKey;
+		var colonIndex = cleanPath.indexOf(":");
+		if (colonIndex != -1) cleanPath = cleanPath.substring(colonIndex + 1);
+
+		var fullPath = Path.join([rootTarget, cleanPath]);
+		var directory = Path.directory(fullPath);
+		try {
+			if (!FileSystem.exists(directory)) FileSystem.createDirectory(directory);
+		} catch (e:Dynamic) {}
+
+		var exists = false;
+		try {
+			exists = FileSystem.exists(fullPath);
+		} catch (e:Dynamic) {}
+
+		var textFile = ~/\.(hx|xml|json|ini|txt|ttf|otf)$/.match(cleanPath);
+		if (exists && !(getRefreshAll() && textFile)) return;
+
+		try {
+			File.saveBytes(fullPath, Assets.getBytes(assetKey));
+		} catch (e:Dynamic) trace('[MobileUtil] could not copy ' + cleanPath + ': ' + e);
+	}
+
 	/**
 	 * Copies the bundled mods/ folder from the APK assets into the writable storage directory.
 	 * ModsFolder reads mods/ from the data directory, so without this the game starts with no mods.
