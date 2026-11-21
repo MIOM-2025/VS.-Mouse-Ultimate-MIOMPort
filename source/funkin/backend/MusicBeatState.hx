@@ -89,24 +89,24 @@ class MusicBeatState extends FlxState implements IBeatCancellableReceiver
 	*/
 	/* DPad */
 	public function addDPad(DPad:String) {
-		mobileManager.addDPad(DPad);
+		// On-screen touch pads are no longer drawn: menus are driven by direct touch.
 	}
 	public function removeDPad() {
 		mobileManager.removeDPad();
 	}
 	public function addDPadCamera() {
-		mobileManager.addDPadCamera();
+		// No dpad camera needed without an on-screen dpad.
 	}
 
 	/* Button */
 	public function addButton(Action:String) {
-		mobileManager.addButton(Action);
+		// On-screen action buttons are no longer drawn.
 	}
 	public function removeButton() {
 		mobileManager.removeButton();
 	}
 	public function addButtonCamera() {
-		mobileManager.addButtonCamera();
+		// No button camera needed without on-screen action buttons.
 	}
 
 	/* Hitbox */
