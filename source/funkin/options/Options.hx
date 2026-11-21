@@ -225,6 +225,8 @@ class Options
 		extraButtons = 0;
 		// Only the app-private Android/data folder is supported.
 		storageType = 'EXTERNAL_DATA';
+		// The config warning popup is not used by this port.
+		allowConfigWarning = false;
 
 		if (!__eventAdded) {
 			Lib.application.onExit.add(function(i:Int) {
