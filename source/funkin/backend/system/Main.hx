@@ -117,9 +117,10 @@ class Main extends Sprite
 		__installBack = new openfl.display.Shape();
 		__installBar = new openfl.display.Shape();
 		__installLabel = new openfl.text.TextField();
-		__installLabel.defaultTextFormat = new openfl.text.TextFormat(null, 22, 0xFFFFFF);
+		var installFormat = new openfl.text.TextFormat(null, 22, 0xFFFFFF);
+		installFormat.align = openfl.text.TextFormatAlign.CENTER;
+		__installLabel.defaultTextFormat = installFormat;
 		__installLabel.width = stage.stageWidth;
-		__installLabel.textAlign = openfl.text.TextFormatAlign.CENTER;
 		__installLabel.y = stage.stageHeight * 0.5 - 48;
 
 		addChild(__installBack);
