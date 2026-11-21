@@ -22,7 +22,8 @@ function onPlayerHit(e) {
     var isLegacyWelcome:Bool = (PlayState.variation == "Legacy" && songName == "Welcome");
 
     // 评级基准 X：Scallywag 时屏幕中心，否则原 comboGroup 偏移
-    var centerX:Float = isScallywag ? FlxG.width / 2 : comboGroup.x + 190;
+    // Middlescroll puts the judgement in the middle of the screen, regardless of song.
+    var centerX:Float = (isScallywag || FlxG.save.data.middleScroll) ? FlxG.width / 2 : comboGroup.x + 190;
     // Y 轴额外偏移：Scallywag 时向上 250 像素
     var yAdjust:Float = isScallywag ? -280 : 0;
 
@@ -51,7 +52,7 @@ function onPlayerHit(e) {
     var spawnY:Float = Options.downscroll ? 640 : 45;
     // 应用额外 X 偏移
     var finalRatingX:Float = centerX + xOffsetExtra;
-    var finalRatingY:Float = comboGroup.y + spawnY + yOffset + yAdjust + yOffsetExtra;
+    var finalRatingY:Float = FlxG.save.data.middleScroll ? (FlxG.height * 0.5 + (Options.downscroll ? 80 : -80)) : (comboGroup.y + spawnY + yOffset + yAdjust + yOffsetExtra);
     CoolUtil.resetSprite(rating, finalRatingX, finalRatingY);
     CoolUtil.loadAnimatedGraphic(rating, Paths.image(pre + ratingName + suf));
 
@@ -90,7 +91,7 @@ function onPlayerHit(e) {
 
         var numSpawnY:Float = Options.downscroll ? 540 : 80;
         var finalNumX:Float = numBaseX + (43 * i);
-        var finalNumY:Float = comboGroup.y + numSpawnY + yOffset + yAdjust + yOffsetExtra;
+        var finalNumY:Float = FlxG.save.data.middleScroll ? (FlxG.height * 0.5 + (Options.downscroll ? 150 : -150)) : (comboGroup.y + numSpawnY + yOffset + yAdjust + yOffsetExtra);
         CoolUtil.resetSprite(numScore, finalNumX, finalNumY);
 
         numScore.antialiasing = numAA;
