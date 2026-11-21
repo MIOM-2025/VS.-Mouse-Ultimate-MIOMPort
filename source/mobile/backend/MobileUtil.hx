@@ -210,6 +210,59 @@ class MobileUtil
 	#end
 
 	/**
+	 * Copies the bundled mods/ folder from the APK assets into the writable storage directory.
+	 * ModsFolder reads mods/ from the data directory, so without this the game starts with no mods.
+	 */
+	public static function copyModsToStorage():Void {
+		#if mobile
+		var rootTarget = getDirectory();
+		var list:Array<String> = Assets.list();
+		var versionPath = rootTarget + "mods/.version";
+		var version = "";
+		try version = lime.app.Application.current.meta.get("version");
+		catch (e:Dynamic) version = "";
+
+		var stored = "";
+		try { if (FileSystem.exists(versionPath)) stored = File.getContent(versionPath).trim(); } catch (e:Dynamic) {}
+		var refreshAll:Bool = stored != version;
+
+		var copied:Int = 0, skipped:Int = 0;
+		for (assetKey in list) {
+			var cleanPath = assetKey;
+			var colonIndex = cleanPath.indexOf(":");
+			if (colonIndex != -1) cleanPath = cleanPath.substring(colonIndex + 1);
+			if (!StringTools.startsWith(cleanPath, "mods/")) continue;
+
+			var fullPath = Path.join([rootTarget, cleanPath]);
+			var directory = Path.directory(fullPath);
+			try {
+				if (!FileSystem.exists(directory)) FileSystem.createDirectory(directory);
+			} catch (e:Dynamic) {}
+
+			var exists = false;
+			try exists = FileSystem.exists(fullPath); catch (e:Dynamic) {}
+
+			var textFile = ~/.(hx|xml|json|ini|txt|ttf|otf)$/.match(cleanPath);
+			if (exists && !(refreshAll && textFile)) {
+				skipped++;
+				continue;
+			}
+
+			try {
+				File.saveBytes(fullPath, Assets.getBytes(assetKey));
+				copied++;
+			} catch (e:Dynamic) trace('[MobileUtil] could not copy ' + cleanPath + ': ' + e);
+		}
+
+		try {
+			File.saveContent(versionPath, version);
+		} catch (e:Dynamic) {}
+
+		trace('[MobileUtil] copied ' + copied + ' mod files (' + skipped + ' already present) into ' + rootTarget);
+		#end
+	}
+
+	/**
 	 * @param folders Optional list of specific folders (e.g. ["assets/data/"]). If null, copies all assets.
 	 */
 	public static function copyAssets(folders:Array<String> = null, onProgress:String->Int->Int->Void = null, onComplete:Void->Void = null):Void {
