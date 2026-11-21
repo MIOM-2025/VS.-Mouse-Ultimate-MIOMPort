@@ -223,6 +223,8 @@ class Options
 		__load();
 		// VMU has no extra keys, so the old saved value must never survive.
 		extraButtons = 0;
+		// Only the app-private Android/data folder is supported.
+		storageType = 'EXTERNAL_DATA';
 
 		if (!__eventAdded) {
 			Lib.application.onExit.add(function(i:Int) {
