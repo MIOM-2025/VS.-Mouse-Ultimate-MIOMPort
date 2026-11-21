@@ -120,8 +120,33 @@ class Main extends Sprite
 		return "sans-serif";
 	}
 
-	function startAssetInstall():Void
+		function __assetInstallStamp():String
 	{
+		try {
+			var b = openfl.Assets.getBytes("assets/data/installStamp.txt");
+			if (b != null) return StringTools.trim(b.toString());
+		} catch (e:Dynamic) {}
+		return "";
+	}
+
+	function __storedInstallStamp():String
+	{
+		try {
+			var p = MobileUtil.getDirectory() + "installStamp.txt";
+			if (sys.FileSystem.exists(p)) return StringTools.trim(sys.io.File.getContent(p));
+		} catch (e:Dynamic) {}
+		return "";
+	}
+
+	function startAssetInstall():Void
+		{
+		var wantedStamp = __assetInstallStamp();
+		if (wantedStamp != "" && wantedStamp == __storedInstallStamp()) {
+			// Already copied this exact build once, no need to walk every asset again.
+			finishInit();
+			return;
+		}
+
 		var stage = openfl.Lib.current.stage;
 		__installBack = new openfl.display.Shape();
 		__installBar = new openfl.display.Shape();
@@ -168,6 +193,10 @@ class Main extends Sprite
 			openfl.Lib.current.stage.removeEventListener(openfl.events.Event.ENTER_FRAME, __installStep);
 			MobileUtil.writeModsVersion();
 			MobileUtil.writeCopyLog();
+			try {
+				var st = __assetInstallStamp();
+				if (st != "") sys.io.File.saveContent(MobileUtil.getDirectory() + "installStamp.txt", st);
+			} catch (e:Dynamic) {}
 			removeChild(__installBack);
 			removeChild(__installLabel);
 			removeChild(__installBar);
