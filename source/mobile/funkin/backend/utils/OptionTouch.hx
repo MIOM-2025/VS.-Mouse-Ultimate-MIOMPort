@@ -1,0 +1,194 @@
+package mobile.funkin.backend.utils;
+
+import flixel.FlxCamera;
+import flixel.FlxG;
+import flixel.FlxSprite;
+
+/**
+ * 设置界面（TreeMenu / TreeMenuScreen）专用的触摸手势：
+ * 轻点 = 选中当前项，左右滑 = 改值/切换，上下滑 = 上下移动光标。
+ * 不拦截输入，只读取手势。
+ */
+class OptionTouch
+{
+	public static var tapDistance:Float = 26;
+	public static var swipeDistance:Float = 60;
+
+	static var initialized:Bool = false;
+	static var frame:Int = 0;
+	static var lastFrame:Int = -1;
+
+	static var tracking:Bool = false;
+	static var startX:Float = 0;
+	static var startY:Float = 0;
+	static var endX:Float = 0;
+	static var endY:Float = 0;
+
+	static var _tapped:Bool = false;
+	static var _released:Bool = false;
+	static var _justPressed:Bool = false;
+	static var _holding:Bool = false;
+	static var _pointerX:Float = 0;
+	static var _pointerY:Float = 0;
+	static var _swipeX:Int = 0;
+	static var _swipeY:Int = 0;
+
+	public static function init():Void
+	{
+		if (initialized) return;
+		initialized = true;
+		FlxG.signals.preUpdate.add(onPreUpdate);
+		FlxG.signals.postUpdate.add(refresh);
+		FlxG.signals.preStateSwitch.add(reset);
+	}
+
+	public static function reset():Void
+	{
+		tracking = false;
+		_tapped = false;
+		_released = false;
+		_swipeX = 0;
+		_swipeY = 0;
+		lastFrame = frame;
+	}
+
+	static function onPreUpdate():Void
+		frame++;
+
+	static function begin(x:Float, y:Float):Void
+	{
+		tracking = true;
+		startX = x;
+		startY = y;
+	}
+
+	static function finish(x:Float, y:Float):Void
+	{
+		tracking = false;
+		_released = true;
+		endX = x;
+		endY = y;
+
+		var dx:Float = x - startX;
+		var dy:Float = y - startY;
+		var absX:Float = Math.abs(dx);
+		var absY:Float = Math.abs(dy);
+
+		if (absX <= tapDistance && absY <= tapDistance)
+			_tapped = true;
+		else if (absX > absY && absX >= swipeDistance)
+			_swipeX = dx > 0 ? 1 : -1;
+		else if (absY >= absX && absY >= swipeDistance)
+			_swipeY = dy > 0 ? 1 : -1;
+	}
+
+	static function refresh():Void
+	{
+		if (!initialized) init();
+		if (lastFrame == frame) return;
+		lastFrame = frame;
+
+		_tapped = false;
+		_released = false;
+		_justPressed = false;
+		_holding = false;
+		_swipeX = 0;
+		_swipeY = 0;
+
+		for (touch in FlxG.touches.list)
+		{
+			if (touch == null) continue;
+			if (touch.justPressed)
+			{
+				begin(touch.screenX, touch.screenY);
+				_justPressed = true;
+			}
+			else if (touch.justReleased && tracking) finish(touch.screenX, touch.screenY);
+
+			if (touch.pressed)
+			{
+				_holding = true;
+				_pointerX = touch.screenX;
+				_pointerY = touch.screenY;
+			}
+		}
+
+		if (FlxG.mouse.justPressed)
+		{
+			begin(FlxG.mouse.screenX, FlxG.mouse.screenY);
+			_justPressed = true;
+		}
+		else if (FlxG.mouse.justReleased && tracking) finish(FlxG.mouse.screenX, FlxG.mouse.screenY);
+
+		if (FlxG.mouse.pressed)
+		{
+			_holding = true;
+			_pointerX = FlxG.mouse.screenX;
+			_pointerY = FlxG.mouse.screenY;
+		}
+	}
+
+	public static var tapped(get, never):Bool;
+	static function get_tapped():Bool { refresh(); return _tapped; }
+
+	public static var swipeLeft(get, never):Bool;
+	static function get_swipeLeft():Bool { refresh(); return _swipeX < 0; }
+
+	public static var swipeRight(get, never):Bool;
+	static function get_swipeRight():Bool { refresh(); return _swipeX > 0; }
+
+	public static var swipeUp(get, never):Bool;
+	static function get_swipeUp():Bool { refresh(); return _swipeY < 0; }
+
+	public static var swipeDown(get, never):Bool;
+	static function get_swipeDown():Bool { refresh(); return _swipeY > 0; }
+
+	public static var justPressedNow(get, never):Bool;
+	static function get_justPressedNow():Bool { refresh(); return _justPressed; }
+
+	public static var holding(get, never):Bool;
+	static function get_holding():Bool { refresh(); return _holding; }
+
+	public static var releasedNow(get, never):Bool;
+	static function get_releasedNow():Bool { refresh(); return _released; }
+
+	public static var pointerX(get, never):Float;
+	static function get_pointerX():Float { refresh(); return _pointerX; }
+
+	public static var pointerY(get, never):Float;
+	static function get_pointerY():Float { refresh(); return _pointerY; }
+
+	public static var anyPressed(get, never):Bool;
+	static function get_anyPressed():Bool
+	{
+		for (touch in FlxG.touches.list) if (touch != null && touch.pressed) return true;
+		return FlxG.mouse.pressed;
+	}
+
+	public static function tappedOn(sprite:FlxSprite, ?camera:FlxCamera):Bool
+	{
+		if (!_tapped || sprite == null) return false;
+		return hit(sprite, startX, startY);
+	}
+
+	public static function releasedOn(sprite:FlxSprite, ?camera:FlxCamera):Bool
+	{
+		if (!_released || sprite == null) return false;
+		return hit(sprite, endX, endY);
+	}
+
+	public static function pressingOn(sprite:FlxSprite, ?camera:FlxCamera):Bool
+	{
+		if (sprite == null || !tracking) return false;
+		return hit(sprite, startX, startY);
+	}
+
+	static function hit(sprite:FlxSprite, x:Float, y:Float):Bool
+	{
+		if (sprite == null) return false;
+		var pos = sprite.getScreenPosition();
+		var ok = x >= pos.x && x <= pos.x + sprite.width && y >= pos.y && y <= pos.y + sprite.height;
+		pos.put();
+		return ok;
+	}
+}
