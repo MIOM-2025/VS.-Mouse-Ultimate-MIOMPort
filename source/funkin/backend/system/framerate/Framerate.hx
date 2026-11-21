@@ -21,7 +21,7 @@ class Framerate extends Sprite {
 	public static var codenameBuildField:CodenameBuildField;
 	#end
 
-	public static var fontName:String = "assets/fonts/Consolas.ttf";
+	public static var fontName:String = "assets/fonts/WickedMouse.ttf";
 
 	/**
 	 * 0: FPS INVISIBLE
