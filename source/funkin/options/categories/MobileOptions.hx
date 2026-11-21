@@ -56,7 +56,6 @@ class MobileOptions extends TreeMenuScreen
 		if ((HitboxModes == null))
 			HitboxModes = ["Normal"];
 
-		add(new NumOption(getNameID('extraButtons'), getDescID('extraButtons'), 0, 2, 1, 'extraButtons'));
 		/* Tahtalı Köy, can be added back later.
 		add(new ArrayOption(getNameID('hitboxType'), getDescID('hitboxType'), ["No Gradient", "No Gradient (Old)", "Gradient"],
 			["No Gradient", "No Gradient (Old)", "Gradient"], 'hitboxType'));
