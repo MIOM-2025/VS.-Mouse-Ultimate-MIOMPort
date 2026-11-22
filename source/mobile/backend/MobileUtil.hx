@@ -131,6 +131,29 @@ class MobileUtil
 	/**
 	 * Requests Storage Permissions on Android Platform.
 	 */
+	/** Registers the bundled fonts with openfl so TextFormat can use them by name. */
+	public static function registerFonts():Void
+	{
+		for (name in ["assets/fonts/WickedMouse.ttf", "assets/fonts/MIOM.ttf", "assets/fonts/CreatoDisplay-ExtraBold.otf"])
+		{
+			try {
+				var f:openfl.text.Font = null;
+				try f = openfl.utils.Assets.getFont(name) catch (e:Dynamic) {}
+				if (f == null) {
+					try {
+						var b = openfl.utils.Assets.getBytes(name);
+						if (b != null && b.length > 0) f = openfl.text.Font.fromBytes(b);
+					} catch (e:Dynamic) {}
+				}
+				if (f != null) {
+					openfl.text.Font.registerFont(f);
+					if (name.indexOf("WickedMouse") != -1)
+						funkin.backend.system.framerate.Framerate.fontName = f.fontName;
+				}
+			} catch (e:Dynamic) {}
+		}
+	}
+
 	public static function getPermissions():Void
 	{
 		// VMU port: everything lives in Android/data, no shared-storage permission needed.
