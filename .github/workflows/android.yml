@@ -112,6 +112,26 @@ jobs:
       - name: Patch flixel-animate filter baking
         run: python3 .github/scripts/patch_animate.py
 
+      - name: Replace Android launcher icons
+        run: |
+          TPL=$(find "$HOME/haxelib" -type d -path '*lime/templates/android/template' 2>/dev/null | head -1)
+          echo "template: $TPL"
+          if [ -n "$TPL" ]; then
+            ls "$TPL/res" | head -20 || true
+            for pair in mdpi:48 hdpi:72 xhdpi:96 xxhdpi:144 xxxhdpi:192; do
+              n=${pair%%:*}; s=${pair##*:}
+              mkdir -p "$TPL/res/mipmap-$n"
+              ffmpeg -y -v error -i art/icon196.png -vf "scale=${s}:${s}" -frames:v 1 "$TPL/res/mipmap-$n/ic_launcher.png" || true
+              ffmpeg -y -v error -i art/icon196.png -vf "scale=${s}:${s}" -frames:v 1 "$TPL/res/mipmap-$n/icon.png" || true
+            done
+          fi
+
+      - name: Stamp install version
+        run: |
+          mkdir -p assets/data
+          date +%s > assets/data/installStamp.txt
+          cat assets/data/installStamp.txt
+
       - name: Building the game
         run: |
           if [ "${{ inputs.compile_experimental }}" == "true" ]; then
