@@ -40,7 +40,7 @@ function new() {
     FlxG.game.addChild(solidSprite);  // 添加到游戏内部
 
     fpsText = new TextField();
-    fpsText.defaultTextFormat = new TextFormat(Paths.getFontName(Paths.font('CreatoDisplay-ExtraBold.otf')), 15, 0xFFFFFF);
+    fpsText.defaultTextFormat = new TextFormat(Paths.getFontName(Paths.font('WickedMouse.ttf')), 15, 0xFFFFFF);
     fpsText.height = 30;
     fpsText.selectable = false;
     fpsText.x = 0;
