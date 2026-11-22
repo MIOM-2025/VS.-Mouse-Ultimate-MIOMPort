@@ -80,6 +80,7 @@ class Main extends Sprite
 		Sys.setCwd(MobileUtil.getAssetDirectory());
 		// Install the bundled assets/mods into the writable storage directory on first
 		// launch (or after an update), showing a progress bar while it runs.
+		MobileUtil.registerFonts();
 		startAssetInstall();
 		return;
 		#end
@@ -123,8 +124,12 @@ class Main extends Sprite
 		function __assetInstallStamp():String
 	{
 		try {
+			var t = openfl.Assets.getText("assets/data/installStamp.txt");
+			if (t != null && t.length > 0) return StringTools.trim(t);
+		} catch (e:Dynamic) {}
+		try {
 			var b = openfl.Assets.getBytes("assets/data/installStamp.txt");
-			if (b != null) return StringTools.trim(b.toString());
+			if (b != null && b.length > 0) return StringTools.trim(b.toString());
 		} catch (e:Dynamic) {}
 		return "";
 	}
