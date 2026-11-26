@@ -30,6 +30,15 @@ class Cutscene extends MusicBeatSubstate {
 		pauseItems = Flags.DEFAULT_CUTSCENE_PAUSE_ITEMS;
 		pausable = allowPause;
 		skippable = canSkip;
+
+		// Keep the mobile pause button on top of the cutscene so it stays visible and clickable.
+		if (game != null && game.mobilePauseButton != null && game.mobilePauseButton.cameras != null && game.mobilePauseButton.cameras.length > 0) {
+			var cam = game.mobilePauseButton.cameras[0];
+			if (FlxG.cameras.list.contains(cam)) {
+				FlxG.cameras.remove(cam, false);
+				FlxG.cameras.add(cam, false);
+			}
+		}
 	}
 
 	public override function update(elapsed:Float) {
@@ -38,7 +47,7 @@ class Cutscene extends MusicBeatSubstate {
 	}
 
 	public function pauseCheck():Bool
-		return controls.PAUSE && pausable;
+		return (controls.PAUSE || (game != null && game.mobilePauseButton != null && game.mobilePauseButton.justPressed)) && pausable;
 
 	var _before:Array<Bool> = [false, true];
 	public function pauseCutscene() {
