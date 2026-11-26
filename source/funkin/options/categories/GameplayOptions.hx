@@ -11,7 +11,11 @@ class GameplayOptions extends TreeMenuScreen {
 		super('optionsTree.gameplay-name', 'optionsTree.gameplay-desc', 'GameplayOptions.', ['FULL', 'A_B']);
 
 		add(new Checkbox(getNameID('downscroll'), getDescID('downscroll'), 'downscroll'));
-		add(new Checkbox(getNameID('middleScroll'), getDescID('middleScroll'), 'middleScroll'));
+		// The mod scripts read FlxG.save.data.middleScroll, not Options.middleScroll,
+		// so bind the checkbox to the save data and flush it when toggled.
+		if (FlxG.save != null && FlxG.save.data.middleScroll == null) FlxG.save.data.middleScroll = false;
+		add(new Checkbox(getNameID('middleScroll'), getDescID('middleScroll'), 'middleScroll',
+			() -> { if (FlxG.save != null) FlxG.save.flush(); }, FlxG.save != null ? FlxG.save.data : null));
 		add(new Checkbox(getNameID('ghostTapping'), getDescID('ghostTapping'), 'ghostTapping'));
 		add(new Checkbox(getNameID('naughtyness'), getDescID('naughtyness'), 'naughtyness'));
 		add(new Checkbox(getNameID('camZoomOnBeat'), getDescID('camZoomOnBeat'), 'camZoomOnBeat'));
