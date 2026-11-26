@@ -88,9 +88,6 @@ function beatHit() {
 			// loop1 shows together with loop2; loop3 keeps its own later call.
 			FlxTween.tween(camVideos, {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
 			FlxTween.tween(video2, {alpha: 1}, 0.5, {ease: FlxEase.quartOut});
-		case 138:
-			// first hide, a little earlier than the original 144.
-			FlxTween.tween(video, {alpha: 0}, 0.5, {ease: FlxEase.quartOut});
 		case 176:
 			FlxTween.tween(video3, {alpha: 0.6}, 0.5, {ease: FlxEase.quartOut});
 		case 206:
@@ -100,6 +97,12 @@ function beatHit() {
 	}
 
 	// trace("test");
+}
+
+function stepHit() {
+	// First hide only 3 steps earlier than the original 144 (144*4 = 576).
+	if (curStep == 573)
+		FlxTween.tween(video, {alpha: 0}, 0.5, {ease: FlxEase.quartOut});
 }
 
 function fitVideo(vid) {
