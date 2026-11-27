@@ -21,6 +21,8 @@ function create() {
     camSustains.setFilters([new ShaderFilter(wiggleEffect.shader)]);
     
     FlxG.cameras.add(camSustains, false);
+    // Keep the judgement camera above every camera Vehement adds.
+    if (camCombo != null) { FlxG.cameras.remove(camCombo, false); FlxG.cameras.add(camCombo, false); }
 }
 
 function onNoteCreation(event) {
