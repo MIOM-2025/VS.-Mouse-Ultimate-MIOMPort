@@ -17,6 +17,10 @@ var centerPlayerPos:Array = [];
 var defaultPlayerY:Array = [];
 var centerY:Float = 0;
 var defaultComboX:Float = 0;
+var hudGroup:Array<Dynamic> = [];
+var hudBaseY:Array<Float> = [];
+var timeGroup:Array<Dynamic> = [];
+var timeBaseY:Array<Float> = [];
 var defaultComboY:Float = 0;
 
 if (PlayState.variation != null) {
@@ -46,6 +50,10 @@ function postCreate(){
     // Middle-scroll judgement line height: the strum line sits higher, around the middle.
     centerY = FlxG.height * 0.5 - 100;
     if (comboGroup != null) { defaultComboX = comboGroup.x; defaultComboY = comboGroup.y; }
+    for (h in [vmuBar, leftHealth, rightHealth, scoreTxt, missesTxt, iconBF, iconDad])
+        if (h != null) { hudGroup.push(h); hudBaseY.push(h.y); }
+    for (h in [timeBar, timeBarBG, timeTxt])
+        if (h != null) { timeGroup.push(h); timeBaseY.push(h.y); }
 
     // 居中滚动布局位置：CPU（0号组）使用左右各两列公式，玩家（1号组）使用居中一排公式
     var width = FlxG.width;
@@ -185,6 +193,11 @@ function beatHit(){
                         FlxTween.tween(comboGroup, {x: FlxG.width * 0.5 - 190, y: FlxG.height * 0.5 - 60 + (Options.downscroll ? 150 : -150)}, 1.45, {ease: FlxEase.quartInOut});
                     }
                 }
+
+                // HUD leaves the screen while the arrows move, time bar goes the other way.
+                var hudOff:Float = Options.downscroll ? -FlxG.height : FlxG.height;
+                for (i in 0...hudGroup.length) FlxTween.tween(hudGroup[i], {y: hudBaseY[i] + hudOff}, 1.45, {ease: FlxEase.quartInOut});
+                for (i in 0...timeGroup.length) FlxTween.tween(timeGroup[i], {y: timeBaseY[i] - hudOff}, 1.45, {ease: FlxEase.quartInOut});
             }
 
             camGame.fade(FlxColor.BLACK,(Conductor.crochet/1000) * 1.5,false);
@@ -241,6 +254,9 @@ function beatHit(){
                         FlxTween.tween(comboGroup, {x: defaultComboX, y: defaultComboY}, 1.45, {ease: FlxEase.quartOut});
                     }
                 }
+
+                for (i in 0...hudGroup.length) FlxTween.tween(hudGroup[i], {y: hudBaseY[i]}, 1.45, {ease: FlxEase.quartOut});
+                for (i in 0...timeGroup.length) FlxTween.tween(timeGroup[i], {y: timeBaseY[i]}, 1.45, {ease: FlxEase.quartOut});
             }
         case 271:
             for (i in 0...playerStrums.length) {FlxTween.tween(playerStrums.members[i], {alpha: 0}, (Conductor.crochet/1000) * 4);}
