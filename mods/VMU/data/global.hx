@@ -62,6 +62,7 @@ function new() {
     FlxG.save.data.glow ??= true;
     FlxG.save.data.monotone ??= true;
 
+    FlxG.save.data.showFps ??= false;
     FlxG.save.data.freeplay ??= false;
     FlxG.save.data.warning ??= true;
 
@@ -70,6 +71,10 @@ function new() {
 }
 
 function update(elapsed:Float) {
+    var showFps = FlxG.save.data.showFps == true;
+    fpsText.visible = showFps;
+    solidSprite.visible = showFps;
+    if (!showFps) return;
     fpsText.text = Framerate.fpsCounter.fpsNum.text + " FPS ~ " + Framerate.memoryCounter.memoryText.text + Framerate.memoryCounter.memoryPeakText.text;
     fpsText.setTextFormat(fpsText.defaultTextFormat);
     fpsText.width = fpsText.textWidth + 10;
