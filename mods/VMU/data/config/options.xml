@@ -1,6 +1,7 @@
 <!DOCTYPE codename-mod-options>
 <menu name="Other Options" desc="Modify extra options to your preference!">
     <checkbox id="botplay" name="Botplay" desc="Open botplay"/>
+    <checkbox id="showFps" name="FPS Counter" desc="Show the FPS counter in the top-left corner"/>
     <checkbox id="modcharts" name="Modcharts"/>
 
     <menu name="Graphics" desc="Configure visual effects.">
